@@ -327,7 +327,7 @@
       <div id="sidebar-account" style="font-size:11px; color:var(--text-muted); margin-bottom:8px; word-break:break-all;"></div>
       <button class="reset-link" onclick="confirmReset()">Réinitialiser ma progression</button>
       <button class="reset-link" onclick="doSignOut()" style="margin-left:12px;">Se déconnecter</button>
-      <div style="margin-top:8px;"><button class="reset-link" onclick="goTo('password_setup')">🔒 Définir un mot de passe</button></div>
+      <div id="password-hint-wrap" style="margin-top:8px;"><button class="reset-link" onclick="goTo('password_setup')">🔒 Définir un mot de passe</button></div>
     </div>
   </nav>
 
@@ -539,7 +539,7 @@ const DEFAULT_PROGRESS = {
   xp: 0, streak: 0, lastActiveDate: null,
   onboardingDone: false, diagnostic: {},
   completedLessons: [], completedModules: [],
-  validationAnswers: {}
+  validationAnswers: {}, passwordSet: false
 };
 let state = {
   view: "loading",
@@ -643,21 +643,6 @@ async function doSignOut(){
   if(sbClient) await sbClient.auth.signOut();
 }
 
-async function setPasswordFromDashboard(){
-  const input = document.getElementById('newPassword');
-  const fb = document.getElementById('setPasswordFeedback');
-  const pwd = input.value;
-  if(!pwd || pwd.length < 6){ fb.textContent = "6 caractères minimum."; return; }
-  fb.textContent = "Enregistrement...";
-  try{
-    const { error } = await sbClient.auth.updateUser({ password: pwd });
-    if(error){ fb.textContent = "Erreur : " + error.message; }
-    else { fb.textContent = "✓ Mot de passe défini. Utilise-le maintenant pour te connecter depuis l'app installée."; input.value = ''; }
-  } catch(e){
-    fb.textContent = "Erreur de connexion à Supabase.";
-  }
-}
-
 function updateStreak(){
   const today = new Date().toISOString().slice(0,10);
   const last = state.progress.lastActiveDate;
@@ -721,9 +706,11 @@ function updateSidebarStats(){
   const t1 = document.getElementById('sidebar-level-title');
   const f1 = document.getElementById('sidebar-xp-fill');
   const acc = document.getElementById('sidebar-account');
+  const pwHint = document.getElementById('password-hint-wrap');
   if(t1) t1.textContent = info.title;
   if(f1) f1.style.width = info.pct + "%";
   if(acc) acc.textContent = state.currentUser ? ("Connecté : " + state.currentUser.email) : "";
+  if(pwHint) pwHint.classList.toggle('hidden', !!state.progress.passwordSet);
   ["dashboard","roadmap","chat"].forEach(v => {
     const a = document.getElementById('nav-'+v); if(a) a.classList.toggle('active', state.view===v);
     const b = document.getElementById('bnav-'+v); if(b) b.classList.toggle('active', state.view===v);
@@ -833,7 +820,14 @@ async function submitPasswordSetup(){
   fb.textContent = "Enregistrement...";
   try{
     const { error } = await sbClient.auth.updateUser({ password: pw });
-    fb.textContent = error ? ("Erreur : " + error.message) : "✓ Mot de passe enregistré. Utilise-le dès maintenant sur tes autres appareils.";
+    if(error){
+      fb.textContent = "Erreur : " + error.message;
+    } else {
+      fb.textContent = "✓ Mot de passe enregistré. Utilise-le dès maintenant sur tes autres appareils.";
+      state.progress.passwordSet = true;
+      saveProgress();
+      updateSidebarStats();
+    }
   } catch(e){
     fb.textContent = "Erreur de connexion à Supabase.";
   }
@@ -938,12 +932,6 @@ function renderDashboard(){
       <div class="stat-card"><div class="stat-num">${state.progress.completedModules.length}</div><div class="stat-label">Modules bouclés</div></div>
     </div>
     ${continueHtml}
-    <div class="onboard-q" style="margin-bottom:26px;">
-      <p style="font-size:14px; margin-bottom:12px;">🔑 Pour te connecter directement depuis l'app installée sur ton écran d'accueil (sans passer par un email à chaque fois), définis un mot de passe :</p>
-      <input type="password" id="newPassword" placeholder="Nouveau mot de passe (6 caractères min.)" style="width:100%; box-sizing:border-box; padding:11px 14px; background:var(--ink); border:1px solid var(--ink-border); border-radius:var(--radius-sm); color:var(--text-light); font-size:14px; margin-bottom:10px;">
-      <button class="btn-ghost" id="setPasswordBtn" onclick="setPasswordFromDashboard()">Définir ce mot de passe</button>
-      <div id="setPasswordFeedback" style="margin-top:10px; font-size:13px; color:var(--text-muted);"></div>
-    </div>
     <div class="section-title">Ton parcours en un coup d'œil</div>
     ${renderJourneyMini()}
     <div style="margin-top:26px; display:flex; gap:12px; flex-wrap:wrap;">
