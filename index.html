@@ -321,6 +321,10 @@
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
       Prof IA
     </button>
+    <button class="nav-item" id="nav-agent" onclick="goTo('agent')">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      Agent
+    </button>
     <div class="sidebar-footer">
       <div class="mini-level">Niveau <b id="sidebar-level-title">—</b></div>
       <div class="mini-xp-bar"><div class="mini-xp-fill" id="sidebar-xp-fill" style="width:0%"></div></div>
@@ -347,6 +351,10 @@
     <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
     Prof
   </button>
+  <button id="bnav-agent" onclick="goTo('agent')">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    Agent
+  </button>
 </div>
 
 <script>
@@ -358,23 +366,24 @@ const PHASES = [
   { id:2, name:"Valoriser & Sécuriser", moduleIds:[4,5,6] },
   { id:3, name:"Financer & Structurer", moduleIds:[7,8] },
   { id:4, name:"Reprendre & Piloter", moduleIds:[9,10] },
-  { id:5, name:"Développer & Sortir", moduleIds:[11,12,13] }
+  { id:5, name:"Développer & Sortir", moduleIds:[11,12,13,14] }
 ];
 
 const MODULES = [
   { id:1, title:"Les fondamentaux du rachat", desc:"Le vocabulaire clé, le processus global, et pourquoi viser une « belle endormie ».", built:true, lessonIds:["l1","l2","l3"] },
-  { id:2, title:"Définir sa thèse & sourcer les cibles", desc:"Tes critères précis, et où trouver les entreprises qui y correspondent en Île-de-France.", built:false, lessonIds:[] },
+  { id:2, title:"Définir sa thèse, sourcer & premier contact", desc:"Tes critères précis, où trouver les cibles en IDF, et comment aborder le dirigeant.", built:false, lessonIds:[] },
   { id:3, title:"Lire les comptes & la vraie rentabilité", desc:"Bilan, compte de résultat, EBITDA retraité, dépendance client.", built:false, lessonIds:[] },
   { id:4, title:"Valoriser l'entreprise", desc:"Multiples, DCF, actif net réévalué — et comment viser un multiple inférieur à 3x.", built:false, lessonIds:[] },
   { id:5, title:"La Due Diligence : ne pas se faire avoir", desc:"La checklist complète pour débusquer les vices cachés avant de signer.", built:false, lessonIds:[] },
-  { id:6, title:"Structurer l'offre & négocier", desc:"LOI, structure de deal, garantie d'actif et de passif (GAP).", built:false, lessonIds:[] },
-  { id:7, title:"Financer sans mobiliser sa trésorerie", desc:"Trésorerie excédentaire, crédit-vendeur, dette bancaire, dette investisseur.", built:false, lessonIds:[] },
+  { id:6, title:"Structurer l'offre & négocier", desc:"Négocier le montage avec le vendeur (scripts, objections) — LOI et GAP à venir.", built:true, lessonIds:["n1"] },
+  { id:7, title:"Financer sans mobiliser sa trésorerie", desc:"Crédit-vendeur, dette bancaire, Bpifrance, prêt d'honneur — comment rester sous 30K€ d'apport.", built:true, lessonIds:["f1","f2","f3","f4"] },
   { id:8, title:"La holding d'acquisition", desc:"Pourquoi structurer via une holding, mécanique du LBO, intégration fiscale.", built:false, lessonIds:[] },
   { id:9, title:"Le closing & les 100 premiers jours", desc:"Signature, transition, sécuriser équipes et clients.", built:false, lessonIds:[] },
-  { id:10, title:"Piloter par le cash-flow", desc:"Les indicateurs, le tableau de bord, le pilotage opérationnel.", built:false, lessonIds:[] },
-  { id:11, title:"Digitaliser & structurer la croissance", desc:"CRM, prospection structurée : lever les faiblesses de la « belle endormie ».", built:false, lessonIds:[] },
-  { id:12, title:"Mettre en place un gérant", desc:"Profil, rémunération, rythme de suivi — pour ton objectif de développement.", built:false, lessonIds:[] },
-  { id:13, title:"Choisir sa sortie : revente ou build-up", desc:"Comparer céder à 1-3 ans vs. construire un portefeuille d'entreprises.", built:false, lessonIds:[] }
+  { id:10, title:"Le système Cash-Flow", desc:"Les 5 phases pour révéler le cash déjà présent dans l'entreprise, sans dépendre de la croissance.", built:true, lessonIds:["cf1","cf2","cf3","cf4"] },
+  { id:11, title:"Digitaliser, automatiser & IA", desc:"CRM, prospection structurée, et agents IA pour booster la croissance et réduire les charges.", built:false, lessonIds:[] },
+  { id:12, title:"Créer tes propres agents IA", desc:"Atelier pratique : construire, tester et déployer de vrais agents IA pour Belacom.", built:false, lessonIds:[] },
+  { id:13, title:"Mettre en place un gérant", desc:"Profil, rémunération, rythme de suivi — pour ton objectif de développement.", built:false, lessonIds:[] },
+  { id:14, title:"Choisir sa sortie : revente ou build-up", desc:"Comparer céder à 1-3 ans vs. construire un portefeuille d'entreprises.", built:false, lessonIds:[] }
 ];
 
 const LESSONS = {
@@ -505,6 +514,297 @@ const LESSONS = {
       { type:"summary",
         summary:"Un rachat suit 6 étapes, et le vocabulaire (EBITDA, multiple, holding, crédit-vendeur, DD, GAP) sert de langue commune à tout le processus. Une « belle endormie » n'est pas une affaire médiocre : c'est un choix stratégique qui sécurise ton financement et t'offre un levier de valeur clair et peu risqué.",
         nextHint:"Le Module 2 abordera comment transformer ces critères en thèse d'acquisition précise, et où sourcer réellement ces cibles en Île-de-France." }
+    ]
+  },
+
+  cf1: {
+    id:"cf1", moduleId:10, title:"Le principe fondamental & Phase 1 : Stabilisation", duration:"16 min",
+    steps:[
+      { type:"concept", label:"Le principe qui change tout",
+        body:`<p>Voici l'idée centrale de tout ce module, et probablement la plus rentable de tout ce programme : <strong>il ne s'agit pas de créer de la croissance, mais de révéler du cash déjà présent dans l'entreprise.</strong></p>
+        <p>Imagine une maison déjà meublée, où certaines pièces sont simplement fermées à clé depuis des années. Ton travail n'est pas de construire une extension — c'est d'abord d'ouvrir les portes qui existent déjà.</p>
+        <p>Dans l'immense majorité des PME rachetées (et c'est particulièrement vrai pour une « belle endormie »), on retrouve systématiquement les mêmes quatre pièces fermées à clé :</p>
+        <ul>
+          <li><strong>Pricing sous-exploité</strong> — les prix n'ont pas bougé depuis des années, par confort ou par peur</li>
+          <li><strong>Clients peu activés</strong> — une base de clients qui pourraient acheter plus, mais qu'on ne sollicite jamais</li>
+          <li><strong>Coûts mal pilotés</strong> — personne ne les a challengés depuis longtemps</li>
+          <li><strong>Absence de stratégie marketing</strong> — aucune structure pour transformer la réputation en nouveaux clients</li>
+        </ul>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Tu reprends une entreprise demain. Qu'est-ce que tu fais en PREMIER, dans les 60 premiers jours ?",
+        options:["J'augmente les prix immédiatement, pendant que j'ai l'élan du changement","Je sécurise ce qui existe déjà : clients clés, équipe, trésorerie réelle","Je lance une nouvelle offre pour marquer le coup","Je remplace le management en place pour imposer ma vision"],
+        correctIndex:1,
+        explanation:"Exactement. Tout le reste (pricing, croissance, structuration) ne vaut rien si tu perds tes clients clés ou ton équipe pendant la transition. La Phase 1 n'est pas la phase excitante — c'est la phase qui protège tout ce que tu vas construire ensuite." },
+      { type:"concept", label:"Phase 1 — Stabilisation (0 à 60 jours)",
+        body:`<p><strong>Objectif : sécuriser l'existant et préserver le cash.</strong> Rien d'autre ne compte encore.</p>
+        <p><strong>Actions concrètes :</strong></p>
+        <ul>
+          <li><strong>Sécurisation des clients clés</strong> — identifie-les avant même le closing (tu les connais déjà grâce à ta due diligence commerciale du Module 5), et prépare une communication de transition rassurante, pas une surprise.</li>
+          <li><strong>Fidélisation des équipes essentielles</strong> — repère qui détient une relation client critique ou un savoir-faire clé. Ce sont eux qu'il faut rassurer en priorité, individuellement.</li>
+          <li><strong>Analyse des flux financiers réels</strong> — ne te fie pas qu'à la comptabilité : regarde les relevés bancaires réels des 12 derniers mois. C'est souvent différent de ce que montre le compte de résultat.</li>
+        </ul>
+        <p><strong>Optimisations rapides et à faible risque :</strong> réduction des dépenses inutiles (abonnements non utilisés, doublons), renégociation fournisseurs (souvent jamais challengés depuis des années), arrêt des activités structurellement non rentables.</p>
+        <p><strong>Indicateurs à suivre dès le jour 1 :</strong> niveau de trésorerie, taux de churn client, concentration client (quelle part du CA dépend de tes 3 plus gros clients).</p>` },
+      { type:"expert", label:"Œil d'expert : l'angle mort juridique",
+        body:`<p>Un point que la plupart des repreneurs débutants découvrent trop tard, parfois à leurs dépens : en France, l'<strong>article L1224-1 du Code du travail</strong> impose le <strong>transfert automatique de tous les contrats de travail</strong> lors d'une cession — ancienneté, avantages acquis, tout est repris tel quel, tu n'as pas le choix de « faire le tri ».</p>
+        <p>Ce n'est pas une option de gestion RH, c'est une obligation légale à connaître AVANT le closing, pas à découvrir en Phase 1. Ça doit être vérifié pendant la due diligence sociale (Module 5), pour que tu arrives en Phase 1 sans surprise sur la masse salariale ou les engagements sociaux repris.</p>` },
+      { type:"pitfall", label:"⚠ Le piège qui coûte le plus cher",
+        items:[
+          "Vouloir tout changer en même temps dès le jour 1 : augmenter les prix, couper des coûts, ET changer le management, la même semaine. C'est la meilleure façon de perdre les équipes ET les clients simultanément — chaque changement génère de l'incertitude, et l'incertitude cumulée dépasse vite ce que les gens tolèrent.",
+          "La bonne séquence : Phase 1 rassure et observe. Phase 2 (le module suivant) commence à extraire du cash, une fois que tu as la confiance des équipes et une vision claire des vrais chiffres."
+        ] },
+      { type:"numeric", label:"Exercice",
+        question:"Une cible réalise 900 000 € de CA. Ses 3 plus gros clients représentent à eux seuls 450 000 € de ce CA. Quel est le pourcentage de concentration sur ces 3 clients ?",
+        placeholder:"Ex : 50", answer:50, tolerance:1,
+        successMsg:"50 %. À ce niveau de concentration, la perte d'un seul de ces 3 clients pendant ta transition serait un choc sérieux — c'est exactement pourquoi la sécurisation des clients clés est la toute première action de la Phase 1, avant même de penser pricing.",
+        hint:"Indice : (450 000 / 900 000) × 100." },
+      { type:"checkpoint", question:"La logique de la Phase 1 (sécuriser avant tout) est-elle claire ?",
+        helpPrompt:"Je viens de voir la Phase 1 du système cash-flow (Stabilisation, 0-60 jours) mais je veux m'assurer d'avoir bien compris pourquoi on sécurise avant d'optimiser. Peux-tu me donner un exemple concret de ce qui peut mal tourner si on brûle cette étape ?" },
+      { type:"summary",
+        summary:"La Phase 1 ne cherche pas à créer de la valeur — elle protège celle qui existe déjà : clients clés, équipe, trésorerie réelle. C'est cette protection qui rend possible tout ce qui vient après.",
+        nextHint:"La Phase 2 : comment extraire du cash en 1 à 3 mois, sans attendre un seul client de plus." }
+    ]
+  },
+
+  cf2: {
+    id:"cf2", moduleId:10, title:"Phase 2 : Extraction de cash", duration:"15 min",
+    steps:[
+      { type:"concept", label:"Le levier le plus puissant de tout le système",
+        body:`<p><strong>Objectif de la Phase 2 (1 à 3 mois) : augmenter le cash-flow SANS croissance.</strong> Tu n'as pas encore besoin d'un seul client de plus.</p>
+        <p>Le levier principal, et de loin le plus puissant : <strong>le pricing.</strong> Voici pourquoi il domine tous les autres leviers : une augmentation de prix va (presque) intégralement dans ta marge, alors qu'un euro de chiffre d'affaires supplémentaire par la croissance traîne avec lui des coûts additionnels (acquisition, production, service). Prix et volume ne se valent pas du tout, euro pour euro.</p>` },
+      { type:"numeric", label:"Exercice — l'effet de levier du pricing",
+        question:"Une entreprise fait 800 000 € de CA avec 20% de marge nette (160 000 €). Tu augmentes tous les prix de 8%, sans perdre un seul client et sans coût supplémentaire. Quelle est la nouvelle marge nette en euros (arrondis) ?",
+        placeholder:"Ex : 200000", answer:224000, tolerance:2000,
+        successMsg:"224 000 € (160 000 € + 8% × 800 000 €). Ta marge nette augmente de 40% alors que le CA n'a bougé que de 8%. C'est ça, l'effet de levier du pricing : un petit mouvement sur le prix a un effet démultiplié sur ce qui te reste réellement en poche.",
+        hint:"Indice : les 8% d'augmentation de prix (64 000 €) s'ajoutent presque intégralement à la marge existante, puisque les coûts ne changent pas." },
+      { type:"concept", label:"Comment augmenter les prix sans perdre ses clients",
+        body:`<p><strong>Le levier pricing en pratique :</strong></p>
+        <ul>
+          <li><strong>Augmentation des prix de 5 à 15%</strong> — la fourchette qui fonctionne dans la majorité des PME sans provoquer de départs massifs.</li>
+          <li><strong>Segmentation clients</strong> — n'augmente pas tout le monde pareil. Un client fidèle depuis 10 ans avec un fort coût de changement de fournisseur tolère plus qu'un client récent et opportuniste.</li>
+          <li><strong>Réduction des remises injustifiées</strong> — dans la plupart des PME rachetées, des remises historiques traînent sans plus aucune justification commerciale.</li>
+          <li><strong>Correction des oublis de facturation</strong> — des prestations réalisées mais jamais refacturées, plus fréquent qu'on ne le pense dans les structures peu digitalisées.</li>
+        </ul>
+        <p>En parallèle, <strong>optimise le besoin en fonds de roulement (BFR)</strong> : réduis les délais de paiement clients, allonge (raisonnablement) les délais fournisseurs, optimise les niveaux de stock. Ce sont des leviers de trésorerie immédiate, sans toucher au compte de résultat.</p>` },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Augmenter les prix de façon uniforme et brutale, sans tester ni segmenter — c'est le meilleur moyen de perdre exactement les clients qu'il ne fallait pas perdre.",
+          "Annoncer une hausse sans justification ni accompagnement : une hausse expliquée (qualité, coûts, valeur ajoutée) passe presque toujours mieux qu'une hausse silencieuse qu'on découvre sur une facture."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté ne fait jamais une hausse de prix « à l'aveugle ». Il segmente d'abord sa base clients en trois groupes : les clients captifs (fort coût de changement, faible sensibilité prix), les clients loyaux mais sensibles, et les clients opportunistes (déjà en train de comparer). Il augmente fortement le premier groupe, modérément le deuxième, et retravaille l'offre plutôt que le prix pour le troisième.</p>
+        <p>Un débutant augmente tout le monde pareil et découvre la segmentation... après avoir perdu les clients qu'il n'aurait jamais dû toucher en premier.</p>` },
+      { type:"checkpoint", question:"L'idée que le pricing soit le levier n°1 (avant même la croissance) te semble-t-elle claire ?",
+        helpPrompt:"Je viens de voir que le pricing est présenté comme le levier n°1 pour extraire du cash, avant même de chercher de nouveaux clients. Peux-tu m'aider à réfléchir à comment je testerais une hausse de prix sur une cible réelle, étape par étape ?" },
+      { type:"summary",
+        summary:"Le pricing est le levier le plus puissant du système : un euro de prix va presque intégralement dans ta marge, contrairement à un euro de croissance qui traîne des coûts avec lui. Segmenter avant d'augmenter fait toute la différence entre une hausse réussie et une hausse qui fait fuir les clients.",
+        nextHint:"La Phase 3 : comment faire croître le cash, pas seulement le chiffre d'affaires, sur 3 à 12 mois." }
+    ]
+  },
+
+  cf3: {
+    id:"cf3", moduleId:10, title:"Phase 3 : Croissance intelligente", duration:"14 min",
+    steps:[
+      { type:"concept", label:"Croissance intelligente ≠ chiffre d'affaires",
+        body:`<p><strong>Objectif de la Phase 3 (3 à 12 mois) : augmenter le CASH, pas uniquement le chiffre d'affaires.</strong> C'est une distinction essentielle : un CA en hausse avec des délais de paiement clients qui s'allongent, des remises qui repartent, ou des coûts d'acquisition mal maîtrisés peut très bien générer... moins de cash qu'avant.</p>`  },
+      { type:"predict", label:"À toi de jouer",
+        question:"Pourquoi une entreprise peut-elle voir son chiffre d'affaires augmenter de 20% tout en ayant MOINS de cash en banque qu'avant ?",
+        options:["C'est impossible si le CA augmente","Parce que les nouveaux clients paient plus tard, ou que les coûts d'acquisition et de livraison ont augmenté plus vite que le CA","Parce que la comptabilité est forcément fausse"],
+        correctIndex:1,
+        explanation:"Exactement. Le CA est une opinion comptable ; le cash est un fait bancaire. C'est pour ça que la Phase 3 doit toujours être pilotée avec les indicateurs de cash de la Phase 4, jamais avec le seul chiffre d'affaires comme boussole." },
+      { type:"concept", label:"Les 5 chantiers de la croissance intelligente",
+        body:`<ul>
+          <li><strong>Activation de la base clients existante</strong> — un CRM (HubSpot, Pipedrive) pour segmenter (clients top, dormants, récents) et lancer upsell, cross-sell, réactivation. C'est souvent le chantier le plus rentable : il coûte moins cher de réactiver un client dormant que d'en acquérir un nouveau.</li>
+          <li><strong>Structuration de l'acquisition</strong> — un vrai funnel de vente : acquisition (SEO, ads, outbound), conversion, closing. La plupart des « belles endormies » n'ont littéralement aucun processus ici — c'est ton terrain de jeu le plus vierge.</li>
+          <li><strong>Standardisation de l'offre</strong> — réduire le sur-mesure quand c'est possible, pour améliorer les marges et simplifier le discours commercial. Attention cependant : certains clients historiques sont justement fidèles À CAUSE du sur-mesure — à doser, pas à supprimer en bloc.</li>
+          <li><strong>Optimisation opérationnelle</strong> — automatisation des tâches répétitives, réallocation des ressources vers ce qui génère réellement du cash. (On y reviendra en profondeur au Module 11 avec les agents IA, taillés pour exactement ce type de chantier.)</li>
+          <li><strong>Structuration managériale</strong> — nommer un responsable opérationnel, clarifier les rôles, mettre en place des indicateurs simples que tout le monde comprend.</li>
+        </ul>` },
+      { type:"pitfall", label:"⚠ Piège classique",
+        items:["Standardiser l'offre de façon trop agressive et trop rapide, en oubliant que certains de tes meilleurs clients historiques sont fidèles précisément parce qu'ils ont un traitement sur-mesure. Segmente : standardise ce qui peut l'être, préserve ce qui ne le doit pas."]},
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté pilote la Phase 3 avec un seul réflexe permanent : à chaque nouvelle action de croissance, il se demande « est-ce que ça génère du cash à 90 jours, ou est-ce que ça génère seulement du chiffre d'affaires qui deviendra du cash... un jour, peut-être » ? Une facture émise n'est pas du cash. Un client signé n'est pas du cash. Le cash, c'est ce qui est réellement encaissé.</p>` },
+      { type:"checkpoint", question:"La distinction cash vs chiffre d'affaires est-elle claire à ce stade ?",
+        helpPrompt:"Je viens de voir la différence entre 'faire du chiffre d'affaires' et 'générer du cash' en Phase 3. Peux-tu me donner un exemple chiffré concret où le CA monte mais le cash baisse, pour bien fixer l'idée ?" },
+      { type:"summary",
+        summary:"La croissance intelligente se juge en cash généré, pas en chiffre d'affaires signé. Activation client, funnel structuré, standardisation dosée, automatisation et structuration managériale sont les 5 chantiers — chacun jugé à l'aune du cash qu'il produit réellement, pas de sa promesse.",
+        nextHint:"Les Phases 4 et 5 : comment piloter durablement par le cash, et rendre tout le système reproductible pour ta prochaine acquisition." }
+    ]
+  },
+
+  cf4: {
+    id:"cf4", moduleId:10, title:"Phase 4 : Pilotage financier & Phase 5 : Systémisation", duration:"13 min",
+    steps:[
+      { type:"concept", label:"Phase 4 — Piloter par le cash, pas par le CA",
+        body:`<p>À partir de ce stade, ton tableau de bord change de nature : on <strong>transitionne vers un pilotage entièrement orienté cash-flow</strong>, plutôt que vers les indicateurs comptables classiques.</p>
+        <p><strong>4 indicateurs à suivre en continu :</strong></p>
+        <ul>
+          <li><strong>Cash généré mensuellement</strong> — le seul chiffre qui ne ment jamais.</li>
+          <li><strong>Marge par client</strong> — tous les clients ne se valent pas ; certains coûtent plus cher à servir qu'ils ne rapportent.</li>
+          <li><strong>Coût d'acquisition</strong> — combien te coûte réellement un nouveau client, tous canaux confondus.</li>
+          <li><strong>Valeur client (LTV)</strong> — combien un client rapporte sur toute sa durée de vie, pas seulement sur sa première commande.</li>
+        </ul>` },
+      { type:"concept", label:"Phase 5 — Systémisation : rendre le modèle reproductible",
+        body:`<p><strong>Objectif : rendre le modèle reproductible</strong> — pas seulement rentable une fois, mais reproductible sur la prochaine acquisition.</p>
+        <p><strong>Documentation des processus</strong> dans 4 domaines : acquisition, vente, production, finance. Si un processus n'est écrit nulle part, il n'existe que dans une tête — la tienne, ou celle d'un employé qui peut partir.</p>
+        <p><strong>Finalité de cette phase :</strong> la délégation devient possible (quelqu'un d'autre peut exécuter sans toi), la scalabilité devient réelle (le système tient la charge si l'activité double), et la multiplication des acquisitions devient réaliste (tu peux réappliquer ce même système à une 2e entreprise sans repartir de zéro).</p>
+        <p>C'est cette Phase 5 qui fait le pont direct vers ton objectif de développement : mettre en place un gérant (Module 13) ou construire un portefeuille d'entreprises (Module 14).</p>` },
+      { type:"validation", label:"Question de validation 1/3",
+        question:"Sur une cible que tu identifierais aujourd'hui, quelle serait TA première action concrète en Phase 1 (les 60 premiers jours) ? Sois aussi précis que possible." },
+      { type:"validation", label:"Question de validation 2/3",
+        question:"Si tu devais augmenter les prix de 10% sur une cible avec 200 clients, comment séquencerais-tu cette hausse pour minimiser le risque de perte de clients ?" },
+      { type:"validation", label:"Question de validation 3/3",
+        question:"Explique avec tes propres mots pourquoi la Phase 5 (Systémisation) est la condition indispensable à ton objectif de build-up (Module 14) — et pas juste une bonne pratique de gestion." },
+      { type:"summary",
+        summary:"Le système cash-flow ne cherche pas à créer de la croissance, mais à révéler le cash déjà présent : stabiliser (0-60j), extraire via le pricing (1-3 mois), croître intelligemment sans perdre le fil du cash réel (3-12 mois), piloter par le cash plutôt que le CA, puis systémiser pour rendre le modèle reproductible.",
+        nextHint:"Le Module 11 montre comment la digitalisation et les agents IA accélèrent concrètement la Phase 3 — activation client, funnel, automatisation — sans embaucher davantage." }
+    ]
+  },
+
+  f1: {
+    id:"f1", moduleId:7, title:"Le crédit-vendeur, en profondeur", duration:"14 min",
+    steps:[
+      { type:"concept", label:"Le pilier le plus sous-estimé de ton montage",
+        body:`<p>Tu connais déjà le principe (Module 1) : le vendeur accepte d'être payé sur une partie du prix, dans le temps, plutôt que 100 % cash au closing. Ce module va beaucoup plus loin : comment le dimensionner, le sécuriser, et t'en servir comme véritable pierre angulaire d'un montage à faible apport.</p>
+        <p><strong>Ordres de grandeur observés en pratique sur des PME comme ta cible</strong> : 10 à 30 % du prix, remboursé sur 2 à 5 ans, à un taux souvent inférieur au marché bancaire (parfois 0 à 3 %). Rien n'est figé par la loi — tout se négocie, et c'est justement l'objet de ce module.</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Pourquoi un vendeur accepterait-il d'être payé sur 3 ans plutôt que cash immédiat, alors qu'il pourrait dire non ?",
+        options:["Il n'a pas le choix, c'est une obligation légale","Cela peut lui permettre d'obtenir un prix facial plus élevé, d'étaler sa fiscalité selon son régime, et c'est un signal qu'il croit en la pérennité de sa boîte","Les banques l'exigent systématiquement du vendeur"],
+        correctIndex:1,
+        explanation:"Exactement — et c'est ton principal levier de négociation. Un vendeur qui exige 100 % cash renonce à ces trois avantages. En pratique, beaucoup de cédants qui n'ont pas un besoin immédiat de liquidités (retraite déjà financée, pas de nouveau projet à financer) sont plus ouverts que tu ne le penses." },
+      { type:"concept", label:"Comment le sécuriser juridiquement",
+        body:`<p>Un crédit-vendeur se formalise par une <span class="term">convention de crédit-vendeur</span>, annexée à l'acte de cession, précisant montant, durée, taux, échéancier, et garanties.</p>
+        <p><strong>Point essentiel à négocier : la subordination.</strong> En pratique, ta banque (si tu as un prêt LBO en parallèle) va presque toujours exiger que le crédit-vendeur soit <em>subordonné</em> — c'est-à-dire remboursé après la dette bancaire en cas de difficulté. C'est normal et attendu, mais assure-toi que l'échéancier du crédit-vendeur reste réaliste une fois cette priorité posée : ne promets pas un remboursement que ton cash-flow, après avoir servi la banque, ne pourra pas tenir.</p>
+        <p><strong>Ta meilleure protection : la compensation avec la GAP.</strong> Si un vice caché apparaît après la vente et déclenche la garantie d'actif et de passif (Module 6), tu peux généralement compenser ce que le vendeur te doit avec ce que tu lui dois encore sur le crédit-vendeur — au lieu d'avoir à le poursuivre en justice pour récupérer de l'argent qu'il a peut-être déjà dépensé. C'est une des raisons pour lesquelles un crédit-vendeur généreux te protège, il ne fait pas que financer.</p>` },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Négocier un crédit-vendeur élevé en durée sans vérifier que le cash-flow post-Phase-1 (Module 10) peut réellement le tenir EN PLUS de la dette bancaire — un montage qui a l'air malin sur le papier peut t'étrangler à l'usage.",
+          "Utiliser un crédit-vendeur trop long pour compenser un prix trop élevé plutôt que pour financer une entreprise saine : le crédit-vendeur finance une acquisition, il ne répare pas une valorisation excessive."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté présente TOUJOURS le crédit-vendeur comme un partenariat, jamais comme une faveur qu'on demande. La formule qui fonctionne : « Je vous propose un prix de X, dont Y % réglés immédiatement et Z % étalés sur N ans — cette structure me permet de sécuriser le financement bancaire du solde, et vous garantit un complément de revenu régulier. » C'est un échange de valeur, présenté comme tel.</p>` },
+      { type:"checkpoint", question:"La logique du crédit-vendeur comme pierre angulaire (pas juste un complément) est-elle claire ?",
+        helpPrompt:"Je viens de voir le crédit-vendeur en profondeur (subordination, compensation avec la GAP). Peux-tu m'aider à réfléchir à comment je le dimensionnerais sur une cible à 220K€ d'EBITDA et un multiple de 2,5x ?" },
+      { type:"summary",
+        summary:"Le crédit-vendeur n'est pas qu'un outil de financement : bien négocié (subordination claire, compensable avec la GAP), c'est aussi ta meilleure protection contre les vices cachés et ton principal levier pour réduire l'apport personnel exigé par la banque.",
+        nextHint:"La dette bancaire et les dispositifs publics (Bpifrance) qui réduisent encore l'apport demandé." }
+    ]
+  },
+
+  f2: {
+    id:"f2", moduleId:7, title:"La dette bancaire & les dispositifs Bpifrance", duration:"16 min",
+    steps:[
+      { type:"concept", label:"Pourquoi le marché impose souvent 30 % d'apport",
+        body:`<p>Une banque qui finance un rachat de PME prend un risque réel : et si le repreneur échoue à faire tourner l'affaire ? L'apport personnel sert de coussin d'absorption des premiers aléas, et c'est aussi un signal d'engagement. C'est pour ça que 20 à 30 % d'apport reste une demande fréquente — ce n'est pas arbitraire, c'est de la gestion du risque bancaire.</p>
+        <p>La bonne nouvelle : il existe des leviers concrets, publics, pour réduire ce chiffre — sans que ça relève seulement d'un « discours rassurant ».</p>` },
+      { type:"concept", label:"La Garantie Transmission Bpifrance",
+        body:`<p>Bpifrance peut garantir une partie du prêt bancaire — <strong>jusqu'à 60 % du montant financé</strong> selon le dossier (chiffre confirmé sur le site officiel Bpifrance Création, dans le cadre du "Plan Objectif reprises" annoncé par Bercy en avril 2026 pour fluidifier les transmissions de TPE/PME ; certaines sources antérieures citent plutôt 40-50 %, le plafond semble avoir été relevé récemment — à reconfirmer avec ta banque au moment du dossier, ces dispositifs évoluent).</p>
+        <p><strong>Ce que ça change concrètement pour toi</strong> : en partageant le risque avec la banque, cette garantie peut réduire l'apport en cash exigé, et parfois alléger la caution personnelle demandée — la banque est plus encline à financer un dossier déjà partiellement garanti par un tiers public.</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"La Garantie Transmission Bpifrance remplace-t-elle ton dossier bancaire, ou vient-elle en plus ?",
+        options:["Elle remplace entièrement le besoin de convaincre une banque","Elle vient en soutien d'un dossier bancaire classique : elle rassure la banque, elle ne se substitue pas à elle","Elle n'est accessible qu'aux entreprises de plus de 50 salariés"],
+        correctIndex:1,
+        explanation:"Exactement. Tu négocies toujours avec une banque ; la garantie Bpifrance est un argument que TU apportes dans cette négociation pour obtenir de meilleures conditions, pas un guichet de financement direct qui remplace la banque." },
+      { type:"concept", label:"Deux autres outils Bpifrance à connaître",
+        body:`<p><strong>Le Prêt Croissance Transmission</strong> : jusqu'à 5 M€, <strong>sans garantie ni caution personnelle demandée sur ce prêt</strong>, pour financer la reprise de PME/ETI — un outil taillé pour exactement ton profil de deal (source : Bpifrance Création).</p>
+        <p><strong>Le Prêt d'Honneur Reprise</strong> : à <strong>taux zéro</strong>, jusqu'à <strong>80 000 €</strong>, pour soutenir le porteur de projet personnellement (source : Bpifrance Création). C'est un prêt personnel, généralement sans garantie ni caution, qui peut littéralement couvrir ton plafond de 30 000 € d'apport — à 0 % d'intérêt. On y revient en détail dans la prochaine leçon.</p>` },
+      { type:"pitfall", label:"⚠ À garder en tête",
+        items:["Une source d'avocat spécialisé le résume bien : « une reprise sans apport total reste rare » — la formule « sans apport » signifie en pratique « avec un apport réduit et complété par des dispositifs de garantie et de dette », pas « zéro risque, zéro engagement personnel ». Un dossier sans apport cash doit être d'autant plus solide sur le reste : rentabilité documentée, cash-flow prévisible, garanties contractuelles propres."] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur aguerri ne présente jamais ces dispositifs À LA BANQUE comme une demande de faveur — il arrive avec le dossier Bpifrance déjà pré-instruit ou en cours, ce qui inverse la dynamique : ce n'est plus « pouvez-vous me faire confiance » mais « voici un dossier où l'État partage déjà le risque avec vous ». La différence de posture change souvent l'issue de la négociation bancaire.</p>` },
+      { type:"checkpoint", question:"La différence entre 'la banque finance' et 'Bpifrance garantit/complète' est-elle claire ?",
+        helpPrompt:"Je viens de voir la Garantie Transmission et le Prêt Croissance Transmission Bpifrance. Peux-tu m'expliquer concrètement comment monter un dossier Bpifrance en parallèle de mon dossier bancaire ?" },
+      { type:"summary",
+        summary:"Les dispositifs Bpifrance (Garantie Transmission jusqu'à 60%, Prêt Croissance Transmission jusqu'à 5M€ sans caution) ne remplacent pas la banque : ils renforcent ton dossier et réduisent ce qu'elle exige de toi en cash et en garanties personnelles.",
+        nextHint:"La dette investisseur, la trésorerie excédentaire de la cible, et le Prêt d'Honneur à 0% qui peut à lui seul couvrir ton plafond de 30K€." }
+    ]
+  },
+
+  f3: {
+    id:"f3", moduleId:7, title:"Dette investisseur, trésorerie excédentaire & prêt d'honneur", duration:"15 min",
+    steps:[
+      { type:"concept", label:"La dette investisseur (mezzanine)",
+        body:`<p>Quand le crédit-vendeur + la dette bancaire ne couvrent pas 100 % du prix, la dette investisseur (parfois appelée mezzanine) comble l'écart : des investisseurs privés (family offices, clubs d'investisseurs, plateformes spécialisées) prêtent, généralement plus cher que la banque (souvent 8 à 15 %, parfois avec un petit % de plus-value en cas de revente — un "BSA" ou bon de souscription d'actions), en échange d'un risque plus élevé et d'une place after la dette senior.</p>
+        <p>C'est un outil de dernier recours pour boucler un montage, pas un premier réflexe : plus cher que la dette bancaire, il doit rester une part mineure du financement total.</p>` },
+      { type:"concept", label:"La trésorerie excédentaire de la cible",
+        body:`<p>Une partie du financement peut venir... de la cible elle-même. Si l'entreprise dispose d'une trésorerie réellement excédentaire (au-delà de son besoin en fonds de roulement), elle peut, après le closing, remonter un dividende vers ta holding pour rembourser une partie de la dette d'acquisition.</p>
+        <p><strong>Deux limites strictes à connaître</strong> : (1) juridiquement, ça ne se fait pas le jour même du closing — il faut une assemblée générale et le respect des règles de distribution ; (2) c'est encadré pénalement — utiliser la trésorerie de la cible d'une manière qui nuit à son intérêt social peut caractériser un <strong>abus de biens sociaux</strong>. La trésorerie utilisée doit être RÉELLEMENT excédentaire (vérifiée en due diligence, Module 5), jamais une trésorerie dont l'entreprise a besoin pour tourner.</p>` },
+      { type:"numeric", label:"Exercice",
+        question:"Une cible a 180 000 € de trésorerie au bilan. Son besoin en fonds de roulement normatif est estimé à 130 000 €. Quelle est la trésorerie réellement excédentaire mobilisable (en €) ?",
+        placeholder:"Ex : 50000", answer:50000, tolerance:2000,
+        successMsg:"50 000 € (180 000 - 130 000). C'est ce chiffre-là, pas la trésorerie totale au bilan, qui peut raisonnablement être mobilisé — le reste doit rester dans l'entreprise pour qu'elle continue de fonctionner normalement.",
+        hint:"Indice : trésorerie totale moins besoin en fonds de roulement normatif." },
+      { type:"concept", label:"Le Prêt d'Honneur Reprise : ton meilleur ami pour un plafond à 30K€",
+        body:`<p>C'est probablement l'outil le plus directement utile pour ton objectif précis. Le <strong>Prêt d'Honneur Reprise</strong> (Bpifrance, via des réseaux comme Réseau Entreprendre ou Initiative France selon les territoires) est un prêt <strong>personnel, à taux zéro, sans garantie ni caution demandée</strong>, pouvant aller <strong>jusqu'à 80 000 €</strong> (source : Bpifrance Création).</p>
+        <p>Concrètement : ton plafond de 30 000 € d'apport personnel peut être intégralement couvert par ce type de prêt d'honneur, sans mobiliser un centime de ta trésorerie personnelle réelle — et sans intérêt. Beaucoup de repreneurs débutants ignorent ce dispositif et pensent devoir sortir du cash de leur poche alors qu'il existe un circuit dédié pour ça.</p>
+        <p>Point important : les montants, plafonds et réseaux exacts varient selon les régions et évoluent — vérifie l'offre actuelle sur bpifrance-creation.fr ou auprès de Réseau Entreprendre / Initiative France au moment de monter ton dossier.</p>` },
+      { type:"pitfall", label:"⚠ Piège classique",
+        items:["Empiler crédit-vendeur + dette bancaire + dette investisseur + trésorerie excédentaire sans jamais faire l'exercice global de cash-flow disponible pour TOUT rembourser en même temps. Chaque brique semble raisonnable isolément ; c'est la Leçon 4 qui t'apprend à les assembler et vérifier que ça tient."] },
+      { type:"checkpoint", question:"Le rôle spécifique du Prêt d'Honneur Reprise pour ton plafond de 30K€ est-il clair ?",
+        helpPrompt:"Je viens de voir le Prêt d'Honneur Reprise Bpifrance (0%, jusqu'à 80K€) qui pourrait couvrir mon plafond de 30K€ d'apport. Comment se déroule concrètement le dossier pour l'obtenir, et avec quel timing par rapport au reste du montage ?" },
+      { type:"summary",
+        summary:"La dette investisseur comble un écart résiduel mais coûte cher — à minimiser. La trésorerie excédentaire de la cible peut financer une partie du deal, dans un cadre légal strict. Le Prêt d'Honneur Reprise (0%, jusqu'à 80K€) peut, à lui seul, couvrir ton plafond de 30K€ d'apport personnel.",
+        nextHint:"La dernière leçon assemble toutes ces briques dans un montage complet, chiffré, qui tient la route." }
+    ]
+  },
+
+  f4: {
+    id:"f4", moduleId:7, title:"Construire ton montage à moins de 30K€ d'apport", duration:"17 min",
+    steps:[
+      { type:"concept", label:"Assembler les briques : un exemple complet chiffré",
+        body:`<p>Prenons une cible fidèle à ta thèse : EBITDA retraité de 300 000 €, prix négocié à 2,5x = <strong>750 000 €</strong>.</p>
+        <p><strong>Un montage possible :</strong></p>
+        <ul>
+          <li>Crédit-vendeur (25 % du prix) : <strong>187 500 €</strong>, remboursé sur 4 ans</li>
+          <li>Dette bancaire senior (65 % du prix) : <strong>487 500 €</strong>, appuyée par la Garantie Transmission Bpifrance pour réduire la caution personnelle exigée</li>
+          <li>Prêt d'Honneur Reprise (0 %) : <strong>30 000 €</strong> — exactement ton plafond, sans sortir un centime de ta poche</li>
+          <li>Reste à financer : <strong>45 000 €</strong> — à combler par un ajustement du crédit-vendeur (le porter à 31 % au lieu de 25), une petite dette investisseur, ou une renégociation du prix</li>
+        </ul>
+        <p>Ce n'est pas une formule magique universelle — c'est UNE façon d'assembler les briques. Le bon montage dépend toujours du profil du dirigeant, de sa banque, et de ce que révèle ta due diligence.</p>` },
+      { type:"numeric", label:"Exercice — à toi de compléter le montage",
+        question:"Sur ce même deal à 750 000 €, si tu portes le crédit-vendeur à 30 % (225 000 €) au lieu de 25 %, la dette bancaire reste à 487 500 €, et le prêt d'honneur à 30 000 €, quel montant reste-t-il à combler (en €) ?",
+        placeholder:"Ex : 10000", answer:7500, tolerance:1000,
+        successMsg:"7 500 € (750 000 - 225 000 - 487 500 - 30 000). À ce niveau, un ajustement mineur du prix, un délai de paiement fournisseur en Phase 1, ou une petite dette investisseur suffit à boucler le montage — sans toucher à ton plafond de 30K€.",
+        hint:"Indice : Prix total moins la somme des 3 briques déjà posées." },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté ne présente jamais ce montage brique par brique à sa banque dans l'ordre où il l'a construit — il le présente en partant de LA DETTE BANCAIRE (celle qui intéresse la banque), en montrant que le reste (crédit-vendeur, garantie Bpifrance, prêt d'honneur) réduit SON risque à elle. Le montage est le même ; la présentation change tout dans la façon dont il est reçu.</p>` },
+      { type:"validation", label:"Question de validation 1/2",
+        question:"Sur une cible à 500K€ de CA que tu identifierais, avec un EBITDA de 90K€ et un multiple visé de 2,5x, esquisse ton propre montage pour rester sous 30K€ d'apport. Quelles briques utiliserais-tu, et dans quelles proportions approximatives ?" },
+      { type:"validation", label:"Question de validation 2/2",
+        question:"Pourquoi la Garantie Transmission Bpifrance n'est-elle pas, à elle seule, une source de financement — et pourquoi est-ce important de bien comprendre cette nuance avant de rencontrer ta banque ?" },
+      { type:"summary",
+        summary:"Un montage à faible apport combine généralement plusieurs briques — crédit-vendeur, dette bancaire appuyée par une garantie Bpifrance, et un Prêt d'Honneur Reprise à 0% — plutôt qu'une seule solution miracle. Le bon dosage dépend toujours du deal réel, jamais d'une formule figée.",
+        nextHint:"Le Module 6 montre maintenant comment négocier ce montage avec le vendeur — avec de vrais scripts d'approche." }
+    ]
+  },
+
+  n1: {
+    id:"n1", moduleId:6, title:"Négocier le montage avec le vendeur : scripts et objections", duration:"16 min",
+    steps:[
+      { type:"concept", label:"Le lien entre financement et négociation",
+        body:`<p>Tout ce que tu viens de voir au Module 7 n'a de valeur que si tu sais l'amener au vendeur sans le braquer. Un montage à faible apport, mal présenté, sonne comme « je n'ai pas les moyens de vous racheter ». Bien présenté, il sonne comme « voici une offre structurée, sécurisée, et rapide ».</p>
+        <p>Rappel de ta proposition de valeur (Module 2) : une sortie fiable, rapide et structurée vaut souvent plus, pour un cédant, qu'un prix légèrement supérieur avec un acheteur incertain.</p>` },
+      { type:"concept", label:"Script d'approche — proposer un crédit-vendeur élevé",
+        body:`<p>Voici un canevas à adapter, pas un texte à réciter mot pour mot :</p>
+        <p><em>« Sur la base de ce que j'ai vu de votre entreprise, je vous propose [X €], avec [Y %] réglés à la signature et [Z %] étalés sur [N] ans à un taux de [T %]. Cette structure me permet de sécuriser rapidement le financement bancaire du solde — via un dossier déjà engagé avec ma banque et Bpifrance — donc de vous garantir un closing dans les [3 à 6] mois. En échange, elle vous assure un complément de revenu régulier sur la durée, et [si pertinent] un prix légèrement supérieur à une offre 100% cash. »</em></p>
+        <p>Les trois éléments qui font la force de ce script : un prix concret (pas vague), une preuve de sérieux (dossier déjà engagé), et un bénéfice réciproque explicite (pas juste "moi j'ai besoin de temps").</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Un vendeur te répond : « Je préfère être payé cash, je ne veux pas dépendre de la réussite de votre gestion pour toucher mon argent. » Quelle est la MEILLEURE réponse ?",
+        options:["Insister en répétant que le crédit-vendeur est avantageux pour lui","Reconnaître le risque qu'il soulève, et proposer une garantie concrète (nantissement des titres de la holding, GAP réciproque, échéancier plus court) plutôt que de nier le risque","Menacer de retirer l'offre s'il n'accepte pas"],
+        correctIndex:1,
+        explanation:"Exactement. Le risque qu'il évoque est réel et légitime — le nier fait perdre en crédibilité. Le rassurer avec des garanties concrètes (les titres de la holding peuvent être nantis en sa faveur, par exemple) répond directement à SA préoccupation, pas à une préoccupation générique." },
+      { type:"pitfall", label:"⚠ Objections classiques et comment y répondre",
+        items:[
+          "« Pourquoi je vous ferais confiance avec si peu d'apport ? » → Ne le prends pas comme une attaque : montre les garanties concrètes (Bpifrance, nantissement, nombre d'échéances déjà anticipées) plutôt que de te justifier sur ta trésorerie personnelle.",
+          "« J'ai un autre acheteur qui paie tout cash. » → Ne baisse jamais ta garde sur la vérification (Module 5) juste pour aller plus vite ; mais tu peux répondre en valorisant la rapidité et la certitude d'exécution de ton dossier déjà structuré, si c'est vrai."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un négociateur expérimenté ne présente jamais tout le montage financier en une seule fois lors du premier contact (Module 2). Il sonde d'abord ce qui compte vraiment pour LE cédant spécifiquement — certains veulent avant tout la certitude que leurs salariés seront préservés, d'autres veulent surtout la rapidité, d'autres encore veulent maximiser le prix facial même si le cash immédiat est moindre. Le montage financier vient ensuite, calé sur cette priorité identifiée — pas l'inverse.</p>` },
+      { type:"validation", label:"Question de validation",
+        question:"Reprends le script d'approche ci-dessus et adapte-le à un montage avec 30% de crédit-vendeur, un closing visé à 4 mois, et un vendeur que tu sais pressé de partir à la retraite. Qu'est-ce que tu changerais dans la formulation ?" },
+      { type:"summary",
+        summary:"Un montage à faible apport se négocie en le présentant comme une structure sécurisée et réciproque, jamais comme une contrainte que tu imposes. Écouter la vraie priorité du cédant avant de dérouler le montage change tout dans la façon dont il est reçu.",
+        nextHint:"La suite du Module 6 (LOI, garantie d'actif et de passif) arrive dans une prochaine session." }
     ]
   }
 };
@@ -711,7 +1011,7 @@ function updateSidebarStats(){
   if(f1) f1.style.width = info.pct + "%";
   if(acc) acc.textContent = state.currentUser ? ("Connecté : " + state.currentUser.email) : "";
   if(pwHint) pwHint.classList.toggle('hidden', !!state.progress.passwordSet);
-  ["dashboard","roadmap","chat"].forEach(v => {
+  ["dashboard","roadmap","chat","agent"].forEach(v => {
     const a = document.getElementById('nav-'+v); if(a) a.classList.toggle('active', state.view===v);
     const b = document.getElementById('bnav-'+v); if(b) b.classList.toggle('active', state.view===v);
   });
@@ -728,6 +1028,7 @@ function render(){
   else if(state.view === "lesson") { app.innerHTML = ""; renderLesson(); }
   else if(state.view === "chat") { app.innerHTML = renderChatShell(); renderChatMessages(); }
   else if(state.view === "password_setup") app.innerHTML = renderPasswordSetup();
+  else if(state.view === "agent") { app.innerHTML = renderAgentShell(); loadAgentProposals(); }
   updateSidebarStats();
   window.scrollTo(0,0);
 }
@@ -1314,6 +1615,83 @@ async function callProfessor(){
   } catch(e){
     console.error(e);
     return "Je n'arrive pas à joindre le professeur pour le moment — vérifie ta connexion et réessaie dans un instant.";
+  }
+}
+
+/* =========================================================
+   AGENT DE RECHERCHE (fonction serveur "ai-agent")
+   ========================================================= */
+function simpleMarkdownToHtml(md){
+  let html = escapeHtml(md);
+  html = html.replace(/^### (.*)$/gm, '<h4>$1</h4>');
+  html = html.replace(/^## (.*)$/gm, '<h3>$1</h3>');
+  html = html.replace(/^# (.*)$/gm, '<h2>$1</h2>');
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\[(.*?)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  html = html.replace(/(https?:\/\/[^\s<]+)/g, (m) => m.startsWith('href="') ? m : `<a href="${m}" target="_blank" rel="noopener">${m}</a>`);
+  html = html.replace(/^- (.*)$/gm, '<li>$1</li>');
+  html = html.replace(/(<li>.*<\/li>\n?)+/g, (m) => '<ul>' + m + '</ul>');
+  html = html.split(/\n{2,}/).map(p => p.match(/^<(h\d|ul|li)/) ? p : `<p>${p}</p>`).join('\n');
+  return html;
+}
+function renderAgentShell(){
+  return `
+  <div class="eyebrow">Agent de recherche</div>
+  <h1 style="margin-bottom:10px;">Fais-le chercher et proposer.</h1>
+  <p class="subtitle">Décris un sujet — l'agent fait jusqu'à 18 recherches web, lit ta progression pour personnaliser, et rédige une proposition de contenu. Il ne publie jamais tout seul : la proposition est enregistrée ici pour relecture. Compte 1 à 3 minutes par recherche, et un coût réel de quelques dizaines de centimes sur ta clé API (recherches + traitement).</p>
+  <div class="onboard-q" style="margin-bottom:24px;">
+    <textarea id="agentTopic" placeholder="Ex : Recherche les meilleures pratiques actuelles de négociation avec un cédant de PME et propose un plan de module avec templates d'approche." style="width:100%; min-height:80px; box-sizing:border-box; padding:12px 14px; background:var(--ink); border:1px solid var(--ink-border); border-radius:var(--radius-sm); color:var(--text-light); font-size:14.5px; margin-bottom:12px; resize:vertical;"></textarea>
+    <button class="btn-primary" id="agentLaunchBtn" onclick="launchAgentResearch()">🔎 Lancer la recherche →</button>
+  </div>
+  <div id="agentResult"></div>
+  <div class="section-title">Propositions précédentes</div>
+  <div id="agentHistory"><p style="color:var(--text-muted); font-size:14px;">Chargement...</p></div>`;
+}
+async function launchAgentResearch(){
+  const topic = document.getElementById('agentTopic').value.trim();
+  const btn = document.getElementById('agentLaunchBtn');
+  const resultBox = document.getElementById('agentResult');
+  if(!topic){ resultBox.innerHTML = `<p style="color:var(--wine-2);">Décris d'abord un sujet.</p>`; return; }
+  btn.disabled = true; btn.textContent = "Recherche en cours (peut prendre plusieurs minutes)...";
+  resultBox.innerHTML = `<div class="predict-card"><p style="color:var(--text-muted);">L'agent recherche et rédige — ne quitte pas cette page. Ça peut prendre jusqu'à 2-3 minutes pour une recherche approfondie.</p></div>`;
+  try{
+    const { data: sessionData } = await sbClient.auth.getSession();
+    if(!sessionData || !sessionData.session){ resultBox.innerHTML = `<p style="color:var(--wine-2);">Session expirée, reconnecte-toi.</p>`; btn.disabled=false; btn.textContent="🔎 Lancer la recherche →"; return; }
+    const functionUrl = SUPABASE_URL + "/functions/v1/ai-agent";
+    const response = await fetch(functionUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + sessionData.session.access_token },
+      body: JSON.stringify({ topic })
+    });
+    const data = await response.json();
+    if(data.error){
+      const msg = typeof data.error === 'string' ? data.error : (data.error.message || JSON.stringify(data.error));
+      resultBox.innerHTML = `<div class="pitfall-card"><p>Erreur : ${escapeHtml(msg)}</p></div>`;
+    } else {
+      resultBox.innerHTML = `<div class="concept-card"><div class="step-label">Proposition (${data.searches_used || 0} recherches effectuées)</div>${simpleMarkdownToHtml(data.proposal)}</div>`;
+      document.getElementById('agentTopic').value = '';
+      loadAgentProposals();
+    }
+  } catch(e){
+    resultBox.innerHTML = `<p style="color:var(--wine-2);">Impossible de joindre l'agent. Vérifie ta connexion et réessaie.</p>`;
+  }
+  btn.disabled = false; btn.textContent = "🔎 Lancer la recherche →";
+}
+async function loadAgentProposals(){
+  const box = document.getElementById('agentHistory');
+  if(!box) return;
+  try{
+    const { data, error } = await sbClient.from('agent_proposals').select('*').order('created_at', { ascending:false }).limit(10);
+    if(error || !data || data.length === 0){ box.innerHTML = `<p style="color:var(--text-muted); font-size:14px;">Aucune proposition pour l'instant.</p>`; return; }
+    box.innerHTML = data.map(p => `
+      <div class="module-card" style="margin-bottom:10px; cursor:pointer;" onclick="document.getElementById('agentResult').innerHTML = document.getElementById('prop-${p.id}').innerHTML; window.scrollTo(0,0);">
+        <div><div class="module-card-title" style="font-size:15px;">${escapeHtml(p.topic)}</div>
+        <div class="module-card-desc">${new Date(p.created_at).toLocaleDateString('fr-FR')} · ${p.searches_used||0} recherches · ${p.status}</div></div>
+      </div>
+      <div id="prop-${p.id}" class="hidden"><div class="concept-card"><div class="step-label">${escapeHtml(p.topic)}</div>${simpleMarkdownToHtml(p.content)}</div></div>
+    `).join('');
+  } catch(e){
+    box.innerHTML = `<p style="color:var(--text-muted); font-size:14px;">Impossible de charger l'historique.</p>`;
   }
 }
 
