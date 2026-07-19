@@ -325,6 +325,14 @@
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       Agent
     </button>
+    <button class="nav-item" id="nav-analyzer" onclick="goTo('analyzer')">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+      Analyseur
+    </button>
+    <button class="nav-item" id="nav-revision" onclick="goTo('revision')">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+      Révision
+    </button>
     <div class="sidebar-footer">
       <div class="mini-level">Niveau <b id="sidebar-level-title">—</b></div>
       <div class="mini-xp-bar"><div class="mini-xp-fill" id="sidebar-xp-fill" style="width:0%"></div></div>
@@ -372,9 +380,9 @@ const PHASES = [
 const MODULES = [
   { id:1, title:"Les fondamentaux du rachat", desc:"Le vocabulaire clé, le processus global, et pourquoi viser une « belle endormie ».", built:true, lessonIds:["l1","l2","l3"] },
   { id:2, title:"Définir sa thèse, sourcer & premier contact", desc:"Tes critères précis, où trouver les cibles en IDF, et comment aborder le dirigeant.", built:false, lessonIds:[] },
-  { id:3, title:"Lire les comptes & la vraie rentabilité", desc:"Bilan, compte de résultat, EBITDA retraité, dépendance client.", built:false, lessonIds:[] },
-  { id:4, title:"Valoriser l'entreprise", desc:"Multiples, DCF, actif net réévalué — et comment viser un multiple inférieur à 3x.", built:false, lessonIds:[] },
-  { id:5, title:"La Due Diligence : ne pas se faire avoir", desc:"La checklist complète pour débusquer les vices cachés avant de signer.", built:false, lessonIds:[] },
+  { id:3, title:"Lire les comptes & la vraie rentabilité", desc:"Compte de résultat, bilan, retraitements, signaux d'alerte — savoir lire ce qu'on va acheter.", built:true, lessonIds:["c1","c2","c3","c4"] },
+  { id:4, title:"Valoriser l'entreprise", desc:"Multiples, ANR, DCF — construire et défendre ton prix, avec les vrais barèmes 2026.", built:true, lessonIds:["v1","v2","v3","v4"] },
+  { id:5, title:"La Due Diligence : ne pas se faire avoir", desc:"Financière, juridique, sociale, commerciale — débusquer les vices cachés, et savoir renoncer.", built:true, lessonIds:["dd1","dd2","dd3","dd4"] },
   { id:6, title:"Structurer l'offre & négocier", desc:"Négocier le montage avec le vendeur (scripts, objections) — LOI et GAP à venir.", built:true, lessonIds:["n1"] },
   { id:7, title:"Financer sans mobiliser sa trésorerie", desc:"Crédit-vendeur, dette bancaire, Bpifrance, prêt d'honneur — comment rester sous 30K€ d'apport.", built:true, lessonIds:["f1","f2","f3","f4"] },
   { id:8, title:"La holding d'acquisition", desc:"Pourquoi structurer via une holding, mécanique du LBO, intégration fiscale.", built:false, lessonIds:[] },
@@ -806,6 +814,438 @@ const LESSONS = {
         summary:"Un montage à faible apport se négocie en le présentant comme une structure sécurisée et réciproque, jamais comme une contrainte que tu imposes. Écouter la vraie priorité du cédant avant de dérouler le montage change tout dans la façon dont il est reçu.",
         nextHint:"La suite du Module 6 (LOI, garantie d'actif et de passif) arrive dans une prochaine session." }
     ]
+  },
+
+  dd1: {
+    id:"dd1", moduleId:5, title:"La DD financière : vérifier que les chiffres disent vrai", duration:"16 min",
+    steps:[
+      { type:"concept", label:"À quoi sert vraiment la due diligence",
+        body:`<p>Souviens-toi de la phrase du Module 1 : <strong>« Le prix se négocie. La qualité du cash-flow, elle, ne se négocie pas — elle se vérifie. »</strong> La due diligence, c'est le « se vérifie ». Ce n'est pas une formalité administrative : c'est la vérification systématique que ce qu'on t'a montré correspond à la réalité — la seule barrière réelle entre toi et un vice caché.</p>
+        <p><strong>Quand ?</strong> Après la lettre d'intention (LOI), pendant la période d'exclusivité, AVANT la signature définitive. C'est ta fenêtre pour tout vérifier — après, il ne te reste que la GAP.</p>
+        <p><strong>Les 5 chantiers de ce module :</strong> financière (cette leçon), juridique et sociale-fiscale (leçon 2), commerciale et opérationnelle (leçon 3), puis comment orchestrer le tout et savoir renoncer (leçon 4).</p>` },
+      { type:"concept", label:"La DD financière : les vérifications qui comptent",
+        body:`<ul>
+          <li><strong>3 derniers exercices, jamais un seul</strong> — tu le sais déjà (Module 1) : une seule « bonne année » ne prouve rien, une tendance sur 3 ans si.</li>
+          <li><strong>La liasse fiscale ne suffit pas</strong> — demande le grand livre, les balances, et surtout les <strong>relevés bancaires</strong>. Croise le chiffre d'affaires comptabilisé avec les encaissements réels : les écarts inexpliqués sont un signal majeur.</li>
+          <li><strong>Refais toi-même les retraitements d'EBITDA</strong> — ne prends jamais l'« EBITDA normalisé » présenté par le vendeur ou son conseil. Salaire du dirigeant vs marché, charges personnelles logées dans la boîte, éléments exceptionnels : recalcule tout.</li>
+          <li><strong>Traque les dettes cachées</strong> — comptes courants d'associés (l'entreprise doit-elle de l'argent au dirigeant ?), engagements hors bilan, crédits-baux en cours, cautions données par la société.</li>
+          <li><strong>Trésorerie réelle vs BFR normatif</strong> — la trésorerie affichée est-elle vraiment excédentaire (Module 7), ou est-ce le fonds de roulement dont la boîte a besoin pour tourner ?</li>
+        </ul>` },
+      { type:"numeric", label:"Exercice — refais le retraitement toi-même",
+        question:"Une cible affiche un EBITDA de 250 000 €. Tu découvres que le dirigeant se verse 20 000 €/an alors qu'un dirigeant au prix du marché coûterait 80 000 €, et que 15 000 € de charges personnelles (véhicule, voyages) sont passées dans l'entreprise. Quel est l'EBITDA réellement normalisé (en €) ?",
+        placeholder:"Ex : 200000", answer:205000, tolerance:2000,
+        successMsg:"205 000 € (250 000 - 60 000 de salaire manquant + 15 000 de charges perso à réintégrer). À 2,5x, le prix passe de 625 000 € à 512 500 € — soit 112 500 € d'écart. C'est exactement ce que coûte le fait de ne pas refaire le calcul soi-même.",
+        hint:"Indice : retire l'écart de salaire (80K - 20K = 60K en moins), puis réintègre les 15K de charges personnelles (en plus)." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Accepter les documents comptables préparés « pour la vente » sans les croiser avec les données brutes (grand livre, relevés bancaires). Un dossier de cession est un document commercial, pas un audit.",
+          "Faire la DD financière seul pour économiser. Sur un deal à 500-750K€, un expert-comptable côté acheteur coûte typiquement quelques milliers d'euros (ordre de grandeur, à confirmer sur devis) — une fraction du coût d'un seul retraitement manqué, comme l'exercice ci-dessus vient de le montrer."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté demande systématiquement une chose que les débutants n'osent pas demander : <strong>l'accès aux relevés bancaires des 12-24 derniers mois</strong>. Le compte de résultat est une construction comptable ; le relevé bancaire est un fait. Si le vendeur refuse cet accès en phase de DD exclusive, ce refus EST une information — et rarement une bonne.</p>` },
+      { type:"checkpoint", question:"La logique « ne jamais prendre un chiffre présenté sans le recalculer » est-elle claire ?",
+        helpPrompt:"Je viens de voir la DD financière (retraitements d'EBITDA, relevés bancaires, dettes cachées). Peux-tu me faire la liste précise des documents financiers à demander au vendeur dès l'entrée en exclusivité ?" },
+      { type:"summary",
+        summary:"La DD financière repose sur un principe : recalculer soi-même, à partir des données brutes (grand livre, relevés bancaires), tout ce que le vendeur présente — en particulier l'EBITDA normalisé qui détermine ton prix. Un seul retraitement manqué peut coûter six chiffres.",
+        nextHint:"Les vices cachés juridiques et sociaux — ceux qui ne se voient pas dans les comptes." }
+    ]
+  },
+
+  dd2: {
+    id:"dd2", moduleId:5, title:"La DD juridique, sociale & fiscale", duration:"15 min",
+    steps:[
+      { type:"concept", label:"Les vices cachés qui ne sont pas dans les comptes",
+        body:`<p>Les pièges les plus coûteux d'une reprise ne se voient souvent PAS dans les chiffres. Ils sont dans les contrats, les statuts, et les engagements sociaux.</p>
+        <p><strong>Côté juridique, vérifie en priorité :</strong></p>
+        <ul>
+          <li><strong>Le bail commercial</strong> — contient-il une clause restreignant la cession ? Un bail qui expire dans 18 mois sans droit clair au renouvellement peut vider la valeur d'un fonds de commerce dépendant de son emplacement.</li>
+          <li><strong>Les clauses de changement de contrôle</strong> dans les contrats clients et fournisseurs — on y revient juste après, c'est LE piège de ta cible type.</li>
+          <li><strong>La propriété réelle des actifs</strong> — la marque est-elle déposée, et au nom de la société ou du dirigeant personnellement ? Le matériel est-il possédé ou en crédit-bail ?</li>
+          <li><strong>Les litiges en cours ou latents</strong> — demande une déclaration écrite, et vérifie auprès du greffe.</li>
+        </ul>` },
+      { type:"predict", label:"Le piège classique de ta cible type",
+        question:"Ta « belle endormie » dépend d'un portefeuille de clients historiques. Tu découvres que le contrat de son plus gros client (25% du CA) contient une « clause de changement de contrôle ». Qu'est-ce que ça signifie concrètement ?",
+        options:["Rien de grave, c'est une clause standard sans effet","Le client peut résilier ou renégocier son contrat du seul fait que l'entreprise change de propriétaire — ton rachat peut donc déclencher la perte du client","Cette clause t'oblige à garder le même dirigeant pendant 5 ans"],
+        correctIndex:1,
+        explanation:"Exactement — et c'est particulièrement critique sur ton profil de cible : une entreprise dont la valeur repose sur des clients historiques peut voir cette valeur s'évaporer LE JOUR MÊME du rachat si ces clauses existent. La parade : les identifier en DD, puis obtenir l'accord écrit préalable des clients concernés (ou une condition suspensive dans l'acte), avant de signer." },
+      { type:"concept", label:"La DD sociale et fiscale",
+        body:`<p><strong>Côté social</strong> — tu connais déjà L1224-1 (Module 10) : tous les contrats de travail te suivent automatiquement. La DD sociale vérifie ce que tu reprends exactement :</p>
+        <ul>
+          <li>Passifs sociaux latents : heures supplémentaires non payées, primes d'usage jamais écrites mais dues, contentieux prud'homaux en germe.</li>
+          <li>Les « hommes-clés » : qui détient les relations clients, les savoir-faire critiques ? Que se passe-t-il s'ils partent au closing ?</li>
+          <li>Conventions collectives et avantages acquis : ce qui a toujours été accordé oralement peut être juridiquement dû.</li>
+        </ul>
+        <p><strong>Côté fiscal</strong> : contrôles fiscaux passés ou en cours, cohérence TVA, dispositifs utilisés de façon agressive (CIR, exonérations). Un redressement portant sur une période antérieure à ton achat te tombera dessus — c'est exactement ce que la <strong>GAP</strong> (Module 6) doit couvrir, avec la compensation possible sur le crédit-vendeur (Module 7). Tu vois maintenant comment les trois modules s'emboîtent.</p>` },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Négliger la vérification du bail commercial parce que « l'entreprise est là depuis 20 ans ». L'ancienneté ne crée pas de droit automatique si le bail dit autre chose.",
+          "Découvrir les clauses de changement de contrôle APRÈS le closing. Elles se négocient AVANT — soit par accord écrit des clients, soit par condition suspensive, soit par ajustement du prix."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un avocat M&A expérimenté lit les contrats clients dans un ordre précis : d'abord ceux des clients qui pèsent le plus dans le CA (ta due diligence commerciale lui dit lesquels), et il cherche trois clauses avant tout : changement de contrôle, exclusivité, et durée/préavis de résiliation. Un débutant lit tout dans l'ordre du classeur — et s'épuise sur des contrats à 2 000 € pendant que le contrat à 200 000 € attend.</p>` },
+      { type:"checkpoint", question:"Le risque des clauses de changement de contrôle sur TON profil de cible est-il bien clair ?",
+        helpPrompt:"Je viens de voir les clauses de changement de contrôle dans les contrats clients. Comment je m'y prends concrètement pour obtenir l'accord d'un client clé avant le closing sans l'inquiéter sur la solidité de la reprise ?" },
+      { type:"summary",
+        summary:"Les vices cachés les plus chers ne sont pas dans les comptes : bail commercial, clauses de changement de contrôle (critiques sur une cible à clients historiques), passifs sociaux latents, risque fiscal. Tout ce qui ne peut pas être levé avant le closing doit être couvert par la GAP ou une condition suspensive.",
+        nextHint:"La DD commerciale et opérationnelle : le business tient-il debout sans son dirigeant actuel ?" }
+    ]
+  },
+
+  dd3: {
+    id:"dd3", moduleId:5, title:"La DD commerciale & opérationnelle", duration:"14 min",
+    steps:[
+      { type:"concept", label:"La question centrale pour une « belle endormie »",
+        body:`<p>Toute la DD commerciale d'une cible comme la tienne tient en une question : <strong>« Que se passe-t-il le jour où le dirigeant part ? »</strong></p>
+        <p>Dans une PME de 500K€ à 3M€ dirigée par la même personne depuis 20 ans, une partie de la valeur est souvent... dans sa tête et son carnet d'adresses. Ta DD doit mesurer précisément quelle partie :</p>
+        <ul>
+          <li><strong>Qui détient la relation avec chaque client clé ?</strong> Le dirigeant seul, ou l'équipe ? Si c'est lui seul, la transition (Module 9) devient LE sujet du deal.</li>
+          <li><strong>La récurrence des revenus est-elle contractuelle ou habituelle ?</strong> Un client « fidèle depuis 15 ans » sans contrat peut partir demain. Vérifie ce qui est écrit vs ce qui est supposé.</li>
+          <li><strong>Le churn réel</strong> — combien de clients perdus par an sur les 3 dernières années ? Le vendeur le sait rarement précisément ; reconstitue-le depuis la facturation.</li>
+          <li><strong>La dépendance fournisseurs</strong> — un fournisseur unique sur un composant critique est un risque miroir de la concentration client.</li>
+        </ul>` },
+      { type:"concept", label:"Le capex caché : le piège opérationnel n°1",
+        body:`<p>Une « belle endormie » qui n'a pas investi depuis des années cache souvent un coût invisible : <strong>le rattrapage d'investissement</strong>. Machines en fin de vie, véhicules à remplacer, informatique obsolète, mises aux normes repoussées.</p>
+        <p>Ce capex de rattrapage n'apparaît nulle part dans le compte de résultat — l'EBITDA peut être superbe précisément PARCE QUE rien n'a été investi. Mais c'est toi qui paieras la facture dans les 24 mois. Il doit donc venir <strong>en déduction du prix</strong>, ou au minimum être connu et budgété avant de signer.</p>
+        <p>Concrètement : fais l'inventaire du parc (âge, état, valeur de remplacement) avec un œil technique — le tien si tu connais le métier, celui d'un expert sinon.</p>` },
+      { type:"numeric", label:"Exercice — l'impact du capex caché",
+        question:"Ta cible a un EBITDA normalisé de 205 000 € (leçon 1). Prix négocié à 2,5x = 512 500 €. Ta DD opérationnelle révèle 80 000 € de machines à remplacer dans les 18 mois. Quel prix ajusté devrais-tu viser en intégrant ce capex caché (en €) ?",
+        placeholder:"Ex : 450000", answer:432500, tolerance:5000,
+        successMsg:"432 500 € (512 500 - 80 000). Le capex de rattrapage se déduit du prix quasiment euro pour euro : c'est du cash que TU devras sortir, que le vendeur aurait dû investir. C'est un des arguments de renégociation les plus factuels et les moins contestables qui existent.",
+        hint:"Indice : le capex caché vient en déduction directe du prix négocié." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Croire le vendeur sur parole quand il dit « les clients resteront, ils sont fidèles ». Demande à parler à 2-3 clients clés (avec son accord, en phase avancée) — leur réaction à l'annonce d'une transmission t'en dira plus que toutes les affirmations.",
+          "Évaluer le parc matériel sur sa valeur comptable (souvent amortie à zéro) au lieu de sa valeur de remplacement réelle. Une machine amortie qui fonctionne encore 10 ans est un cadeau ; une machine amortie qui lâche dans 6 mois est une dette déguisée."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté fait un test simple pendant ses visites : il demande au dirigeant de le laisser passer une heure avec les équipes SANS lui. La façon dont le dirigeant réagit à cette demande (naturelle ? crispée ? refusée ?) et ce que disent les équipes en son absence révèlent la vraie dépendance de la boîte à son patron — bien mieux que n'importe quel document de la data room.</p>` },
+      { type:"checkpoint", question:"La notion de capex caché comme levier de renégociation est-elle claire ?",
+        helpPrompt:"Je viens de voir le capex caché (matériel à remplacer non visible dans les comptes). Comment je le chiffre concrètement si je ne connais pas techniquement le métier de la cible ?" },
+      { type:"summary",
+        summary:"La DD commerciale mesure ce qui reste de la valeur quand le dirigeant part : relations clients transférables ou non, récurrence contractuelle vs habituelle, churn réel. La DD opérationnelle chasse le capex caché — l'investissement de rattrapage qui se déduit du prix quasi euro pour euro.",
+        nextHint:"Dernière leçon : orchestrer toute ta DD, reconnaître les vrais deal breakers, et — la compétence la plus dure — savoir renoncer." }
+    ]
+  },
+
+  dd4: {
+    id:"dd4", moduleId:5, title:"Orchestrer sa DD, les red flags & savoir renoncer", duration:"15 min",
+    steps:[
+      { type:"concept", label:"Qui fait quoi, et pour quel budget",
+        body:`<p>Tu ne fais pas tout toi-même — et tu ne délègues pas tout non plus. La répartition qui fonctionne sur un deal de ta taille :</p>
+        <ul>
+          <li><strong>Toi</strong> : la DD commerciale et opérationnelle (visites, entretiens, compréhension du business), et le pilotage d'ensemble. Personne ne peut le faire à ta place.</li>
+          <li><strong>Ton expert-comptable</strong> : la DD financière (retraitements, croisements bancaires, dettes cachées).</li>
+          <li><strong>Ton avocat M&A</strong> : la DD juridique et sociale (contrats, bail, clauses, passifs sociaux) — et ensuite la rédaction de la GAP.</li>
+        </ul>
+        <p><strong>Budget total réaliste</strong> sur un deal à 500-750K€ : compte plusieurs milliers à une dizaine de milliers d'euros pour l'ensemble (ordre de grandeur indicatif — demande des devis, les pratiques varient). C'est le meilleur investissement de tout ton projet : l'exercice de la leçon 1 t'a montré qu'un seul retraitement manqué coûte dix fois plus.</p>
+        <p><strong>La data room</strong> : dès l'entrée en exclusivité, envoie une liste de documents structurée (comptes, contrats, social, fiscal, juridique). Le professeur peut te générer cette liste complète adaptée à ta cible — demande-lui.</p>` },
+      { type:"concept", label:"Red flags : deal breakers vs points de négociation",
+        body:`<p>Toutes les découvertes de DD ne se traitent pas pareil. Apprends à les trier en deux catégories :</p>
+        <p><strong>Deal breakers (on part, même si ça fait mal) :</strong> fraude ou dissimulation avérée du vendeur (s'il a menti sur une chose vérifiable, tout le reste est suspect), CA en érosion structurelle masquée, dépendance totale au dirigeant sans transition possible, litige existentiel en cours, activité dont la conformité réglementaire est irréparable.</p>
+        <p><strong>Points de négociation (on ajuste le deal) :</strong> capex caché → réduction de prix ; risque fiscal ou social identifié → GAP renforcée et séquestre ; clause de changement de contrôle → condition suspensive d'accord client ; dépendance partielle au dirigeant → accompagnement prolongé du cédant, avec earn-out éventuel.</p>` },
+      { type:"expert", label:"Œil d'expert : le biais qui ruine les repreneurs",
+        body:`<p>Le moment le plus dangereux de tout ton projet n'est pas la négociation — c'est le jour où, après 4 mois de travail et 8 000 € de frais de DD, tu découvres un vrai deal breaker. Ton cerveau va te souffler : <em>« J'ai déjà tellement investi, je ne peux pas abandonner maintenant. »</em></p>
+        <p>C'est le <strong>biais des coûts irrécupérables</strong>, et c'est lui qui transforme une DD bien menée en catastrophe : avoir trouvé le problème, et signer quand même. Les 8 000 € sont dépensés quoi que tu décides — la seule question valable est : « Signerais-je CE deal, avec CE que je sais maintenant, si je le découvrais aujourd'hui ? » Si la réponse est non, renoncer n'est pas un échec de ta DD. C'est exactement sa réussite.</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Ta DD révèle un risque de redressement fiscal potentiel de 40 000 € sur une période antérieure à ton achat. Deal breaker ou point de négociation ?",
+        options:["Deal breaker : tout risque fiscal doit faire fuir","Point de négociation : GAP dimensionnée pour couvrir ce montant, éventuellement avec un séquestre d'une partie du prix, et compensation possible sur le crédit-vendeur","Ni l'un ni l'autre : on ignore, ça ne se produira peut-être jamais"],
+        correctIndex:1,
+        explanation:"Exactement. Un risque identifié, chiffrable et antérieur à ton achat est précisément ce pour quoi la GAP existe (Module 6) — renforcée ici d'un séquestre ou de la compensation sur le crédit-vendeur (Module 7). L'ignorer serait une faute ; fuir serait excessif. Le tri deal breaker / négociable est LA compétence de synthèse de toute ta DD." },
+      { type:"validation", label:"Question de validation 1/3",
+        question:"Liste les 5 premières vérifications que TU ferais, dans l'ordre, sur une cible réelle correspondant à ta thèse — et pour chacune, dis qui la fait (toi, expert-comptable, avocat)." },
+      { type:"validation", label:"Question de validation 2/3",
+        question:"Ta DD révèle que le dirigeant détient personnellement la marque de l'entreprise, et que 30% du CA vient d'un client sans contrat écrit. Pour chacun de ces deux points : deal breaker ou négociable ? Et si négociable, comment tu le traites concrètement ?" },
+      { type:"validation", label:"Question de validation 3/3",
+        question:"Explique avec tes propres mots pourquoi renoncer à un deal après avoir dépensé 8 000 € de DD peut être la meilleure décision financière de ton projet — et pourquoi c'est si difficile psychologiquement." },
+      { type:"summary",
+        summary:"Une DD bien menée se répartit entre toi (commercial, opérationnel), ton expert-comptable (financier) et ton avocat (juridique, social) — pour un budget qui reste dérisoire face au coût d'un vice manqué. La compétence finale : trier les découvertes entre deal breakers et points de négociation, et avoir le courage de renoncer quand les faits le commandent.",
+        nextHint:"Le Module 6 approfondira la GAP — l'outil contractuel qui couvre tout ce que ta DD a identifié sans pouvoir le lever." }
+    ]
+  },
+
+  c1: {
+    id:"c1", moduleId:3, title:"Le compte de résultat : le film de l'année", duration:"15 min",
+    steps:[
+      { type:"concept", label:"Le film et la photo",
+        body:`<p>Les comptes d'une entreprise racontent deux histoires différentes, et l'erreur n°1 du débutant est de les confondre :</p>
+        <ul>
+          <li>Le <strong>compte de résultat</strong>, c'est le <strong>film</strong> des 12 derniers mois : tout ce qui a été facturé (produits) et tout ce qui a été consommé (charges). Produits − charges = résultat.</li>
+          <li>Le <strong>bilan</strong>, c'est la <strong>photo</strong> du patrimoine au dernier jour de l'exercice : ce que l'entreprise possède et comment c'est financé. On le voit à la prochaine leçon.</li>
+        </ul>
+        <p>Tu vas apprendre à lire le film d'abord — parce que c'est là que vit l'EBITDA qui détermine ton prix.</p>` },
+      { type:"concept", label:"La cascade qui mène à l'EBITDA",
+        body:`<p>Dans les comptes français, le résultat se construit en cascade — et chaque étage raconte quelque chose :</p>
+        <ol>
+          <li><strong>Chiffre d'affaires</strong> − achats et charges externes = <strong>Valeur ajoutée</strong> (ce que l'entreprise crée réellement)</li>
+          <li>− charges de personnel − impôts et taxes = <strong>EBE</strong> (Excédent Brut d'Exploitation) — <strong>c'est le cousin français de l'EBITDA du Module 1</strong>. Quand tu cherches l'EBITDA dans des comptes français, cherche cette ligne.</li>
+          <li>− dotations aux amortissements = <strong>Résultat d'exploitation</strong></li>
+          <li>± résultat financier ± résultat exceptionnel − impôt sur les sociétés = <strong>Résultat net</strong></li>
+        </ol>
+        <p>Retiens ceci : <strong>le résultat net est le chiffre le plus cité et le moins fiable</strong> pour juger l'exploitation — il est pollué par l'exceptionnel et les choix d'amortissement. L'EBE, lui, dit ce que le moteur produit vraiment.</p>` },
+      { type:"numeric", label:"Exercice — remonte la cascade toi-même",
+        question:"Une cible affiche : CA 1 200 000 €, achats et charges externes 600 000 €, charges de personnel 380 000 €, impôts et taxes 20 000 €. Quel est son EBE (en €) ?",
+        placeholder:"Ex : 180000", answer:200000, tolerance:2000,
+        successMsg:"200 000 € (1 200 000 − 600 000 − 380 000 − 20 000). Tu viens de calculer toi-même l'équivalent de l'EBITDA à partir de comptes bruts — c'est exactement ce que tu feras sur chaque cible réelle, sans dépendre du chiffre présenté par le vendeur.",
+        hint:"Indice : CA − achats/charges externes − charges de personnel − impôts et taxes." },
+      { type:"predict", label:"À toi de jouer",
+        question:"Une entreprise affiche un résultat net en hausse de 80%, mais son EBE baisse de 10%. Que s'est-il probablement passé ?",
+        options:["L'activité s'est nettement améliorée","Un élément exceptionnel (vente d'un actif, reprise de provision) a gonflé le résultat net, alors que l'exploitation se dégrade — à creuser d'urgence","C'est impossible, les deux évoluent toujours ensemble"],
+        correctIndex:1,
+        explanation:"Exactement. C'est le scénario classique d'une entreprise « habillée pour la vente » : un événement ponctuel embellit le chiffre que tout le monde regarde (résultat net), pendant que le moteur réel (EBE) ralentit. Un vendeur mettra en avant les +80% ; toi, tu regardes les −10%." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Juger une entreprise sur son seul résultat net — tu sais maintenant pourquoi c'est le chiffre le plus manipulable de la cascade.",
+          "Comparer des exercices de durées différentes sans retraiter : après un changement de date de clôture, un exercice peut faire 15 ou 18 mois — comparer ses chiffres bruts à une année normale fausse tout."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un analyste expérimenté ne lit jamais un compte de résultat en euros — il le lit <strong>en pourcentage du CA, sur 3 ans</strong>. Chaque ligne divisée par le chiffre d'affaires de l'année. Une dérive saute alors aux yeux : des charges externes qui passent de 18% à 24% du CA en 3 ans racontent une histoire (perte de maîtrise des coûts, sous-traitance qui grimpe...) que les montants bruts noient complètement.</p>` },
+      { type:"checkpoint", question:"La cascade CA → EBE → résultat net, et pourquoi l'EBE prime sur le résultat net, c'est clair ?",
+        helpPrompt:"Je viens de voir la cascade du compte de résultat (CA, valeur ajoutée, EBE, résultat d'exploitation, résultat net). Peux-tu me la refaire sur un exemple complet chiffré, ligne par ligne, comme si on lisait une vraie liasse fiscale ensemble ?" },
+      { type:"summary",
+        summary:"Le compte de résultat est le film de l'année, construit en cascade : CA → valeur ajoutée → EBE (l'EBITDA français) → résultat d'exploitation → résultat net. Plus on descend, plus le chiffre est manipulable — juge le moteur sur l'EBE, en % du CA, sur 3 ans.",
+        nextHint:"Le bilan : la photo du patrimoine, et les 4 lignes à regarder en premier en tant que repreneur." }
+    ]
+  },
+
+  c2: {
+    id:"c2", moduleId:3, title:"Le bilan : la photo du patrimoine", duration:"14 min",
+    steps:[
+      { type:"concept", label:"Actif et passif : les deux faces de la photo",
+        body:`<p>Le bilan répond à deux questions, en deux colonnes toujours égales :</p>
+        <ul>
+          <li><strong>L'actif</strong> — qu'est-ce que l'entreprise possède ? Immobilisations (machines, locaux, fonds de commerce), stocks, créances clients (l'argent que les clients doivent), trésorerie.</li>
+          <li><strong>Le passif</strong> — comment c'est financé ? Capitaux propres (l'argent des associés + les bénéfices accumulés), dettes financières (banques), dettes fournisseurs, comptes courants d'associés.</li>
+        </ul>
+        <p><strong>Les 4 lignes à regarder en premier en tant que repreneur :</strong> les capitaux propres (négatifs = alerte majeure : les pertes ont mangé le capital), la trésorerie, les dettes financières, et les <strong>comptes courants d'associés</strong> — l'argent que l'entreprise doit à son dirigeant. Devra-t-il être remboursé au closing ? C'est un point de négociation à part entière, souvent oublié des débutants.</p>` },
+      { type:"concept", label:"FR, BFR, trésorerie nette : le triangle qui explique le cash",
+        body:`<p>Trois notions qui s'emboîtent, et que tu as déjà croisées sans les formaliser :</p>
+        <ul>
+          <li><strong>Fonds de roulement (FR)</strong> = ressources longues (capitaux propres + dettes long terme) − emplois longs (immobilisations). C'est le « matelas » de financement stable.</li>
+          <li><strong>Besoin en fonds de roulement (BFR)</strong> = stocks + créances clients − dettes fournisseurs. C'est l'argent immobilisé en permanence par le cycle d'exploitation : tu paies tes fournisseurs et tes salariés avant d'encaisser tes clients.</li>
+          <li><strong>Trésorerie nette = FR − BFR.</strong></li>
+        </ul>
+        <p>Tu reconnais le BFR : c'est lui qui déterminait la « trésorerie réellement excédentaire » mobilisable dans ton montage (Module 7, leçon f3). Maintenant tu sais exactement d'où sortent ces chiffres dans un bilan réel.</p>` },
+      { type:"numeric", label:"Exercice — calcule le BFR",
+        question:"Au bilan de ta cible : stocks 60 000 €, créances clients 150 000 €, dettes fournisseurs 90 000 €. Quel est son BFR (en €) ?",
+        placeholder:"Ex : 100000", answer:120000, tolerance:2000,
+        successMsg:"120 000 € (60 000 + 150 000 − 90 000). C'est l'argent structurellement immobilisé par l'activité — et donc le plancher en dessous duquel la trésorerie ne doit jamais descendre. Tout ce qui est au-dessus est potentiellement mobilisable pour ton montage.",
+        hint:"Indice : stocks + créances clients − dettes fournisseurs." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Prendre les valeurs comptables pour la réalité : un immeuble amorti depuis 20 ans vaut peut-être dix fois sa valeur au bilan ; des machines « encore au bilan » sont peut-être bonnes pour la casse. Tu connais déjà la deuxième moitié de ce piège : c'est le capex caché de la DD opérationnelle (dd3).",
+          "Oublier le hors-bilan : crédits-baux en cours, cautions données par la société — invisibles dans les deux colonnes, mais bien réels le jour où il faut payer."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté trace deux courbes sur 3 ans avant toute autre analyse : <strong>capitaux propres</strong> et <strong>trésorerie nette</strong>. Deux courbes qui montent ensemble = une entreprise qui s'enrichit. Deux courbes qui baissent ensemble = une entreprise qui se vide — quel que soit le discours du vendeur sur « le potentiel » et « les projets en cours ».</p>` },
+      { type:"checkpoint", question:"Le triangle FR / BFR / trésorerie nette, et son lien avec ton montage du Module 7, c'est clair ?",
+        helpPrompt:"Je viens de voir le bilan (actif/passif, FR, BFR, trésorerie nette). Peux-tu me montrer sur un bilan simplifié complet comment tu calcules les trois, et comment tu en déduis la trésorerie mobilisable pour un montage ?" },
+      { type:"summary",
+        summary:"Le bilan est la photo du patrimoine : l'actif (ce qu'on possède) face au passif (comment c'est financé). Les 4 lignes prioritaires du repreneur : capitaux propres, trésorerie, dettes financières, comptes courants d'associés. Le BFR (stocks + créances − fournisseurs) fixe le plancher de trésorerie intouchable.",
+        nextHint:"Les retraitements : transformer les comptes officiels en réalité économique — le travail qui détermine directement ton prix." }
+    ]
+  },
+
+  c3: {
+    id:"c3", moduleId:3, title:"Les retraitements : des comptes à la réalité économique", duration:"15 min",
+    steps:[
+      { type:"concept", label:"Pourquoi les comptes d'une PME ne disent pas la vérité économique",
+        body:`<p>Les comptes d'une PME reflètent les <strong>choix</strong> du dirigeant — fiscaux, patrimoniaux, personnels — pas la performance économique pure. Il se paie peu (ou beaucoup), loge des dépenses personnelles dans la boîte, se verse un loyer via sa SCI... Rien d'illégal la plupart du temps ; mais rien de représentatif non plus de ce que TOI tu gagneras.</p>
+        <p>Retraiter, c'est reconstituer ce que l'entreprise dégagerait avec une gestion « normale ». Et comme <strong>prix = multiple × EBITDA normalisé</strong>, chaque euro de retraitement se multiplie par 2,5 dans ton prix. C'est le travail le plus rentable de toute ton analyse — tu en as eu un avant-goût en DD financière (dd1) ; cette leçon le systématise.</p>` },
+      { type:"concept", label:"Les 5 retraitements classiques",
+        body:`<ol>
+          <li><strong>Salaire du dirigeant</strong> — ramené au prix du marché pour le poste, dans les deux sens (trop bas : l'EBITDA est gonflé ; trop haut : il est sous-évalué).</li>
+          <li><strong>Le loyer versé à la SCI du dirigeant</strong> — LE grand classique français : le dirigeant possède les murs via une SCI et loue à sa propre entreprise. Loyer au-dessus du marché = il sort du cash (EBITDA sous-évalué, bonne surprise pour toi). Loyer en dessous du marché = attention, il gonfle l'EBITDA avant la vente... et le loyer remontera au prix du marché après ton rachat. Compare toujours au marché locatif réel de la zone.</li>
+          <li><strong>Charges personnelles</strong> — véhicules, voyages, conjoint salarié sans poste réel...</li>
+          <li><strong>Éléments non récurrents</strong> — litige soldé, subvention exceptionnelle, année atypique : à neutraliser.</li>
+          <li><strong>Crédit-bail</strong> — selon la présentation comptable, à retraiter pour comparer des cibles entre elles sur une base homogène.</li>
+        </ol>` },
+      { type:"numeric", label:"Exercice — retraite dans les deux sens",
+        question:"EBITDA affiché : 180 000 €. Le dirigeant se paie 30 000 € (marché : 75 000 €). Il verse 60 000 € de loyer à sa SCI (marché : 36 000 €). Tu identifies 12 000 € de charges personnelles. Quel est l'EBITDA normalisé (en €) ?",
+        placeholder:"Ex : 170000", answer:171000, tolerance:2000,
+        successMsg:"171 000 € (180 000 − 45 000 de salaire manquant + 24 000 de sur-loyer SCI + 12 000 de charges perso). Remarque l'essentiel : les retraitements vont dans LES DEUX SENS — ici le salaire tire vers le bas, le loyer et les charges perso tirent vers le haut. Un vendeur ne te présentera jamais spontanément ceux qui baissent le chiffre.",
+        hint:"Indice : 180 000, moins l'écart de salaire (75−30 = 45K en moins), plus l'excès de loyer (60−36 = 24K en plus), plus les 12K de charges perso." },
+      { type:"pitfall", label:"⚠ Le piège du retraitement à sens unique",
+        items:[
+          "Le vendeur retraite toujours à la hausse (il « normalise » ce qui gonfle l'EBITDA) et « oublie » les retraitements à la baisse : le loyer SCI sous-évalué qui remontera au marché, le conjoint bénévole qu'il faudra remplacer par un salarié, la maintenance repoussée. Ta contre-liste des retraitements négatifs est aussi importante que la vérification des positifs.",
+          "Accepter un retraitement sans justificatif chiffré. La règle : un retraitement sans pièce = un retraitement refusé."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Face à un « EBITDA retraité » présenté par le vendeur, un acheteur expérimenté demande systématiquement le <strong>pont détaillé</strong> : le passage ligne à ligne de l'EBITDA comptable à l'EBITDA retraité, chaque ajustement justifié par une pièce (bulletin de salaire, bail SCI, facture). Puis il construit sa propre contre-liste des ajustements négatifs. L'écart entre l'EBITDA « vendeur » et le tien devient la base factuelle — et non émotionnelle — de ta négociation de prix.</p>` },
+      { type:"checkpoint", question:"L'idée que les retraitements vont dans les deux sens — et que le vendeur ne te montrera qu'un seul — est-elle bien ancrée ?",
+        helpPrompt:"Je viens de voir les 5 retraitements classiques (salaire, loyer SCI, charges perso, non-récurrent, crédit-bail). Peux-tu me faire un cas complet où le vendeur présente un EBITDA retraité gonflé, et me montrer comment je le déconstruis point par point ?" },
+      { type:"summary",
+        summary:"Les comptes d'une PME reflètent les choix du dirigeant, pas la performance pure. Les 5 retraitements classiques (salaire, loyer SCI, charges perso, non-récurrent, crédit-bail) vont dans les deux sens — et chaque euro retraité pèse 2,5 € dans ton prix. Un retraitement sans justificatif est un retraitement refusé.",
+        nextHint:"Dernière leçon : les signaux d'alerte cachés dans les comptes, et comment vérifier réellement la dépendance client de ta thèse." }
+    ]
+  },
+
+  c4: {
+    id:"c4", moduleId:3, title:"Signaux d'alerte & dépendance client : lire entre les lignes", duration:"14 min",
+    steps:[
+      { type:"concept", label:"Les 4 signaux d'alerte silencieux",
+        body:`<p>Certains problèmes ne s'affichent jamais en clair dans les comptes — mais ils laissent des traces. Les 4 à surveiller systématiquement sur 3 ans :</p>
+        <ul>
+          <li><strong>Créances clients qui gonflent plus vite que le CA</strong> — les clients paient de plus en plus tard (rapport de force dégradé, clients en difficulté), ou pire : du CA « poussé » artificiellement en fin d'exercice pour embellir l'année de la vente.</li>
+          <li><strong>Stocks qui gonflent sans hausse d'activité</strong> — invendus, obsolescence, ou production stockée pour gonfler le résultat.</li>
+          <li><strong>Charges soudainement « activées »</strong> (production immobilisée qui apparaît) — une façon comptable de sortir des charges du compte de résultat et d'améliorer l'EBE optiquement.</li>
+          <li><strong>Changement d'expert-comptable ou de méthode comptable juste avant la mise en vente</strong> — parfois anodin, toujours à questionner frontalement.</li>
+        </ul>` },
+      { type:"numeric", label:"Exercice — le délai de paiement clients (DSO)",
+        question:"Ta cible affiche 165 000 € de créances clients pour 1 000 000 € de CA annuel. Quel est son délai moyen de paiement clients, en jours (arrondi) ? Formule : (créances clients ÷ CA) × 365.",
+        placeholder:"Ex : 45", answer:60, tolerance:2,
+        successMsg:"60 jours ((165 000 ÷ 1 000 000) × 365). En soi, 60 jours n'est ni bon ni mauvais — tout dépend du secteur et surtout de la TENDANCE : ce même calcul sur les 3 derniers exercices te dit si la situation se dégrade. Un DSO qui passe de 45 à 60 puis 75 jours est une alerte, même si chaque chiffre isolé semble acceptable.",
+        hint:"Indice : divise 165 000 par 1 000 000, puis multiplie par 365." },
+      { type:"predict", label:"À toi de jouer",
+        question:"CA stable sur 3 ans, mais le délai de paiement clients passe de 45 à 60 puis 95 jours. Interprétation la plus probable ?",
+        options:["Rien d'inquiétant, les délais varient naturellement","Les clients paient de plus en plus mal (difficultés, rapport de force dégradé) — ou du CA a été comptabilisé en fin d'exercice sans être réellement encaissable : dans les deux cas, le cash futur est menacé","L'entreprise a simplement changé de logiciel de facturation"],
+        correctIndex:1,
+        explanation:"Exactement. Un CA « stable » avec des créances qui explosent, c'est un CA dont une partie ne se transforme plus en cash — tu retrouves la distinction centrale du Module 10 : le CA est une opinion, le cash est un fait. Ce signal seul justifie de croiser la comptabilité avec les relevés bancaires (dd1)." },
+      { type:"concept", label:"Vérifier la dépendance client — pas la demander, la mesurer",
+        body:`<p>Ta thèse exige une « faible dépendance à quelques clients ». Voici comment le <strong>vérifier</strong> plutôt que de croire le vendeur sur parole :</p>
+        <ul>
+          <li>Demande la <strong>balance clients</strong> sur 3 exercices — ou le <span class="term">FEC</span> (Fichier des Écritures Comptables), que toute entreprise française doit pouvoir produire : il contient toutes les écritures, donc le CA réel par client.</li>
+          <li>Calcule le poids du top 3 et du top 5 clients sur le CA, chaque année. Tu as déjà fait ce calcul en Phase 1 du système cash-flow (cf1) — ici tu le fais AVANT d'acheter.</li>
+          <li>Croise avec la DD juridique (dd2) : les plus gros clients sont exactement ceux dont il faut lire les contrats en premier — clauses de changement de contrôle en tête.</li>
+        </ul>` },
+      { type:"validation", label:"Question de validation 1/3",
+        question:"Avec tes propres mots : pourquoi le résultat net est-il un mauvais juge de la performance d'exploitation, et que regardes-tu à la place — et sous quelle forme (euros, ratios, tendances) ?" },
+      { type:"validation", label:"Question de validation 2/3",
+        question:"Un vendeur te présente un EBITDA retraité de 240 000 €, incluant +35 000 € de « salaire dirigeant excédentaire » et +18 000 € de « charges exceptionnelles ». Quelles vérifications fais-tu, et quelles contre-questions poses-tu — y compris sur ce qu'il n'a PAS retraité ?" },
+      { type:"validation", label:"Question de validation 3/3",
+        question:"Sur ta future cible, quels sont les 3 ratios ou tendances que tu suivras sur 3 exercices avant même de rencontrer le dirigeant — et pourquoi ces trois-là plutôt que d'autres ?" },
+      { type:"summary",
+        summary:"Les comptes laissent des traces : créances et stocks qui gonflent, charges activées, changement de méthode avant la vente. Le DSO en tendance sur 3 ans détecte le CA qui ne devient plus du cash. Et la dépendance client se mesure dans la balance clients ou le FEC — jamais sur la parole du vendeur.",
+        nextHint:"Le Module 4 (Valorisation) s'appuie directement sur ton EBITDA normalisé pour construire — et défendre — ton prix à moins de 3x." }
+    ]
+  },
+
+  v1: {
+    id:"v1", moduleId:4, title:"Les méthodes de valorisation, en pratique", duration:"14 min",
+    steps:[
+      { type:"concept", label:"Il n'existe pas UN prix, il existe une fourchette",
+        body:`<p>Une entreprise n'a pas de prix « vrai » — elle a une fourchette de valeurs raisonnables, qui dépend de la méthode utilisée et de qui regarde. Ton travail n'est pas de trouver LE chiffre exact, mais de construire une fourchette défendable et de négocier à l'intérieur.</p>
+        <p><strong>Sur le marché français des PME, plus de 80 % des transactions de moins de 50 M€ se valorisent par la méthode des multiples</strong> — devant le DCF ou l'approche patrimoniale (source : données Fusac France / BMA Private Equity, 2026). C'est donc ta méthode principale. Les deux autres servent surtout de garde-fous.</p>` },
+      { type:"concept", label:"Les 3 méthodes à connaître",
+        body:`<ul>
+          <li><strong>Multiples de comparables</strong> — prix = multiple × EBITDA (normalisé, Module 3). Rapide, ancré sur des transactions réelles, c'est le langage commun de la négociation PME.</li>
+          <li><strong>Actif Net Réévalué (ANR)</strong> — valeur du patrimoine (actifs réévalués à leur vraie valeur − dettes). Sert de <strong>plancher</strong> : si le prix aux multiples tombe sous l'ANR, quelque chose ne colle pas — pourquoi payer moins que ce que valent les actifs seuls ?</li>
+          <li><strong>DCF (Discounted Cash Flow)</strong> — valeur = somme des cash-flows futurs actualisés. Rigoureux en théorie, mais fragile sur une « belle endormie » : sans croissance à projeter, l'essentiel de la valeur vient d'hypothèses de long terme difficiles à justifier. Utile en garde-fou, rarement décisif sur ton profil de deal.</li>
+        </ul>
+        <p><strong>Un 4ᵉ repère très français</strong> : la <span class="term">méthode des praticiens</span>, encore utilisée par de nombreux experts-comptables — moyenne entre l'ANR et une valeur de rendement. Si le vendeur te cite un chiffre « selon mon expert-comptable », il sort probablement de cette méthode : utile à savoir pour comprendre d'où vient SON ancre.</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Sur une « belle endormie » stable, sans plan de croissance documenté, quelle méthode devrait peser le plus dans ta décision finale ?",
+        options:["Le DCF, parce que c'est la méthode la plus rigoureuse académiquement","Les multiples de comparables, ancrés sur des transactions réelles — le DCF servant juste de vérification, sensible à des hypothèses de croissance que tu n'as justement pas","L'ANR seul, puisque c'est le calcul le plus simple"],
+        correctIndex:1,
+        explanation:"Exactement. Le DCF est puissant quand il y a une trajectoire de croissance à modéliser — ce qui n'est précisément pas le profil que tu cherches. Sur une belle endormie, le DCF amplifierait surtout l'incertitude de tes propres hypothèses plutôt que de sécuriser ton prix." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Se laisser impressionner par un DCF présenté par le vendeur avec un tableau Excel élaboré — la sophistication apparente d'un calcul ne rend pas ses hypothèses de croissance plus vraies.",
+          "Ignorer l'ANR par facilité. Même sommaire, calcule-le toujours : c'est ton signal d'alarme si le multiple s'emballe."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté calcule systématiquement les 3 méthodes, même sommairement, et les présente ensemble : « Aux multiples de marché, ça vaut X. En actif net réévalué, ça vaut Y. En DCF avec des hypothèses prudentes, ça vaut Z. » Cette triangulation n'est pas qu'un exercice académique — c'est ton meilleur argument face à un vendeur qui n'aurait regardé qu'une seule méthode, généralement celle qui l'arrange.</p>` },
+      { type:"checkpoint", question:"La hiérarchie des 3 méthodes pour ton profil de deal est-elle claire ?",
+        helpPrompt:"Je viens de voir les 3 méthodes de valorisation (multiples, ANR, DCF) et pourquoi les multiples dominent sur les PME. Peux-tu m'expliquer plus en détail comment calculer un ANR simple à partir d'un bilan ?" },
+      { type:"summary",
+        summary:"Il n'y a pas de prix vrai, mais une fourchette : les multiples de comparables dominent la pratique PME (80% des transactions), l'ANR sert de plancher de sécurité, le DCF de garde-fou fragile sur un profil sans croissance documentée. Triangule toujours les 3.",
+        nextHint:"Ce qui détermine réellement un multiple — et pourquoi viser moins de 3x est ambitieux mais atteignable sur TON profil de cible précis." }
+    ]
+  },
+
+  v2: {
+    id:"v2", moduleId:4, title:"Le multiple, décortiqué", duration:"16 min",
+    steps:[
+      { type:"concept", label:"Ce qui fait vraiment varier un multiple",
+        body:`<p>Un multiple n'est pas un chiffre magique par secteur — c'est la traduction de 4 facteurs : la <strong>croissance</strong> (plus il y en a, plus le multiple grimpe), le <strong>risque</strong> (récurrence des revenus, dépendance client/dirigeant — tu sais déjà tout ça, Modules 3 et 5), la <strong>taille</strong> (les petites structures se valorisent moins cher, à qualité égale), et la <strong>liquidité</strong> (une PME non cotée se vend moins cher qu'une action cotée équivalente, faute d'acheteurs disponibles à tout instant).</p>` },
+      { type:"concept", label:"Les vrais chiffres du marché français en 2026",
+        body:`<p>Sources croisées (Argos Wityu Mid-Market Index, Damodaran/NYU Stern, BPI France Le Lab, données Fusac France, mai 2026) :</p>
+        <ul>
+          <li><strong>Multiple moyen toutes PME françaises confondues : environ 5,5x l'EBITDA</strong> en 2026.</li>
+          <li><strong>Dispersion sectorielle forte</strong> : BTP et services à faible valeur ajoutée 4 à 6x (voire 3-4x dans les cas les plus bas) ; Tech/SaaS 8 à 15x ; la majorité des secteurs entre 5 et 8x.</li>
+          <li><strong>Petites PME spécifiquement (EBITDA &lt; 2 M€, ton profil) : plutôt 5 à 6x</strong> selon les données Dealsuite.</li>
+          <li><strong>Décote de taille</strong> : de −15 % à −55 % par rapport aux barèmes sectoriels bruts, selon le score qualitatif de l'entreprise (récurrence, dépendance dirigeant, concentration client — encore ces critères).</li>
+        </ul>
+        <p>Chiffres à considérer comme des ordres de grandeur, pas des vérités figées — ces barèmes bougent avec les taux et le marché ; utilise le professeur ou l'agent pour les rafraîchir au moment de ton dossier.</p>` },
+      { type:"numeric", label:"Exercice — applique la décote de taille",
+        question:"Le barème sectoriel de ta cible indique 6x l'EBITDA. Son profil qualitatif (petite taille, faible dépendance dirigeant, mais concentration client moyenne) justifie une décote de taille de 40 %. Quel multiple cible en résulte (arrondi à 1 décimale) ?",
+        placeholder:"Ex : 4.0", answer:3.6, tolerance:0.2,
+        successMsg:"3,6x (6 × (1 − 0,40)). Tu vois maintenant très concrètement comment on passe d'un barème sectoriel « moyen » à un multiple réaliste sur une petite structure — et pourquoi ton objectif de moins de 3x, bien que côté agressif de la fourchette, n'a rien d'irréaliste sur ce type de profil.",
+        hint:"Indice : multiple sectoriel × (1 − décote en %)." },
+      { type:"concept", label:"Pourquoi moins de 3x est ambitieux MAIS atteignable sur ta cible précise",
+        body:`<p>Sois honnête avec toi-même : à 5,5x de moyenne nationale, viser moins de 3x place ta cible dans le tiers inférieur du marché. Ce n'est pas la norme — mais ce n'est pas non plus un vœu pieux, pour une raison précise que le marché lui-même confirme : <strong>en dessous de 200 à 300 K€ d'EBITDA, les fonds d'investissement ne s'intéressent quasiment plus au dossier</strong> — le ticket est trop petit pour leurs structures. Le marché se réduit alors aux acquéreurs industriels locaux et aux repreneurs individuels comme toi. Moins d'acheteurs institutionnels en compétition = un vrai espace pour négocier sous la moyenne, précisément sur le segment où tu chasses.</p>
+        <p>Concrètement : cible des EBITDA entre 75 K€ et 450 K€ (cohérent avec ton CA de 500 K€ à 3 M€ à marge &gt; 15%), sur des secteurs déjà bas en barème (services traditionnels, proximité), avec le profil « belle endormie » qui limite encore la compétition. C'est l'empilement de ces facteurs — pas un seul argument de négociation — qui rend un multiple sous 3x réaliste.</p>` },
+      { type:"pitfall", label:"⚠ Piège classique",
+        items:["Prendre 'moins de 3x' comme un objectif à annoncer tel quel au vendeur ou à défendre sur un secteur qui barème structurellement à 7-8x. Le multiple cible doit toujours partir du barème sectoriel réel de TA cible, puis descendre via la décote de taille et qualité — jamais l'inverse."]},
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur aguerri ne dit jamais à un vendeur « je veux payer 3x ». Il présente sa fourchette calculée (barème sectoriel × décote justifiée par des faits précis : dépendance dirigeant, absence de digital, concentration client) et laisse le chiffre en découler. Un multiple annoncé sans justification sonne comme une négociation de tapis ; un multiple qui découle d'une analyse sonne comme une offre sérieuse — même quand le chiffre final est identique.</p>` },
+      { type:"checkpoint", question:"Pourquoi un multiple sous 3x est réaliste sur TON segment précis, sans être la norme du marché — c'est clair ?",
+        helpPrompt:"Je viens de voir pourquoi viser moins de 3x est réaliste sur mon segment (petites PME, peu de fonds intéressés) sans être la norme générale du marché à 5,5x. Peux-tu m'aider à estimer le barème sectoriel réaliste pour un secteur de services de proximité en IDF ?" },
+      { type:"summary",
+        summary:"Le multiple moyen des PME françaises tourne autour de 5,5x en 2026, avec une forte dispersion sectorielle (4x à 15x) et une décote de taille pouvant aller jusqu'à -55%. Viser moins de 3x est ambitieux à l'échelle du marché global, mais réaliste sur ton segment précis (petite taille, peu de compétition institutionnelle, profil belle endormie).",
+        nextHint:"Construire ta propre fourchette de prix, et savoir la défendre face au vendeur sans l'braquer." }
+    ]
+  },
+
+  v3: {
+    id:"v3", moduleId:4, title:"Construire et défendre ton prix", duration:"15 min",
+    steps:[
+      { type:"concept", label:"De l'EBITDA normalisé à la fourchette de prix",
+        body:`<p>Tu as maintenant toutes les briques (Modules 3 et 4). La démarche complète, dans l'ordre :</p>
+        <ol>
+          <li><strong>EBITDA normalisé</strong> (Module 3) — le vrai chiffre, retraité dans les deux sens.</li>
+          <li><strong>Barème sectoriel</strong> — le multiple moyen du secteur de ta cible, recherché (agent) ou demandé au professeur.</li>
+          <li><strong>Décote de taille et qualité</strong> — ajustée selon le profil réel (dépendance dirigeant, concentration client, récurrence).</li>
+          <li><strong>Fourchette basse / cible / haute</strong> — jamais un chiffre unique. La fourchette basse est ton point de départ de négociation ; la cible, ton objectif réel ; la haute, ce que tu es prêt à payer si le reste du montage (crédit-vendeur généreux, GAP solide) compense.</li>
+          <li><strong>Vérification ANR</strong> — ta fourchette basse ne doit jamais tomber sous l'actif net réévalué sans raison particulière (actifs dégradés, litiges).</li>
+        </ol>` },
+      { type:"numeric", label:"Exercice — assemble ta propre fourchette",
+        question:"EBITDA normalisé : 180 000 €. Barème sectoriel : 5x. Décote de taille/qualité justifiée : 45%. Quel est ton prix cible (en €, arrondi au millier) ?",
+        placeholder:"Ex : 500000", answer:495000, tolerance:15000,
+        successMsg:"≈ 495 000 € (180 000 × 5 × (1 − 0,45) = 180 000 × 2,75). Tu viens de construire un prix cible complet, de bout en bout, avec une méthode reproductible sur n'importe quelle cible réelle — pas une estimation à l'instinct.",
+        hint:"Indice : EBITDA × barème sectoriel × (1 − décote), soit 180 000 × 5 × 0,55." },
+      { type:"concept", label:"Défendre ta fourchette sans braquer le vendeur",
+        body:`<p>Le moment le plus délicat : annoncer un prix inférieur à ce que le vendeur espère, sans casser la relation avant même d'avoir commencé à négocier (Module 6).</p>
+        <p><strong>Ce qui fonctionne</strong> : présenter la méthode avant le chiffre. « Voici comment j'arrive à ma proposition : le marché de votre secteur se situe autour de [X], ajusté de [raisons factuelles et précises — pas des jugements de valeur] compte tenu de [faits observés en DD]. » Un chiffre qui découle d'une méthode transparente se conteste point par point ; un chiffre jeté sans explication se rejette en bloc.</p>
+        <p><strong>Ce qui ne fonctionne pas</strong> : comparer sa cible à des mauvais comparables (une startup tech n'a rien à voir avec un artisan du BTP), ou présenter la décote comme un jugement sur l'entreprise du vendeur plutôt que comme un fait de marché.</p>` },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Annoncer ta fourchette BASSE comme premier chiffre — tu perds toute marge de négociation dès la première offre. Ouvre légèrement au-dessus de ta cible réelle.",
+          "Oublier que le prix n'est qu'UNE variable du deal (Module 6, Module 7) : un prix légèrement supérieur avec un crédit-vendeur généreux peut valoir mieux pour toi qu'un prix bas payé 100% cash que tu ne peux pas financer."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un négociateur expérimenté ne présente jamais un prix rond en négociation (« 500 000 € ») — il présente un chiffre qui a l'air calculé (« 494 000 € »). Ce n'est pas de la manipulation : un chiffre précis signale que tu as fait un vrai travail d'analyse, pas une estimation à la louche, et incite naturellement l'autre partie à négocier sur TA méthode plutôt qu'à proposer un chiffre rond concurrent sorti de nulle part.</p>` },
+      { type:"checkpoint", question:"La méthode complète (EBITDA → barème → décote → fourchette → défense) est-elle claire de bout en bout ?",
+        helpPrompt:"Je viens de voir comment construire une fourchette de prix complète. Peux-tu m'aider à la construire sur un cas réel que j'ai en tête, étape par étape ?" },
+      { type:"summary",
+        summary:"La fourchette de prix se construit en cascade : EBITDA normalisé × barème sectoriel × décote de taille/qualité, vérifiée contre l'ANR. Elle se défend en présentant la méthode avant le chiffre — un prix qui découle d'une analyse transparente se négocie point par point, un chiffre jeté sans justification se rejette en bloc.",
+        nextHint:"Les pièges classiques de la valorisation, et un cas complet pour t'entraîner avant une vraie cible." }
+    ]
+  },
+
+  v4: {
+    id:"v4", moduleId:4, title:"Les pièges de la valorisation & validation", duration:"14 min",
+    steps:[
+      { type:"concept", label:"5 pièges qui gonflent un prix sans le justifier",
+        body:`<ul>
+          <li><strong>Compter des synergies non prouvées</strong> — « avec mon réseau je vais doubler les ventes » ne vaut rien tant que ce n'est pas dans TON prix de revient, pas dans celui que tu payes au vendeur.</li>
+          <li><strong>Ignorer le capex caché</strong> (dd3) — un EBITDA de 200K€ qui cache 80K€ de machines à remplacer n'est pas un EBITDA de 200K€. Tu sais déjà déduire ça du prix.</li>
+          <li><strong>Valoriser une croissance non contractuelle</strong> — un pipeline commercial « prometteur » n'est pas un revenu récurrent (Module 1). Ne le paye pas comme tel.</li>
+          <li><strong>L'ancrage sur le premier chiffre entendu</strong> — si le vendeur annonce 800K€ en premier, ton cerveau négociera autour de 800K€ même si ta méthode dit 500K€. Construis TA fourchette avant d'entendre la sienne, jamais après.</li>
+          <li><strong>Comparer à un comparable mal choisi</strong> — une transaction citée par le vendeur peut être un cas très différent (secteur proche mais pas identique, taille différente, conditions de marché passées).</li>
+        </ul>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Le vendeur t'annonce d'emblée : « Mon comptable me dit que ça vaut 900 000 €. » Tu avais construit une fourchette à 500-550K€ AVANT cette conversation. Quel est le bon réflexe ?",
+        options:["Réviser immédiatement ta fourchette vers le haut, un expert-comptable a probablement raison","Rester sur ta méthode et ta fourchette déjà construites, demander à voir CELLE du comptable (quelle méthode, quel EBITDA retenu, quel multiple) pour comparer les méthodes plutôt que les conclusions","Proposer directement une moyenne entre les deux chiffres"],
+        correctIndex:1,
+        explanation:"Exactement — c'est l'ancrage en action, et tu viens de t'en protéger. Deux chiffres qui divergent autant viennent presque toujours d'un désaccord de méthode (EBITDA non retraité ? multiple sectoriel mal choisi ? synergies comptées ?) — pas d'un désaccord d'opinion. Compare les méthodes, jamais les chiffres bruts." },
+      { type:"validation", label:"Question de validation 1/2",
+        question:"Construis une fourchette de prix complète sur un cas fictif : EBITDA normalisé 220 000 €, secteur avec barème à 5,5x, profil qualitatif justifiant une décote de 35%. Donne ta fourchette basse/cible/haute et ton raisonnement." },
+      { type:"validation", label:"Question de validation 2/2",
+        question:"Le vendeur cite une transaction comparable à 6x l'EBITDA dans 'le même secteur'. En creusant, tu découvres que cette transaction concernait une entreprise 4 fois plus grande, en forte croissance, avec un client public récurrent. Explique avec tes propres mots pourquoi ce comparable ne s'applique pas à ta négociation." },
+      { type:"summary",
+        summary:"Les pièges de valorisation gonflent presque tous un prix par la même mécanique : compter comme acquis ce qui n'est ni prouvé ni contractuel. Construis toujours ta fourchette AVANT d'entendre celle du vendeur, et face à un désaccord de chiffre, compare toujours les méthodes plutôt que les conclusions.",
+        nextHint:"Avec les Modules 3 et 4, tu sais maintenant lire des comptes réels et en sortir un prix défendable — la base de toute négociation sérieuse (Module 6)." }
+    ]
   }
 };
 
@@ -839,7 +1279,8 @@ const DEFAULT_PROGRESS = {
   xp: 0, streak: 0, lastActiveDate: null,
   onboardingDone: false, diagnostic: {},
   completedLessons: [], completedModules: [],
-  validationAnswers: {}, passwordSet: false
+  validationAnswers: {}, passwordSet: false,
+  revisionBank: {}, dealAnalyses: []
 };
 let state = {
   view: "loading",
@@ -849,7 +1290,8 @@ let state = {
   chatHistory: [],
   chatBusy: false,
   currentUser: null,
-  dbStatus: "checking" // "ok" | "error" | "checking"
+  dbStatus: "checking", // "ok" | "error" | "checking"
+  currentRevisionQueue: [], currentRevisionIndex: 0
 };
 
 /* =========================================================
@@ -1011,7 +1453,7 @@ function updateSidebarStats(){
   if(f1) f1.style.width = info.pct + "%";
   if(acc) acc.textContent = state.currentUser ? ("Connecté : " + state.currentUser.email) : "";
   if(pwHint) pwHint.classList.toggle('hidden', !!state.progress.passwordSet);
-  ["dashboard","roadmap","chat","agent"].forEach(v => {
+  ["dashboard","roadmap","chat","agent","analyzer","revision"].forEach(v => {
     const a = document.getElementById('nav-'+v); if(a) a.classList.toggle('active', state.view===v);
     const b = document.getElementById('bnav-'+v); if(b) b.classList.toggle('active', state.view===v);
   });
@@ -1029,6 +1471,8 @@ function render(){
   else if(state.view === "chat") { app.innerHTML = renderChatShell(); renderChatMessages(); }
   else if(state.view === "password_setup") app.innerHTML = renderPasswordSetup();
   else if(state.view === "agent") { app.innerHTML = renderAgentShell(); loadAgentProposals(); }
+  else if(state.view === "analyzer") { app.innerHTML = renderAnalyzerShell(); }
+  else if(state.view === "revision") { app.innerHTML = renderRevisionShell(); }
   updateSidebarStats();
   window.scrollTo(0,0);
 }
@@ -1235,7 +1679,22 @@ function renderDashboard(){
     ${continueHtml}
     <div class="section-title">Ton parcours en un coup d'œil</div>
     ${renderJourneyMini()}
-    <div style="margin-top:26px; display:flex; gap:12px; flex-wrap:wrap;">
+    <div class="section-title">Tes outils</div>
+    <div class="stat-row" style="margin-bottom:26px;">
+      <div class="stat-card" style="cursor:pointer;" onclick="goTo('analyzer')">
+        <div class="stat-num" style="font-size:16px;">📐 Analyseur</div>
+        <div class="stat-label">Colle les chiffres d'une cible réelle</div>
+      </div>
+      <div class="stat-card" style="cursor:pointer;" onclick="goTo('revision')">
+        <div class="stat-num" style="font-size:16px;">🔁 Révision</div>
+        <div class="stat-label">${getDueRevisionQuestions().length > 0 ? getDueRevisionQuestions().length + " question(s) prête(s)" : "À jour pour l'instant"}</div>
+      </div>
+      <div class="stat-card" style="cursor:pointer;" onclick="goTo('agent')">
+        <div class="stat-num" style="font-size:16px;">🔎 Agent</div>
+        <div class="stat-label">Recherche approfondie sur un sujet</div>
+      </div>
+    </div>
+    <div style="margin-top:2px; display:flex; gap:12px; flex-wrap:wrap;">
       <button class="btn-ghost" onclick="goTo('roadmap')">Voir le parcours complet →</button>
       <button class="btn-ghost" id="copyAnswersBtn" onclick="copyAnswersForClaude()">📋 Copier mes réponses pour Claude</button>
     </div>
@@ -1490,6 +1949,7 @@ function finishLesson(lessonId){
     state.progress.completedLessons.push(lessonId);
     awardXP(60);
     checkModuleCompletion(LESSONS[lessonId].moduleId);
+    addLessonToRevisionBank(lessonId);
   }
   saveProgress();
   state.view = "roadmap";
@@ -1503,6 +1963,216 @@ function checkModuleCompletion(moduleId){
     state.progress.completedModules.push(moduleId);
     awardXP(200);
   }
+}
+
+/* =========================================================
+   RÉVISION ESPACÉE (rappel actif)
+   ========================================================= */
+function getPredictQuestionsForLesson(lessonId){
+  const lesson = LESSONS[lessonId];
+  if(!lesson) return [];
+  const out = [];
+  lesson.steps.forEach((step, idx) => {
+    if(step.type === 'predict'){
+      out.push({ key: lessonId+'_'+idx, lessonId, stepIndex: idx, lessonTitle: lesson.title,
+        question: step.question, options: step.options, correctIndex: step.correctIndex, explanation: step.explanation });
+    }
+  });
+  return out;
+}
+function addLessonToRevisionBank(lessonId){
+  const questions = getPredictQuestionsForLesson(lessonId);
+  const today = new Date().toISOString().slice(0,10);
+  questions.forEach(q => {
+    if(!state.progress.revisionBank[q.key]){
+      state.progress.revisionBank[q.key] = { interval: 2, nextDue: today, timesCorrect: 0, timesWrong: 0 };
+    }
+  });
+}
+function getDueRevisionQuestions(){
+  const today = new Date().toISOString().slice(0,10);
+  const due = [];
+  Object.keys(state.progress.revisionBank).forEach(key => {
+    const record = state.progress.revisionBank[key];
+    if(record.nextDue <= today){
+      const idx = key.lastIndexOf('_');
+      const lessonId = key.slice(0, idx);
+      const stepIndex = parseInt(key.slice(idx+1), 10);
+      const lesson = LESSONS[lessonId];
+      const step = lesson && lesson.steps[stepIndex];
+      if(step && step.type === 'predict'){
+        due.push({ key, lessonId, stepIndex, lessonTitle: lesson.title,
+          question: step.question, options: step.options, correctIndex: step.correctIndex, explanation: step.explanation });
+      }
+    }
+  });
+  return due;
+}
+function answerRevisionQuestion(key, chosenIndex){
+  const q = state.currentRevisionQueue.find(x => x.key === key);
+  const record = state.progress.revisionBank[key];
+  const correct = chosenIndex === q.correctIndex;
+  if(correct){
+    record.timesCorrect++;
+    record.interval = Math.min(record.interval * 2, 60);
+    awardXP(12);
+  } else {
+    record.timesWrong++;
+    record.interval = 1;
+    awardXP(4);
+  }
+  const nextDate = new Date();
+  nextDate.setDate(nextDate.getDate() + record.interval);
+  record.nextDue = nextDate.toISOString().slice(0,10);
+  saveProgress();
+
+  document.querySelectorAll(`.mcq-option[data-revkey="${key}"]`).forEach((btn,i) => {
+    btn.disabled = true;
+    if(i === q.correctIndex) btn.classList.add('correct');
+    else if(i === chosenIndex) btn.classList.add('incorrect');
+  });
+  const expl = document.getElementById('revExplanation');
+  expl.classList.remove('hidden');
+  expl.innerHTML = (correct ? "✓ Exactement. " : "Pas tout à fait. ") + q.explanation + `<div style="margin-top:14px;"><button class="btn-primary" onclick="nextRevisionQuestion()">${state.currentRevisionIndex < state.currentRevisionQueue.length-1 ? 'Question suivante →' : 'Terminer la session →'}</button></div>`;
+}
+function nextRevisionQuestion(){
+  state.currentRevisionIndex++;
+  renderRevisionSession();
+}
+function startRevisionSession(){
+  state.currentRevisionQueue = getDueRevisionQuestions().sort(() => Math.random() - 0.5).slice(0, 5);
+  state.currentRevisionIndex = 0;
+  renderRevisionSession();
+}
+function renderRevisionSession(){
+  const container = document.getElementById('revisionArea');
+  if(!container) return;
+  const queue = state.currentRevisionQueue;
+  const idx = state.currentRevisionIndex;
+  if(idx >= queue.length){
+    container.innerHTML = `<div class="summary-card"><div class="step-label">Session terminée</div><p>Bien joué — les questions correctement répondues reviendront plus tard, celles ratées reviendront demain.</p><button class="btn-primary" onclick="goTo('dashboard')">Retour au tableau de bord →</button></div>`;
+    return;
+  }
+  const q = queue[idx];
+  const opts = q.options.map((o,i) => `<button class="mcq-option" data-revkey="${q.key}" onclick="answerRevisionQuestion('${q.key}',${i})">${o}</button>`).join('');
+  container.innerHTML = `
+    <div class="predict-card">
+      <div class="step-label">Révision — ${escapeHtml(q.lessonTitle)} · Question ${idx+1}/${queue.length}</div>
+      <p class="step-question">${q.question}</p>
+      <div class="mcq-options">${opts}</div>
+      <div class="mcq-explanation hidden" id="revExplanation"></div>
+    </div>`;
+}
+function renderRevisionShell(){
+  const dueCount = getDueRevisionQuestions().length;
+  const totalTracked = Object.keys(state.progress.revisionBank).length;
+  if(dueCount === 0){
+    return `<div class="eyebrow">Révision</div><h1>Rien à réviser pour l'instant.</h1>
+    <p class="subtitle">${totalTracked === 0 ? "Termine des leçons pour constituer ta banque de révision — chaque question à choix révisée pendant une leçon y sera ajoutée automatiquement." : `${totalTracked} question(s) suivie(s) au total. Reviens quand une prochaine sera due — la révision espacée fonctionne mieux en laissant l'intervalle faire son travail.`}</p>`;
+  }
+  return `<div class="eyebrow">Révision</div><h1>${dueCount} question(s) prête(s).</h1>
+  <p class="subtitle">Rappel actif sur des notions déjà vues — pas une relecture, un vrai test.</p>
+  <button class="btn-primary" onclick="startRevisionSession()">Commencer la session →</button>
+  <div id="revisionArea" style="margin-top:24px;"></div>`;
+}
+
+/* =========================================================
+   ANALYSEUR DE DEAL (calcul 100% local, rien n'est envoyé)
+   ========================================================= */
+function renderAnalyzerShell(){
+  return `
+  <div class="eyebrow">Analyseur de deal</div>
+  <h1 style="margin-bottom:8px;">Colle les chiffres, obtiens l'analyse.</h1>
+  <p class="subtitle">Calcul instantané et local — rien n'est envoyé nulle part. Renseigne ce que tu as, laisse vide ce que tu ne sais pas encore.</p>
+  <div class="onboard-q">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;">
+      <div><label style="font-size:12.5px; color:var(--text-muted); display:block; margin-bottom:5px;">Chiffre d'affaires (€)</label>
+        <input type="number" id="an_ca" style="width:100%; box-sizing:border-box; padding:10px 12px; background:var(--ink); border:1px solid var(--ink-border); border-radius:var(--radius-sm); color:var(--text-light); font-family:var(--font-mono);"></div>
+      <div><label style="font-size:12.5px; color:var(--text-muted); display:block; margin-bottom:5px;">EBITDA normalisé (€)</label>
+        <input type="number" id="an_ebitda" style="width:100%; box-sizing:border-box; padding:10px 12px; background:var(--ink); border:1px solid var(--ink-border); border-radius:var(--radius-sm); color:var(--text-light); font-family:var(--font-mono);"></div>
+      <div><label style="font-size:12.5px; color:var(--text-muted); display:block; margin-bottom:5px;">Prix demandé (€)</label>
+        <input type="number" id="an_prix" style="width:100%; box-sizing:border-box; padding:10px 12px; background:var(--ink); border:1px solid var(--ink-border); border-radius:var(--radius-sm); color:var(--text-light); font-family:var(--font-mono);"></div>
+      <div><label style="font-size:12.5px; color:var(--text-muted); display:block; margin-bottom:5px;">Concentration top 3 clients (%)</label>
+        <input type="number" id="an_concentration" style="width:100%; box-sizing:border-box; padding:10px 12px; background:var(--ink); border:1px solid var(--ink-border); border-radius:var(--radius-sm); color:var(--text-light); font-family:var(--font-mono);"></div>
+    </div>
+    <label style="font-size:12.5px; color:var(--text-muted); display:block; margin-bottom:5px;">Trésorerie excédentaire disponible (€, optionnel)</label>
+    <input type="number" id="an_treso" style="width:100%; box-sizing:border-box; padding:10px 12px; background:var(--ink); border:1px solid var(--ink-border); border-radius:var(--radius-sm); color:var(--text-light); font-family:var(--font-mono); margin-bottom:14px;">
+    <button class="btn-primary" onclick="runDealAnalysis()">Analyser →</button>
+  </div>
+  <div id="analyzerResult"></div>
+  <div class="section-title">Analyses précédentes</div>
+  <div id="analyzerHistory">${renderAnalyzerHistory()}</div>`;
+}
+function renderAnalyzerHistory(){
+  const list = state.progress.dealAnalyses || [];
+  if(list.length === 0) return `<p style="color:var(--text-muted); font-size:14px;">Aucune analyse enregistrée pour l'instant.</p>`;
+  return list.slice().reverse().slice(0,8).map((a,i) => `
+    <div class="module-card" style="margin-bottom:10px;">
+      <div><div class="module-card-title" style="font-size:15px;">CA ${fmtEuro(a.ca)} · EBITDA ${fmtEuro(a.ebitda)} · Prix ${fmtEuro(a.prix)}</div>
+      <div class="module-card-desc">${new Date(a.date).toLocaleDateString('fr-FR')} · Multiple ${a.multiple.toFixed(2)}x · ${a.redFlags.length} alerte(s)</div></div>
+    </div>`).join('');
+}
+function fmtEuro(n){ return Math.round(n).toLocaleString('fr-FR') + ' €'; }
+function runDealAnalysis(){
+  const ca = parseFloat(document.getElementById('an_ca').value);
+  const ebitda = parseFloat(document.getElementById('an_ebitda').value);
+  const prix = parseFloat(document.getElementById('an_prix').value);
+  const concentration = parseFloat(document.getElementById('an_concentration').value);
+  const tresoExcedentaire = parseFloat(document.getElementById('an_treso').value) || 0;
+  const resultBox = document.getElementById('analyzerResult');
+
+  if(isNaN(ca) || isNaN(ebitda) || isNaN(prix) || ebitda <= 0){
+    resultBox.innerHTML = `<div class="pitfall-card"><p>Renseigne au moins le CA, l'EBITDA (&gt; 0) et le prix demandé.</p></div>`;
+    return;
+  }
+
+  const multiple = prix / ebitda;
+  const ecartMultiple = multiple - 3;
+  const margeEbitda = (ebitda / ca) * 100;
+
+  // Esquisse de montage (Module 7) : prêt d'honneur fixe, crédit-vendeur 25%,
+  // dette bancaire plafonnée à 4x EBITDA (ordre de grandeur indicatif)
+  const pretHonneur = Math.min(30000, prix);
+  const creditVendeur = prix * 0.25;
+  const detteBancairePlafond = ebitda * 4;
+  const resteAvantBanque = Math.max(0, prix - pretHonneur - creditVendeur - tresoExcedentaire);
+  const detteBancaire = Math.min(resteAvantBanque, detteBancairePlafond);
+  const ecartResiduel = resteAvantBanque - detteBancaire;
+
+  const redFlags = [];
+  if(multiple > 3.3) redFlags.push(`Multiple de ${multiple.toFixed(2)}x, au-dessus de ton objectif de 3x (Module 4). Vérifie le barème sectoriel réel de cette cible avant d'accepter — ou renégocie.`);
+  if(margeEbitda < 15) redFlags.push(`Marge EBITDA de ${margeEbitda.toFixed(1)}%, sous ton critère de 15% (Module 1). Vérifie si l'EBITDA a bien été retraité (Module 3) — le vrai chiffre est peut-être différent.`);
+  if(!isNaN(concentration)){
+    if(concentration > 40) redFlags.push(`Concentration client de ${concentration}% sur le top 3 : risque élevé (Module 1, Module 5). Vérifie en priorité les clauses de changement de contrôle dans leurs contrats.`);
+    else if(concentration > 20) redFlags.push(`Concentration client de ${concentration}% : à surveiller sans être rédhibitoire seul — croise avec l'ancienneté et la récurrence contractuelle de ces clients.`);
+  }
+  if(ebitda < 100000) redFlags.push(`EBITDA sous 100 K€ : les fonds d'investissement désertent ce ticket (Module 4) — moins de compétition institutionnelle, mais vérifie que ta banque suit sur cette taille.`);
+  if(ecartResiduel > 1000) redFlags.push(`Le montage esquissé ne boucle pas avec ces seules briques : il manque ${fmtEuro(ecartResiduel)}. À combler via une dette investisseur, un crédit-vendeur plus élevé, ou une renégociation du prix (Module 7).`);
+  if(redFlags.length === 0) redFlags.push("Aucune alerte automatique sur ces chiffres — ça ne remplace pas une vraie due diligence (Module 5).");
+
+  resultBox.innerHTML = `
+    <div class="concept-card">
+      <div class="step-label">Résultat</div>
+      <p><strong>Multiple implicite : ${multiple.toFixed(2)}x</strong> l'EBITDA (écart de ${ecartMultiple >= 0 ? '+' : ''}${ecartMultiple.toFixed(2)}x par rapport à ton objectif de 3x). Marge EBITDA : ${margeEbitda.toFixed(1)}% du CA.</p>
+      <p><strong>Esquisse de montage sous 30K€ d'apport :</strong></p>
+      <ul>
+        <li>Prêt d'Honneur (0%) : ${fmtEuro(pretHonneur)}</li>
+        <li>Crédit-vendeur (25% indicatif) : ${fmtEuro(creditVendeur)}</li>
+        ${tresoExcedentaire > 0 ? `<li>Trésorerie excédentaire mobilisée : ${fmtEuro(tresoExcedentaire)}</li>` : ''}
+        <li>Dette bancaire (plafonnée à titre indicatif à 4x EBITDA) : ${fmtEuro(detteBancaire)}</li>
+        ${ecartResiduel > 1000 ? `<li style="color:var(--wine-2);">Écart non financé : ${fmtEuro(ecartResiduel)}</li>` : `<li style="color:var(--forest-2);">Montage bouclé avec ces briques.</li>`}
+      </ul>
+    </div>
+    <div class="pitfall-card" style="margin-top:16px;">
+      <div class="step-label">⚠ Alertes automatiques</div>
+      <ul>${redFlags.map(f => `<li>${f}</li>`).join('')}</ul>
+    </div>
+    <p style="color:var(--text-muted); font-size:12.5px; margin-top:14px;">Esquisse indicative basée sur des règles simples (Modules 4 et 7) — ne remplace ni un dossier bancaire réel, ni une due diligence (Module 5), ni l'avis de ton expert-comptable.</p>`;
+
+  state.progress.dealAnalyses = state.progress.dealAnalyses || [];
+  state.progress.dealAnalyses.push({ date: new Date().toISOString(), ca, ebitda, prix, concentration: isNaN(concentration)?null:concentration, multiple, redFlags });
+  saveProgress();
+  document.getElementById('analyzerHistory').innerHTML = renderAnalyzerHistory();
 }
 
 /* =========================================================
