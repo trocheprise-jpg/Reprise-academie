@@ -196,6 +196,10 @@
   .module-node.clickable .module-card:hover{ border-color: var(--gold); }
   .module-card-title{ font-family: var(--font-display); font-size:16.5px; margin-bottom:4px; }
   .module-card-desc{ font-size: 13px; color: var(--text-muted); }
+  .bookmark-comment{
+    margin-top:8px; font-size:13px; color: var(--gold-2); font-style:italic;
+    background: rgba(226,190,110,0.08); border-left:2px solid var(--gold-2); padding:6px 10px; border-radius:4px;
+  }
   .module-card-meta{ font-size: 11.5px; color: var(--text-muted); white-space:nowrap; text-align:right; flex-shrink:0; }
   .module-node.locked .module-card{ opacity: 0.55; }
   .module-node.locked .module-card-meta{ color: var(--text-muted); }
@@ -209,6 +213,22 @@
   .progress-bar{ height:5px; background: var(--ink-3); border-radius:4px; overflow:hidden; margin: 12px 0 6px; }
   .progress-fill{ height:100%; background: linear-gradient(90deg, var(--gold), var(--forest-2)); transition: width 0.4s ease; }
   .step-counter{ font-size:12px; color: var(--text-muted); font-family: var(--font-mono); }
+  .step-counter-row{ display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  .step-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+  .tag-btn{
+    background: transparent; border: 1px solid var(--ink-border); color: var(--text-muted);
+    font-size: 11.5px; padding: 4px 11px; border-radius: 999px; cursor:pointer; white-space:nowrap;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+  .tag-btn:hover{ border-color: var(--gold-2); color: var(--gold-2); }
+  .tag-btn.tagged{ background: rgba(226,190,110,0.14); border-color: var(--gold-2); color: var(--gold-2); }
+  .comment-zone{ margin-top:14px; padding-top:14px; border-top:1px solid var(--ink-border); }
+  .comment-zone textarea{
+    width:100%; box-sizing:border-box; min-height:90px; background: var(--ink); border:1px solid var(--ink-border);
+    border-radius: var(--radius-sm); padding:12px 14px; font-size:14px; color: var(--text-light);
+    resize: vertical; font-family:inherit;
+  }
+  .comment-zone-actions{ display:flex; gap:16px; align-items:center; margin-top:8px; flex-wrap:wrap; }
 
   .step-card{ animation: rise 0.25s ease; }
   @keyframes rise{ from{ opacity:0; transform: translateY(6px);} to{opacity:1; transform:translateY(0);} }
@@ -336,6 +356,10 @@
     <button class="nav-item" id="nav-revision" onclick="goTo('revision')">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
       Révision
+    </button>
+    <button class="nav-item" id="nav-bookmarks" onclick="goTo('bookmarks')">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1Z"/></svg>
+      Repères
     </button>
     <div class="sidebar-footer">
       <div class="mini-level">Niveau <b id="sidebar-level-title">—</b></div>
@@ -2334,7 +2358,10 @@ const DEFAULT_PROGRESS = {
   onboardingDone: false, diagnostic: {},
   completedLessons: [], completedModules: [],
   validationAnswers: {}, passwordSet: false,
-  revisionBank: {}, dealAnalyses: []
+  revisionBank: {}, dealAnalyses: [],
+  lastPosition: null, // { lessonId, stepIndex } — pour reprendre une leçon là où on l'a laissée
+  taggedSteps: {}, // { "lessonId_stepIndex": { taggedAt } } — étapes marquées comme repères
+  stepComments: {} // { "lessonId_stepIndex": { text, updatedAt } } — notes personnelles par étape
 };
 let state = {
   view: "loading",
@@ -2478,10 +2505,31 @@ function goTo(view){
 function goToRoadmap(){ goTo('roadmap'); }
 
 function openLesson(lessonId){
+  const lesson = LESSONS[lessonId];
+  const saved = state.progress.lastPosition;
+  const canResume = saved && saved.lessonId === lessonId && !state.progress.completedLessons.includes(lessonId);
   state.currentLessonId = lessonId;
-  state.currentStep = 0;
+  state.currentStep = canResume ? Math.max(0, Math.min(saved.stepIndex, lesson.steps.length - 1)) : 0;
   state.view = "lesson";
+  saveLastPosition();
   render();
+}
+function openLessonAtStep(lessonId, stepIndex){
+  const lesson = LESSONS[lessonId];
+  state.currentLessonId = lessonId;
+  state.currentStep = Math.max(0, Math.min(stepIndex, lesson.steps.length - 1));
+  state.view = "lesson";
+  saveLastPosition();
+  render();
+}
+function restartLesson(){
+  state.currentStep = 0;
+  saveLastPosition();
+  render();
+}
+function saveLastPosition(){
+  state.progress.lastPosition = { lessonId: state.currentLessonId, stepIndex: state.currentStep };
+  saveProgress();
 }
 
 function openChatWithContext(prefill){
@@ -2508,7 +2556,7 @@ function updateSidebarStats(){
   if(f1) f1.style.width = info.pct + "%";
   if(acc) acc.textContent = state.currentUser ? ("Connecté : " + state.currentUser.email) : "";
   if(pwHint) pwHint.classList.toggle('hidden', !!state.progress.passwordSet);
-  ["dashboard","roadmap","chat","agent","analyzer","revision","training"].forEach(v => {
+  ["dashboard","roadmap","chat","agent","analyzer","revision","training","bookmarks"].forEach(v => {
     const a = document.getElementById('nav-'+v); if(a) a.classList.toggle('active', state.view===v);
     const b = document.getElementById('bnav-'+v); if(b) b.classList.toggle('active', state.view===v);
   });
@@ -2529,6 +2577,7 @@ function render(){
   else if(state.view === "analyzer") { app.innerHTML = renderAnalyzerShell(); }
   else if(state.view === "revision") { app.innerHTML = renderRevisionShell(); }
   else if(state.view === "training") { app.innerHTML = renderTrainingShell(); renderTrainingMessages(); }
+  else if(state.view === "bookmarks") { app.innerHTML = renderBookmarksShell(); }
   updateSidebarStats();
   window.scrollTo(0,0);
 }
@@ -2690,10 +2739,16 @@ function finishOnboarding(){
    DASHBOARD
    ========================================================= */
 function findNextLesson(){
+  const saved = state.progress.lastPosition;
+  if(saved && saved.lessonId && LESSONS[saved.lessonId] && !state.progress.completedLessons.includes(saved.lessonId)){
+    const lesson = LESSONS[saved.lessonId];
+    const module = MODULES.find(m => m.id === lesson.moduleId);
+    if(module && module.built) return { lesson, module, resuming: saved.stepIndex > 0, stepIndex: saved.stepIndex };
+  }
   for(const m of MODULES){
     if(!m.built) continue;
     for(const lid of m.lessonIds){
-      if(!state.progress.completedLessons.includes(lid)) return { lesson: LESSONS[lid], module: m };
+      if(!state.progress.completedLessons.includes(lid)) return { lesson: LESSONS[lid], module: m, resuming: false };
     }
   }
   return null;
@@ -2713,7 +2768,8 @@ function renderDashboard(){
     <div class="continue-card">
       <div class="continue-eyebrow">Module ${next.module.id} — ${next.module.title}</div>
       <div class="continue-title">${next.lesson.title}</div>
-      <button class="btn-primary" onclick="openLesson('${next.lesson.id}')">Continuer (${next.lesson.duration}) →</button>
+      ${next.resuming ? `<p style="color:var(--text-muted); font-size:13px; margin:-4px 0 12px;">Reprise à l'étape ${next.stepIndex+1}/${next.lesson.steps.length} — là où tu t'étais arrêté.</p>` : ''}
+      <button class="btn-primary" onclick="openLesson('${next.lesson.id}')">${next.resuming ? 'Reprendre' : 'Continuer'} (${next.lesson.duration}) →</button>
     </div>` : `
     <div class="continue-card">
       <div class="continue-eyebrow">Bravo</div>
@@ -2752,6 +2808,10 @@ function renderDashboard(){
       <div class="stat-card" style="cursor:pointer;" onclick="goTo('training')">
         <div class="stat-num" style="font-size:16px;">🎭 Entraînement</div>
         <div class="stat-label">Joue le cédant, la banquière, l'avocate</div>
+      </div>
+      <div class="stat-card" style="cursor:pointer;" onclick="goTo('bookmarks')">
+        <div class="stat-num" style="font-size:16px;">🔖 Repères</div>
+        <div class="stat-label">${getMarkedStepsList().length > 0 ? getMarkedStepsList().length + " étape(s) marquée(s)" : "Retrouve tes passages marqués"}</div>
       </div>
     </div>
     <div style="margin-top:2px; display:flex; gap:12px; flex-wrap:wrap;">
@@ -2860,17 +2920,30 @@ function renderLesson(){
   else if(step.type === "numeric") body = stepNumeric(lesson.id, stepIndex, step);
   else if(step.type === "pitfall") body = stepPitfall(step);
   else if(step.type === "expert") body = stepExpert(step);
-  else if(step.type === "checkpoint") body = stepCheckpoint(step);
+  else if(step.type === "checkpoint") body = stepCheckpoint(lesson.id, stepIndex, step);
   else if(step.type === "validation") body = stepValidation(lesson.id, stepIndex, step);
   else if(step.type === "summary") body = stepSummary(lesson.id, step);
   const showFooter = (step.type !== "checkpoint" && step.type !== "summary");
+  const tagKey = lesson.id + '_' + stepIndex;
+  const isTagged = !!(state.progress.taggedSteps && state.progress.taggedSteps[tagKey]);
+  const hasComment = !!((state.progress.stepComments||{})[tagKey] && state.progress.stepComments[tagKey].text);
   app.innerHTML = `
     <div class="lesson-view">
       <div class="lesson-header">
-        <button class="back-link" onclick="goToRoadmap()">← Retour au parcours</button>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <button class="back-link" onclick="goToRoadmap()" style="margin-bottom:0;">← Retour au parcours</button>
+          <button class="back-link" onclick="restartLesson()" style="margin-bottom:0;" title="Revenir à la première étape de cette leçon">↺ Recommencer cette leçon</button>
+        </div>
         <h2>${lesson.title}</h2>
         <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
-        <div class="step-counter">ÉTAPE ${stepIndex+1} / ${total}</div>
+        <div class="step-counter-row">
+          <div class="step-counter">ÉTAPE ${stepIndex+1} / ${total}</div>
+          <div class="step-actions">
+            <button class="tag-btn ${isTagged?'tagged':''}" id="tagbtn-${lesson.id}-${stepIndex}" onclick="toggleStepTag('${lesson.id}',${stepIndex})" title="${isTagged ? 'Retirer ce repère' : 'Taguer cette étape comme repère'}">${isTagged ? '🔖 Taguée' : '🔖 Taguer'}</button>
+            <button class="tag-btn" id="commentbtn-${lesson.id}-${stepIndex}" onclick="toggleCommentZone('${lesson.id}',${stepIndex})" title="Ajouter ou revoir ta note personnelle">${hasComment ? '💬 Note' : '💬 Commenter'}</button>
+          </div>
+        </div>
+        ${stepCommentZone(lesson.id, stepIndex)}
       </div>
       <div class="lesson-body">${body}</div>
       ${showFooter ? `
@@ -2951,15 +3024,19 @@ function stepPitfall(step){
 function stepExpert(step){
   return `<div class="expert-card"><div class="step-label">${step.label}</div>${step.body}</div>`;
 }
-function stepCheckpoint(step){
+function stepCheckpoint(lessonId, stepIndex, step){
   return `<div class="checkpoint-card">
     <div class="step-label">Point d'étape</div>
     <p class="step-question">${step.question}</p>
     <div class="checkpoint-actions">
       <button class="btn-primary" onclick="nextStep()">Oui, c'est clair →</button>
-      <button class="btn-ghost" onclick="openChatWithContext(${JSON.stringify(step.helpPrompt||'')})">Pas encore, j'en discute</button>
+      <button class="btn-ghost" onclick="discussCheckpoint('${lessonId}',${stepIndex})">Pas encore, j'en discute</button>
     </div>
   </div>`;
+}
+function discussCheckpoint(lessonId, stepIndex){
+  const step = LESSONS[lessonId].steps[stepIndex];
+  openChatWithContext(step.helpPrompt || '');
 }
 function stepValidation(lessonId, stepIndex, step){
   const saved = state.progress.validationAnswers[lessonId+'_'+stepIndex] || '';
@@ -2996,13 +3073,13 @@ function nextStep(){
     if(ta) { state.progress.validationAnswers[lesson.id+'_'+state.currentStep] = ta.value; saveProgress(); }
   }
   if(state.currentStep < lesson.steps.length - 1){
-    state.currentStep++; awardXP(6); render();
-  } else {
-    render();
+    state.currentStep++; awardXP(6);
   }
+  saveLastPosition();
+  render();
 }
 function prevStep(){
-  if(state.currentStep > 0){ state.currentStep--; render(); }
+  if(state.currentStep > 0){ state.currentStep--; saveLastPosition(); render(); }
 }
 function finishLesson(lessonId){
   if(!state.progress.completedLessons.includes(lessonId)){
@@ -3010,6 +3087,9 @@ function finishLesson(lessonId){
     awardXP(60);
     checkModuleCompletion(LESSONS[lessonId].moduleId);
     addLessonToRevisionBank(lessonId);
+  }
+  if(state.progress.lastPosition && state.progress.lastPosition.lessonId === lessonId){
+    state.progress.lastPosition = null;
   }
   saveProgress();
   state.view = "roadmap";
@@ -3023,6 +3103,147 @@ function checkModuleCompletion(moduleId){
     state.progress.completedModules.push(moduleId);
     awardXP(200);
   }
+}
+
+/* =========================================================
+   REPÈRES (étapes taguées, pour les retrouver facilement)
+   ========================================================= */
+function toggleStepTag(lessonId, stepIndex){
+  state.progress.taggedSteps = state.progress.taggedSteps || {};
+  const key = lessonId + '_' + stepIndex;
+  const nowTagged = !state.progress.taggedSteps[key];
+  if(nowTagged){ state.progress.taggedSteps[key] = { taggedAt: new Date().toISOString() }; }
+  else { delete state.progress.taggedSteps[key]; }
+  saveProgress();
+  const btn = document.getElementById(`tagbtn-${lessonId}-${stepIndex}`);
+  if(btn){
+    btn.classList.toggle('tagged', nowTagged);
+    btn.textContent = nowTagged ? '🔖 Taguée' : '🔖 Taguer';
+    btn.title = nowTagged ? 'Retirer ce repère' : 'Taguer cette étape comme repère';
+  }
+}
+function stepCommentZone(lessonId, stepIndex){
+  const key = lessonId + '_' + stepIndex;
+  const existing = (state.progress.stepComments || {})[key];
+  const text = existing ? existing.text : '';
+  const hasComment = !!text;
+  return `<div class="comment-zone ${hasComment ? '' : 'hidden'}" id="commentzone-${lessonId}-${stepIndex}">
+    <textarea id="commentinput-${lessonId}-${stepIndex}" placeholder="Ta remarque personnelle sur cette étape — visible seulement par toi...">${escapeHtml(text)}</textarea>
+    <div class="comment-zone-actions">
+      <button class="btn-ghost" onclick="saveStepComment('${lessonId}',${stepIndex})">Enregistrer la note</button>
+      <button class="reset-link ${hasComment ? '' : 'hidden'}" id="commentdel-${lessonId}-${stepIndex}" onclick="deleteStepComment('${lessonId}',${stepIndex})">Supprimer</button>
+      <button class="reset-link" onclick="hideCommentZone('${lessonId}',${stepIndex})">Masquer</button>
+    </div>
+  </div>`;
+}
+function toggleCommentZone(lessonId, stepIndex){
+  const zone = document.getElementById(`commentzone-${lessonId}-${stepIndex}`);
+  if(!zone) return;
+  const willShow = zone.classList.contains('hidden');
+  zone.classList.toggle('hidden', !willShow);
+  if(willShow){
+    const ta = document.getElementById(`commentinput-${lessonId}-${stepIndex}`);
+    if(ta) ta.focus();
+  }
+}
+function hideCommentZone(lessonId, stepIndex){
+  const zone = document.getElementById(`commentzone-${lessonId}-${stepIndex}`);
+  if(zone) zone.classList.add('hidden');
+}
+function saveStepComment(lessonId, stepIndex){
+  const key = lessonId + '_' + stepIndex;
+  const ta = document.getElementById(`commentinput-${lessonId}-${stepIndex}`);
+  const text = ta ? ta.value.trim() : '';
+  state.progress.stepComments = state.progress.stepComments || {};
+  if(text){ state.progress.stepComments[key] = { text, updatedAt: new Date().toISOString() }; }
+  else { delete state.progress.stepComments[key]; }
+  saveProgress();
+  const btn = document.getElementById(`commentbtn-${lessonId}-${stepIndex}`);
+  if(btn) btn.textContent = text ? '💬 Note' : '💬 Commenter';
+  const delLink = document.getElementById(`commentdel-${lessonId}-${stepIndex}`);
+  if(delLink) delLink.classList.toggle('hidden', !text);
+  if(!text){
+    const zone = document.getElementById(`commentzone-${lessonId}-${stepIndex}`);
+    if(zone) zone.classList.add('hidden');
+  }
+}
+function deleteStepComment(lessonId, stepIndex){
+  const key = lessonId + '_' + stepIndex;
+  if(state.progress.stepComments) delete state.progress.stepComments[key];
+  saveProgress();
+  const ta = document.getElementById(`commentinput-${lessonId}-${stepIndex}`);
+  if(ta) ta.value = '';
+  const btn = document.getElementById(`commentbtn-${lessonId}-${stepIndex}`);
+  if(btn) btn.textContent = '💬 Commenter';
+  const delLink = document.getElementById(`commentdel-${lessonId}-${stepIndex}`);
+  if(delLink) delLink.classList.add('hidden');
+  hideCommentZone(lessonId, stepIndex);
+}
+function stepPreviewLabel(step){
+  if(step.label) return step.label;
+  if(step.type === 'checkpoint') return "Point d'étape";
+  if(step.type === 'summary') return "En résumé";
+  return step.question || 'Étape';
+}
+function stepPreviewExcerpt(step){
+  let raw = '';
+  if(step.type === 'concept' || step.type === 'expert') raw = step.body || '';
+  else if(step.type === 'pitfall') raw = (step.items||[]).join(' ');
+  else if(step.type === 'predict' || step.type === 'numeric' || step.type === 'checkpoint' || step.type === 'validation') raw = step.question || '';
+  else if(step.type === 'summary') raw = step.summary || '';
+  else if(step.type === 'intro') raw = (step.mcq && step.mcq.question) || step.body || '';
+  const text = raw.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+  return text.length > 150 ? text.slice(0,150) + '…' : text;
+}
+function getMarkedStepsList(){
+  const tagged = state.progress.taggedSteps || {};
+  const commented = state.progress.stepComments || {};
+  const keys = {};
+  Object.keys(tagged).forEach(k => keys[k] = true);
+  Object.keys(commented).forEach(k => keys[k] = true);
+  const out = [];
+  Object.keys(keys).forEach(key => {
+    const idx = key.lastIndexOf('_');
+    const lessonId = key.slice(0, idx);
+    const stepIndex = parseInt(key.slice(idx+1), 10);
+    const lesson = LESSONS[lessonId];
+    const step = lesson && lesson.steps[stepIndex];
+    if(!lesson || !step) return;
+    const isTagged = !!tagged[key];
+    const comment = (commented[key] && commented[key].text) || '';
+    const sortDate = (commented[key] && commented[key].updatedAt) || (tagged[key] && tagged[key].taggedAt) || '';
+    out.push({ key, lessonId, stepIndex, lesson, step, isTagged, comment, sortDate });
+  });
+  out.sort((a,b) => (b.sortDate||'').localeCompare(a.sortDate||''));
+  return out;
+}
+function removeMarkedStep(lessonId, stepIndex){
+  const key = lessonId + '_' + stepIndex;
+  if(state.progress.taggedSteps) delete state.progress.taggedSteps[key];
+  if(state.progress.stepComments) delete state.progress.stepComments[key];
+  saveProgress();
+  render();
+}
+function renderBookmarksShell(){
+  const list = getMarkedStepsList();
+  if(list.length === 0){
+    return `<div class="eyebrow">Repères</div><h1>Aucune étape marquée pour l'instant.</h1>
+    <p class="subtitle">Pendant une leçon, clique sur « 🔖 Taguer » pour épingler un passage, ou sur « 💬 Commenter » pour y laisser une note personnelle — les deux apparaissent ici, prêts à être retrouvés en un clic.</p>`;
+  }
+  const items = list.map(item => {
+    const module = MODULES.find(m => m.id === item.lesson.moduleId);
+    return `<div class="module-card" style="align-items:flex-start;">
+      <div style="cursor:pointer;" onclick="openLessonAtStep('${item.lessonId}',${item.stepIndex})">
+        <div class="module-card-title" style="font-size:15px;">${item.isTagged ? '🔖 ' : ''}${escapeHtml(stepPreviewLabel(item.step))}</div>
+        <div class="module-card-desc">${escapeHtml(item.lesson.title)} — étape ${item.stepIndex+1}/${item.lesson.steps.length}${module ? ' · Module '+module.id : ''}<br>${escapeHtml(stepPreviewExcerpt(item.step))}</div>
+        ${item.comment ? `<div class="bookmark-comment">💬 ${escapeHtml(item.comment).replace(/\n/g,'<br>')}</div>` : ''}
+      </div>
+      <button class="reset-link" onclick="removeMarkedStep('${item.lessonId}',${item.stepIndex})" title="Retirer ce repère" style="flex-shrink:0;">✕ Retirer</button>
+    </div>`;
+  }).join('');
+  return `<div class="eyebrow">Repères</div><h1>${list.length} étape${list.length>1?'s':''} marquée${list.length>1?'s':''}.</h1>
+  <p class="subtitle">Tags et notes personnelles, réunis ici. Clique sur une carte pour y retourner directement, au bon endroit dans la leçon.</p>
+  ${items}`;
 }
 
 /* =========================================================
