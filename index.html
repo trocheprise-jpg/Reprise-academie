@@ -396,10 +396,10 @@ const MODULES = [
   { id:8, title:"La holding d'acquisition", desc:"Pourquoi structurer via une holding, mécanique du LBO, DSCR, et ton montage complet à 30 K€ d'apport.", built:true, lessonIds:["h1","h2"] },
   { id:9, title:"Le closing & les 100 premiers jours", desc:"Signature, transition, sécuriser équipes et clients — puis la boucle des 100 jours : sécuriser, diagnostiquer, quick wins, levier.", built:true, lessonIds:["cl1","cl2"] },
   { id:10, title:"Le système Cash-Flow", desc:"Les 5 phases pour révéler le cash déjà présent dans l'entreprise, sans dépendre de la croissance.", built:true, lessonIds:["cf1","cf2","cf3","cf4"] },
-  { id:11, title:"Digitaliser, automatiser & IA", desc:"CRM, prospection structurée, et agents IA pour booster la croissance et réduire les charges.", built:false, lessonIds:[] },
-  { id:12, title:"Créer tes propres agents IA", desc:"Atelier pratique : construire, tester et déployer de vrais agents IA pour Belacom.", built:false, lessonIds:[] },
+  { id:11, title:"Digitaliser, automatiser & IA", desc:"CRM et machine commerciale, automatisation des opérations (facturation, DSO), et cas d'usage IA rentables.", built:true, lessonIds:["di1","di2","di3"] },
+  { id:12, title:"Créer tes propres agents IA", desc:"Atelier pratique : anatomie d'un agent utile, puis construction complète de ton premier agent — fiche de mission fournie.", built:true, lessonIds:["ia1","ia2"] },
   { id:13, title:"Mettre en place un gérant", desc:"Quand et qui, rémunération indexée sur la performance, rythme de pilotage — la clé de ta stratégie de build-up.", built:true, lessonIds:["g1","g2"] },
-  { id:14, title:"Choisir sa sortie : revente ou build-up", desc:"Comparer céder à 1-3 ans vs. construire un portefeuille d'entreprises.", built:false, lessonIds:[] }
+  { id:14, title:"Choisir sa sortie : revente ou build-up", desc:"Fabriquer ta plus-value de revente, ou construire ton portefeuille — les trois moteurs, la grille de décision, et ta feuille de route.", built:true, lessonIds:["so1","so2"] }
 ];
 
 const LESSONS = {
@@ -742,7 +742,7 @@ const LESSONS = {
     steps:[
       { type:"concept", label:"Ce que ce rendez-vous est — et n'est pas",
         body:`<p>Ton expert-comptable a organisé la rencontre : un déjeuner discret avec <strong>Bernard Lemoine, fondateur de Thermelec</strong>. Avant d'y aller, cale l'objectif :</p>
-        <p>Le premier rendez-vous n'est <strong>ni une négociation, ni un audit</strong>. C'est un rendez-vous de <em>confiance et de collecte</em>. Un fondateur ne vend pas sa boîte de 27 ans au plus offrant — il la confie à quelqu'un qu'il juge capable de ne pas la détruire. Tant que ce juge­ment n'est pas rendu en ta faveur, aucun chiffre sérieux ne sortira.</p>
+        <p>Le premier rendez-vous n'est <strong>ni une négociation, ni un audit</strong>. C'est un rendez-vous de <em>confiance et de collecte</em>. Un fondateur ne vend pas sa boîte de 27 ans au plus offrant — il la confie à quelqu'un qu'il juge capable de ne pas la détruire. Tant que ce jugement n'est pas rendu en ta faveur, aucun chiffre sérieux ne sortira.</p>
         <p>Trois objectifs, dans l'ordre : (1) qu'il ait envie d'un second rendez-vous, (2) comprendre <em>pourquoi il vend et pourquoi maintenant</em>, (3) repérer — sans creuser lourdement — les grandes masses : activité, récurrence, équipe, dépendances.</p>
         <p>Règle des 80/20 : <strong>il parle 80 % du temps.</strong> Et le prix n'est PAS un sujet du premier rendez-vous — si lui l'aborde, écoute, note, ne contre-propose rien.</p>` },
       { type:"concept", label:"Les questions qui font parler",
@@ -1785,7 +1785,7 @@ const LESSONS = {
           <li><strong>Semaines 1-2 — Sécuriser</strong> : l'équipe (entretien individuel avec CHAQUE salarié : son rôle, ses irritants, ses idées — tu apprends et tu rassures en même temps), les clients clés (tournée des 10 plus gros comptes AVEC le cédant), les fournisseurs critiques, la trésorerie (mets en place immédiatement un suivi de trésorerie à 13 semaines — ton instrument de vol n°1).</li>
           <li><strong>Mois 1 — Diagnostiquer</strong> : l'audit terrain des écarts entre ce que la DD annonçait et ce que tu observes. Chaque écart significatif : documenté, chiffré, et si couvert par la GAP → <strong>notifié dans les formes et les délais</strong> (Module 6).</li>
           <li><strong>Mois 2 — Quick wins</strong> : 2 ou 3 victoires visibles et peu risquées : relancer les devis dormants, corriger un tarif oublié depuis 5 ans, régler l'irritant n°1 remonté par les techniciens. Objectif double : du cash, et la démonstration que le nouveau patron améliore la vie.</li>
-          <li><strong>Mois 3 — Choisir LE levier</strong> : sur ta thèse, presque toujours la machine commerciale (CRM, relances systématiques, offre packagée — Module 11 à venir). Un seul grand chantier à la fois.</li>
+          <li><strong>Mois 3 — Choisir LE levier</strong> : sur ta thèse, presque toujours la machine commerciale (CRM, relances systématiques, offre packagée — Module 11). Un seul grand chantier à la fois.</li>
           <li><strong>En continu — Le rythme</strong> : un point hebdomadaire chiffré avec l'équipe d'encadrement, et tes premiers objectifs trimestriels écrits (le futur langage de pilotage de ton gérant, Module 13).</li>
         </ul>
         <p>Et la règle d'or transversale : <strong>pas de révolution avant 90 jours.</strong> Pas de réorganisation, pas de changement de nom, pas de refonte des méthodes de travail. D'abord comprendre pourquoi ça marche — ensuite seulement améliorer.</p>` },
@@ -1914,7 +1914,390 @@ const LESSONS = {
         question:"Ta holding reçoit maintenant ~40-50 K€/an de flux libre après service de la dette. Décris ta séquence build-up des 18 prochains mois : que fais-tu de ce cash, quand relances-tu le sourcing, et qu'est-ce qui doit être vrai chez Thermelec AVANT que tu signes une LOI sur la cible n°2 ?" },
       { type:"summary",
         summary:"Rémunération du gérant : fixe au marché + variable sur l'EBITDA au-delà d'un seuil (jamais le CA seul), garde-fous qualitatifs, tout par écrit avec exemples chiffrés. Pilotage : quotidien 0-3 mois (transfert), hebdomadaire 3-6 mois, puis trimestriel avec tableau de bord d'une page et règle d'alerte — pas de réunion sans chiffres, pas de chiffres sans décision. Et la boucle du build-up se referme : le cash extrait et ton temps libéré financent la cible n°2.",
-        nextHint:"Le Module 14 comparera tes deux sorties possibles — revente à 1-3 ans avec plus-value, ou build-up assumé — pour choisir en connaissance de cause. En attendant : le Module 10 (cash-flow) et bientôt le Module 11 (digitalisation) sont tes chantiers de création de valeur." }
+        nextHint:"Le Module 14 comparera tes deux sorties possibles — revente à 1-3 ans avec plus-value, ou build-up assumé — pour choisir en connaissance de cause. En attendant : le Module 10 (cash-flow) et le Module 11 (digitalisation) sont tes chantiers de création de valeur." }
+    ]
+  },
+
+  di1: {
+    id:"di1", moduleId:11, title:"La machine commerciale : CRM et relances", duration:"16 min",
+    steps:[
+      { type:"concept", label:"Ton levier n°1, rappel",
+        body:`<p>Reviens à ta thèse : tu as choisi une belle endormie <em>précisément parce qu'elle n'a</em> ni CRM, ni prospection structurée, ni relances systématiques. Ce manque n'est pas un défaut à subir — c'est le gisement de croissance le plus sûr qui existe : <strong>pas un pari sur un marché, juste de la mise en œuvre</strong> de choses qui fonctionnent partout ailleurs.</p>
+        <p>Une machine commerciale de PME tient en trois briques, à construire dans cet ordre :</p>
+        <ul>
+          <li><strong>Une base clients propre</strong> — tous les clients, contacts, contrats et historiques au même endroit (le CRM), au lieu d'Excel, de carnets et de la mémoire de Bernard.</li>
+          <li><strong>Un pipeline de devis avec relances systématiques</strong> — chaque devis a un statut et une <em>prochaine action datée</em>. Exactement la discipline de ton pipeline de sourcing (Module 2), appliquée aux ventes.</li>
+          <li><strong>Une offre récurrente poussée systématiquement</strong> — chaque prestation ponctuelle est une occasion de proposer un contrat récurrent. Chez une belle endormie, cette proposition n'est presque jamais faite : on répond à la demande, on ne la crée pas.</li>
+        </ul>` },
+      { type:"concept", label:"Déployer un CRM dans une PME (sans la braquer)",
+        body:`<p>Le bon CRM pour une boîte de 11 personnes n'est pas le plus complet — c'est <strong>celui que l'équipe utilisera encore dans 6 mois</strong>. Critères : simple, en français, utilisable sur mobile par les techniciens, et connectable à la facturation. Le nom de l'outil compte moins que les règles d'usage :</p>
+        <ul>
+          <li><strong>Règle 1 : tout devis vit dans le CRM.</strong> Un devis envoyé par email sans trace CRM n'existe pas.</li>
+          <li><strong>Règle 2 : chaque devis a une prochaine action datée</strong> — relance à J+3 (appel : « bien reçu ? des questions ? ») puis J+10. La majorité des devis de PME meurent non pas refusés, mais <em>jamais relancés</em>.</li>
+          <li><strong>Règle 3 : c'est TOI (puis le gérant) qui regardes le pipeline chaque semaine</strong> — ce qui n'est pas regardé n'est pas tenu. Le pipeline devis rejoint le tableau de bord hebdomadaire (Module 13).</li>
+        </ul>
+        <p>Côté conduite du changement : migre les données toi-même (ou avec un prestataire), forme l'équipe sur des cas réels, et commence par UN usage (les devis) avant d'ajouter le reste. Un CRM imposé d'un bloc avec 40 champs obligatoires est mort en trois semaines.</p>` },
+      { type:"concept", label:"📌 Fil rouge — la machine Thermelec",
+        body:`<p>Souviens-toi des 100 jours : 34 K€ de devis dormants signés juste en <em>relançant</em>. Voici la suite, sur 12 mois :</p>
+        <ul>
+          <li><strong>CRM déployé au mois 4</strong> — clients, contrats, devis migrés. Karim l'adopte le premier (argument décisif : « tu ne perdras plus jamais un chiffrage »).</li>
+          <li><strong>Relance systématique J+3 / J+10</strong> — le taux de transformation des devis passe de ~31 % (mesuré sur l'historique reconstitué) à ~45 %. Aucun devis supplémentaire produit : juste moins de devis perdus par silence.</li>
+          <li><strong>Le contrat proposé à chaque dépannage</strong> — Thermelec fait ~220 dépannages ponctuels par an chez des clients SANS contrat de maintenance. Nouveau réflexe scripté pour les techniciens et l'accueil : chaque intervention se conclut par la proposition d'un contrat (~2 400 €/an en moyenne). C'est le CA récurrent — celui qui nourrit ton EBITDA ET ton futur multiple de sortie — fabriqué à partir de clients déjà conquis.</li>
+        </ul>` },
+      { type:"numeric", label:"Exercice",
+        question:"220 dépannages ponctuels par an, 15 % des clients acceptent le contrat de maintenance proposé, à 2 400 €/an en moyenne. Combien de CA récurrent annuel supplémentaire (en euros) cette seule habitude crée-t-elle ?",
+        placeholder:"Ex : 50000", answer:79200, tolerance:2000,
+        successMsg:"Oui : 220 × 15 % × 2 400 € = 79 200 € de CA récurrent nouveau — soit +4 % de CA, à marge de contrat (élevée), sans dépenser un euro de publicité. Et comme c'est du récurrent, ça se retrouve presque intégralement dans la valeur de revente. Une phrase apprise aux techniciens vaut ici 79 K€/an.",
+        hint:"CA = nombre de dépannages × taux d'acceptation × prix moyen du contrat. Calcule 220 × 0,15 × 2 400." },
+      { type:"predict", label:"À toi de jouer",
+        question:"Budget limité, énergie limitée : par quoi commencer pour générer du CA supplémentaire chez une belle endormie ?",
+        options:[
+          "Un nouveau site web et de la publicité locale pour attirer des prospects",
+          "Exploiter la base existante : relancer les devis en cours, réactiver les clients dormants, proposer le contrat récurrent aux clients ponctuels — le site et la pub viendront après",
+          "Recruter un commercial pour prospecter de nouveaux clients"
+        ],
+        correctIndex:1,
+        explanation:"L'ordre est presque toujours celui-là : le CA le moins cher du monde est celui qui dort dans ta base — devis non relancés, clients ponctuels jamais convertis en contrat, anciens clients jamais recontactés. Coût d'acquisition : zéro. Le site, la pub et le commercial servent à remplir un entonnoir : commence par réparer l'entonnoir qui fuit, sinon tu paies pour perdre plus vite." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Choisir un CRM « complet » de grand groupe pour une PME de 11 personnes. Six mois de paramétrage, adoption zéro, retour à Excel — et 5 K€/an d'abonnement pour rien.",
+          "Installer l'outil sans installer le process. Le CRM ne relance pas les devis : la RÈGLE « chaque devis a une prochaine action datée » les relance. L'outil ne fait que la rendre visible.",
+          "Déléguer entièrement l'adoption (« Karim, tu t'en occupes ») sans l'utiliser toi-même. L'équipe utilise ce que le patron regarde.",
+          "Acheter des leads ou de la pub avant d'avoir exploité la base existante — payer pour de nouveaux prospects pendant que les anciens partent en silence.",
+          "Mesurer l'activité (nombre de devis) au lieu du résultat (taux de transformation, CA récurrent net). C'est le taux qui dit si ta machine fonctionne."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>L'actif le plus sous-exploité d'une belle endormie n'est ni son matériel ni sa marque : c'est <strong>sa base clients historique</strong> — des années de clients servis, satisfaits, jamais recontactés.</p>
+        <p>Un repreneur expérimenté fait ce calcul dès la due diligence commerciale : combien de clients actifs il y a 3 ans ne commandent plus aujourd'hui ? Chez la plupart des belles endormies, réactiver 10 % de ces dormants par une simple campagne d'appels (« on ne s'est pas vus depuis deux ans, votre installation approche de la révision... ») rapporte plus que n'importe quel budget publicitaire — et c'est mesurable dès le premier mois. La croissance d'une belle endormie ne se cherche pas dehors ; elle se ramasse dedans.</p>` },
+      { type:"checkpoint", question:"Les trois briques (base propre, pipeline relancé, récurrent systématique) et l'ordre de déploiement sont-ils clairs ?",
+        helpPrompt:"Je viens de voir la machine commerciale d'une PME (CRM, relances J+3/J+10, proposition systématique de contrats récurrents). Peux-tu m'aider à construire le plan de déploiement sur 90 jours pour une entreprise type Thermelec, semaine par semaine ?" },
+      { type:"summary",
+        summary:"La machine commerciale d'une belle endormie se construit dans l'ordre : base clients propre (CRM simple + règles d'usage), pipeline de devis avec relances datées (la majorité des devis meurent de silence, pas de refus), et offre récurrente proposée à chaque prestation ponctuelle. Le CA le moins cher dort déjà dans la base — chez Thermelec : +79 K€/an de récurrent avec une phrase apprise aux techniciens.",
+        nextHint:"Deuxième chantier de digitalisation : automatiser les opérations — facturation, relances d'impayés, planning — pour libérer du cash et des heures facturables." }
+    ]
+  },
+
+  di2: {
+    id:"di2", moduleId:11, title:"Automatiser les opérations (sans casser la boîte)", duration:"15 min",
+    steps:[
+      { type:"concept", label:"Où l'automatisation paie vraiment",
+        body:`<p>Dans une PME de services, quatre chantiers d'automatisation ont un retour quasi garanti — dans cet ordre de priorité :</p>
+        <ul>
+          <li><strong>Facturation immédiate + relance des impayés</strong> — facturer le jour de l'intervention (pas en fin de mois), avec relances automatiques à J+30 et J+45 et appel humain à J+60. C'est le prolongement direct du système Cash-Flow (Module 10) : chaque jour de délai client en moins est de la trésorerie rendue.</li>
+          <li><strong>Planning et ordres d'intervention</strong> — tournées optimisées, fiches d'intervention sur mobile, photos et signature client sur place. Moins de kilomètres, moins de ressaisie, zéro « bon papier perdu ».</li>
+          <li><strong>Comptes-rendus et devis générés depuis le terrain</strong> — le technicien dicte ou coche, le document part propre le jour même (on y reviendra avec l'IA, leçon suivante).</li>
+          <li><strong>Reporting automatique</strong> — ton tableau de bord (Module 13) alimenté tout seul depuis la facturation et le CRM, au lieu d'une demi-journée de ressaisie mensuelle.</li>
+        </ul>` },
+      { type:"concept", label:"La méthode : simplifier AVANT d'automatiser",
+        body:`<p>Règle absolue : <strong>automatiser un process cassé, c'est accélérer le chaos.</strong> La séquence pour chaque chantier :</p>
+        <ol>
+          <li><strong>Cartographier</strong> le process actuel en 30 minutes avec ceux qui le font : qui fait quoi, quand, avec quel outil, où ça coince.</li>
+          <li><strong>Simplifier</strong> d'abord : supprimer les étapes inutiles, les doubles saisies, les validations qui ne valident rien. Souvent, 40 % du gain est là, gratuitement.</li>
+          <li><strong>Automatiser</strong> ensuite ce qui reste — et seulement si le process est : <em>fréquent</em> (au moins hebdomadaire), <em>régi par des règles claires</em>, et <em>à faible enjeu unitaire</em> (une erreur se rattrape).</li>
+          <li><strong>Mesurer</strong> : un chiffre avant, le même chiffre après (jours de délai de paiement, heures de ressaisie, kilomètres par intervention).</li>
+        </ol>
+        <p>Et une contrainte de rythme : <strong>un chantier à la fois</strong>, ancré avant de passer au suivant. L'équipe d'une belle endormie a 25 ans d'habitudes — trois révolutions simultanées, c'est une mutinerie.</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Premier chantier d'automatisation chez Thermelec : lequel choisis-tu ?",
+        options:[
+          "Le planning optimisé des tournées — les techniciens perdent du temps en trajets",
+          "La facturation le jour de l'intervention + relances automatiques d'impayés — c'est du cash immédiat, mesurable, et personne n'aime faire les relances de toute façon",
+          "Le reporting automatique — pour piloter, il faut voir"
+        ],
+        correctIndex:1,
+        explanation:"Les trois sont bons — mais le premier chantier doit cocher trois cases : impact cash rapide, mesurable en semaines, et faible résistance de l'équipe (automatiser une corvée que personne n'aime = zéro opposition). La facturation/relance coche les trois. Le planning touche aux habitudes des techniciens (plus sensible, à faire une fois la confiance installée), et le reporting sert le pilote plus que l'équipe — il vient naturellement après." },
+      { type:"concept", label:"📌 Fil rouge — le cash caché dans les délais",
+        body:`<p>Diagnostic chez Thermelec : les factures partaient <strong>en fin de mois</strong> (parfois le mois suivant), et les relances se faisaient « quand Bernard y pensait ». Résultat : un délai moyen d'encaissement (<span class="term">DSO</span>) de <strong>68 jours</strong>.</p>
+        <p>Après le chantier — facture émise le jour de l'intervention depuis le mobile, relances automatiques J+30 et J+45, appel de l'assistante à J+60, et prélèvement proposé sur les contrats de maintenance — le DSO tombe à <strong>41 jours</strong> en 5 mois.</p>
+        <p>Traduction en cash : 27 jours de CA en moins dans l'encours clients, soit 1 820 000 ÷ 365 × 27 ≈ <strong>135 K€ de trésorerie libérée</strong>, une fois pour toutes. À comparer aux 140 K€ de distribution mobilisés dans ton montage : ce seul chantier reconstitue quasiment le coussin de la société — sans vendre un euro de plus.</p>` },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Automatiser le chaos : mettre un outil sur un process que personne ne comprend. Cartographie et simplifie d'abord — c'est la moitié du gain, et c'est gratuit.",
+          "Empiler les abonnements : un outil par problème, 9 logiciels qui ne se parlent pas, 800 €/mois de SaaS. Privilégie peu d'outils qui couvrent large et s'intègrent (CRM + facturation + planning du même écosystème si possible).",
+          "Zéro humain dans la boucle côté client : une relance d'impayé automatique envoyée à ton meilleur client en litige légitime peut coûter le client. Les cas sensibles s'escaladent vers un humain — toujours.",
+          "Négliger la formation : une heure d'outil non expliquée = un retour au papier dans le camion. Forme sur des cas réels, avec les plus réticents en premier.",
+          "Vouloir tout faire en 3 mois. Ton horizon est 18-36 mois (revente ou gérant) : un chantier ancré par trimestre bat quatre chantiers à moitié faits."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Dans une entreprise de services, l'automatisation se mesure en deux unités — et deux seulement : <strong>les heures rendues au terrain</strong> (chaque heure administrative économisée à un technicien est une heure facturable, à 60-90 €) et <strong>les jours de DSO gagnés</strong> (du cash pur).</p>
+        <p>Tout le reste — le « gain de confort », la « modernité », le « temps réel » — est agréable mais ne se finance pas. Un repreneur expérimenté chiffre chaque chantier dans ces deux unités AVANT de le lancer, et vérifie le chiffre APRÈS. C'est aussi ce qui rend ces chantiers finançables : une banque ou un futur acheteur comprend « DSO passé de 68 à 41 jours » instantanément — c'est une ligne de plus dans le dossier qui augmente ton multiple de sortie.</p>` },
+      { type:"validation", label:"Question de validation",
+        question:"Choisis un process opérationnel d'une entreprise type Thermelec (facturation, planning, devis, commandes fournisseurs...). Cartographie-le en 5-8 étapes telles qu'elles se passent probablement aujourd'hui, indique ce que tu simplifies, ce que tu automatises, et le chiffre unique (avant/après) qui prouvera le gain." },
+      { type:"summary",
+        summary:"Automatiser dans l'ordre du cash : facturation immédiate + relances d'impayés (chez Thermelec : DSO de 68 à 41 jours = 135 K€ de trésorerie libérée), puis planning, terrain et reporting. Méthode : cartographier → simplifier → automatiser → mesurer — un chantier à la fois, jamais un outil sur un process cassé. Deux unités de mesure : heures rendues au terrain et jours de DSO.",
+        nextHint:"Troisième étage de la fusée : ce que l'IA sait faire aujourd'hui, concrètement et sans risque, dans une PME de services." }
+    ]
+  },
+
+  di3: {
+    id:"di3", moduleId:11, title:"L'IA au quotidien dans ta PME", duration:"15 min",
+    steps:[
+      { type:"concept", label:"Les cas d'usage rentables aujourd'hui",
+        body:`<p>Oublie la « transformation IA » des conférences. Dans une PME de services de 10-20 personnes, l'IA rapporte sur des tâches précises — celles qui consomment du temps qualifié pour produire du texte ou trier de l'information :</p>
+        <ul>
+          <li><strong>Devis et emails</strong> — un premier jet propre en 2 minutes à partir de quelques notes, relu et ajusté par l'humain. Le gain n'est pas que le temps : c'est aussi la réactivité (le devis qui part à J+0 se signe plus souvent que celui qui part à J+6).</li>
+          <li><strong>Comptes-rendus d'intervention</strong> — le technicien dicte 60 secondes dans son téléphone en remontant dans le camion ; l'IA structure : constat, actions, pièces, recommandations. Fini les fiches griffonnées ressaisies le vendredi.</li>
+          <li><strong>Qualification des demandes entrantes</strong> — trier les emails et messages : urgence réelle, demande de devis, question contractuelle, réclamation — et préparer un projet de réponse qu'un humain valide.</li>
+          <li><strong>Veille</strong> — appels d'offres, consultations de syndics, évolutions réglementaires du secteur, résumés en 10 lignes chaque semaine.</li>
+          <li><strong>Préparation du pilotage</strong> — synthèse du tableau de bord, questions à poser au point hebdo, premier jet des OKR trimestriels (Module 13).</li>
+        </ul>` },
+      { type:"concept", label:"La grille de sélection — et les deux règles non négociables",
+        body:`<p>Pour chaque idée d'usage, trois questions : <em>gain par occurrence × fréquence ÷ risque d'erreur</em>. Un usage quotidien à petit gain et risque nul (compte-rendu) bat un usage rare à gros gain et gros risque (réponse à un litige client).</p>
+        <p>Deux règles s'appliquent quoi qu'il arrive :</p>
+        <ul>
+          <li><strong>Humain dans la boucle</strong> pour tout ce qui part vers un client, un fournisseur ou un salarié — au minimum les 2-3 premiers mois. L'IA propose, l'humain dispose. Tu relâcheras la validation usage par usage, quand les statistiques le justifient.</li>
+          <li><strong>Prudence sur les données</strong> — pas de données clients sensibles ni de documents confidentiels dans des outils grand public non cadrés. Utilise des offres professionnelles avec engagement de confidentialité, cadre l'usage par écrit pour l'équipe, et vérifie tes obligations (RGPD) avec ton conseil habituel. Cinq minutes de cadrage évitent un incident qui coûte la confiance d'un syndic.</li>
+        </ul>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Quel usage IA faut-il éviter de déployer en premier dans une PME comme Thermelec ?",
+        options:[
+          "Les comptes-rendus d'intervention dictés par les techniciens",
+          "Les réponses automatiques aux clients envoyées sans validation humaine",
+          "La veille hebdomadaire sur les appels d'offres du secteur"
+        ],
+        correctIndex:1,
+        explanation:"Les comptes-rendus (usage interne, erreur rattrapable) et la veille (aucun destinataire externe) sont des terrains d'apprentissage parfaits. La réponse client 100 % automatique cumule tout ce qu'on évite au départ : destinataire externe, enjeu relationnel, cas particuliers imprévisibles. Une seule réponse à côté de la plaque chez ton principal syndic peut coûter plus que deux ans de gains de productivité. On y viendra peut-être — après des mois de validation humaine et des statistiques solides." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "L'IA-washing : adopter des outils « parce qu'il faut faire de l'IA », sans problème précis à résoudre ni chiffre à améliorer. L'outil cherche son usage pendant que l'abonnement tourne.",
+          "Confier des données sensibles sans cadre — le devis d'un client dans un outil grand public, le contrat d'un fournisseur dans un autre. Cadre écrit, outils pro, point RGPD fait avec ton conseil.",
+          "Croire que l'IA remplace le process : elle accélère un process clair, elle amplifie un process flou. Les leçons di1 et di2 passent AVANT celle-ci pour une raison.",
+          "Quinze expérimentations, zéro ancrage. Deux ou trois usages ancrés, mesurés et adoptés par l'équipe valent mieux que quinze démos impressionnantes.",
+          "Ne rien mesurer : chaque usage a son chiffre (minutes par compte-rendu, délai d'envoi des devis, taux de réponse à J+0). Sans chiffre, impossible de savoir quoi garder."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Ton avantage de repreneur est paradoxal : <strong>tu arrives sans habitudes</strong>. Le dirigeant en place depuis 25 ans doit désapprendre pour adopter ces outils ; toi, tu écris les nouvelles habitudes sur une page blanche — et l'équipe attend de toute façon du changement d'un nouveau patron. Cette fenêtre des 12-18 premiers mois ne se rouvrira pas : les habitudes que TU installes deviendront aussi dures à changer que les anciennes.</p>
+        <p>Et garde l'œil sur la sortie : « comptes-rendus générés en 2 minutes, devis à J+0, veille appels d'offres automatisée » — chaque usage ancré et documenté est une ligne de plus qui différencie ta boîte des concurrents artisanaux le jour de la revente. L'acheteur suivant paie pour une machine qui tourne, pas pour des promesses de modernisation.</p>` },
+      { type:"checkpoint", question:"La grille gain × fréquence ÷ risque et les deux règles (humain dans la boucle, prudence données) sont-elles claires ?",
+        helpPrompt:"Je viens de voir les cas d'usage IA rentables pour une PME de services (devis, comptes-rendus, qualification, veille, pilotage) et la grille de sélection. Peux-tu m'aider à prioriser les 3 premiers usages pour une entreprise type Thermelec et à définir le chiffre de mesure de chacun ?" },
+      { type:"summary",
+        summary:"L'IA rentable en PME cible les tâches fréquentes, à règles claires et faible risque : devis, comptes-rendus dictés, qualification des demandes, veille, préparation du pilotage. Grille de choix : gain × fréquence ÷ risque. Deux règles absolues : humain dans la boucle vers l'extérieur, et cadrage des données (outils pro, RGPD vu avec ton conseil). Deux usages ancrés valent mieux que quinze tests.",
+        nextHint:"Le Module 12 passe à l'atelier : construire toi-même tes agents IA — anatomie d'un bon agent, puis ton premier agent complet pour Thermelec, prompt inclus." }
+    ]
+  },
+
+  ia1: {
+    id:"ia1", moduleId:12, title:"Anatomie d'un agent IA utile", duration:"14 min",
+    steps:[
+      { type:"concept", label:"Assistant vs agent",
+        body:`<p>Un <strong>assistant</strong>, tu lui poses une question, il répond — c'est le chat que tu utilises déjà. Un <span class="term">agent</span>, tu lui confies une <strong>mission récurrente</strong> avec un cadre : il reçoit des informations (un devis en attente, une fiche d'intervention dictée), applique des règles écrites, et produit un résultat dans un format défini — tous les jours, de la même façon, sans qu'on lui redemande.</p>
+        <p>La différence n'est pas la technologie : c'est le <strong>cadrage</strong>. Le même moteur d'IA devient un agent fiable ou un générateur d'à-peu-près selon la qualité de sa fiche de mission. Bonne nouvelle : écrire cette fiche ne demande aucune compétence technique — ça demande exactement ce que tu sais déjà faire : décrire un process proprement (Module 11).</p>` },
+      { type:"concept", label:"Les 5 composants d'un agent",
+        body:`<p>Tout agent utile tient en cinq blocs — retiens-les, c'est la grille de l'atelier de la prochaine leçon :</p>
+        <ul>
+          <li><strong>1. La mission et le rôle</strong> — une phrase : qui il est, ce qu'il produit, pour qui. « Tu es l'assistant de relance commerciale de Thermelec ; tu rédiges les messages de relance des devis en attente. »</li>
+          <li><strong>2. Le contexte et les données</strong> — ce qu'il doit savoir (l'entreprise, l'offre, le ton maison) et ce qu'il reçoit à chaque fois (le devis, l'historique client).</li>
+          <li><strong>3. Les règles et garde-fous</strong> — ce qu'il fait toujours, ce qu'il ne fait jamais, et quand il passe la main à un humain. C'est le bloc qui fait la fiabilité.</li>
+          <li><strong>4. Le format de sortie</strong> — la structure exacte du livrable, pour qu'il soit utilisable sans retouche.</li>
+          <li><strong>5. Les exemples</strong> — un ou deux cas réels traités parfaitement. C'est le composant le plus sous-estimé : un bon exemple cale le ton et le niveau mieux que dix règles abstraites.</li>
+        </ul>` },
+      { type:"concept", label:"Les 4 agents les plus rentables pour Thermelec",
+        body:`<ul>
+          <li><strong>L'agent relance devis</strong> — reçoit chaque devis sans réponse à J+3 et J+10, rédige la relance personnalisée (référence au besoin exprimé, proposition d'appel), la met en attente de validation. Chiffre suivi : taux de transformation des devis.</li>
+          <li><strong>L'agent compte-rendu</strong> — reçoit la dictée du technicien, produit la fiche structurée (constat / actions / pièces / recommandations / suite à donner) et le paragraphe client en langage clair. Chiffre : minutes de rédaction par intervention.</li>
+          <li><strong>L'agent d'accueil</strong> — lit les demandes entrantes (email, formulaire), les classe (urgence, devis, question contrat, réclamation), extrait les informations clés et prépare un projet de réponse. Chiffre : délai de première réponse.</li>
+          <li><strong>L'agent de pilotage</strong> — reçoit les chiffres de la semaine, produit la synthèse du tableau de bord et les 3 questions à poser au point hebdo (Module 13). Chiffre : temps de préparation du point.</li>
+        </ul>
+        <p>Remarque le point commun : chacun a UN livrable, UN déclencheur, UN chiffre de succès. C'est ça, un agent bien découpé.</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Qu'est-ce qui détermine LE PLUS la qualité des résultats d'un agent ?",
+        options:[
+          "Utiliser le modèle d'IA le plus puissant du marché",
+          "La précision de sa fiche de mission : rôle clair, règles explicites, format défini, et surtout un ou deux exemples parfaits",
+          "Le connecter à un maximum de données de l'entreprise dès le départ"
+        ],
+        correctIndex:1,
+        explanation:"À modèle égal, l'écart entre un agent médiocre et un agent excellent se joue à 90 % dans la fiche de mission — et d'abord dans les exemples. Le modèle le plus puissant avec une mission floue improvise ; un modèle standard avec une mission précise et deux exemples parfaits produit un travail constant. Quant aux données : on commence au contraire avec le MINIMUM nécessaire, et on élargit quand la confiance est établie." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "L'agent-orchestre : « gère mon commerce ». Une mission trop large = des résultats imprévisibles. Un agent, un livrable, un déclencheur.",
+          "Zéro exemple dans la fiche : l'agent invente son propre ton et son propre niveau de détail — jamais les tiens.",
+          "Pas de critère de succès mesurable : sans chiffre, impossible de savoir si l'agent aide ou occupe.",
+          "Aucune règle d'escalade : le bon agent sait dire « ce cas sort de mon cadre, je le passe à Karim ». Celui qui répond à tout, tout le temps, finit par répondre n'importe quoi au pire moment.",
+          "Donner accès à tout dès le départ « pour qu'il ait le contexte ». Commence avec le strict nécessaire — tu élargiras usage par usage."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Écris chaque agent comme la <strong>fiche de poste d'un employé brillant, ultra-rapide... et parfaitement littéral</strong> : il fera exactement ce qui est écrit, y compris ce que tu as mal écrit, et il improvisera sur tout ce que tu n'as pas écrit.</p>
+        <p>Corollaire précieux : le travail de cadrage d'un agent est EXACTEMENT le travail de documentation des process que tu mènes déjà pour ton futur gérant (Module 13) et ta future revente (Module 14). Chaque fiche d'agent est une procédure d'entreprise formalisée — qui tourne toute seule ET qui reste dans la boîte le jour où tu la cèdes. Tu ne fais pas deux travaux : tu fais le même, avec deux dividendes.</p>` },
+      { type:"checkpoint", question:"Les 5 composants (mission, contexte, règles, format, exemples) et le découpage « un agent = un livrable » sont-ils clairs ?",
+        helpPrompt:"Je viens de voir l'anatomie d'un agent IA (mission, contexte/données, règles et garde-fous, format de sortie, exemples). Peux-tu me faire pratiquer en me demandant de rédiger la fiche de mission d'un agent simple, et en la critiquant bloc par bloc ?" },
+      { type:"summary",
+        summary:"Un agent = une mission récurrente cadrée par 5 blocs : rôle, contexte/données, règles et garde-fous (dont l'escalade humaine), format de sortie, exemples. La qualité vient à 90 % de la fiche de mission — surtout des exemples. Découpage sain : un agent, un livrable, un déclencheur, un chiffre de succès. Et chaque fiche d'agent est une procédure documentée qui sert aussi ton gérant et ta revente.",
+        nextHint:"Atelier pratique : on construit ensemble ton premier agent complet — l'agent de relance devis de Thermelec, fiche de mission fournie et réutilisable." }
+    ]
+  },
+
+  ia2: {
+    id:"ia2", moduleId:12, title:"Atelier : ton premier agent pour Thermelec", duration:"18 min",
+    steps:[
+      { type:"concept", label:"La méthode en 5 étapes",
+        body:`<ol>
+          <li><strong>Choisir le process</strong> — fréquent, règles claires, faible risque unitaire, chiffre de succès évident. Pour l'atelier : la relance des devis (di1 a montré l'enjeu : de 31 % à 45 % de transformation).</li>
+          <li><strong>Écrire la fiche de mission</strong> — les 5 blocs de la leçon précédente. C'est 80 % du travail.</li>
+          <li><strong>Tester sur 20 cas réels</strong> — pas 3 : vingt. Sors 20 vrais devis de l'historique, fais tourner l'agent, compare à ce que TU aurais écrit. Note chaque écart.</li>
+          <li><strong>Corriger la fiche</strong> — chaque écart devient une règle ou un exemple supplémentaire. Deux ou trois itérations suffisent généralement.</li>
+          <li><strong>Déployer avec humain dans la boucle</strong> — l'agent prépare, Karim (ou l'assistante) valide et envoie. Mesure pendant 30 jours, puis décide : élargir, ajuster, ou abandonner.</li>
+        </ol>` },
+      { type:"concept", label:"📌 La fiche de mission complète — à réutiliser",
+        body:`<p>Voici la fiche de l'agent de relance devis Thermelec. C'est un modèle : remplace les éléments spécifiques et tu as ton propre agent.</p>
+        <div style="background:var(--ink); border:1px solid var(--ink-border); border-radius:8px; padding:16px; font-family:var(--font-mono); font-size:12.5px; line-height:1.65; white-space:pre-wrap;">RÔLE : Tu es l'assistant de relance commerciale de Thermelec, entreprise de maintenance CVC pour copropriétés et PME en Essonne. Tu rédiges les messages de relance des devis restés sans réponse.
+
+CONTEXTE : Nos clients sont des syndics, gestionnaires et dirigeants de PME — occupés, sollicités, attachés à la fiabilité plus qu'au prix. Ton maison : professionnel, direct, chaleureux sans familiarité. On ne brade jamais, on facilite la décision.
+
+DONNÉES REÇUES À CHAQUE FOIS : le devis (objet, montant, date d'envoi), le nom et la fonction du contact, l'historique client (client existant ou prospect, dernier échange).
+
+RÈGLES :
+- Relance J+3 : angle « disponibilité » — proposer un appel de 10 minutes pour répondre aux questions. Jamais de pression.
+- Relance J+10 : angle « planning » — mentionner honnêtement la charge du planning des techniciens et proposer de réserver un créneau, sans urgence artificielle.
+- TOUJOURS : rappeler en une phrase le besoin exprimé par le client (jamais un message générique).
+- JAMAIS : accorder une remise, modifier le devis, promettre un délai précis — si le client le demande, transmettre à Karim.
+- ESCALADE : si le message du client exprime un mécontentement, une comparaison concurrentielle ou une négociation → ne pas répondre, transmettre à Karim avec un résumé en 2 lignes.
+
+FORMAT DE SORTIE : Objet (max 8 mots) + corps (max 110 mots) + une seule question finale claire. Signature : Karim, Thermelec.
+
+EXEMPLE (devis n°2417, remplacement pompe de circulation, 3 840 €, syndic Cabinet Perrin, J+3) :
+Objet : Votre devis pompe — Résidence des Tilleuls
+Bonjour Madame Perrin,
+Vous avez reçu mardi notre devis pour le remplacement de la pompe de circulation de la Résidence des Tilleuls (3 840 € TTC). Comme le circuit de chauffage fonctionne actuellement sur la pompe de secours, je préfère m'assurer que vous avez tous les éléments pour décider sereinement.
+Auriez-vous 10 minutes cette semaine pour que je réponde à vos questions — jeudi matin, par exemple ?
+Bien cordialement,
+Karim — Thermelec</div>
+        <p style="margin-top:12px;">Relis la fiche avec la grille de la leçon précédente : les 5 blocs y sont, l'escalade est explicite, et l'exemple cale le ton mieux que n'importe quelle consigne abstraite.</p>` },
+      { type:"numeric", label:"Exercice — le ROI de cet agent",
+        question:"Thermelec émet ~380 K€ de devis « hors contrat » par an. La relance systématique portée par l'agent fait passer la transformation de 31 % à 43 %, soit 12 points de mieux. Combien de CA annuel supplémentaire (en euros) cela représente-t-il ?",
+        placeholder:"Ex : 30000", answer:45600, tolerance:1500,
+        successMsg:"Oui : 380 000 × 12 % = 45 600 € de CA en plus par an — sans un devis de plus produit, sans un euro de publicité. Ajoute les 79 K€ de contrats récurrents (di1) et les 135 K€ de trésorerie libérée (di2) : la « digitalisation » de ta belle endormie n'est pas un concept, c'est une addition.",
+        hint:"CA supplémentaire = volume de devis × points de transformation gagnés. Calcule 380 000 × 0,12." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Déployer après 3 tests réussis. C'est sur les cas 12, 17 et 19 que sortent les surprises — le client bilingue, le devis à 28 K€, la réclamation déguisée en question. Vingt cas réels, pas trois démos.",
+          "Laisser l'agent envoyer directement dès le premier mois. La validation humaine coûte 2 minutes par message et t'évite LE message malheureux chez ton principal syndic. Tu la relâcheras avec les statistiques, pas avec l'enthousiasme.",
+          "Ne pas nommer de responsable humain : chaque agent a un propriétaire (ici Karim) qui valide, mesure et remonte les dérives. Un agent sans propriétaire dérive en silence.",
+          "Figer la fiche : le jour où l'offre, les prix ou le ton changent, la fiche change. Un agent avec une fiche périmée produit des erreurs en toute confiance.",
+          "Construire l'agent 2 avant d'avoir mesuré l'agent 1 pendant 30 jours. Un agent ancré et mesuré, PUIS le suivant — même discipline que les chantiers du Module 11."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Le vrai livrable de cet atelier n'est pas l'agent — c'est la <strong>compétence de cadrage</strong> que tu viens d'acquérir : choisir un process, l'écrire sans ambiguïté, le tester sur du réel, le mesurer. Cette compétence se réapplique à l'infini : chaque trimestre, un agent de plus, toujours par la même méthode.</p>
+        <p>Et projette-toi 24 mois plus loin : une PME de maintenance avec un CRM tenu, des relances automatisées, des comptes-rendus générés, un DSO à 41 jours et un classeur de fiches d'agents documentées — face aux concurrents qui font des devis sous Excel. C'est cette différence-là qu'un acheteur paie au-dessus du barème sectoriel, et c'est cette machine-là qu'un gérant peut piloter sans toi. La boucle du programme se referme : tout ce que tu construis ici sert les deux sorties du Module 14.</p>` },
+      { type:"validation", label:"Question de validation",
+        question:"À toi : rédige la fiche de mission complète de l'agent compte-rendu d'intervention de Thermelec (les 5 blocs : rôle, contexte/données, règles avec escalade, format de sortie, un exemple). Soumets-la au professeur pour une critique bloc par bloc." },
+      { type:"summary",
+        summary:"La méthode de l'atelier : choisir un process à règles claires, écrire la fiche de mission (5 blocs), tester sur 20 cas réels, corriger, déployer avec validation humaine et mesurer 30 jours. L'agent de relance devis de Thermelec : +45 K€/an de CA à lui seul. Le vrai livrable est la compétence de cadrage — réapplicable chaque trimestre, et chaque fiche d'agent est une procédure qui reste dans la boîte que tu vendras ou confieras.",
+        nextHint:"Dernier module du parcours : choisir ta sortie — revendre avec plus-value entre 1 et 3 ans, ou assumer le build-up. Les deux se préparent... et tu as déjà presque tout préparé." }
+    ]
+  },
+
+  so1: {
+    id:"so1", moduleId:14, title:"Revente à 1-3 ans : fabriquer ta plus-value", duration:"16 min",
+    steps:[
+      { type:"concept", label:"Les trois moteurs de ta plus-value",
+        body:`<p>Ta plus-value à la revente a trois moteurs — et tu les actionnes déjà tous les trois depuis le début du programme :</p>
+        <ul>
+          <li><strong>L'EBITDA qui monte</strong> — machine commerciale (di1), récurrent nouveau, prix revalorisés, charges optimisées (Module 10). Chaque euro d'EBITDA supplémentaire vaut 2,5 à 3,5 € de prix de vente.</li>
+          <li><strong>Le multiple qui monte</strong> — à EBITDA égal, un acheteur paie plus cher une entreprise : moins dépendante de son dirigeant (gérant en place — Module 13), plus récurrente (contrats signés), mieux documentée (comptes propres, process écrits, fiches d'agents), moins concentrée (top clients dilués), et digitalisée. Tu peux littéralement acheter à 2,7x et revendre la MÊME activité à 3,2-3,5x parce qu'elle n'est plus la même entreprise à piloter.</li>
+          <li><strong>La dette qui descend</strong> — le moteur silencieux : chaque annuité remboursée par les dividendes de la cible transforme de la dette en valeur pour toi, sans que tu fasses rien de plus. C'est l'essence du LBO.</li>
+        </ul>` },
+      { type:"numeric", label:"📌 Fil rouge — Thermelec, 3 ans plus tard",
+        question:"Trois ans après le rachat : l'EBITDA est passé de 310 à 400 K€ (machine commerciale, récurrent, prix), et le dossier — gérant en place, reporting propre, digitalisation — justifie un multiple de 3,2x auprès des acheteurs. Quel prix de vente (en euros) cela donne-t-il ?",
+        placeholder:"Ex : 1000000", answer:1280000, tolerance:20000,
+        successMsg:"Oui : 400 000 × 3,2 = 1 280 000 €. Déduis la dette résiduelle (~274 K€ de dette bancaire + ~115 K€ de crédit-vendeur ≈ 390 K€) : il reste ~890 K€ bruts avant impôts et frais — pour 30 K€ d'apport initial, trois ans plus tôt. Les trois moteurs ont joué ensemble : +90 K€ d'EBITDA, +0,46x de multiple, −460 K€ de dette.",
+        hint:"Prix = EBITDA × multiple. Calcule 400 000 × 3,2." },
+      { type:"concept", label:"Vendre se prépare le jour de l'achat",
+        body:`<p>Le mantra des repreneurs en série : <em>« gère chaque jour comme si tu vendais demain »</em>. Concrètement :</p>
+        <ul>
+          <li><strong>Une data room permanente</strong> — dès le closing, un dossier tenu à jour : statuts, contrats clients et fournisseurs signés, comptes, litiges, process. Le jour venu, ta due diligence côté vendeur est prête — et rien ne rassure plus un acheteur qu'un dossier impeccable au premier rendez-vous.</li>
+          <li><strong>Des chiffres propres en continu</strong> — EBITDA sans dépenses personnelles à retraiter, conventions claires entre holding et fille. L'acheteur paie un supplément de confiance pour des comptes qui ne demandent aucune gymnastique.</li>
+          <li><strong>Un process de vente, pas un acheteur</strong> — le moment venu : conseils à bord (ton avocat, éventuellement un intermédiaire), plusieurs acheteurs approchés en parallèle, calendrier tenu. Tu connais la leçon côté acheteur (Module 2) : celui qui n'a qu'une option négocie mal. Elle vaut dans les deux sens.</li>
+          <li><strong>La fiscalité de cession anticipée</strong> — vendre les titres depuis ta holding ouvre des régimes spécifiques (traitement favorable de la plus-value sous conditions, stratégies de réinvestissement). Les montants en jeu justifient largement une session avec ton expert-comptable et un avocat fiscaliste 12 À 18 MOIS AVANT la vente envisagée — après la signature, il est trop tard pour optimiser quoi que ce soit.</li>
+        </ul>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Qu'est-ce qui détruit LE PLUS un multiple de revente, à EBITDA égal ?",
+        options:[
+          "Un site web vieillissant et une image datée",
+          "La dépendance au dirigeant : si tout repose sur toi (clients, chiffrages, décisions), l'acheteur achète un emploi risqué, pas une entreprise — exactement la décote que TU as exploitée à l'achat",
+          "Une concurrence locale active sur les prix"
+        ],
+        correctIndex:1,
+        explanation:"C'est le miroir parfait de la leçon l4 : tu as ACHETÉ avec décote une boîte dépendante de Bernard — si tu revends une boîte dépendante de toi, tu REVENDS la même décote. Toute la valeur du travail des Modules 9 à 13 (systématiser, documenter, déléguer, gérant) tient dans cette phrase : chaque heure passée à te rendre inutile est une heure payée deux fois — en tranquillité pendant, en multiple à la sortie." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Vendre sur une année creuse ou en pente : l'acheteur regarde 3 exercices (tu le sais mieux que personne). Si l'année en cours faiblit, répare d'abord, vends ensuite.",
+          "Négocier avec un seul acheteur « parce qu'il est venu à moi ». Sans alternative, tu subiras son calendrier, son prix et sa GAP. Crée un process, même discret.",
+          "Gonfler l'EBITDA en essorant la boîte (couper l'entretien, presser l'équipe, reporter les investissements) l'année avant la vente. L'acheteur fera SA due diligence avec TON manuel — et la GAP que tu signeras comme cédant te rattrapera.",
+          "Annoncer trop tôt en interne : même mécanique qu'à l'achat (Module 9) — l'incertitude fait fuir les meilleurs. Communication maîtrisée, au bon moment, avec un récit préparé.",
+          "Découvrir la fiscalité de cession après la LOI de l'acheteur. Les stratégies d'optimisation se construisent AVANT d'engager la vente — 12-18 mois avant, avec EC et fiscaliste."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Voici l'avantage que presque aucun cédant n'a et que TU auras : <strong>tu connais les deux côtés de la table.</strong></p>
+        <p>Tout ce que ce programme t'a appris côté acheteur se retourne en checklist côté vendeur : tu sais quelles questions l'acheteur posera au premier rendez-vous (tu les as posées à Bernard), ce que sa DD cherchera (tu l'as menée), quelles clauses de GAP il exigera (tu les as exigées), comment il lira ton EBITDA normalisé (tu as normalisé celui de Bernard). Prépare chaque réponse avant qu'il pose la question. Un vendeur qui a été acheteur négocie deux crans au-dessus — c'est peut-être le rendement le plus élevé de toute ta formation.</p>` },
+      { type:"validation", label:"Question de validation",
+        question:"Construis le plan « prêt à vendre » de Thermelec sur les 18 mois précédant une cession visée : liste 8 à 10 actions concrètes classées par moteur (EBITDA ↑ / multiple ↑ / dette ↓ / préparation du process), avec pour chacune l'effet attendu sur le prix ou la négociation." },
+      { type:"summary",
+        summary:"Ta plus-value a trois moteurs simultanés : EBITDA en hausse, multiple en hausse (dépendance réduite, récurrence, documentation — tu peux acheter à 2,7x et revendre à 3,2x), dette en baisse. Chez Thermelec : ~890 K€ bruts en 3 ans pour 30 K€ d'apport. Vendre se prépare dès l'achat (data room permanente, chiffres propres, process multi-acheteurs, fiscalité anticipée 12-18 mois avant) — et ton expérience d'acheteur est ta meilleure arme de vendeur.",
+        nextHint:"L'autre voie : ne pas vendre — extraire, réinvestir, et construire un portefeuille. Le build-up, et la grille pour choisir entre les deux." }
+    ]
+  },
+
+  so2: {
+    id:"so2", moduleId:14, title:"Build-up : construire ton portefeuille", duration:"17 min",
+    steps:[
+      { type:"concept", label:"Ce que ta holding a accumulé sans bruit",
+        body:`<p>Pendant que Thermelec tournait, ta holding a construit quatre actifs :</p>
+        <ul>
+          <li><strong>Du cash libre</strong> — le dividende remonté moins le service de la dette, qui grossit chaque année avec l'EBITDA.</li>
+          <li><strong>De la capacité d'emprunt reconstituée</strong> — chaque annuité remboursée rouvre de la capacité ; et une holding qui a servi sa dette sans incident pendant 2-3 ans emprunte plus vite, plus et mieux.</li>
+          <li><strong>Un track record</strong> — pour les banques ET les cédants : « j'ai repris Thermelec il y a 3 ans, l'équipe est restée, l'EBITDA a pris 30 % » est l'argument que le repreneur du Module 2 n'avait pas. Ton deuxième sourcing sera plus court que le premier.</li>
+          <li><strong>Un playbook et des hommes</strong> — la méthode des 100 jours éprouvée, les fiches d'agents, le format de tableau de bord, un gérant formé (Karim) qui peut former le suivant. Le build-up, c'est rejouer un match que tu as déjà gagné.</li>
+        </ul>` },
+      { type:"numeric", label:"Exercice — ton carburant annuel",
+        question:"Année 3 : Thermelec remonte 210 K€ de dividende (l'EBITDA a monté), le service de dette reste à 142 K€. Quel flux libre annuel (en euros) ta holding accumule-t-elle pour la cible n°2 ?",
+        placeholder:"Ex : 50000", answer:68000, tolerance:2000,
+        successMsg:"Oui : 210 − 142 = 68 K€/an — contre ~43 K€ l'année 2. En 2-3 ans, la holding a mis de côté 120-180 K€ : de quoi constituer l'apport de la cible n°2 SANS toucher à ton épargne personnelle. C'est exactement la promesse du build-up : la première entreprise finance la deuxième.",
+        hint:"Flux libre = dividende remonté − service de la dette. Calcule 210 000 − 142 000." },
+      { type:"concept", label:"La cible n°2 : synergie réelle ou dispersion",
+        body:`<p>Deux logiques saines pour la cible n°2 — et une toxique :</p>
+        <ul>
+          <li><strong>La consolidation</strong> — même métier, zone voisine : un concurrent CVC dans le 77 ou le 94. Synergies évidentes (achats groupés, planning mutualisé, astreintes partagées, marque), intégration que tu sais faire les yeux fermés. C'est la voie des build-ups les plus réussis... et les plus ennuyeux.</li>
+          <li><strong>L'adjacence</strong> — métier complémentaire, MÊMES clients : plomberie, électricité ou désenfumage vendus aux mêmes syndics et gestionnaires. La synergie est commerciale : chaque client de l'une devient prospect de l'autre, avec un coût d'acquisition nul.</li>
+          <li><strong>La diversification opportuniste</strong> — « une belle affaire » dans un métier que tu ne connais pas, pour des clients que tu n'as pas : tu cumules les risques de ta PREMIÈRE acquisition sans aucun de tes acquis. Ton playbook ne vaut rien là-bas. À fuir, même si le multiple fait envie — surtout si le multiple fait envie (leçon l4).</li>
+        </ul>
+        <p>Le financement rejoue le Module 7-8 en plus facile : apport de la holding (le cash accumulé) + dette nouvelle + crédit-vendeur — en restant vigilant sur un point que ton avocat cadrera : éviter que les difficultés d'une filiale puissent contaminer l'autre (garanties croisées à limiter strictement).</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Quelle condition doit être VRAIE avant de signer une LOI sur la cible n°2 ?",
+        options:[
+          "Avoir accumulé au moins 500 K€ de cash dans la holding",
+          "Thermelec tourne de façon autonome : gérant en place depuis plusieurs mois, reporting fiable, alertes qui fonctionnent — sinon tu n'ajoutes pas une entreprise, tu ajoutes un deuxième problème à un premier non résolu",
+          "Les taux d'intérêt sont redescendus sous leur niveau du premier deal"
+        ],
+        correctIndex:1,
+        explanation:"Le cash et les taux comptent, mais la condition bloquante est organisationnelle : les 100 jours de la cible n°2 vont absorber TOUT ton temps disponible — exactement comme la première fois. Si Thermelec exige encore ta présence, l'une des deux boîtes (ou les deux) va souffrir. Le test des deux semaines injoignable (Module 13) est ton feu vert : tant qu'il n'est pas passé, ton pipeline peut chauffer, mais ta LOI attend." },
+      { type:"concept", label:"Revente ou build-up : la grille de décision",
+        body:`<p>Il n'y a pas de bonne réponse universelle — il y a TA réponse, sur quatre critères :</p>
+        <ul>
+          <li><strong>Ton objectif patrimonial</strong> — besoin d'un capital maintenant (projet, sécurité familiale) → la revente le cristallise. Préférence pour des revenus croissants et un actif qui grossit → le build-up compose.</li>
+          <li><strong>Ton appétence réelle</strong> — le build-up, c'est manager des gérants, des banquiers et des intégrations, plus du terrain. Certains y trouvent leur poste rêvé ; d'autres découvrent qu'ils aimaient l'opérationnel. Sois honnête sur toi — c'est 10 ans de ta vie.</li>
+          <li><strong>Le marché</strong> — multiples hauts dans ton secteur = fenêtre de vente ; multiples bas = fenêtre d'achat. Le même cycle qui t'a permis d'acheter sous 3x te dira quand vendre au-dessus.</li>
+          <li><strong>La solidité de ton premier étage</strong> — un gérant excellent et un cash-flow prévisible rendent le build-up naturel ; un étage fragile rend la revente sage.</li>
+        </ul>
+        <p>Et note l'option hybride, fréquente chez les repreneurs en série : <strong>vendre la première</strong> (encaisser la plus-value, solder l'apprentissage) <strong>et racheter plus gros</strong> avec un apport devenu confortable — le programme entier, rejoué un cran au-dessus. Décider n'est pas s'enfermer.</p>` },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Acheter la n°2 trop tôt — le piège n°1 du build-up. L'euphorie post-premier-succès a tué plus de portefeuilles que les crises. Le feu vert est organisationnel, pas émotionnel.",
+          "La dispersion sectorielle : trois boîtes dans trois métiers = trois apprentissages, zéro synergie, un dirigeant épuisé. La consolidation ennuyeuse bat la collection excitante.",
+          "Sous-estimer le passage de 1 à 2 : ce n'est pas 2 fois le travail de 1, c'est un NOUVEAU métier (allocation de ton temps, arbitrages entre filiales, deux gérants à animer). Prévois-le comme tel.",
+          "Les garanties croisées entre filiales acceptées sans limite « pour faciliter le crédit » : le jour où une filiale tousse, tout le groupe s'enrhume. Cloisonne, avec ton avocat.",
+          "Délaisser Thermelec pendant la chasse : le cash-flow de la n°1 EST ton financement. Le rythme de pilotage du Module 13 ne se suspend jamais — surtout pas pendant une acquisition."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Les meilleurs build-ups sont <strong>ennuyeux</strong> : même thèse, même type de cible, même playbook d'intégration, exécuté patiemment, une acquisition tous les 18-24 mois. Les holdings qui durent ressemblent à des artisans qui répètent un geste maîtrisé — pas à des chasseurs de trophées.</p>
+        <p>Ton vrai actif, au terme de ce programme, n'est donc ni Thermelec ni même le cash de ta holding : c'est <strong>ton playbook</strong> — la thèse écrite, l'entonnoir de sourcing, la grille de DD, les curseurs de GAP, le montage type, les 100 jours, le format de pilotage, les fiches d'agents. Chaque page que tu as documentée est réutilisable à l'infini, et elle prend de la valeur à chaque tour de boucle. La formation est finie ; le playbook, lui, ne fait que commencer. Retour au Module 2 : ta thèse t'attend.</p>` },
+      { type:"validation", label:"Question de validation 1/2",
+        question:"Pour TON projet, à horizon 3 ans après la première acquisition : revente, build-up, ou hybride ? Argumente avec la grille des 4 critères (patrimoine, appétence, marché, solidité du premier étage) — et dis ce qui pourrait te faire changer d'avis en cours de route." },
+      { type:"validation", label:"Question de validation 2/2",
+        question:"Dernière question du programme. Déroule ta feuille de route complète des 36 prochains mois, du sourcing de la cible n°1 jusqu'à ta décision de sortie : les 12-15 jalons clés, dans l'ordre, avec pour chacun le module du programme qui s'y rapporte. C'est TON plan — le professeur le challengera point par point." },
+      { type:"summary",
+        summary:"Le build-up s'appuie sur ce que la holding accumule : cash libre (~68 K€/an en année 3), capacité d'emprunt, track record et playbook. Cible n°2 : consolidation ou adjacence — jamais la diversification opportuniste — et seulement quand la n°1 tourne sans toi. Revente ou build-up se décide sur 4 critères (patrimoine, appétence, marché, solidité), avec l'option hybride en embuscade. Ton vrai actif final : le playbook documenté que ce programme t'a fait construire.",
+        nextHint:"Le parcours est complet : 14 modules, du premier courrier au portefeuille. La suite se joue dans le monde réel — la Salle d'entraînement, l'Analyseur et le professeur restent à ta disposition à chaque étape." }
     ]
   },
 
