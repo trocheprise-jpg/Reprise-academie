@@ -321,6 +321,10 @@
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
       Prof IA
     </button>
+    <button class="nav-item" id="nav-training" onclick="goTo('training')">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3.2"/><path d="M2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5"/><circle cx="17.5" cy="8.5" r="2.4"/><path d="M15.5 14.8c2.8.2 6 1.7 6 5.2"/></svg>
+      Entraînement
+    </button>
     <button class="nav-item" id="nav-agent" onclick="goTo('agent')">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       Agent
@@ -359,6 +363,10 @@
     <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
     Prof
   </button>
+  <button id="bnav-training" onclick="goTo('training')">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3.2"/><path d="M2.5 20c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5"/><circle cx="17.5" cy="8.5" r="2.4"/><path d="M15.5 14.8c2.8.2 6 1.7 6 5.2"/></svg>
+    Entraîn.
+  </button>
   <button id="bnav-agent" onclick="goTo('agent')">
     <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
     Agent
@@ -378,19 +386,19 @@ const PHASES = [
 ];
 
 const MODULES = [
-  { id:1, title:"Les fondamentaux du rachat", desc:"Le vocabulaire clé, le processus global, et pourquoi viser une « belle endormie ».", built:true, lessonIds:["l1","l2","l3"] },
-  { id:2, title:"Définir sa thèse, sourcer & premier contact", desc:"Tes critères précis, où trouver les cibles en IDF, et comment aborder le dirigeant.", built:false, lessonIds:[] },
+  { id:1, title:"Les fondamentaux du rachat", desc:"Le vocabulaire clé, le processus global, et pourquoi viser une « belle endormie ».", built:true, lessonIds:["l1","l2","l3","l4"] },
+  { id:2, title:"Définir sa thèse, sourcer & premier contact", desc:"Ta thèse écrite façon search fund, les canaux visibles et cachés en IDF, ton pipeline chiffré, et le premier rendez-vous cédant.", built:true, lessonIds:["s1","s2","s3","s4"] },
   { id:3, title:"Lire les comptes & la vraie rentabilité", desc:"Compte de résultat, bilan, retraitements, signaux d'alerte — savoir lire ce qu'on va acheter.", built:true, lessonIds:["c1","c2","c3","c4"] },
   { id:4, title:"Valoriser l'entreprise", desc:"Multiples, ANR, DCF — construire et défendre ton prix, avec les vrais barèmes 2026.", built:true, lessonIds:["v1","v2","v3","v4"] },
   { id:5, title:"La Due Diligence : ne pas se faire avoir", desc:"Financière, juridique, sociale, commerciale — débusquer les vices cachés, et savoir renoncer.", built:true, lessonIds:["dd1","dd2","dd3","dd4"] },
-  { id:6, title:"Structurer l'offre & négocier", desc:"Négocier le montage avec le vendeur (scripts, objections) — LOI et GAP à venir.", built:true, lessonIds:["n1"] },
+  { id:6, title:"Structurer l'offre & négocier", desc:"Négocier le montage avec le vendeur (scripts, objections), structurer ta lettre d'intention, et te protéger des vices cachés avec la GAP.", built:true, lessonIds:["n1","n2","n3"] },
   { id:7, title:"Financer sans mobiliser sa trésorerie", desc:"Crédit-vendeur, dette bancaire, Bpifrance, prêt d'honneur — comment rester sous 30K€ d'apport.", built:true, lessonIds:["f1","f2","f3","f4"] },
-  { id:8, title:"La holding d'acquisition", desc:"Pourquoi structurer via une holding, mécanique du LBO, intégration fiscale.", built:false, lessonIds:[] },
-  { id:9, title:"Le closing & les 100 premiers jours", desc:"Signature, transition, sécuriser équipes et clients.", built:false, lessonIds:[] },
+  { id:8, title:"La holding d'acquisition", desc:"Pourquoi structurer via une holding, mécanique du LBO, DSCR, et ton montage complet à 30 K€ d'apport.", built:true, lessonIds:["h1","h2"] },
+  { id:9, title:"Le closing & les 100 premiers jours", desc:"Signature, transition, sécuriser équipes et clients — puis la boucle des 100 jours : sécuriser, diagnostiquer, quick wins, levier.", built:true, lessonIds:["cl1","cl2"] },
   { id:10, title:"Le système Cash-Flow", desc:"Les 5 phases pour révéler le cash déjà présent dans l'entreprise, sans dépendre de la croissance.", built:true, lessonIds:["cf1","cf2","cf3","cf4"] },
   { id:11, title:"Digitaliser, automatiser & IA", desc:"CRM, prospection structurée, et agents IA pour booster la croissance et réduire les charges.", built:false, lessonIds:[] },
   { id:12, title:"Créer tes propres agents IA", desc:"Atelier pratique : construire, tester et déployer de vrais agents IA pour Belacom.", built:false, lessonIds:[] },
-  { id:13, title:"Mettre en place un gérant", desc:"Profil, rémunération, rythme de suivi — pour ton objectif de développement.", built:false, lessonIds:[] },
+  { id:13, title:"Mettre en place un gérant", desc:"Quand et qui, rémunération indexée sur la performance, rythme de pilotage — la clé de ta stratégie de build-up.", built:true, lessonIds:["g1","g2"] },
   { id:14, title:"Choisir sa sortie : revente ou build-up", desc:"Comparer céder à 1-3 ans vs. construire un portefeuille d'entreprises.", built:false, lessonIds:[] }
 ];
 
@@ -522,6 +530,263 @@ const LESSONS = {
       { type:"summary",
         summary:"Un rachat suit 6 étapes, et le vocabulaire (EBITDA, multiple, holding, crédit-vendeur, DD, GAP) sert de langue commune à tout le processus. Une « belle endormie » n'est pas une affaire médiocre : c'est un choix stratégique qui sécurise ton financement et t'offre un levier de valeur clair et peu risqué.",
         nextHint:"Le Module 2 abordera comment transformer ces critères en thèse d'acquisition précise, et où sourcer réellement ces cibles en Île-de-France." }
+    ]
+  },
+
+  l4: {
+    id:"l4", moduleId:1, title:"Réalisme : pourquoi ce prix est-il bas ?", duration:"15 min",
+    steps:[
+      { type:"concept", label:"Le triangle que tout le monde cherche",
+        body:`<p>Sois lucide dès maintenant sur une chose : <strong>belle endormie rentable</strong> (EBITDA &gt; 15 %, revenus récurrents) + <strong>multiple inférieur à 3x</strong> + <strong>apport limité à 30 K€</strong> — les trois ensemble, c'est le deal que tout le marché cherche.</p>
+        <p>Il existe. Mais il n'existe presque que dans des situations précises, et ton travail de repreneur consiste à savoir les reconnaître — et surtout à comprendre <strong>pourquoi</strong> le prix est bas avant de t'en réjouir.</p>
+        <p>Retiens cette règle simple : <strong>un prix bas sans raison identifiée n'est pas une bonne affaire, c'est un signal d'alerte.</strong> Le marché des PME est imparfait, mais il n'est pas stupide.</p>` },
+      { type:"concept", label:"Les 4 bonnes raisons d'une décote (et les mauvaises)",
+        body:`<p>Les décotes <strong>saines</strong> — celles que tu cherches :</p>
+        <ul>
+          <li><strong>Départ à la retraite sans successeur</strong> — le gisement n°1 en France : des dizaines de milliers de dirigeants de PME partent à la retraite chaque année sans repreneur familial. Le cédant privilégie souvent la pérennité de sa boîte et de ses équipes sur les 10 derniers pourcents de prix.</li>
+          <li><strong>Dépendance au dirigeant</strong> — la boîte vaut moins parce qu'elle repose sur lui. C'est une décote justifiée... et c'est TON principal risque post-rachat. Elle se paie en travail de transition, pas seulement en euros.</li>
+          <li><strong>Activité « pas sexy »</strong> — maintenance, nettoyage, contrôle, négoce technique : peu d'acheteurs se battent pour ces boîtes, alors que leurs cash-flows sont souvent les plus stables. C'est toute la philosophie des « boring businesses » popularisée par des investisseurs comme Codie Sanchez : l'ennui se paie moins cher que le rêve, à cash-flow égal.</li>
+          <li><strong>Vente discrète et contrainte de calendrier</strong> — santé, mésentente d'associés, divorce : le cédant veut vendre vite et sans publicité. Prix plus bas contre discrétion et exécution rapide.</li>
+        </ul>
+        <p>Les décotes <strong>toxiques</strong> — celles qui expliquent un prix bas pour de mauvaises raisons : CA en érosion masquée par une bonne dernière année, litige en cours, client majeur sur le départ, redressement fiscal qui couve, matériel en fin de vie non provisionné. Même mécanique de prix, résultat opposé.</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Tu repères une annonce à 2,1x l'EBITDA dans un secteur où la médiane tourne autour de 4x. Quelle est ta PREMIÈRE réaction de repreneur entraîné ?",
+        options:[
+          "Foncer : à ce prix, même avec des défauts, l'affaire est bonne",
+          "Chercher activement la raison de la décote avant toute chose — et ne poursuivre que si c'est une décote « saine » que je sais gérer",
+          "Proposer encore moins, puisque le vendeur est manifestement aux abois"
+        ],
+        correctIndex:1,
+        explanation:"Un écart de presque 2x avec le marché n'est jamais gratuit. Ta première mission n'est pas de négocier, c'est de <b>diagnostiquer</b> : pourquoi ce prix ? Si la réponse est « retraite sans successeur, boîte peu digitalisée, dépendance au dirigeant », c'est exactement ta cible — la décote est saine et tu sais la travailler. Si tu ne trouves pas la raison, c'est que tu ne l'as pas encore trouvée — pas qu'elle n'existe pas." },
+      { type:"concept", label:"Ce que tu peux prendre à Tapie — et ce que tu dois lui laisser",
+        body:`<p>Bernard Tapie a bâti sa réputation en rachetant des entreprises pour une bouchée de pain — parfois le franc symbolique. Beaucoup de repreneurs débutants rêvent de reproduire ça. Il faut trier.</p>
+        <p><strong>Ce qui est transposable à ton projet :</strong></p>
+        <ul>
+          <li><strong>L'audace du montage</strong> — financer un rachat avec très peu d'argent personnel, en combinant crédit-vendeur, dette et la capacité de la cible elle-même. C'est exactement ta logique de LBO (Module 8).</li>
+          <li><strong>La vitesse d'exécution</strong> — quand un dossier est bon, celui qui avance vite et proprement rafle la mise face aux acheteurs qui tergiversent.</li>
+          <li><strong>La négociation sur les faits</strong> — chiffres en main, sans se laisser impressionner par le prix affiché ni par le statut du vendeur.</li>
+        </ul>
+        <p><strong>Ce que tu dois lui laisser :</strong> le franc symbolique s'appliquait à des entreprises <em>en grande difficulté</em>, où l'acheteur reprenait surtout des dettes et des problèmes. Une belle endormie <em>rentable</em> avec des revenus récurrents ne se vendra jamais à ce prix — et un cédant en bonne santé financière n'a aucune raison de brader. Vise une décote justifiée (2 à 3x au lieu de 4-5x), pas un miracle.</p>` },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Devant un prix attractif, un repreneur expérimenté se pose toujours la même double question, presque paranoïaque :</p>
+        <p><strong>« Qu'est-ce que je vois que le marché ne voit pas — ou qu'est-ce que le vendeur sait que je ne sais pas encore ? »</strong></p>
+        <p>Il n'y a que deux réponses possibles, et il faut savoir laquelle est la tienne. Soit tu as un vrai avantage (tu connais le secteur, tu as vu le potentiel digital que les autres négligent, tu es le seul acheteur crédible qui s'est présenté) — soit il y a une information qui te manque. Les fonds de recherche (« search funds »), qui font ça de manière quasi industrielle depuis des décennies, ont une discipline stricte là-dessus : chaque décote doit être <em>expliquée et documentée</em> avant d'aller plus loin. Pas d'explication écrite noir sur blanc = pas de LOI. Adopte la même règle.</p>` },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Confondre « pas cher » et « bonne affaire ». Le prix n'est bon que rapporté à la qualité du cash-flow et aux risques réels — un multiple de 2x sur un cash-flow qui s'évapore est infiniment plus cher qu'un 3x solide.",
+          "Passer 18 mois à chercher le deal parfait qui coche 100 % des cases au prix rêvé — et laisser filer trois bonnes affaires à 90 %. Le réalisme, c'est aussi savoir qu'un très bon deal imparfait bat un deal parfait imaginaire.",
+          "Se raconter que « le vendeur ne connaît pas la valeur de sa boîte ». Ça arrive — mais c'est l'hypothèse la plus dangereuse à faire par défaut, parce qu'elle t'arrange.",
+          "Oublier que la dépendance au dirigeant, principale source de décote sur tes cibles, ne disparaît pas à la signature : elle te tombe dessus. Le prix bas d'aujourd'hui se paie en heures de transition demain — prévois-les."
+        ] },
+      { type:"validation", label:"Question de validation 1/2",
+        question:"Une entreprise de maintenance affiche un EBITDA normalisé de 250 K€ et se vend 550 K€ (2,2x). Liste au moins 3 hypothèses qui pourraient expliquer ce prix — et pour chacune, dis si elle ferait de ce dossier une cible à creuser ou à fuir." },
+      { type:"validation", label:"Question de validation 2/2",
+        question:"Avec tes propres mots : pourquoi la stratégie « racheter au franc symbolique comme Tapie » est-elle incompatible avec ta thèse de la belle endormie rentable — et qu'est-ce que tu gardes malgré tout de cette approche ?" },
+      { type:"summary",
+        summary:"Un prix bas a toujours une raison. Ton métier de repreneur commence par la diagnostiquer : retraite sans successeur, dépendance au dirigeant, activité peu séduisante ou vente discrète sont des décotes saines que tu sais travailler ; tout le reste exige une enquête. Décote inexpliquée = danger, pas opportunité.",
+        nextHint:"Le Module 2 transforme ta cible idéale en machine à trouver : thèse écrite, canaux de sourcing en Île-de-France, pipeline chiffré et premier rendez-vous cédant." }
+    ]
+  },
+
+  s1: {
+    id:"s1", moduleId:2, title:"Ta thèse d'acquisition, noire sur blanc", duration:"14 min",
+    steps:[
+      { type:"concept", label:"Pourquoi écrire une thèse (la leçon des search funds)",
+        body:`<p>Les repreneurs les plus systématiques au monde sont les <span class="term">search funds</span> : des repreneurs financés par des investisseurs pour chercher UNE entreprise à racheter, à plein temps, pendant 18 à 30 mois. Ce modèle, étudié depuis des décennies par Stanford, a une discipline fondatrice :</p>
+        <p><strong>Avant de chercher, on écrit sa thèse d'acquisition — une page, pas plus — et on s'y tient.</strong></p>
+        <p>Pourquoi ? Parce que le sourcing va te mettre sous les yeux des dizaines de dossiers séduisants qui ne correspondent PAS à ta stratégie. Sans thèse écrite, tu vas dériver : un jour une boîte de e-commerce en croissance, le lendemain un restaurant « à fort potentiel ». La thèse sert d'abord à dire <strong>non vite</strong> — et à concentrer ton temps sur les 5 % de dossiers qui méritent une vraie analyse.</p>` },
+      { type:"concept", label:"Ta thèse, structurée",
+        body:`<p>Ta thèse tient en 5 blocs. Voici la tienne, déjà largement définie — à toi de la finaliser noir sur blanc :</p>
+        <ul>
+          <li><strong>Quoi</strong> : PME de services B2B ou technique à revenus récurrents (maintenance, contrats d'entretien, abonnements, prestations régulières), rentable et stable — une belle endormie, pas un redressement.</li>
+          <li><strong>Taille</strong> : CA 500 K€ – 3 M€, EBITDA normalisé &gt; 15 % du CA — et idéalement &gt; 120 K€ en valeur absolue, pour que le montage bancaire tienne (une dette se rembourse en euros, pas en pourcentages).</li>
+          <li><strong>Où</strong> : Île-de-France, à distance raisonnable de chez toi — tu vas y passer tes journées les 6 premiers mois.</li>
+          <li><strong>Situation du cédant</strong> : départ retraite sans successeur en priorité — c'est là que se trouvent tes multiples sous 3x.</li>
+          <li><strong>Exclusions fermes</strong> : CA en érosion sur 3 ans, top 3 clients &gt; 40 % du CA, litiges significatifs en cours, dépendance à une compétence technique que tu ne pourras ni garder ni remplacer, secteur en déclin structurel.</li>
+        </ul>
+        <p>Une thèse n'interdit pas les exceptions — elle t'oblige à les <em>justifier par écrit</em> au lieu de les subir par enthousiasme.</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Pourquoi fixer un EBITDA minimum en valeur absolue (ex : 120 K€) en plus du critère de marge (> 15 %) ?",
+        options:[
+          "Parce qu'en dessous, l'entreprise n'est légalement pas cessible",
+          "Parce que la dette d'acquisition se rembourse en euros : sous ~100-120 K€ d'EBITDA, même une très belle marge laisse trop peu de cash pour servir une dette ET te rémunérer ET absorber un imprévu",
+          "Parce que les banques n'ont pas le droit de prêter en dessous de ce seuil"
+        ],
+        correctIndex:1,
+        explanation:"Une boîte à 550 K€ de CA et 17 % de marge dégage ~95 K€ d'EBITDA. Retire l'annuité de dette, ta rémunération, un imprévu — il ne reste rien, et la moindre mauvaise année te met en défaut. La marge mesure la qualité ; la valeur absolue mesure la capacité à porter un montage. Il te faut les deux." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "La thèse « open bar » : « toute belle PME rentable en IDF ». Trop large = tu ne deviens expert de rien, tes courriers d'approche sonnent génériques, et tu ne sais pas comparer les dossiers entre eux.",
+          "La thèse trop étroite : « maintenance CVC pour copropriétés, uniquement dans le 91, EBITDA 18-20 % ». Il y a peut-être 4 cibles qui existent. Vise un vivier d'au moins 200-400 entreprises identifiables — sinon élargis un cran.",
+          "Changer de thèse à chaque dossier séduisant croisé. Si tu veux la modifier, fais-le à froid, une fois par trimestre, jamais à chaud devant une annonce.",
+          "Garder sa thèse dans sa tête. Non écrite, elle ne filtre rien — elle se plie à ton envie du moment."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté utilise sa thèse comme un outil <strong>commercial</strong>, pas seulement comme un filtre.</p>
+        <p>Face à un expert-comptable, un notaire ou un cédant, dire « je cherche une PME de services techniques à contrats récurrents, 1 à 2 M€ de CA, dont le dirigeant part à la retraite, en Essonne ou dans le sud de l'IDF » te rend <em>mémorable et crédible</em>. Dire « je cherche une boîte rentable à racheter » te rend invisible — tu ressembles aux cinquante curieux qu'ils croisent chaque année et qui n'achèteront jamais rien.</p>
+        <p>La précision de ta thèse est le premier signal, pour tout ton écosystème, que tu es un acheteur sérieux. Et les intermédiaires réservent leurs meilleurs dossiers aux acheteurs sérieux.</p>` },
+      { type:"checkpoint", question:"Est-ce que la logique « thèse écrite = filtre + outil commercial » est claire ?",
+        helpPrompt:"Je viens de voir la notion de thèse d'acquisition (5 blocs : quoi, taille, où, situation du cédant, exclusions). Peux-tu m'aider à rédiger la mienne en une page, en me posant les bonnes questions une par une ?" },
+      { type:"summary",
+        summary:"Une thèse d'acquisition écrite — quoi, taille, zone, situation du cédant, exclusions — sert d'abord à dire non vite, ensuite à te rendre crédible et mémorable auprès de tout l'écosystème. C'est la discipline fondatrice des search funds, et elle vaut autant pour un repreneur individuel.",
+        nextHint:"Maintenant que tu sais QUOI chercher : OÙ chercher en Île-de-France — le marché visible, et surtout le marché caché." }
+    ]
+  },
+
+  s2: {
+    id:"s2", moduleId:2, title:"Où chasser en Île-de-France", duration:"15 min",
+    steps:[
+      { type:"concept", label:"Le marché visible : les annonces",
+        body:`<p>Premier terrain de chasse, le <strong>marché visible</strong> — les entreprises officiellement à vendre :</p>
+        <ul>
+          <li><strong>Les plateformes d'annonces</strong> : Fusacq, Transentreprise (réseau des CCI/CMA), la bourse du CRA (Cédants et Repreneurs d'Affaires — association de référence, avec antennes en IDF), les rubriques cession de Bpifrance. Crée des alertes sur tes critères et consulte-les chaque semaine.</li>
+          <li><strong>Les intermédiaires</strong> : cabinets de cession spécialisés PME, qui portent des mandats de vente. Fais-toi connaître d'eux avec ta thèse — mais garde en tête qu'ils travaillent pour le vendeur, et que leurs dossiers sont vus par beaucoup d'acheteurs.</li>
+          <li><strong>Le CRA en tant que réseau</strong> : au-delà des annonces, leurs réunions et formations te mettent en contact avec des cédants ET des repreneurs passés par là — retour d'expérience inestimable.</li>
+        </ul>
+        <p>Le marché visible a un avantage (les vendeurs sont vraiment vendeurs) et un défaut majeur : <strong>tu y es en concurrence</strong>, donc les prix y sont plus tendus. C'est là qu'on trouve des deals corrects — rarement les meilleurs.</p>` },
+      { type:"concept", label:"Le marché caché : là où sont les multiples sous 3x",
+        body:`<p>L'immense majorité des PME qui vont changer de mains dans les 5 ans <strong>ne sont sur aucune plateforme</strong>. Leur dirigeant approche de la retraite, sait confusément qu'il devra vendre, mais n'a rien engagé — par attachement, par manque de temps, ou parce qu'il ne sait pas par où commencer. C'est le marché caché, et c'est ton vrai terrain.</p>
+        <p>Deux voies pour y accéder :</p>
+        <ul>
+          <li><strong>Les prescripteurs</strong> — ceux à qui les dirigeants se confient en premier : experts-comptables (le canal n°1 : ils savent avant tout le monde qui veut vendre), notaires, avocats d'affaires, banquiers pro, courtiers en assurance pro, fédérations et syndicats professionnels de ton secteur cible. Rencontre-les avec ta thèse d'une page ; propose-leur d'être leur « solution » quand un client cédant se présente.</li>
+          <li><strong>L'approche directe (off-market)</strong> — identifier toi-même les cibles et écrire au dirigeant. Avec les données publiques (registre du commerce, comptes déposés via Pappers ou societe.com), tu peux filtrer : secteur, département, tranche de CA, date de création ancienne, âge du dirigeant. Un courrier <em>papier</em>, personnalisé, courtois — pas un email de masse — obtient des taux de réponse étonnants auprès de dirigeants de 58-67 ans.</li>
+        </ul>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Pourquoi un courrier papier personnalisé fonctionne-t-il mieux qu'un email pour approcher un dirigeant de PME proche de la retraite ?",
+        options:[
+          "Parce que ces dirigeants n'ont pas d'adresse email",
+          "Parce qu'un courrier signé, nominatif, qui montre qu'on connaît SON entreprise, est rare, flatteur et discret — il arrive sur son bureau sans passer par un assistant ni un filtre anti-spam, et il peut le relire à tête reposée",
+          "Parce que la loi encadre la prospection par email entre entreprises"
+        ],
+        correctIndex:1,
+        explanation:"La vente de sa boîte est un sujet intime pour un fondateur — souvent tenu secret même vis-à-vis des salariés. Un courrier discret et respectueux colle à cette psychologie ; un email de prospection la heurte. Et mécaniquement : il reçoit 200 emails par jour et 2 courriers personnels par mois. Devine lequel il lit." },
+      { type:"concept", label:"📌 Fil rouge — l'apparition de Thermelec",
+        body:`<p>À partir de maintenant, un dossier va nous suivre tout au long du programme — un cas d'école construit pour ressembler trait pour trait à ta cible.</p>
+        <p>Ton expert-comptable, que tu as rencontré avec ta thèse d'une page trois mois plus tôt, t'appelle : <em>« J'ai peut-être quelque chose pour vous. Un client, Bernard Lemoine, 61 ans — il ne l'a dit à personne, mais sa femme veut qu'il lève le pied et son fils ne reprendra pas. »</em></p>
+        <ul>
+          <li><strong>Thermelec</strong> — maintenance et dépannage CVC (chauffage-ventilation-climatisation) pour copropriétés et PME, basée à Corbeil-Essonnes (91), créée en 1998.</li>
+          <li>11 salariés, dont 8 techniciens. <strong>CA : 1,82 M€.</strong></li>
+          <li>~70 % du CA en <strong>contrats de maintenance récurrents</strong> annuels reconduits.</li>
+          <li>Pas de site web à jour, pas de CRM, devis sous Excel, planning papier.</li>
+          <li>Aucune annonce publiée nulle part : <strong>pur marché caché.</strong></li>
+        </ul>
+        <p>Tu ne connais ni le prix, ni l'EBITDA réel, ni les dépendances. On va dérouler ce dossier ensemble, module après module, jusqu'aux 100 premiers jours et à la mise en place d'un gérant.</p>` },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Ne chasser que sur les plateformes d'annonces — c'est-à-dire exactement là où chassent tous les autres, avec les prix qui vont avec.",
+          "Approcher les prescripteurs les mains vides (« si vous entendez parler de quelque chose... »). Sans thèse précise, tu es oublié avant la fin du café.",
+          "Envoyer 300 courriers génériques d'un coup au lieu de 15 courriers vraiment personnalisés par semaine. Le taux de réponse s'effondre, et tu grilles des cibles qu'un courrier soigné aurait ouvertes.",
+          "Négliger la confidentialité : mentionner à un tiers qu'une entreprise précise « serait à vendre » peut griller le cédant auprès de ses salariés ou clients — et te griller définitivement avec lui."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Le meilleur deal ne porte presque jamais de panneau « à vendre ».</p>
+        <p>Un repreneur expérimenté raisonne en <strong>années de retard sur le marché</strong> : quand un dossier arrive sur une plateforme, le cédant y pense depuis 2 ou 3 ans — et parfois plusieurs acheteurs ont déjà refusé. Quand c'est TOI qui déclenches la réflexion du cédant par un courrier ou via son expert-comptable, tu es seul en face de lui, sans enchère, et la relation démarre sur la confiance plutôt que sur un rapport de force. C'est précisément dans cette configuration que se signent les multiples sous 3x avec crédit-vendeur — pas dans les data rooms disputées.</p>` },
+      { type:"validation", label:"Question de validation",
+        question:"Construis ton plan de sourcing concret pour les 30 prochains jours : quels canaux actives-tu, dans quel ordre, avec quelles actions précises chaque semaine ? (Sois concret : qui tu contactes, ce que tu leur envoies, ce que tu leur dis.)" },
+      { type:"summary",
+        summary:"Deux marchés : le visible (plateformes, intermédiaires — vendeurs certains mais concurrence et prix tendus) et le caché (prescripteurs + approche directe — là où se trouvent les vraies décotes). Ton expert-comptable et le courrier papier personnalisé sont tes deux armes les plus rentables. Et Thermelec vient d'entrer dans ta vie.",
+        nextHint:"Un canal ne suffit pas : il faut un pipeline chiffré, avec une cadence hebdomadaire — la prospection du repreneur, exactement comme un commercial gère la sienne." }
+    ]
+  },
+
+  s3: {
+    id:"s3", moduleId:2, title:"Ton pipeline : la prospection du repreneur", duration:"14 min",
+    steps:[
+      { type:"concept", label:"Le sourcing est un entonnoir, pas une loterie",
+        body:`<p>Les search funds ont documenté leur entonnoir depuis des années, et les ordres de grandeur sont têtus. Pour UN rachat signé, compte grosso modo :</p>
+        <ul>
+          <li><strong>200 à 400 entreprises identifiées</strong> correspondant à la thèse ;</li>
+          <li><strong>100+ approches</strong> réellement envoyées (courriers, mises en relation) ;</li>
+          <li><strong>10 à 20 rendez-vous cédants</strong> ;</li>
+          <li><strong>3 à 6 dossiers analysés en profondeur</strong> (comptes en main) ;</li>
+          <li><strong>1 à 3 LOI envoyées</strong> ;</li>
+          <li><strong>1 signature</strong> — le tout en 9 à 18 mois.</li>
+        </ul>
+        <p>La bonne nouvelle : ce n'est <strong>pas de la chance, c'est du débit</strong>. Si tu tiens la cadence en haut de l'entonnoir, le bas finit par tomber. La mauvaise nouvelle : si tu envoies 10 courriers puis attends, il ne se passera rien — et tu concluras à tort que « le marché est bouché ».</p>` },
+      { type:"concept", label:"Ta routine hebdomadaire",
+        body:`<p>Traite ta recherche comme un commercial traite sa prospection — avec un rythme non négociable :</p>
+        <ul>
+          <li><strong>10 à 15 nouvelles cibles</strong> identifiées et qualifiées (comptes déposés consultés, dirigeant identifié) ;</li>
+          <li><strong>10 à 15 courriers personnalisés</strong> envoyés ;</li>
+          <li><strong>Relance systématique à J+10 ou J+15</strong> — par téléphone de préférence : la moitié des rendez-vous se prennent à la relance, pas au premier courrier ;</li>
+          <li><strong>1 contact prescripteur</strong> entretenu ou créé (un café avec un expert-comptable vaut 50 courriers) ;</li>
+          <li><strong>Un tableau de suivi tenu à jour</strong> : cible, date d'approche, statut, prochaine action datée. Sans prochaine action datée, une ligne est morte.</li>
+        </ul>
+        <p>Compte 6 à 10 heures par semaine si tu recherches en parallèle d'une activité. C'est un marathon cadencé, pas un sprint d'enthousiasme.</p>` },
+      { type:"numeric", label:"Exercice",
+        question:"Avec ces taux : 12 % des courriers donnent un rendez-vous, 25 % des rendez-vous donnent un dossier analysé, 40 % des dossiers analysés donnent une LOI. Combien de courriers faut-il envoyer (environ) pour aboutir à 2 LOI ?",
+        placeholder:"Ex : 100", answer:167, tolerance:15,
+        successMsg:"Oui — environ 165-170 courriers : 2 LOI ÷ 40 % = 5 dossiers ; 5 ÷ 25 % = 20 rendez-vous ; 20 ÷ 12 % ≈ 167 courriers. À 12-15 courriers par semaine, c'est environ 3 mois de cadence tenue. Le sourcing, c'est de l'arithmétique.",
+        hint:"Remonte l'entonnoir : combien de dossiers analysés pour 2 LOI ? Puis combien de rendez-vous ? Puis combien de courriers ?" },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Arrêter toute prospection dès qu'un dossier devient chaud. Si ce dossier meurt (et la majorité meurent), tu repars de zéro avec 2 mois de retard — et pendant la négociation, le cédant sent que tu n'as pas d'alternative.",
+          "Mesurer son avancement au nombre d'annonces consultées plutôt qu'au nombre d'approches envoyées. Regarder n'est pas prospecter.",
+          "Ne pas relancer « pour ne pas déranger ». Un dirigeant de 61 ans qui n'a pas répondu n'a pas dit non — il a posé ton courrier sur une pile. La relance téléphonique courtoise est attendue, pas intrusive.",
+          "Tenir son pipeline de tête. Au-delà de 10 cibles actives, tu perds des relances — donc des deals."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un pipeline plein est ton <strong>meilleur outil de négociation</strong> — bien avant tout script.</p>
+        <p>Celui qui n'a qu'un dossier négocie avec la peur de le perdre, et ça se sent à chaque concession. Celui qui a trois discussions en cours peut dire calmement : « à ces conditions, je ne suis pas preneur » — la phrase la plus puissante de toute négociation. Les search funds appellent ça le pouvoir de l'alternative ; les négociateurs, la BATNA. Toi, appelle ça simplement : ne jamais dépendre d'un seul deal.</p>
+        <p>Règle pratique : tant que tu n'as pas signé de LOI avec exclusivité, la prospection continue, sans exception. Après la LOI, tu mets en pause — l'exclusivité t'y engage moralement et souvent contractuellement — mais ton tableau reste prêt à redémarrer.</p>` },
+      { type:"checkpoint", question:"La logique d'entonnoir chiffré et de cadence hebdomadaire est-elle claire ?",
+        helpPrompt:"Je viens de voir le pipeline de sourcing (entonnoir : ~167 courriers pour 2 LOI, routine hebdomadaire, relances). Peux-tu m'aider à dimensionner MON pipeline selon le temps dont je dispose réellement chaque semaine ?" },
+      { type:"summary",
+        summary:"Le sourcing est un entonnoir arithmétique : ~100+ approches pour 10-20 rendez-vous, 3-6 dossiers, 1-3 LOI, 1 deal. Ce qui le fait tourner : une cadence hebdomadaire non négociable et des relances systématiques. Et un pipeline plein est ton premier levier de négociation — il te donne le droit de dire non.",
+        nextHint:"Ton courrier a fonctionné : Bernard Lemoine accepte de te rencontrer. Le premier rendez-vous cédant est un exercice à part entière — et tout peut s'y jouer." }
+    ]
+  },
+
+  s4: {
+    id:"s4", moduleId:2, title:"Le premier rendez-vous cédant", duration:"16 min",
+    steps:[
+      { type:"concept", label:"Ce que ce rendez-vous est — et n'est pas",
+        body:`<p>Ton expert-comptable a organisé la rencontre : un déjeuner discret avec <strong>Bernard Lemoine, fondateur de Thermelec</strong>. Avant d'y aller, cale l'objectif :</p>
+        <p>Le premier rendez-vous n'est <strong>ni une négociation, ni un audit</strong>. C'est un rendez-vous de <em>confiance et de collecte</em>. Un fondateur ne vend pas sa boîte de 27 ans au plus offrant — il la confie à quelqu'un qu'il juge capable de ne pas la détruire. Tant que ce juge­ment n'est pas rendu en ta faveur, aucun chiffre sérieux ne sortira.</p>
+        <p>Trois objectifs, dans l'ordre : (1) qu'il ait envie d'un second rendez-vous, (2) comprendre <em>pourquoi il vend et pourquoi maintenant</em>, (3) repérer — sans creuser lourdement — les grandes masses : activité, récurrence, équipe, dépendances.</p>
+        <p>Règle des 80/20 : <strong>il parle 80 % du temps.</strong> Et le prix n'est PAS un sujet du premier rendez-vous — si lui l'aborde, écoute, note, ne contre-propose rien.</p>` },
+      { type:"concept", label:"Les questions qui font parler",
+        body:`<p>Des questions ouvertes, dans un ordre qui va du plaisir vers le sensible :</p>
+        <ul>
+          <li><em>« Racontez-moi comment vous avez démarré. »</em> — il adore cette histoire, elle installe la confiance, et elle est bourrée d'informations.</li>
+          <li><em>« À quoi ressemble votre semaine type aujourd'hui ? »</em> — LA question qui mesure la dépendance au dirigeant sans la nommer. S'il fait encore les devis, les gros dépannages et la relation avec les principaux clients, tu sais à quoi t'attendre.</li>
+          <li><em>« Comment viennent les nouveaux clients ? »</em> — s'il répond « le bouche-à-oreille, on n'a jamais eu besoin de prospecter », tu entends à la fois le risque (zéro machine commerciale) et TON levier de création de valeur.</li>
+          <li><em>« Parlez-moi de votre équipe — qui fait tourner quoi ? »</em> — cherche le bras droit officieux, celui sans qui rien ne tourne.</li>
+          <li><em>« Qu'est-ce qui vous ferait dire, dans quelques années, que la transmission a été réussie ? »</em> — sa réponse te dit ce qu'il faudra sécuriser dans le deal (l'équipe ? le nom ? le prix ? sa tranquillité ?).</li>
+          <li>Et en douceur, vers la fin : <em>« Pourquoi maintenant ? »</em></li>
+        </ul>` },
+      { type:"concept", label:"📌 Fil rouge — le déjeuner avec Bernard",
+        body:`<p>Extraits de ce que tu notes en sortant du déjeuner :</p>
+        <p><em>« 61 ans. Sa femme le pousse à arrêter, problème de dos, son fils est ingénieur ailleurs et ne reprendra pas. Fier de sa boîte — il a répété trois fois "on n'a jamais perdu un contrat de maintenance". Semaine type : il fait encore TOUS les chiffrages des grosses affaires et gère personnellement les deux syndics principaux. L'équipe : "Karim, mon chargé d'affaires, c'est mon couteau suisse." Les clients : "que du bouche-à-oreille, jamais fait de pub en 27 ans." Sur le prix : "je ne brade pas, j'ai vu qu'une boîte comme la mienne était partie à 1 million." Il n'a mandaté personne. Deuxième rendez-vous accepté — il me montrera l'atelier. »</em></p>
+        <p>Tout y est déjà : la motivation réelle (santé + famille = décote saine), la dépendance au dirigeant (chiffrages + relation grands comptes), l'homme-clé (Karim), le levier (zéro commercial structuré), et une ancre de prix (« 1 million ») posée sans qu'on lui demande.</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Bernard affirme : « Mes clients sont fidèles, c'est du solide, on n'a jamais perdu un contrat. » Quelle est la vraie question que cette phrase doit déclencher dans ta tête (pour plus tard, pas forcément à table) ?",
+        options:[
+          "Aucune : des clients fidèles, c'est exactement ce que je cherche",
+          "Les clients sont-ils fidèles à l'ENTREPRISE — ou à Bernard ? Que reste-t-il de cette fidélité le jour où il part ?",
+          "Pourquoi n'a-t-il pas augmenté ses prix si les clients sont si fidèles ?"
+        ],
+        correctIndex:1,
+        explanation:"C'est LA question centrale sur toutes tes cibles. La fidélité portée par une relation personnelle de 25 ans ne se rachète pas — elle se transfère, lentement, pendant la période d'accompagnement. La réponse conditionne la durée d'accompagnement à négocier, le poids du crédit-vendeur (qui l'intéresse à la transition), et une partie de la due diligence commerciale (Module 5)." },
+      { type:"pitfall", label:"⚠ Pièges classiques du premier rendez-vous",
+        items:[
+          "Dérouler ton montage financier (« crédit-vendeur, holding, LBO... ») dès le premier contact. Le cédant entend : « il n'a pas d'argent et parle de ma boîte comme d'un produit financier. » Le montage viendra quand la confiance sera là (Module 6).",
+          "Pointer les faiblesses (« votre site date de 2011... ») pour préparer une négociation. Tu crois marquer un point, tu insultes 27 ans de travail. Les faiblesses, tu les notes en silence — elles serviront, plus tard, chiffrées et sans mépris.",
+          "Poser des questions de due diligence (marges, salaires, litiges) à table. Trop tôt = méfiance immédiate.",
+          "Promettre pour séduire (« je garderai toute l'équipe, je ne changerai rien »). Tout ce que tu promets aujourd'hui te sera opposé pendant 18 mois.",
+          "Oublier de conclure sur une suite concrète et datée. Un « on se rappelle » sans date est un dossier qui refroidit."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté écoute surtout <strong>ce qui n'est pas dit</strong>.</p>
+        <p>Bernard a parlé de tout — sauf de ses chiffres, et c'est normal à ce stade. Mais note les zones qu'il a survolées ou éludées : a-t-il parlé de ses fournisseurs ? D'un client perdu récemment ? De la santé de Karim ou de son envie de rester ? Chaque silence est une ligne à inscrire dans ta future due diligence. Et une astuce de terrain : demande toujours à <strong>visiter</strong> (atelier, bureaux). L'état du matériel, l'ambiance entre les gars, la façon dont les salariés le saluent t'apprennent des choses qu'aucun bilan ne montre — et accepter de te faire entrer chez lui est, pour un fondateur, un signal d'engagement bien plus fort qu'un deuxième déjeuner.</p>` },
+      { type:"concept", label:"🎭 Passe à la pratique",
+        body:`<p>La théorie du premier rendez-vous s'oublie en cinq minutes face à un vrai cédant. La <strong>Salle d'entraînement</strong> de l'app te permet de jouer ce rendez-vous en conditions réelles : l'IA incarne Bernard Lemoine — avec son attachement, ses fiertés, ses esquives et une ou deux choses qu'il ne dira que si tu poses les bonnes questions. À la fin, tu demandes le débrief du coach.</p>
+        <p style="margin-top:10px;"><button class="btn-primary" onclick="startTraining('rdv1')">🎭 M'entraîner : premier rendez-vous avec Bernard →</button></p>` },
+      { type:"validation", label:"Question de validation",
+        question:"Prépare tes 6 questions pour un premier rendez-vous avec le dirigeant d'une entreprise de ta thèse, dans l'ordre où tu les poserais — et pour chacune, note en une ligne ce que tu cherches vraiment à apprendre derrière la question." },
+      { type:"summary",
+        summary:"Le premier rendez-vous sert à créer la confiance et à comprendre pourquoi il vend — pas à négocier ni à auditer. Règle des 80/20, questions ouvertes (la « semaine type » mesure la dépendance au dirigeant), zéro montage financier, zéro critique, et une suite datée. Chez Thermelec, tout l'essentiel est apparu en un déjeuner : décote saine, dépendance, homme-clé, levier commercial, et une ancre de prix à 1 M€.",
+        nextHint:"Tu as les Modules 3, 4 et 5 pour analyser les comptes que Bernard va te transmettre. Ensuite, le Module 6 s'enrichit : structurer ta lettre d'intention, puis la GAP — ton assurance anti-vices cachés." }
     ]
   },
 
@@ -821,7 +1086,105 @@ const LESSONS = {
         question:"Reprends le script d'approche ci-dessus et adapte-le à un montage avec 30% de crédit-vendeur, un closing visé à 4 mois, et un vendeur que tu sais pressé de partir à la retraite. Qu'est-ce que tu changerais dans la formulation ?" },
       { type:"summary",
         summary:"Un montage à faible apport se négocie en le présentant comme une structure sécurisée et réciproque, jamais comme une contrainte que tu imposes. Écouter la vraie priorité du cédant avant de dérouler le montage change tout dans la façon dont il est reçu.",
-        nextHint:"La suite du Module 6 (LOI, garantie d'actif et de passif) arrive dans une prochaine session." }
+        nextHint:"La leçon suivante : la lettre d'intention — le document qui fige le terrain de jeu de tout le deal." }
+    ]
+  },
+
+  n2: {
+    id:"n2", moduleId:6, title:"La LOI : cadrer le deal sans te piéger", duration:"15 min",
+    steps:[
+      { type:"concept", label:"Ce qu'est vraiment une lettre d'intention",
+        body:`<p>La <span class="term">LOI</span> (lettre d'intention) est le document qui fait passer la discussion du café au deal. Elle dit au cédant : « voilà ce que je propose, à quelles conditions, et selon quel calendrier — si nous sommes d'accord sur ce cadre, engageons la due diligence. »</p>
+        <p>Point clé souvent mal compris : la LOI est <strong>globalement non engageante sur le prix</strong> (il reste indicatif, sous réserve des vérifications)... mais certaines de ses clauses, elles, <strong>engagent vraiment</strong> : l'exclusivité, la confidentialité, parfois la répartition des frais. Tu peux donc être lié sans avoir acheté — d'où l'importance de la faire relire par ton avocat AVANT signature, pas après.</p>
+        <p>Psychologiquement, la LOI a un autre rôle : elle <strong>fige le terrain de jeu</strong>. Tout ce qui y est écrit devient la référence ; tout ce qui n'y est pas s'arrachera plus tard, au pire moment, quand tu auras déjà investi des mois et des honoraires.</p>` },
+      { type:"concept", label:"Les 7 blocs de ta LOI",
+        body:`<ul>
+          <li><strong>1. Prix indicatif + base de calcul</strong> — jamais un chiffre sec : « X €, sur la base d'un EBITDA normalisé de Y € et d'une trésorerie excédentaire de Z €, sous réserve des conclusions de la due diligence ». La formule fait tout : si la DD révèle un EBITDA réel inférieur, le prix se réajuste par la méthode, sans drame ni marchandage de tapis.</li>
+          <li><strong>2. Périmètre</strong> — ce que tu achètes exactement : les titres, avec ou sans l'immobilier, avec quel niveau de trésorerie laissé dans la société.</li>
+          <li><strong>3. Conditions suspensives</strong> — les portes de sortie sans pénalité : <strong>obtention du financement</strong> (vitale — ne signe JAMAIS sans elle), due diligence satisfaisante, signature d'une GAP, parfois accord de clients clés ou maintien de l'homme-clé.</li>
+          <li><strong>4. Exclusivité</strong> — le cédant s'engage à ne négocier qu'avec toi pendant une durée définie : 2 à 4 mois, renouvelables d'un commun accord. C'est TA protection (tu vas engager des dizaines de milliers d'euros de conseils) — mais durée limitée, pour ne pas t'endormir.</li>
+          <li><strong>5. Calendrier</strong> — les grandes étapes datées : DD sous X semaines, protocole visé à telle date, closing visé à telle date. Un deal sans calendrier est un deal qui meurt lentement.</li>
+          <li><strong>6. Structure envisagée</strong> — les grandes lignes du montage : part de crédit-vendeur, accompagnement du cédant, principe d'une GAP. Sans tout détailler, poser le principe ici évite le « vous ne m'aviez jamais parlé de ça » au protocole.</li>
+          <li><strong>7. Confidentialité</strong> — réciproque, et précieuse pour lui comme pour toi.</li>
+        </ul>` },
+      { type:"concept", label:"📌 Fil rouge — la LOI Thermelec",
+        body:`<p>Après analyse des comptes (Modules 3-4) : EBITDA affiché 355 K€, <strong>normalisé à 310 K€</strong> (salaire de Bernard sous le marché à réintégrer, véhicule personnel, éléments exceptionnels), trésorerie excédentaire ~180 K€. Bernard a ancré « 1 million » ; ta fourchette défendable tourne autour de 2,5-3x le normalisé.</p>
+        <p>Ta LOI propose : <em>« Prix indicatif de 870 000 € pour 100 % des titres, sur la base d'un EBITDA normalisé de 310 000 € (multiple de ~2,8x) et d'une trésorerie excédentaire de 180 000 € conservée dans la société, sous réserve de due diligence. Conditions suspensives : financement bancaire, DD satisfaisante, GAP. Exclusivité de 3 mois. Crédit-vendeur envisagé pour environ 25 % du prix. Accompagnement du cédant : 4 mois à temps partiel. Closing visé sous 5 mois. »</em></p>
+        <p>Remarque la mécanique : tu n'attaques pas son « 1 million » de front — tu opposes une <strong>méthode</strong> (multiple × EBITDA normalisé) à une <strong>ancre</strong> (un chiffre entendu quelque part). C'est la méthode qui gagnera la négociation, pas le rapport de force.</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Pourquoi écrire « 870 K€ sur la base d'un EBITDA normalisé de 310 K€ » plutôt que simplement « 870 K€ » ?",
+        options:[
+          "Pour faire plus professionnel auprès du cédant et de sa banque",
+          "Parce que si la due diligence révèle un EBITDA réel de 260 K€, le prix se recalcule automatiquement par la même formule (~730 K€) — la renégociation est mécanique et légitime, pas un bras de fer",
+          "Parce que la loi impose de justifier le prix dans une lettre d'intention"
+        ],
+        correctIndex:1,
+        explanation:"C'est la clause la plus protectrice de toute ta LOI. Sans base de calcul, une mauvaise découverte en DD ouvre un conflit frontal (« vous m'aviez promis 870 »). Avec la base écrite, la conversation devient : « l'EBITDA vérifié est de 260, pas 310 — appliquons la formule sur laquelle nous nous sommes entendus. » Le cédant peut le regretter, pas le contester." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Signer une exclusivité de 6-9 mois sans calendrier d'étapes. Tu crois avoir sécurisé le deal ; tu as surtout donné au cédant le loisir de traîner pendant que ton pipeline meurt.",
+          "Oublier la condition suspensive de financement. Sans elle, si ta banque dit non, tu peux te retrouver exposé — c'est la clause à laquelle ton avocat tient le plus, écoute-le.",
+          "Mettre un prix ferme « pour rassurer le vendeur ». Généreux aujourd'hui, piégé demain : toute découverte en DD devient une bataille au lieu d'un recalcul.",
+          "Négocier la LOI sans avocat pour « économiser ». C'est un document court — c'est justement pour ça que chaque mot y pèse.",
+          "Multiplier les conditions suspensives exotiques : une LOI hérissée de 12 portes de sortie dit au cédant que tu n'es pas sûr de toi. Trois ou quatre conditions solides suffisent."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté utilise la LOI comme un <strong>test du cédant</strong> autant que comme un cadre juridique.</p>
+        <p>Observe comment Bernard réagit : négocie-t-il les curseurs (prix, durée d'accompagnement, part de crédit-vendeur) ? Parfait — c'est un vendeur sérieux qui joue le jeu. Refuse-t-il le principe même de la base de calcul, de la condition de financement ou de la GAP ? Là, écoute bien ce que ça te dit : quelqu'un qui refuse que le prix dépende de chiffres vérifiés t'annonce, en creux, que les chiffres ne tiendront peut-être pas la vérification. La LOI est ton premier détecteur de vices cachés — avant même la due diligence.</p>` },
+      { type:"checkpoint", question:"Les 7 blocs et la logique « prix + base de calcul » sont-ils clairs ?",
+        helpPrompt:"Je viens de voir la structure d'une LOI (prix indicatif avec base de calcul, périmètre, conditions suspensives, exclusivité, calendrier, structure, confidentialité). Peux-tu me faire rédiger, bloc par bloc, une LOI d'entraînement sur le cas Thermelec en me corrigeant au fur et à mesure ?" },
+      { type:"summary",
+        summary:"La LOI cadre le deal : prix indicatif TOUJOURS assis sur une base de calcul écrite, conditions suspensives (financement !), exclusivité courte et calendrier daté. Elle est peu engageante sur le prix mais très engageante sur certaines clauses — avocat obligatoire avant signature. Et la réaction du cédant à ta LOI est ton premier détecteur d'anomalies.",
+        nextHint:"Le document qui te protège APRÈS la signature, contre ce que même une bonne DD n'a pas vu : la garantie d'actif et de passif." }
+    ]
+  },
+
+  n3: {
+    id:"n3", moduleId:6, title:"La GAP : ton assurance anti-vices cachés", duration:"17 min",
+    steps:[
+      { type:"concept", label:"Le principe : le passé reste au vendeur",
+        body:`<p>Même une due diligence sérieuse ne voit pas tout : un redressement fiscal peut arriver 2 ans après ton achat en contrôlant des exercices <em>antérieurs</em> ; un litige prud'homal peut surgir sur un licenciement d'il y a 18 mois ; un client peut réclamer sur un chantier livré avant le closing.</p>
+        <p>La <span class="term">GAP</span> (garantie d'actif et de passif) applique un principe simple : <strong>ce qui trouve son origine avant la cession reste à la charge du cédant</strong>, même si ça se révèle après. Concrètement, le cédant (1) fait des <em>déclarations</em> écrites et détaillées sur l'état de l'entreprise (comptes sincères, pas de litige non déclaré, conformité fiscale et sociale, contrats valides...), et (2) s'engage à <em>t'indemniser</em> si l'une de ces déclarations se révèle fausse et te cause un préjudice.</p>
+        <p>Pour ton projet dont la peur n°1 est le vice caché : la DD (Module 5) réduit la probabilité de mauvaise surprise ; <strong>la GAP en réduit le coût</strong>. Il te faut les deux — l'une ne remplace jamais l'autre.</p>` },
+      { type:"concept", label:"Les 5 curseurs à négocier",
+        body:`<ul>
+          <li><strong>Le plafond</strong> — le montant maximum d'indemnisation. Ordre de grandeur usuel sur des PME : <strong>20 à 50 % du prix</strong>, souvent dégressif dans le temps. Un plafond ridicule (5-10 %) vide la garantie de sa substance.</li>
+          <li><strong>La durée</strong> — usuellement <strong>3 ans</strong> pour le général, avec un alignement sur les <strong>délais de prescription fiscale et sociale</strong> pour ces matières (c'est le standard de place — ton avocat calera les délais exacts). Une GAP de 12 mois expire avant que le premier contrôle fiscal ait eu le temps d'arriver.</li>
+          <li><strong>Franchise et seuil</strong> — la franchise évite les réclamations à 800 € ; le seuil de déclenchement définit à partir de quel cumul la garantie s'active. Légitimes, mais à calibrer : une franchise énorme est un plafond déguisé.</li>
+          <li><strong>La garantie de la garantie</strong> — LE point que les débutants oublient : une GAP signée par un cédant parti vivre à l'étranger avec le prix de vente ne vaut que le papier. Exige un <strong>séquestre</strong> (une partie du prix bloquée chez un tiers pendant la durée de la garantie) ou une <strong>caution bancaire à première demande</strong>. Sans ça, ta protection est théorique.</li>
+          <li><strong>Exclusions et procédure</strong> — ce qui est déjà déclaré/provisionné est exclu (logique : tu as acheté en connaissance) ; et respecte scrupuleusement les <strong>délais de notification</strong> des réclamations prévus au contrat — une réclamation fondée mais notifiée hors délai est perdue.</li>
+        </ul>` },
+      { type:"concept", label:"📌 Fil rouge — la GAP Thermelec",
+        body:`<p>Sur un prix négocié autour de 850 K€, ton avocat propose : <strong>plafond de 250 K€</strong> (~30 % du prix), dégressif par tiers chaque année ; <strong>durée 3 ans</strong>, alignée sur les prescriptions pour le fiscal et le social ; franchise unitaire de 3 K€, seuil de déclenchement de 15 K€ ; <strong>séquestre de 80 K€</strong> chez le séquestre juridique pendant 24 mois.</p>
+        <p>La réaction de Bernard sera un signal en soi. « Un séquestre ?! Vous ne me faites pas confiance ? » — réponse à préparer : <em>« C'est l'inverse, Bernard : c'est le mécanisme standard qui nous évite, à tous les deux, de reparler d'argent pendant trois ans. Si vos déclarations sont exactes — et je n'ai aucune raison d'en douter — vous récupérez tout, avec les intérêts. »</em> Le crédit-vendeur, d'ailleurs, joue un rôle voisin : tant qu'il court, le cédant reste financièrement intéressé à ce que rien de caché n'explose.</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"L'avocat de Bernard contre-propose : plafond de 50 K€ (~6 % du prix), durée 12 mois, pas de séquestre « parce que mon client est un homme d'honneur ». Que penses-tu de cette proposition ?",
+        options:[
+          "Acceptable si le reste du deal est bon — la GAP est un détail juridique",
+          "C'est une GAP de façade : plafond symbolique, durée expirant avant tout contrôle fiscal réel, et aucune garantie d'être payé. Contre-proposition ferme sur les trois curseurs, sinon le risque des vices cachés repose à 100 % sur moi",
+          "Refuser le deal immédiatement : proposer ça prouve qu'il cache quelque chose"
+        ],
+        correctIndex:1,
+        explanation:"Une première proposition basse de l'avocat du cédant est NORMALE — c'est son travail, pas une preuve de fraude (d'où l'erreur de la réponse 3). Mais l'accepter reviendrait à acheter sans protection réelle (erreur de la réponse 1). La bonne posture : contre-proposer fermement, curseur par curseur, en expliquant la logique de chacun. Et si le refus porte sur le PRINCIPE même d'une garantie sérieuse après négociation... là, c'est un vrai signal d'alerte." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Négocier la GAP « à la fin, comme un détail », une fois le prix célébré au champagne. Tu n'as plus aucun levier. Le principe et les grands curseurs se posent dès la LOI.",
+          "Une GAP béton... sans garantie de la garantie. Plafond de 300 K€ sur un cédant insolvable = zéro. Séquestre ou caution bancaire, non négociable.",
+          "Croire que la GAP dispense d'une vraie DD. La GAP indemnise (après réclamation, discussion, parfois contentieux, dans la limite du plafond) — elle ne t'évite ni le temps perdu, ni le client parti, ni la boîte fragilisée. Mieux vaut détecter que réparer.",
+          "Rater les délais de notification. Note-les dans ton agenda dès la signature : chaque découverte suspecte en post-acquisition doit être notifiée dans les formes et les temps, sinon elle est juridiquement perdue.",
+          "Négocier une GAP sans avocat parce que « le modèle trouvé en ligne a l'air complet ». La GAP est LE document où chaque virgule se paie en dizaines de milliers d'euros. C'est précisément là que ses honoraires se rentabilisent."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Pour un repreneur expérimenté, la négociation de la GAP est un <strong>détecteur de mensonges grandeur nature</strong>.</p>
+        <p>Le cédant qui n'a rien à cacher négocie les curseurs — plafond, durée, franchise — c'est de bonne guerre. Celui qui se bat contre le <em>principe</em> (« pas de garantie sur le fiscal », « surtout pas de séquestre », « 12 mois ou rien ») te dit quelque chose que la DD n'a peut-être pas vu : il connaît un risque et refuse de le porter. Règle de terrain : <strong>chaque exclusion demandée avec insistance désigne l'endroit exact où renvoyer tes auditeurs creuser.</strong> La GAP te protège deux fois : par ce qu'elle couvre, et par ce que sa négociation révèle.</p>` },
+      { type:"concept", label:"🎭 Passe à la pratique",
+        body:`<p>Négocier une GAP face à un avocat rodé, ça s'apprend en le faisant. Dans la Salle d'entraînement, l'IA incarne Maître Garnier, l'avocate de Bernard — courtoise, technique, et décidée à réduire chaque curseur. Défends ton plafond, ta durée et ton séquestre.</p>
+        <p style="margin-top:10px;"><button class="btn-primary" onclick="startTraining('gap')">🎭 M'entraîner : négocier la GAP →</button></p>` },
+      { type:"validation", label:"Question de validation",
+        question:"Explique avec tes propres mots pourquoi « une bonne DD » et « une bonne GAP » ne sont pas interchangeables — puis donne les 3 curseurs de GAP sur lesquels tu ne céderas pas pour Thermelec, avec la justification de chacun." },
+      { type:"summary",
+        summary:"La GAP fait porter au cédant les passifs qui trouvent leur origine avant la cession : déclarations + indemnisation, avec 5 curseurs (plafond 20-50 %, durée ~3 ans alignée sur les prescriptions, franchise/seuil, garantie de la garantie — séquestre ou caution —, exclusions et délais de notification). La DD réduit la probabilité du vice caché, la GAP en réduit le coût — et sa négociation révèle ce que le cédant redoute.",
+        nextHint:"Ton offre est structurée et protégée. Direction le Module 7 (financement) puis le Module 8 : la holding d'acquisition et la mécanique complète du LBO." }
     ]
   },
 
@@ -1255,7 +1618,306 @@ const LESSONS = {
         summary:"Les pièges de valorisation gonflent presque tous un prix par la même mécanique : compter comme acquis ce qui n'est ni prouvé ni contractuel. Construis toujours ta fourchette AVANT d'entendre celle du vendeur, et face à un désaccord de chiffre, compare toujours les méthodes plutôt que les conclusions.",
         nextHint:"Avec les Modules 3 et 4, tu sais maintenant lire des comptes réels et en sortir un prix défendable — la base de toute négociation sérieuse (Module 6)." }
     ]
-  }
+  },
+
+  h1: {
+    id:"h1", moduleId:8, title:"La holding : la mécanique du LBO", duration:"16 min",
+    steps:[
+      { type:"concept", label:"Pourquoi ne pas acheter en direct",
+        body:`<p>Tu pourrais acheter les titres de la cible en ton nom propre. Presque personne ne le fait, pour quatre raisons :</p>
+        <ul>
+          <li><strong>L'effet de levier</strong> — c'est la holding qui emprunte, et c'est l'entreprise rachetée qui, via ses dividendes, rembourse l'essentiel de la dette. Ton apport limité (30 K€) contrôle un actif de plusieurs centaines de milliers d'euros : c'est le principe même du <span class="term">LBO</span>.</li>
+          <li><strong>La fiscalité</strong> — les dividendes qui remontent de la cible vers la holding sont très faiblement imposés grâce au régime dit « mère-fille » (seule une petite quote-part de frais reste imposable), et sous conditions de détention élevée, l'<span class="term">intégration fiscale</span> permet même de compenser le déficit de la holding (ses intérêts d'emprunt) avec le bénéfice de la cible. Les régimes et taux exacts : ton expert-comptable — mais le principe est stable : <strong>en direct, tu rembourserais ta dette avec de l'argent lourdement fiscalisé ; via la holding, avec un flux quasi net.</strong></li>
+          <li><strong>L'isolation du risque</strong> — la dette d'acquisition est dans la holding, pas sur ton patrimoine personnel (attention : la banque demandera souvent une caution personnelle partielle — à négocier et plafonner, jamais illimitée).</li>
+          <li><strong>La porte du build-up</strong> — ta holding est le véhicule qui rachètera l'entreprise n°2, puis n°3, avec le cash extrait de la n°1. Sans holding, pas de logique de portefeuille.</li>
+        </ul>` },
+      { type:"concept", label:"Le circuit de l'argent, étape par étape",
+        body:`<p>Le schéma complet, avec les flux dans l'ordre :</p>
+        <ol>
+          <li>Tu crées la <strong>holding</strong> (souvent une SAS) et y apportes ton capital : jusqu'à 30 K€ dans ton cas.</li>
+          <li>La holding <strong>collecte les ressources</strong> : dette bancaire, crédit-vendeur, éventuel prêt d'honneur ou dette investisseur (Module 7).</li>
+          <li>La holding <strong>achète 100 % des titres</strong> de la cible au cédant.</li>
+          <li>Chaque année, la cible verse un <strong>dividende</strong> à la holding (après avoir gardé ce qu'il faut pour son exploitation et ses investissements).</li>
+          <li>La holding utilise ce dividende pour <strong>servir la dette</strong> : annuité bancaire + échéances du crédit-vendeur.</li>
+          <li>Le surplus, une fois la dette servie, s'accumule dans la holding : c'est ton futur <strong>carburant de build-up</strong> — ou ta rémunération de plus-value à la revente.</li>
+        </ol>
+        <p>Tout le montage tient sur UNE question : <em>le dividende remontable couvre-t-il confortablement le service de la dette ?</em> C'est le <span class="term">DSCR</span> (taux de couverture du service de la dette) : dividende disponible ÷ service annuel de la dette. Les banques veulent le voir <strong>au-dessus de 1,2-1,3</strong> — en dessous, le moindre trou d'air te met en défaut.</p>` },
+      { type:"numeric", label:"Exercice — le DSCR de Thermelec",
+        question:"Thermelec peut remonter prudemment ~185 K€ de dividende annuel vers ta holding. Le service de dette total (annuité bancaire 80 K€ + crédit-vendeur 62 K€) est de 142 K€ par an. Quel est le DSCR (arrondi à une décimale) ?",
+        placeholder:"Ex : 1.5", answer:1.3, tolerance:0.08,
+        successMsg:"Oui : 185 ÷ 142 ≈ 1,30. Au-dessus du seuil bancaire de 1,2-1,3 — le montage tient, avec une marge de sécurité réelle mais pas énorme : une année à -20 % d'EBITDA te met sous tension. C'est exactement le genre de chiffre que ta banque regardera en premier.",
+        hint:"DSCR = dividende disponible ÷ service de la dette. Divise 185 par 142." },
+      { type:"predict", label:"À toi de jouer",
+        question:"Pourquoi la cible ne peut-elle pas simplement prêter sa trésorerie à ta holding pour financer son propre rachat ?",
+        options:[
+          "Elle le peut sans restriction, c'est même le principe du LBO",
+          "Parce qu'une société ne doit pas financer directement l'acquisition de ses propres titres — c'est un terrain juridiquement très encadré (assistance financière, intérêt social, conventions entre la holding et la cible) : les flux passent par des dividendes régulièrement décidés, pas par des prêts de la fille à la mère montés à la va-vite",
+          "Parce que la trésorerie de la cible appartient encore au cédant après la vente"
+        ],
+        correctIndex:1,
+        explanation:"C'est LA ligne rouge du LBO. Le remboursement passe par des <b>dividendes</b> (décidés en respectant l'intérêt de la cible, ses réserves distribuables et ses besoins), pas par des ponctions directes. Les mécanismes plus fins (distribution exceptionnelle pré-closing, conventions de trésorerie encadrées) existent mais se structurent avec ton avocat — jamais en griffonnant un virement. Un montage qui assèche la fille pour sauver la mère peut engager ta responsabilité personnelle de dirigeant." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Confondre la trésorerie de la cible avec la tienne dès le closing. Chaque flux fille→mère a une forme juridique précise (dividende, convention réglementée, management fees justifiés). Les « management fees » de complaisance, non corrélés à de vraies prestations, sont un grand classique du redressement fiscal.",
+          "Dimensionner la dette sur le dividende MAXIMUM théorique. La cible doit garder de quoi vivre : BFR, investissements de renouvellement, imprévus. Un DSCR calculé sur un dividende d'asphyxie est une fiction.",
+          "Oublier que la holding a ses propres frais (comptabilité, juridique, éventuels frais bancaires) — quelques milliers d'euros par an à intégrer au plan.",
+          "Accepter une caution personnelle illimitée sans discuter. Tout se négocie : montant plafonné, durée limitée, extinction progressive avec le remboursement.",
+          "Monter la structure seul « parce qu'il y a des modèles de statuts en ligne ». Le trio holding + pacte éventuel + documentation de dette est le cœur juridique de ton patrimoine pour 7 ans : expert-comptable et avocat, dès le début."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté ne regarde pas le montage comme un organigramme, mais comme un <strong>tableau de flux sur 7 ans</strong>.</p>
+        <p>Pour chaque année : EBITDA prévisionnel prudent → impôt → investissements → variation de BFR → dividende remontable → service de la dette → marge résiduelle. Ligne par ligne, avec un scénario « année moyenne » ET un scénario « mauvaise année » (-15/-20 % d'EBITDA). Si le scénario dégradé passe encore, le montage est sain. S'il ne tient que dans le scénario rose, ce n'est pas un montage, c'est un pari — et la banque, qui fera exactement ce calcul, te le renverra à la figure. Fais-le avant elle.</p>` },
+      { type:"checkpoint", question:"Le circuit holding → dette → dividendes → remboursement et la notion de DSCR sont-ils clairs ?",
+        helpPrompt:"Je viens de voir la mécanique du LBO via holding (apport, dette dans la holding, dividendes de la cible qui remboursent, DSCR > 1,2-1,3). Peux-tu me refaire dérouler le circuit complet sur le cas Thermelec, année par année, pour que je vérifie que j'ai bien compris ?" },
+      { type:"summary",
+        summary:"La holding d'acquisition porte la dette, encaisse les dividendes de la cible et rembourse — avec une fiscalité de remontée très favorable (régime mère-fille, intégration fiscale à valider avec ton EC). Tout le montage se juge sur le DSCR : dividende prudent ÷ service de dette > 1,2-1,3, y compris en scénario dégradé. Et la ligne rouge : la cible ne finance jamais directement son propre rachat.",
+        nextHint:"Assemblons maintenant les briques une à une : ton montage complet Thermelec à 30 K€ d'apport, chiffre par chiffre." }
+    ]
+  },
+
+  h2: {
+    id:"h2", moduleId:8, title:"Ton montage complet à 30 K€ d'apport", duration:"17 min",
+    steps:[
+      { type:"concept", label:"D'abord les besoins — tous les besoins",
+        body:`<p>Erreur classique : financer le prix, et découvrir les à-côtés. Ton tour de table doit couvrir :</p>
+        <ul>
+          <li><strong>Le prix des titres</strong> : 850 K€ (Thermelec, négocié depuis les 990 K€ demandés — 2,74x l'EBITDA normalisé de 310 K€).</li>
+          <li><strong>Les frais d'acquisition</strong> : conseils (avocat, DD comptable), frais de dossier et de garantie bancaires, constitution de la holding — compte <strong>40 à 80 K€</strong> sur un deal de cette taille. Ici : ~45 K€.</li>
+          <li><strong>Un matelas de sécurité</strong> dans la holding pour les premiers mois : ~15 K€.</li>
+        </ul>
+        <p><strong>Besoin total : ~910 K€.</strong> C'est CE chiffre que ton plan de financement doit boucler — pas 850.</p>` },
+      { type:"concept", label:"📌 Fil rouge — le tour de table Thermelec",
+        body:`<p>Les ressources, brique par brique :</p>
+        <ul>
+          <li><strong>Apport personnel : 30 K€</strong> — ton plafond. Il est modeste en proportion (~3 %), mais il existe, et c'est psychologiquement décisif pour la banque : tu as de la peau dans le jeu.</li>
+          <li><strong>Prêt d'honneur : 30 K€</strong> — à taux zéro, sans garantie, via les réseaux d'accompagnement à la reprise (Module 7). Son vrai pouvoir : la banque le compte souvent comme du quasi-apport. Tes fonds propres « perçus » doublent : 60 K€.</li>
+          <li><strong>Crédit-vendeur : 230 K€</strong> (27 % du prix) — 4 ans, différé de 12 mois, taux modéré. Bernard y gagne un prix défendu et un intérêt ; toi, tu y gagnes 230 K€ de dette souple ET un cédant financièrement intéressé à une transition réussie.</li>
+          <li><strong>Distribution exceptionnelle de trésorerie : 140 K€</strong> — sur les 180 K€ de trésorerie excédentaire, 140 K€ sont distribués (opération structurée par tes conseils, en respectant les réserves distribuables et le besoin d'exploitation) ; 40 K€ restent dans Thermelec comme coussin. Mécaniquement, c'est comme si le prix réel était réduit d'autant.</li>
+          <li><strong>Dette bancaire senior : 480 K€</strong> — sur 7 ans, annuité ~80 K€. Soit ~1,55x l'EBITDA : très en dessous des plafonds bancaires usuels, ce qui rend le dossier confortable.</li>
+        </ul>
+        <p><strong>Total : 30 + 30 + 230 + 140 + 480 = 910 K€. Le tour de table boucle</strong> — avec un DSCR de ~1,3 vérifié à la leçon précédente.</p>` },
+      { type:"numeric", label:"Exercice — la marge de sécurité",
+        question:"Ta banque exige un DSCR minimum de 1,25. Avec un service de dette annuel de 142 K€, quel dividende annuel minimum (en euros) Thermelec doit-elle pouvoir remonter ?",
+        placeholder:"Ex : 150000", answer:177500, tolerance:3000,
+        successMsg:"Oui : 142 000 × 1,25 = 177 500 €. Thermelec peut en remonter ~185 000 — le montage passe, avec ~7 500 € de marge au-dessus de l'exigence. C'est précisément ce calcul, dans ce sens-là, que le comité de crédit fera.",
+        hint:"Dividende minimum = service de dette × DSCR exigé. Multiplie 142 000 par 1,25." },
+      { type:"concept", label:"Adapter le montage au profil du cédant",
+        body:`<p>Ce tour de table suppose un cédant comme Bernard : pas pressé financièrement, attaché à la suite, ouvert au crédit-vendeur. Tous ne le sont pas — et le montage s'adapte, dans cet ordre de préférence :</p>
+        <ul>
+          <li><strong>Cédant qui veut plus de cash au closing</strong> → réduire le crédit-vendeur exige de compenser : plus de dette bancaire (si le DSCR tient), une dette investisseur (Module 7 — plus chère et plus exigeante), ou... un prix plus bas en échange du cash immédiat (« 100 % comptant, mais à 780 »).</li>
+          <li><strong>Cédant qui refuse tout crédit-vendeur ET tout effort de prix</strong> → c'est une information : il ne croit peut-être pas assez en sa boîte pour la financer 4 ans. Ton pipeline (Module 2) te donne le droit de passer.</li>
+          <li><strong>Cible sans trésorerie excédentaire</strong> → la brique distribution disparaît : il faut soit plus de dette (DSCR !), soit un prix ajusté. C'est pour ça que la trésorerie excédentaire fait partie de tes critères de sourcing.</li>
+        </ul>
+        <p>Règle d'or : <strong>le montage suit le deal, jamais l'inverse.</strong> Tordre un DSCR pour « faire rentrer » un prix trop haut, c'est acheter son propre défaut de paiement.</p>` },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Boucler « juste » : un tour de table à l'euro près, sans matelas, explose au premier imprévu — et il y a TOUJOURS un imprévu la première année.",
+          "Mobiliser 100 % de la trésorerie excédentaire de la cible. Une entreprise sans coussin de trésorerie est une entreprise qui t'appelle en panique au premier gros client qui paie à 90 jours.",
+          "Oublier les frais (conseils, garanties, holding) dans le plan — 45-80 K€ qui, non anticipés, sortent... de ta poche, celle qu'on voulait justement préserver.",
+          "Empiler les dettes jusqu'au plafond parce que « ça passe sur le papier ». Chaque euro de dette en plus est un euro de liberté en moins pendant 7 ans : garde de la capacité pour les mauvaises années — et pour la cible n°2.",
+          "Présenter le crédit-vendeur au cédant comme une contrainte (« je n'ai pas les fonds ») au lieu d'un alignement (« vous restez intéressé à la réussite de la transition ») — revois la leçon négociation (Module 6) : la même brique, mal racontée, fait échouer le deal."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Ce que la banque finance, ce n'est pas un prix — c'est un <strong>couple cash-flow + repreneur</strong>.</p>
+        <p>Avec 30 K€ d'apport sur 910, ton pourcentage est faible ; ton dossier doit être irréprochable pour compenser : EBITDA normalisé documenté ligne à ligne, DSCR calculé en scénario dégradé, crédit-vendeur négocié (la banque adore : le cédant croit en sa boîte), GAP solide, et un plan des 100 jours crédible qui montre que tu sais quoi faire dès le lendemain du closing. Un banquier me disait en substance : « je préfère 3 % d'apport avec un dossier carré que 20 % avec un dossier flou ». Ton apport est petit ; que tout le reste soit grand.</p>
+        <p style="margin-top:10px;"><button class="btn-primary" onclick="startTraining('banque')">🎭 M'entraîner : défendre ce dossier face au banquier →</button></p>` },
+      { type:"validation", label:"Question de validation",
+        question:"Bernard t'annonce finalement qu'il veut 80 % du prix comptant au closing (au lieu des 73 % prévus). Recompose le tour de table Thermelec : quelles briques bouges-tu, dans quel ordre, et quel impact sur ton DSCR ? Où est TA limite non négociable ?" },
+      { type:"summary",
+        summary:"Ton tour de table finance les besoins TOTAUX (prix + frais + matelas ≈ 910 K€) : apport 30 K€ + prêt d'honneur 30 + crédit-vendeur 230 + distribution de trésorerie 140 + dette bancaire 480. Le tout validé par un DSCR ≥ 1,25-1,3 y compris en scénario dégradé. Le montage s'adapte au profil du cédant — mais le montage suit le deal, jamais l'inverse.",
+        nextHint:"Le financement est bouclé, la GAP négociée : direction le closing — la dernière ligne droite, et le moment où tout devient réel." }
+    ]
+  },
+
+  cl1: {
+    id:"cl1", moduleId:9, title:"Le closing : la dernière ligne droite", duration:"15 min",
+    steps:[
+      { type:"concept", label:"De la LOI à la signature : la séquence",
+        body:`<p>Entre ta LOI acceptée et les clés, il se passe 2 à 4 mois, dans cet ordre :</p>
+        <ol>
+          <li><strong>Due diligence</strong> (Module 5) — tes auditeurs vérifient ; chaque écart documenté alimente la discussion finale sur le prix ou les garanties.</li>
+          <li><strong>Protocole de cession</strong> (le « SPA ») — LE contrat définitif : prix ferme et ses ajustements, GAP annexée, conditions suspensives restantes, accompagnement du cédant, non-concurrence. Rédigé par les avocats, négocié clause par clause.</li>
+          <li><strong>Levée des conditions suspensives</strong> — au premier rang : l'offre de prêt bancaire ferme, puis son délai de rétractation légal. C'est la période la plus longue et la plus frustrante : tout est d'accord, rien n'est fait.</li>
+          <li><strong>Closing</strong> — le jour J : signature des actes, ordre de mouvement des titres, virements (prix, séquestre de la GAP), mise à jour des registres, formalités. En pratique, une matinée dense chez l'avocat — préparée au millimètre par les conseils.</li>
+        </ol>
+        <p>Point de vigilance légal, à caler tôt avec ton avocat : dans les PME, il existe une <strong>obligation d'information préalable des salariés</strong> avant la vente (délais et modalités précises à respecter — un oubli peut coûter très cher et retarder tout le calendrier).</p>` },
+      { type:"concept", label:"Ta checklist du jour J (et des jours d'avant)",
+        body:`<ul>
+          <li><strong>La veille</strong> : relire le tableau de bouclage des fonds (chaque virement, de qui, vers qui, quel jour), vérifier que le séquestre GAP est prêt, que l'assurance homme-clé et les assurances de l'entreprise sont continues.</li>
+          <li><strong>Le jour J</strong> : actes signés dans l'ordre prévu, pouvoirs bancaires transférés (signatures sur les comptes de la cible !), accès pratiques récupérés — serveurs, logiciels, codes, badges, liste que tu as préparée pendant la DD.</li>
+          <li><strong>L'annonce aux équipes</strong> : préparée À DEUX avec le cédant, prononcée ensemble, idéalement le jour même ou le lendemain matin. Message : continuité, respect du travail accompli, ta présence à leurs côtés — et Bernard qui dit, devant tous, qu'il te fait confiance. Cette scène de 10 minutes vaut des mois de management.</li>
+          <li><strong>L'accompagnement du cédant</strong> : formalisé PAR ÉCRIT dans le protocole (durée, jours de présence, rôle, éventuelle rémunération). Chez Thermelec : 4 mois, mardis et jeudis, centré sur le transfert des relations grands comptes et des chiffrages.</li>
+        </ul>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Quand faut-il annoncer la vente aux salariés (au-delà des obligations légales d'information à caler avec ton avocat) ?",
+        options:[
+          "Dès la LOI, par transparence — ils ont le droit de savoir",
+          "De manière maîtrisée et préparée avec le cédant, au moment du closing — jamais par une fuite, jamais des semaines d'incertitude avant que le deal soit certain",
+          "Jamais formellement : ils s'en rendront compte naturellement"
+        ],
+        correctIndex:1,
+        explanation:"Une annonce trop précoce (ou pire, une fuite) crée des mois d'angoisse — et les meilleurs éléments, ceux qui retrouvent un poste en une semaine, partent les premiers. L'annonce se prépare comme une opération : message écrit, questions anticipées (« mon poste ? mes horaires ? »), cédant et repreneur côte à côte. Attention : ceci concerne la COMMUNICATION managériale — les obligations LÉGALES d'information préalable, elles, ont leurs propres délais que ton avocat doit verrouiller en amont." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Relâcher l'attention entre le protocole et le closing. Il se passe 1 à 2 mois : continue de suivre l'activité (commandes, départs, incidents) — le protocole prévoit d'ailleurs une gestion « en bon père de famille » de la période, vérifie qu'elle est respectée.",
+          "Laisser le cédant gérer seul la communication de la vente — à sa façon, avec ses mots, parfois sa nostalgie. Le récit de la transmission t'appartient autant qu'à lui.",
+          "Négocier l'accompagnement du cédant à l'oral (« je resterai le temps qu'il faudra »). Sans écrit : durée, rythme, contenu, tu n'as rien.",
+          "Oublier la clause de non-concurrence — ou accepter une clause décorative. Périmètre d'activité, zone, durée : réaliste et proportionnée pour être valable, mais réelle.",
+          "Découvrir au closing que les délégations bancaires, les cautions données par le cédant sur des marchés, ou les cartes grises des véhicules n'ont pas été traités. La liste des « détails » administratifs se prépare pendant la DD, pas le jour J."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté négocie l'accompagnement du cédant avec autant de soin que le prix — parce que sur une belle endormie dépendante de son dirigeant, <strong>l'accompagnement EST une partie de l'actif acheté</strong>.</p>
+        <p>Les trois erreurs symétriques : trop court (les relations clients ne se transfèrent pas en 3 semaines), trop long (un fondateur qui reste un an reste LE patron aux yeux de tous — tu n'existes pas), et non structuré (il « passe voir » quand il veut). Le bon format sur un dossier comme Thermelec : 3 à 6 mois, dégressif, avec des objectifs de transfert nommés — « les 10 comptes clés présentés et re-signés », « Karim autonome sur les chiffrages », « les fournisseurs critiques rencontrés ». Quand la liste est cochée, l'accompagnement s'arrête — chaleureusement, et complètement.</p>` },
+      { type:"checkpoint", question:"La séquence LOI → DD → protocole → levée des conditions → closing, et la préparation du jour J, sont-elles claires ?",
+        helpPrompt:"Je viens de voir la séquence du closing (protocole, conditions suspensives, jour J, annonce aux équipes, accompagnement du cédant). Peux-tu me construire une checklist personnalisée des 15 jours avant closing pour un deal type Thermelec ?" },
+      { type:"summary",
+        summary:"Le closing est une séquence : DD → protocole (avec GAP annexée) → levée des conditions suspensives (l'offre de prêt !) → jour J réglé au millimètre. Les trois pièces maîtresses au-delà des actes : l'annonce aux équipes préparée à deux, l'accompagnement du cédant écrit et structuré par objectifs de transfert, et les obligations d'information des salariés calées en amont avec ton avocat.",
+        nextHint:"Les clés sont à toi. Maintenant, la partie que trop de repreneurs improvisent : les 100 premiers jours — sécuriser, apprendre, et poser les fondations du scale." }
+    ]
+  },
+
+  cl2: {
+    id:"cl2", moduleId:9, title:"Les 100 premiers jours", duration:"17 min",
+    steps:[
+      { type:"concept", label:"La boucle éprouvée : sécuriser → diagnostiquer → quick wins → levier → rythme",
+        body:`<p>Les meilleurs systèmes d'accompagnement de dirigeants (celui d'Entrepreneurs.com, par exemple, déroule : diagnostic → quick wins → levier d'impact principal → checkpoints OKR → bilan) et les intégrations post-acquisition des professionnels convergent vers la même boucle. Adaptée à ta reprise :</p>
+        <ul>
+          <li><strong>Semaines 1-2 — Sécuriser</strong> : l'équipe (entretien individuel avec CHAQUE salarié : son rôle, ses irritants, ses idées — tu apprends et tu rassures en même temps), les clients clés (tournée des 10 plus gros comptes AVEC le cédant), les fournisseurs critiques, la trésorerie (mets en place immédiatement un suivi de trésorerie à 13 semaines — ton instrument de vol n°1).</li>
+          <li><strong>Mois 1 — Diagnostiquer</strong> : l'audit terrain des écarts entre ce que la DD annonçait et ce que tu observes. Chaque écart significatif : documenté, chiffré, et si couvert par la GAP → <strong>notifié dans les formes et les délais</strong> (Module 6).</li>
+          <li><strong>Mois 2 — Quick wins</strong> : 2 ou 3 victoires visibles et peu risquées : relancer les devis dormants, corriger un tarif oublié depuis 5 ans, régler l'irritant n°1 remonté par les techniciens. Objectif double : du cash, et la démonstration que le nouveau patron améliore la vie.</li>
+          <li><strong>Mois 3 — Choisir LE levier</strong> : sur ta thèse, presque toujours la machine commerciale (CRM, relances systématiques, offre packagée — Module 11 à venir). Un seul grand chantier à la fois.</li>
+          <li><strong>En continu — Le rythme</strong> : un point hebdomadaire chiffré avec l'équipe d'encadrement, et tes premiers objectifs trimestriels écrits (le futur langage de pilotage de ton gérant, Module 13).</li>
+        </ul>
+        <p>Et la règle d'or transversale : <strong>pas de révolution avant 90 jours.</strong> Pas de réorganisation, pas de changement de nom, pas de refonte des méthodes de travail. D'abord comprendre pourquoi ça marche — ensuite seulement améliorer.</p>` },
+      { type:"concept", label:"📌 Fil rouge — tes 100 jours chez Thermelec",
+        body:`<p>Extraits de ton journal de bord :</p>
+        <p><em>« J+2 : entretiens individuels. Karim confirme qu'il porte la moitié des chiffrages — il attendait "de voir la tête du repreneur" pour décider de rester. Je lui dis que j'ai des projets pour lui. J+9 : tournée des syndics avec Bernard — le deuxième me glisse qu'un concurrent les a démarchés en janvier. Noté. J+20 : écart DD/réel — un litige avec un fournisseur de compresseurs (~18 K€) jamais mentionné dans les déclarations de la GAP. Mon avocat notifie dans les délais : couvert, imputé sur le séquestre. La GAP vient de rembourser une partie de ses honoraires. J+45 : quick wins — 34 K€ de devis dormants relancés et signés, grille tarifaire des contrats revalorisée de 4 % à la reconduction (aucune perte). J+75 : le levier est choisi : CRM + relance systématique des devis + contrats de maintenance proposés à chaque dépannage ponctuel (aujourd'hui : jamais proposé !). J+100 : trésorerie à 13 semaines saine, zéro départ, Bernard passe encore le mardi — et c'est très bien comme ça. »</em></p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Ta toute première action le lundi matin J+1 chez Thermelec ?",
+        options:[
+          "Analyser les marges ligne à ligne pour trouver les économies",
+          "Réunir l'équipe, puis démarrer les entretiens individuels — les gens d'abord, les process ensuite",
+          "Lancer le chantier CRM : c'est le levier n°1 identifié, autant gagner du temps"
+        ],
+        correctIndex:1,
+        explanation:"Les 8 techniciens de Thermelec ne se demandent pas ce que dit ton business plan — ils se demandent s'ils garderont leur poste, leurs horaires et leur camion. Tant que cette question flotte, rien d'autre n'avance : les meilleurs se mettent en veille sur le marché de l'emploi, l'information ne circule plus. Les entretiens individuels règlent l'angoisse ET te livrent le vrai diagnostic terrain — celui qu'aucune DD ne contient." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Tout changer tout de suite pour « marquer son territoire ». Chaque process que tu trouves absurde a peut-être une raison d'exister que tu ne connais pas encore — la découvrir après l'avoir cassé coûte cher.",
+          "Négliger les anciens détenteurs du savoir non écrit. Chez Thermelec, la moitié de la valeur est dans la tête de Karim et de deux techniciens seniors. Ta tâche la plus rentable des 100 jours : faire écrire ce qui n'est écrit nulle part.",
+          "Laisser filer les délais de notification GAP. Le litige fournisseur découvert à J+20 et notifié à J+140 aurait été perdu. Chaque anomalie : réflexe avocat, immédiatement.",
+          "Te noyer dans l'opérationnel — faire les dépannages, les devis, les plannings — et t'apercevoir à J+100 que tu as acheté un emploi, pas une entreprise. Bloque des demi-journées de travail SUR l'entreprise, pas dedans.",
+          "Sur-promettre à l'équipe au nom de l'enthousiasme (« primes pour tout le monde, personne ne partira jamais »). Relis le piège du premier rendez-vous cédant : même mécanique, mêmes dégâts."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Les 100 jours ne servent pas à faire croître l'entreprise. Ils servent à trois choses, dans cet ordre : <strong>apprendre, sécuriser, documenter.</strong> La croissance vient après — et elle vient d'autant plus vite que ces trois-là sont solides.</p>
+        <p>Le test de l'expert à J+100 : peux-tu répondre précisément à ces questions ? D'où vient chaque euro de marge ? Qui sont les 3 personnes dont le départ ferait mal, et que fais-tu pour chacune ? Quel est ton niveau de trésorerie dans 13 semaines ? Qu'est-ce qui n'existe que dans la tête de quelqu'un ? Si oui : tu pilotes. Si non : tu visites encore ta propre entreprise. Et note un effet secondaire précieux : le dossier documenté que tu construis là (chiffres propres, process écrits, dépendances traitées) est <em>exactement</em> ce qui augmentera ton multiple à la revente — ou ce qui permettra à un gérant de prendre le relais.</p>` },
+      { type:"validation", label:"Question de validation",
+        question:"Construis TON plan 100 jours pour Thermelec sous forme de 10 actions datées maximum — en distinguant ce qui relève de sécuriser / diagnostiquer / quick wins / levier. Quelle est la première chose que tu refuses de faire avant J+90, même si ça te démange ?" },
+      { type:"summary",
+        summary:"La boucle des 100 jours : sécuriser (équipe, clients, trésorerie 13 semaines) → diagnostiquer les écarts DD/réel (et notifier la GAP dans les délais !) → 2-3 quick wins visibles → choisir UN levier principal → installer le rythme hebdomadaire chiffré. Pas de révolution avant 90 jours : apprendre, sécuriser, documenter — la croissance vient après, et le dossier documenté prépare déjà la revente ou le gérant.",
+        nextHint:"L'entreprise est stabilisée et pilotée. Le Module 10 (système Cash-Flow) t'attend si ce n'est pas fait — puis le Module 13 : installer un gérant pour te libérer et préparer le build-up." }
+    ]
+  },
+
+  g1: {
+    id:"g1", moduleId:13, title:"Le gérant : quand, qui, où le trouver", duration:"15 min",
+    steps:[
+      { type:"concept", label:"Quand — pas avant que la machine tourne sans héroïsme",
+        body:`<p>Ta stratégie de build-up repose sur une bascule : toi qui sors de l'opérationnel, un gérant qui y entre. La tentation est de le faire vite. Erreur classique.</p>
+        <p>Un gérant ne peut piloter que ce qui est <strong>pilotable</strong> : process documentés, tableau de bord fiable, clients attachés à l'entreprise (plus seulement à une personne), quick wins réalisés. En pratique, sur une belle endormie : rarement avant <strong>6 à 12 mois</strong> post-closing — le temps d'avoir traversé les 100 jours (Module 9), stabilisé le cash-flow (Module 10) et documenté ce qui n'existait que dans les têtes.</p>
+        <p>Installer un gérant sur une entreprise non systématisée, c'est remplacer une dépendance (au fondateur) par une autre (à ton gérant) — en payant un salaire de plus au passage. Tu n'as rien délégué : tu as juste changé le nom de ton problème.</p>` },
+      { type:"concept", label:"Qui — le profil, et le vivier auquel on ne pense pas assez",
+        body:`<p>Le profil pour une PME de 10-20 personnes type Thermelec :</p>
+        <ul>
+          <li><strong>Expérience de gestion terrain</strong> — a déjà géré une équipe, un planning, des clients mécontents et une marge. Pas nécessairement un diplôme de gestion : une pratique de la gestion.</li>
+          <li><strong>À l'aise avec les chiffres du tableau de bord</strong> — il n'a pas besoin de savoir construire un LBO ; il doit savoir lire une marge, un carnet de commandes et une trésorerie à 13 semaines, et réagir quand ça dérive.</li>
+          <li><strong>Complémentaire, pas clone</strong> — s'il te ressemble trait pour trait, l'un de vous deux est inutile. Toi : stratégie, finance, acquisitions. Lui : excellence opérationnelle, équipe, clients.</li>
+          <li><strong>Compatible avec la culture maison</strong> — un directeur de BU d'un grand groupe peut se noyer dans une PME où l'on fait tout soi-même.</li>
+        </ul>
+        <p>Les deux viviers : la <strong>promotion interne</strong> (chez Thermelec : Karim — il connaît tout, l'équipe le respecte, et sa promotion envoie un message puissant en interne ; risque : la gestion s'apprend, et tout le monde n'en a pas l'appétence — teste avant de nommer, en lui confiant des responsabilités croissantes pendant 3-6 mois) et le <strong>recrutement externe</strong> (regard neuf, compétences de gestion prêtes à l'emploi ; risque : greffe culturelle, et 3-6 mois d'apprentissage du métier et des clients). Il n'y a pas de bonne réponse universelle — il y a un test honnête à faire dans les deux cas.</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Quel est le meilleur test AVANT de nommer Karim gérant de Thermelec ?",
+        options:[
+          "Le nommer et voir : on ne sait qu'en essayant, et il mérite sa chance",
+          "Lui déléguer progressivement de vrais blocs de responsabilité (le planning + la marge d'un périmètre, puis les points hebdo chiffrés) pendant 3-6 mois, avec un droit à l'erreur explicite — et observer ce qu'il fait des chiffres et des décisions difficiles",
+          "Lui faire passer des tests de personnalité et un entretien avec un cabinet"
+        ],
+        correctIndex:1,
+        explanation:"La gestion se révèle en gérant. La délégation progressive te montre les trois choses que ni un entretien ni un test ne montrent : va-t-il VERS les chiffres ou les évite-t-il ? Prend-il les décisions inconfortables (recadrer un copain technicien) ? Remonte-t-il les mauvaises nouvelles vite ? Et si le test échoue, tu n'as pas cassé sa légitimité : il n'a jamais été nommé puis rétrogradé — il a juste repris son ancien rôle." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Recruter un « mini-DG » surdimensionné et cher pour une PME de 11 personnes — il s'ennuie, coûte, et repart dans 18 mois.",
+          "Promouvoir le meilleur technicien parce qu'il est le meilleur technicien. Compétence métier ≠ appétence de gestion : tu risques de perdre ton meilleur technicien ET de gagner un mauvais gérant.",
+          "Rester l'homme-clé de fait : si les clients, les fournisseurs et l'équipe continuent de t'appeler TOI pour tout, ton gérant n'est qu'un titre sur un organigramme. La délégation se protège : redirige systématiquement.",
+          "Cacher ta stratégie au gérant. S'il découvre par hasard que tu prépares un build-up et ta sortie partielle, la confiance est morte. Dis-lui le projet : c'est même un argument d'attractivité (« tu pilotes la première entreprise d'un groupe en construction »).",
+          "Nommer sans période d'essai réelle du POSTE (au-delà de la période d'essai légale du contrat) : jalonne les 6 premiers mois d'objectifs de prise de fonction explicites."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Le test ultime de la systémisation, avant même de penser au gérant : <strong>pars deux semaines, injoignable.</strong></p>
+        <p>Ce qui casse pendant ton absence est la liste exacte de ce qui n'est pas encore systématisé — donc de ce qu'un gérant ne pourrait pas piloter non plus. Les repreneurs en série font ce test régulièrement, et certains vont plus loin : la valeur d'une entreprise (à la revente comme pour un gérant) est inversement proportionnelle à la dépendance à son dirigeant. Chaque procédure écrite, chaque relation client institutionnalisée, chaque décision déléguée augmente simultanément ta liberté, la solidité du futur gérant... et ton multiple de sortie. C'est le même travail qui sert les trois objectifs.</p>` },
+      { type:"checkpoint", question:"La logique « systématiser d'abord, tester ensuite, nommer enfin » est-elle claire ?",
+        helpPrompt:"Je viens de voir quand et comment choisir un gérant (pas avant 6-12 mois, profil complémentaire, test par délégation progressive, promotion interne vs externe). Peux-tu m'aider à construire le plan de test sur 6 mois pour un candidat interne type Karim ?" },
+      { type:"summary",
+        summary:"Un gérant ne s'installe que sur une entreprise pilotable : process documentés, tableau de bord fiable — rarement avant 6-12 mois. Profil : gestionnaire de terrain complémentaire de toi, testé par délégation progressive avant toute nomination. Interne (légitimité, culture) ou externe (compétences, regard neuf) : dans les deux cas, on teste, on ne parie pas. Et le test des deux semaines injoignable te dit toujours où tu en es.",
+        nextHint:"Le candidat est identifié et testé. Reste le contrat de confiance : sa rémunération, et le rythme de pilotage qui te rend libre sans te rendre aveugle." }
+    ]
+  },
+
+  g2: {
+    id:"g2", moduleId:13, title:"Rémunérer et piloter ton gérant", duration:"16 min",
+    steps:[
+      { type:"concept", label:"La rémunération : payer la performance qui t'enrichit",
+        body:`<p>Le principe : un <strong>fixe au marché</strong> (ni au rabais — tu veux le garder — ni gonflé pour compenser un variable flou), plus un <strong>variable indexé sur ce qui compte pour TA stratégie</strong> :</p>
+        <ul>
+          <li><strong>L'EBITDA (ou le cash-flow) avant tout</strong> — c'est lui qui rembourse ta dette et finance ton build-up. Jamais le CA seul : un gérant bonusé au CA t'achètera de la croissance à marge nulle avec le sourire.</li>
+          <li><strong>Un garde-fou qualitatif</strong> — rétention des clients clés et des salariés clés : pour éviter l'EBITDA de court terme obtenu en pressurant tout le monde (l'entreprise que tu revendras dans 2 ans doit être en meilleur état, pas essorée).</li>
+          <li><strong>Éventuellement, un intéressement de long terme</strong> — une participation à la plus-value de sortie ou un mécanisme d'accès au capital pour l'aligner sur des années. Puissant mais technique (fiscalité, pactes) : à structurer avec ton avocat, pas au feeling.</li>
+        </ul>
+        <p><strong>📌 Fil rouge</strong> — le package de Karim, nommé gérant de Thermelec à M+10 : fixe 55 K€ ; variable = 10 % de l'EBITDA au-delà de 310 K€ (le niveau de la reprise : il n'est payé que sur ce qu'il AJOUTE), plafonné à 25 K€ ; condition de déclenchement : rétention des 10 comptes clés et turnover maîtrisé ; et une clause de revoyure à 24 mois sur un intéressement long terme si le build-up se lance.</p>` },
+      { type:"numeric", label:"Exercice",
+        question:"Année 1 de Karim : EBITDA de 370 K€ (contre 310 K€ à la reprise), conditions qualitatives remplies. Quel est son bonus (en euros) avec la formule « 10 % au-delà de 310 K€ » ?",
+        placeholder:"Ex : 5000", answer:6000, tolerance:200,
+        successMsg:"Oui : (370 000 − 310 000) × 10 % = 6 000 €. Et regarde l'alignement : ces 60 K€ d'EBITDA supplémentaires valent, à un multiple de 3x, ~180 K€ de valeur d'entreprise en plus pour toi. Tu paies 6 K€ pour en gagner 180 K€ — c'est ça, un variable bien construit.",
+        hint:"Bonus = (EBITDA réalisé − 310 000) × 10 %. Calcule d'abord le dépassement." },
+      { type:"concept", label:"Le rythme de pilotage : serré, puis desserré — jamais lâché",
+        body:`<p>Ton cadre, directement issu de ta stratégie — et cohérent avec ce que font les meilleurs systèmes d'accompagnement (objectifs trimestriels, checkpoints réguliers, bilan) :</p>
+        <ul>
+          <li><strong>Mois 0-3 : quotidien, 1 h</strong> — pas du flicage : du transfert. Chaque matin, vous passez les décisions de la veille et du jour ; tu transmets tes arbitrages, il prend progressivement les siens. C'est ta passation de pouvoir, structurée.</li>
+          <li><strong>Mois 3-6 : hebdomadaire</strong> — une réunion chiffrée sur LE tableau de bord (voir ci-dessous). Il décide, tu challenges.</li>
+          <li><strong>Ensuite : trimestriel</strong> — une vraie revue de gestion : résultats vs objectifs du trimestre, fixation des 2-3 objectifs du suivant (ventes, marge, projets), décisions d'investissement. Entre deux : il pilote, tu reçois le tableau de bord mensuel, et une règle d'alerte claire — « tu m'appelles sans attendre si : perte d'un compte clé, tension de trésorerie, départ d'un homme clé, litige ».</li>
+        </ul>
+        <p>Le tableau de bord de CHAQUE réunion, une page maximum : trésorerie à 13 semaines, carnet de commandes / devis en cours, CA et marge du mois vs N-1, top 10 clients (signaux faibles), effectif et absences, et l'avancement des 2-3 objectifs du trimestre. <strong>Pas de réunion sans chiffres ; pas de chiffres sans décision.</strong></p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"À M+8, Karim gère bien : tu passes le suivi en trimestriel avec tableau de bord mensuel. À M+11, tu découvres qu'un compte clé est parti... six semaines plus tôt, sans que tu en aies entendu parler. Quelle est la bonne lecture ?",
+        options:[
+          "Karim t'a trahi : il faut le sanctionner, voire le remplacer",
+          "C'est d'abord ton système de pilotage qui a échoué : la règle d'alerte n'était pas claire ou pas vivante, et le tableau de bord ne faisait pas ressortir les signaux clients. On corrige le système ET on recadre le fond : les mauvaises nouvelles remontent en premier",
+          "C'est le jeu de la délégation : on ne peut pas tout savoir, il gère"
+        ],
+        correctIndex:1,
+        explanation:"La première mauvaise nouvelle cachée est TOUJOURS un double signal : sur la personne, oui — mais d'abord sur ton système. Un gérant cache ce qu'il craint de montrer ou ce qu'on ne lui demande jamais. La réponse durable : réaffirmer la culture (« une mauvaise nouvelle qui remonte vite est une bonne nouvelle »), remettre le top clients dans CHAQUE tableau de bord, re-vivifier la règle d'alerte. Le sanctionner sans corriger le système garantit que le prochain problème sera encore mieux caché." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Le variable sur le CA seul — croissance à marge nulle garantie. Toujours EBITDA/cash + garde-fou qualitatif.",
+          "Le variable non plafonné ou sur une base mal définie (EBITDA « avant ou après ta propre rémunération de holding ? avant éléments exceptionnels ? ») — chaque ambiguïté est un conflit programmé. Formule écrite, exemples chiffrés en annexe.",
+          "Des réunions sans chiffres (« alors, ça va ? ») ou des chiffres sans décisions. Les deux tuent le pilotage, chacune à sa façon.",
+          "Couper le rythme trop tôt par confort mutuel — le passage au trimestriel se MÉRITE par des tableaux de bord fiables et des alertes qui fonctionnent, il ne se décrète pas au calendrier.",
+          "Oublier que ce système de pilotage est aussi ton actif de sortie : une entreprise qui tourne avec un gérant performant et un reporting propre se vend mieux et plus cher qu'une entreprise dépendante de son propriétaire. Documente tout."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Tu ne pilotes ni des heures de présence, ni de l'affect : <strong>tu pilotes des chiffres et des décisions.</strong> C'est toute la différence entre déléguer et abdiquer.</p>
+        <p>Et voici la bascule mentale du build-up : une fois Karim autonome en pilotage trimestriel, ton vrai poste change. Ton EBITDA remonte en dividendes vers la holding, ta dette s'amortit, ta capacité d'emprunt se reconstitue — et tes journées libérées repartent... au Module 2 : thèse, pipeline, courriers. La boucle de ta stratégie est fermée : <strong>acquérir → stabiliser (100 jours) → systématiser (cash-flow) → déléguer (gérant) → extraire → réinvestir.</strong> Chaque tour de boucle est plus rapide que le précédent, parce que tout ce que tu viens d'apprendre se réutilise.</p>` },
+      { type:"validation", label:"Question de validation 1/2",
+        question:"Conçois le package complet de rémunération d'un gérant pour une entreprise type Thermelec : fixe, formule de variable (base, taux, seuil, plafond), garde-fous qualitatifs — et justifie chaque choix par le comportement que tu veux (ou ne veux PAS) encourager." },
+      { type:"validation", label:"Question de validation 2/2",
+        question:"Ta holding reçoit maintenant ~40-50 K€/an de flux libre après service de la dette. Décris ta séquence build-up des 18 prochains mois : que fais-tu de ce cash, quand relances-tu le sourcing, et qu'est-ce qui doit être vrai chez Thermelec AVANT que tu signes une LOI sur la cible n°2 ?" },
+      { type:"summary",
+        summary:"Rémunération du gérant : fixe au marché + variable sur l'EBITDA au-delà d'un seuil (jamais le CA seul), garde-fous qualitatifs, tout par écrit avec exemples chiffrés. Pilotage : quotidien 0-3 mois (transfert), hebdomadaire 3-6 mois, puis trimestriel avec tableau de bord d'une page et règle d'alerte — pas de réunion sans chiffres, pas de chiffres sans décision. Et la boucle du build-up se referme : le cash extrait et ton temps libéré financent la cible n°2.",
+        nextHint:"Le Module 14 comparera tes deux sorties possibles — revente à 1-3 ans avec plus-value, ou build-up assumé — pour choisir en connaissance de cause. En attendant : le Module 10 (cash-flow) et bientôt le Module 11 (digitalisation) sont tes chantiers de création de valeur." }
+    ]
+  },
+
 };
 
 /* =========================================================
@@ -1300,7 +1962,8 @@ let state = {
   chatBusy: false,
   currentUser: null,
   dbStatus: "checking", // "ok" | "error" | "checking"
-  currentRevisionQueue: [], currentRevisionIndex: 0
+  currentRevisionQueue: [], currentRevisionIndex: 0,
+  trainingScenario: null, trainingHistory: [], trainingBusy: false, trainingDebriefed: false
 };
 
 /* =========================================================
@@ -1462,7 +2125,7 @@ function updateSidebarStats(){
   if(f1) f1.style.width = info.pct + "%";
   if(acc) acc.textContent = state.currentUser ? ("Connecté : " + state.currentUser.email) : "";
   if(pwHint) pwHint.classList.toggle('hidden', !!state.progress.passwordSet);
-  ["dashboard","roadmap","chat","agent","analyzer","revision"].forEach(v => {
+  ["dashboard","roadmap","chat","agent","analyzer","revision","training"].forEach(v => {
     const a = document.getElementById('nav-'+v); if(a) a.classList.toggle('active', state.view===v);
     const b = document.getElementById('bnav-'+v); if(b) b.classList.toggle('active', state.view===v);
   });
@@ -1482,6 +2145,7 @@ function render(){
   else if(state.view === "agent") { app.innerHTML = renderAgentShell(); loadAgentProposals(); }
   else if(state.view === "analyzer") { app.innerHTML = renderAnalyzerShell(); }
   else if(state.view === "revision") { app.innerHTML = renderRevisionShell(); }
+  else if(state.view === "training") { app.innerHTML = renderTrainingShell(); renderTrainingMessages(); }
   updateSidebarStats();
   window.scrollTo(0,0);
 }
@@ -1702,6 +2366,10 @@ function renderDashboard(){
         <div class="stat-num" style="font-size:16px;">🔎 Agent</div>
         <div class="stat-label">Recherche approfondie sur un sujet</div>
       </div>
+      <div class="stat-card" style="cursor:pointer;" onclick="goTo('training')">
+        <div class="stat-num" style="font-size:16px;">🎭 Entraînement</div>
+        <div class="stat-label">Joue le cédant, la banquière, l'avocate</div>
+      </div>
     </div>
     <div style="margin-top:2px; display:flex; gap:12px; flex-wrap:wrap;">
       <button class="btn-ghost" onclick="goTo('roadmap')">Voir le parcours complet →</button>
@@ -1763,7 +2431,7 @@ function iconLock(){ return `<svg width="12" height="12" viewBox="0 0 24 24" fil
    ========================================================= */
 function renderRoadmap(){
   let html = `<div class="eyebrow">Le Parcours</div><h1>Ta feuille de route complète.</h1>
-  <p class="subtitle">13 modules, répartis en 5 phases — du sourcing jusqu'à la stratégie de sortie. On construit le contenu ensemble, module après module.</p>
+  <p class="subtitle">14 modules, répartis en 5 phases — du sourcing jusqu'à la stratégie de sortie. On construit le contenu ensemble, module après module.</p>
   <div class="journey">`;
   PHASES.forEach(ph => {
     html += `<div class="phase-label">Phase ${ph.id} — ${ph.name}</div>`;
@@ -2141,10 +2809,11 @@ function runDealAnalysis(){
 
   // Esquisse de montage (Module 7) : prêt d'honneur fixe, crédit-vendeur 25%,
   // dette bancaire plafonnée à 4x EBITDA (ordre de grandeur indicatif)
-  const pretHonneur = Math.min(30000, prix);
+  const apportPerso = Math.min(30000, prix);
+  const pretHonneur = Math.min(30000, Math.max(0, prix - apportPerso));
   const creditVendeur = prix * 0.25;
   const detteBancairePlafond = ebitda * 4;
-  const resteAvantBanque = Math.max(0, prix - pretHonneur - creditVendeur - tresoExcedentaire);
+  const resteAvantBanque = Math.max(0, prix - apportPerso - pretHonneur - creditVendeur - tresoExcedentaire);
   const detteBancaire = Math.min(resteAvantBanque, detteBancairePlafond);
   const ecartResiduel = resteAvantBanque - detteBancaire;
 
@@ -2165,6 +2834,7 @@ function runDealAnalysis(){
       <p><strong>Multiple implicite : ${multiple.toFixed(2)}x</strong> l'EBITDA (écart de ${ecartMultiple >= 0 ? '+' : ''}${ecartMultiple.toFixed(2)}x par rapport à ton objectif de 3x). Marge EBITDA : ${margeEbitda.toFixed(1)}% du CA.</p>
       <p><strong>Esquisse de montage sous 30K€ d'apport :</strong></p>
       <ul>
+        <li>Apport personnel (plafonné à 30 K€) : ${fmtEuro(apportPerso)}</li>
         <li>Prêt d'Honneur (0%) : ${fmtEuro(pretHonneur)}</li>
         <li>Crédit-vendeur (25% indicatif) : ${fmtEuro(creditVendeur)}</li>
         ${tresoExcedentaire > 0 ? `<li>Trésorerie excédentaire mobilisée : ${fmtEuro(tresoExcedentaire)}</li>` : ''}
@@ -2202,7 +2872,7 @@ function renderChatShell(){
   <div class="eyebrow">Le professeur</div>
   <h1 style="margin-bottom:16px;">Pose n'importe quelle question.</h1>
   <div class="chat-wrap">
-    <div class="chat-hint">Le professeur connaît ton projet (rachat en IDF, 500 K€–3 M€ de CA, profil « belle endormie », financement sans apport). Ce chat utilise ta propre clé API Anthropic (quelques centimes par échange). Pour tout point juridique ou fiscal précis, vérifie toujours avec ton expert-comptable ou ton avocat M&A.</div>
+    <div class="chat-hint">Le professeur connaît ton projet (rachat en IDF, 500 K€–3 M€ de CA, profil « belle endormie », apport personnel plafonné à 30 K€). Ce chat utilise ta propre clé API Anthropic (quelques centimes par échange). Pour tout point juridique ou fiscal précis, vérifie toujours avec ton expert-comptable ou ton avocat M&A.</div>
     <div class="chat-messages" id="chatMessages"></div>
     <div class="chat-input-row">
       <textarea id="chatInput" placeholder="Écris ta question..." onkeydown="handleChatKey(event)"></textarea>
@@ -2249,9 +2919,12 @@ function buildSystemPrompt(){
 PROJET DE L'UTILISATEUR (contexte permanent à utiliser) :
 - Rachat d'une entreprise en Île-de-France, CA entre 500 K€ et 3 M€.
 - Profil ciblé : une "belle endormie" — rentable, stable, sans développement récent, peu digitalisée, sans CRM ni prospection structurée, dépendante d'un portefeuille client historique, marché stable ou en croissance, revenus récurrents, EBITDA > 15%, faible dépendance à quelques clients, avantage concurrentiel difficile à copier ou forte demande locale.
-- Objectif de deal : racheter à un multiple inférieur à 3x l'EBITDA, SANS mobiliser sa trésorerie personnelle (financement via trésorerie excédentaire de la cible, crédit-vendeur, dette bancaire, dette investisseur, structuré via une holding d'acquisition).
+- Objectif de deal : racheter à un multiple inférieur à 3x l'EBITDA, avec un apport personnel PLAFONNÉ à 30 K€ maximum (le reste du financement via prêt d'honneur, trésorerie excédentaire de la cible, crédit-vendeur, dette bancaire, dette investisseur, structuré via une holding d'acquisition).
 - Après le rachat, deux objectifs possibles selon la suite : (1) faire croître/structurer/adapter l'entreprise pour la revendre avec plus-value entre 1 et 3 ans, ou (2) développer avec un gérant en place (rythme de suivi : quotidien 0-3 mois, hebdomadaire 3-6 mois, trimestriel ensuite) dans une logique de build-up (portefeuille d'entreprises).
 - Diagnostic de l'utilisateur : niveau comptable = ${d.comptes||'inconnu'} ; avancement du projet = ${d.avancement||'inconnu'} ; principale crainte = ${d.peur||'inconnue'}.
+
+FIL ROUGE DU PROGRAMME (cas d'école que l'utilisateur suit dans les leçons — utilise-le naturellement dans tes exemples s'il s'y réfère) :
+Thermelec SAS, Corbeil-Essonnes (91), maintenance CVC pour copropriétés et PME, créée en 1998 par Bernard Lemoine (61 ans, vend pour raisons familiales et de santé, pas de successeur). 11 salariés dont Karim, chargé d'affaires homme-clé (futur gérant pressenti). CA 1,82 M€ ; EBITDA affiché 355 K€, normalisé 310 K€ (17 %). ~70 % du CA en contrats de maintenance récurrents ; top 3 clients = 31 %. Zéro digital (pas de CRM, devis Excel). Trésorerie excédentaire 180 K€. Prix demandé 990 K€, négocié 850 K€ (2,74x) avec crédit-vendeur 230 K€ (4 ans, différé 12 mois). Montage : besoins ~910 K€ = apport 30 K€ + prêt d'honneur 30 K€ + crédit-vendeur 230 K€ + distribution de trésorerie 140 K€ + dette bancaire 480 K€ (7 ans, annuité ~80 K€). Dividende remontable prudent ~185 K€/an, service de dette total ~142 K€, DSCR ≈ 1,3. GAP : plafond 250 K€ dégressif, 3 ans, séquestre 80 K€.
 
 TON STYLE PEDAGOGIQUE (à respecter scrupuleusement) :
 1. Distingue exposition et exploration : si la question porte sur "comment ça marche en général" (normes établies : mécanique d'un LBO, définition d'un terme, fiscalité standard), donne directement la réponse avec confiance — ne transforme jamais une question factuelle en devinette. Réserve les questions en retour aux cas où tu explores SA situation spécifique (ex: "sur CETTE cible, avec CES chiffres, que ferais-tu ?").
@@ -2373,6 +3046,214 @@ async function loadAgentProposals(){
     box.innerHTML = `<p style="color:var(--text-muted); font-size:14px;">Impossible de charger l'historique.</p>`;
   }
 }
+
+/* =========================================================
+   SALLE D'ENTRAINEMENT (jeu de rôle avec l'IA)
+   ========================================================= */
+const THERMELEC_CTX = `CONTEXTE FACTUEL DU CAS (cohérent avec le programme REPRISE.) :
+Thermelec SAS, Corbeil-Essonnes (91), maintenance et dépannage CVC pour copropriétés et PME, créée en 1998 par Bernard Lemoine, 61 ans. 11 salariés dont 8 techniciens ; Karim est le chargé d'affaires homme-clé. CA 1,82 M€. EBITDA affiché 355 K€, normalisé à 310 K€ (salaire du dirigeant sous le marché, véhicule personnel, éléments exceptionnels). ~70 % du CA en contrats de maintenance récurrents. Top 3 clients (2 syndics + 1 bailleur) = 31 % du CA. Aucun CRM, devis Excel, pas de site à jour. Trésorerie excédentaire ~180 K€. Bernard vend car sa femme veut qu'il lève le pied, il a mal au dos, son fils ne reprendra pas. Il a ancré un prix de « 1 million » (990 K€ demandés) ; une issue réaliste du dossier est ~850 K€ (2,74x) avec ~230 K€ de crédit-vendeur sur 4 ans. Le repreneur (l'utilisateur) dispose d'un apport personnel plafonné à 30 K€, complété par prêt d'honneur, crédit-vendeur, distribution de trésorerie excédentaire et dette bancaire via une holding.`;
+
+const TRAINING_SCENARIOS = {
+  rdv1: {
+    title:"Premier rendez-vous avec le cédant",
+    icon:"🤝",
+    desc:"Déjeuner discret avec Bernard Lemoine. Objectif : créer la confiance, comprendre pourquoi il vend, obtenir un second rendez-vous. Le prix n'est PAS le sujet.",
+    lessonRef:"Leçon liée : Module 2 — Le premier rendez-vous cédant",
+    opening:"*Bernard vous serre la main, un peu raide, et s'assoit.* Alors comme ça, c'est vous que Monsieur Fabre m'a recommandé... Il m'a dit du bien de vous, mais je vous préviens tout de suite : je ne suis pas pressé, et je n'ai encore rien décidé. Qu'est-ce que vous voulez savoir ?",
+    system:`Tu joues un JEU DE ROLE pédagogique. Tu incarnes Bernard Lemoine, 61 ans, fondateur de Thermelec, lors d'un PREMIER rendez-vous avec un repreneur potentiel (l'utilisateur). Tu n'es PAS un assistant : tu es Bernard, et uniquement Bernard.
+
+PERSONNALITE : fier de ses 27 ans de travail, chaleureux une fois en confiance, mais méfiant au départ (il n'a parlé de la vente à personne, pas même à ses salariés). Direct, parle simplement, un peu bavard sur son histoire quand on la lui demande. Se ferme si on le brusque, si on critique sa boîte, si on parle argent/montage financier trop tôt, ou si on lui pose des questions d'audit (marges, salaires, litiges) dès le premier rendez-vous.
+
+CE QUE TU DIS VOLONTIERS SI ON TE LE DEMANDE BIEN : ton histoire, ta semaine type (tu fais encore tous les gros chiffrages et tu gères personnellement les 2 syndics principaux), ton équipe (Karim ton couteau suisse), le fait que les clients viennent au bouche-à-oreille, ta fierté (« on n'a jamais perdu un contrat de maintenance »).
+CE QUE TU NE REVELES QUE SI LA CONFIANCE EST INSTALLEE (questions ouvertes, écoute réelle, empathie) : la vraie raison de la vente (ta femme, ton dos, ton fils qui ne reprendra pas) — au début tu dis juste « il faut savoir passer la main ». Tu peux lâcher l'ancre « une boîte comme la mienne est partie à 1 million » si la discussion effleure la valeur.
+INFORMATION CACHEE (à ne révéler QUE si l'utilisateur pose une question précise sur les clients récents, les renouvellements en cours ou les menaces concurrentielles, ET que la confiance est bonne) : un de tes deux gros syndics a lancé une consultation concurrentielle en janvier — tu penses la gagner mais ça te tracasse.
+COMPORTEMENT : si l'utilisateur parle prix/montage/LBO/crédit-vendeur, recadre (« on n'en est pas là »). S'il critique la boîte, vexe-toi visiblement. S'il écoute bien et pose des questions sincères, ouvre-toi progressivement et propose de lui faire visiter l'atelier. Reste réaliste : réponses de 2 à 6 phrases, langage parlé, pas de listes à puces. Mets les didascalies entre astérisques (*il sourit*). Ne sors JAMAIS du personnage, sauf si l'utilisateur écrit STOP.
+
+
+` + THERMELEC_CTX
+  },
+  prix: {
+    title:"Négocier le prix et le crédit-vendeur",
+    icon:"⚖️",
+    desc:"Troisième rendez-vous. Bernard a annoncé 990 K€. Ton EBITDA normalisé : 310 K€. Objectif : le faire bouger vers ~850 K€ avec crédit-vendeur — sans casser la relation.",
+    lessonRef:"Leçons liées : Module 4 (valorisation), Module 6 (négociation, LOI)",
+    opening:"*Bernard pose les comptes sur la table.* Bon. Vous avez regardé les chiffres, moi j'ai réfléchi de mon côté. Je vous le dis simplement : en dessous de 990 000, je ne vends pas. J'ai vu qu'une boîte comme la mienne était partie à un million. Alors, qu'est-ce que vous me proposez ?",
+    system:`Tu joues un JEU DE ROLE pédagogique. Tu incarnes Bernard Lemoine (Thermelec) en NEGOCIATION DE PRIX avec le repreneur (l'utilisateur). Tu n'es PAS un assistant : tu es Bernard.
+
+TA POSITION : ancré à 990 K€ (« j'ai vu qu'une boîte comme la mienne est partie à 1 million »). Ce chiffre vient d'une rumeur sur une entreprise plus grosse — tu ne connais pas les multiples ni l'EBITDA normalisé. Ton EBITDA « à toi » c'est 355 K€ : tu contestes d'abord les retraitements (salaire, véhicule) si on te les oppose, puis tu les admets un par un s'ils sont expliqués calmement et factuellement.
+CE QUI TE FAIT BOUGER : les arguments factuels et pédagogiques (méthode multiple x EBITDA normalisé, comparaison avec ce que paierait une banque), le respect de ton travail, un crédit-vendeur bien présenté (au début tu te méfies : « donc vous n'avez pas l'argent ? » — mais si l'utilisateur le présente comme un gage de confiance réciproque, un intérêt versé, et une transition sécurisée, tu y deviens favorable), la garantie que l'équipe est conservée, un calendrier clair.
+CE QUI TE BRAQUE : les attaques sur la qualité de ta boîte, la pression (« c'est à prendre ou à laisser »), le jargon financier assené sans explication, un acheteur qui ne parle que de lui.
+TA ZONE D'ACCORD REELLE (ne la révèle jamais explicitement) : tu peux descendre jusqu'à ~840-870 K€ si la méthode est bien expliquée ET que le montage te rassure (crédit-vendeur rémunéré, accompagnement, équipe conservée). En dessous de 800 K€ tu refuses net et menaces de mettre fin aux discussions. Si l'utilisateur est excellent (méthode claire + empathie + concessions échangées et non données), tu peux conclure autour de 850 K€ avec 230 K€ de crédit-vendeur.
+COMPORTEMENT : négocie pied à pied, fais des contre-offres, demande des contreparties. Reste réaliste : 2 à 6 phrases, langage parlé, didascalies entre astérisques. Ne sors JAMAIS du personnage, sauf si l'utilisateur écrit STOP.
+
+
+` + THERMELEC_CTX
+  },
+  banque: {
+    title:"Convaincre la banquière",
+    icon:"🏦",
+    desc:"Rendez-vous au comité : tu défends ton dossier Thermelec (850 K€, apport 30 K€, dette demandée 480 K€) face à une chargée d'affaires exigeante.",
+    lessonRef:"Leçons liées : Module 7 (financement), Module 8 (holding, DSCR)",
+    opening:"*Mme Diallo ouvre votre dossier et le parcourt en silence quelques secondes.* Merci d'être venu. J'ai lu votre demande : 480 000 euros sur 7 ans pour reprendre Thermelec, avec... 30 000 euros d'apport personnel. C'est peu, vous en avez conscience. Convainquez-moi. Commençons simplement : pourquoi cette entreprise, et comment comptez-vous rembourser ?",
+    system:`Tu joues un JEU DE ROLE pédagogique. Tu incarnes Mme Diallo, chargée d'affaires entreprises dans une banque de réseau, spécialiste des financements de transmission de PME. L'utilisateur (le repreneur) vient défendre son dossier Thermelec. Tu n'es PAS un assistant : tu es la banquière.
+
+PERSONNALITE : professionnelle, courtoise, précise, sceptique par métier. Tu poses UNE question à la fois et tu creuses les réponses floues. Tu apprécies les chiffres exacts, les scénarios dégradés, l'honnêteté sur les risques. Tu détestes le flou, l'enthousiasme sans chiffres, et les repreneurs qui n'ont pas fait leurs calculs.
+TES QUESTIONS OBLIGATOIRES AU FIL DE L'ENTRETIEN (dans un ordre naturel) : la capacité de remboursement (tu attends un DSCR : dividende remontable ~185 K€ vs service de dette ~142 K€, soit ~1,3 — s'il ne connaît pas son DSCR ou ne sait pas l'expliquer, insiste et note le point faible) ; la faiblesse de l'apport (30 K€ sur ~910 K€ de besoins — tu attends : prêt d'honneur en quasi-apport, crédit-vendeur de 230 K€ comme signal de confiance du cédant, GAP solide) ; la dépendance au dirigeant et le plan de transition (accompagnement du cédant, homme-clé Karim) ; la concentration client (top 3 = 31 %) ; le scénario dégradé (que se passe-t-il à -20 % d'EBITDA ?) ; son expérience et son plan des 100 jours.
+COMPORTEMENT : si les réponses sont solides et chiffrées, deviens progressivement positive et termine en évoquant un passage en comité avec avis favorable, en listant tes conditions (caution personnelle partielle à négocier, nantissement des titres, DSCR minimum). Si les réponses restent floues après relance, conclus poliment que le dossier n'est pas mûr et dis précisément ce qui manque. Reste réaliste : 2 à 5 phrases par tour, une seule question à la fois. Ne sors JAMAIS du personnage, sauf si l'utilisateur écrit STOP.
+
+
+` + THERMELEC_CTX
+  },
+  gap: {
+    title:"Négocier la GAP face à l'avocate du cédant",
+    icon:"🛡️",
+    desc:"Maître Garnier veut réduire chaque curseur de ta garantie d'actif et de passif. Défends ton plafond, ta durée et ton séquestre.",
+    lessonRef:"Leçon liée : Module 6 — La GAP",
+    opening:"*Me Garnier vous tend la nouvelle version du projet de garantie.* Bonjour. J'ai relu votre proposition de garantie d'actif et de passif avec mon client. Très franchement : un plafond de 250 000 euros, trois ans, ET un séquestre ? Mon client vend une entreprise saine, pas une centrale nucléaire. Nous proposons : plafond de 50 000 euros, douze mois, sans séquestre — Monsieur Lemoine est un homme d'honneur. Je vous écoute.",
+    system:`Tu joues un JEU DE ROLE pédagogique. Tu incarnes Maître Garnier, avocate du cédant (Bernard Lemoine) dans la négociation de la garantie d'actif et de passif de la cession Thermelec (prix ~850 K€). Tu n'es PAS un assistant : tu es l'avocate de la partie adverse.
+
+TA MISSION : minimiser l'exposition de ton client. Position d'ouverture : plafond 50 K€, durée 12 mois, pas de séquestre, franchise élevée, exclusion du fiscal antérieur.
+TES ARGUMENTS RECURRENTS : « entreprise saine, comptes certifiés », « la due diligence a tout vu, la garantie fait double emploi », « le séquestre est une marque de défiance », « mon client a besoin du prix pour sa retraite », « le crédit-vendeur vous protège déjà ».
+CE QUI TE FAIT CEDER (progressivement, jamais d'un bloc, toujours contre une contrepartie) : les arguments techniques exacts — une durée alignée sur les délais de prescription fiscale et sociale (une garantie de 12 mois expire avant tout contrôle réel), un plafond usuel de 20 à 50 % du prix sur ce type de PME, la « garantie de la garantie » (sans séquestre ou caution bancaire, la garantie ne vaut que la solvabilité future du cédant), la dégressivité comme compromis, le fait que les éléments déjà déclarés sont de toute façon exclus. Tu peux converger vers : plafond 200-250 K€ dégressif, 3 ans avec alignement fiscal/social, séquestre 60-80 K€ sur 24 mois OU caution bancaire, franchise raisonnable.
+CE QUI TE FAIT GAGNER DU TERRAIN : si l'utilisateur ne connaît pas ses ordres de grandeur, accepte tes formules vagues, ou négocie le plafond sans exiger de garantie de la garantie — dans ce cas verrouille l'avantage. Si l'utilisateur invoque des règles précises de façon erronée, corrige-le courtoisement (tu es juriste) sans donner de conseil à sa place.
+COMPORTEMENT : courtoise, technique, redoutable. 2 à 5 phrases par tour. Didascalies possibles entre astérisques. Ne sors JAMAIS du personnage, sauf si l'utilisateur écrit STOP.
+
+
+` + THERMELEC_CTX
+  }
+};
+
+const TRAINING_DEBRIEF_SYSTEM = `Tu es "Le Professeur" de REPRISE., coach de négociation pour un repreneur de PME (projet : rachat en IDF, belle endormie, apport plafonné à 30 K€, multiple < 3x). On te transmet le transcript d'un jeu de rôle d'entraînement. Fais un débrief de coach, franc et bienveillant, en français :
+1. Score global sur 10, justifié en une phrase.
+2. Ce qui était bien joué (2-3 points précis, avec citation courte du transcript).
+3. Les erreurs ou occasions manquées (2-3 points précis, avec citation et ce qu'il aurait fallu dire à la place — sois concret, propose la formulation exacte).
+4. Les informations cachées ou signaux que l'utilisateur a obtenus... ou ratés (le personnage avait des choses à révéler seulement si on les cherchait).
+5. UNE recommandation prioritaire pour la prochaine session, et la leçon du programme à revoir si pertinent.
+Reste concis (300 mots max), structure en points courts.`;
+
+function startTraining(scenarioId){
+  const sc = TRAINING_SCENARIOS[scenarioId];
+  if(!sc) return;
+  state.trainingScenario = scenarioId;
+  state.trainingHistory = [{ role:'assistant', content: sc.opening }];
+  state.trainingBusy = false;
+  state.trainingDebriefed = false;
+  state.view = "training";
+  render();
+}
+function quitTraining(){
+  state.trainingScenario = null;
+  state.trainingHistory = [];
+  state.view = "training";
+  render();
+}
+function renderTrainingShell(){
+  if(!state.trainingScenario){
+    const cards = Object.keys(TRAINING_SCENARIOS).map(id => {
+      const sc = TRAINING_SCENARIOS[id];
+      return `<div class="module-card" style="margin-bottom:12px; cursor:pointer;" onclick="startTraining('${id}')">
+        <div><div class="module-card-title" style="font-size:15.5px;">${sc.icon} ${sc.title}</div>
+        <div class="module-card-desc">${sc.desc}<br><span style="opacity:0.7;">${sc.lessonRef}</span></div></div>
+        <div class="module-card-meta"><span class="badge-built">Jouer →</span></div>
+      </div>`;
+    }).join('');
+    return `
+    <div class="eyebrow">Salle d'entraînement</div>
+    <h1 style="margin-bottom:8px;">Joue le rendez-vous avant de le vivre.</h1>
+    <p class="subtitle">L'IA incarne la partie adverse — cédant, banquière, avocate — avec son caractère, ses résistances et des informations qu'elle ne lâchera que si tu poses les bonnes questions. À la fin, demande le débrief du coach (+40 XP). Session non sauvegardée : c'est un bac à sable, ose tout. Écris STOP pour sortir du personnage.</p>
+    ${cards}`;
+  }
+  const sc = TRAINING_SCENARIOS[state.trainingScenario];
+  return `
+  <div class="eyebrow">Salle d'entraînement</div>
+  <h1 style="margin-bottom:16px;">${sc.icon} ${sc.title}</h1>
+  <div class="chat-wrap">
+    <div class="chat-hint">${sc.desc} — Reste dans le jeu : ton interlocuteur ne sortira pas de son rôle. Quand tu as terminé, clique sur « Débrief du coach ».</div>
+    <div class="chat-messages" id="trainingMessages"></div>
+    <div class="chat-input-row">
+      <textarea id="trainingInput" placeholder="Ta réplique..." onkeydown="handleTrainingKey(event)"></textarea>
+      <button class="btn-primary" onclick="sendTrainingMessage()" id="trainingSendBtn">Envoyer</button>
+    </div>
+    <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
+      <button class="btn-ghost" onclick="endTrainingDebrief()" id="trainingDebriefBtn">🎓 Terminer & débrief du coach</button>
+      <button class="btn-ghost" onclick="quitTraining()">← Changer de scénario</button>
+    </div>
+  </div>`;
+}
+function renderTrainingMessages(){
+  const box = document.getElementById('trainingMessages');
+  if(!box) return;
+  box.innerHTML = state.trainingHistory.map(m => `<div class="msg ${m.role==='user'?'msg-user':'msg-assistant'}">${escapeHtml(m.content).replace(/\*(.*?)\*/g,'<em style="opacity:0.75;">$1</em>').replace(/\n/g,'<br>')}</div>`).join('');
+  if(state.trainingBusy){ box.innerHTML += `<div class="msg msg-assistant typing">…</div>`; }
+  box.scrollTop = box.scrollHeight;
+}
+function handleTrainingKey(e){
+  if(e.key === "Enter" && !e.shiftKey){ e.preventDefault(); sendTrainingMessage(); }
+}
+async function sendTrainingMessage(){
+  const input = document.getElementById('trainingInput');
+  const text = input.value.trim();
+  if(!text || state.trainingBusy) return;
+  state.trainingHistory.push({role:'user', content:text});
+  input.value = '';
+  state.trainingBusy = true;
+  renderTrainingMessages();
+  const sc = TRAINING_SCENARIOS[state.trainingScenario];
+  const reply = await callRoleplay(sc.system, state.trainingHistory.slice(-24));
+  state.trainingBusy = false;
+  state.trainingHistory.push({role:'assistant', content:reply});
+  renderTrainingMessages();
+}
+async function endTrainingDebrief(){
+  if(state.trainingBusy) return;
+  const played = state.trainingHistory.filter(m => m.role === 'user').length;
+  if(played < 2){
+    state.trainingHistory.push({role:'assistant', content:"(Coach) Joue au moins quelques répliques avant de demander le débrief — lance-toi, c'est un bac à sable."});
+    renderTrainingMessages();
+    return;
+  }
+  state.trainingBusy = true;
+  renderTrainingMessages();
+  const sc = TRAINING_SCENARIOS[state.trainingScenario];
+  const transcript = state.trainingHistory.map(m => (m.role === 'user' ? "REPRENEUR : " : "PERSONNAGE : ") + m.content).join("\n");
+  const debriefMessages = [{ role:'user', content: "Scénario joué : " + sc.title + "\n\nTranscript :\n" + transcript + "\n\nFais le débrief." }];
+  const reply = await callRoleplay(TRAINING_DEBRIEF_SYSTEM, debriefMessages);
+  state.trainingBusy = false;
+  state.trainingHistory.push({role:'assistant', content:"🎓 DÉBRIEF DU COACH\n\n" + reply});
+  if(!state.trainingDebriefed){ state.trainingDebriefed = true; awardXP(40); }
+  renderTrainingMessages();
+}
+async function callRoleplay(systemPrompt, messages){
+  try{
+    const { data: sessionData } = await sbClient.auth.getSession();
+    if(!sessionData || !sessionData.session){
+      return "Ta session a expiré. Recharge la page et reconnecte-toi.";
+    }
+    const functionUrl = SUPABASE_URL + "/functions/v1/chat-proxy";
+    const response = await fetch(functionUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + sessionData.session.access_token
+      },
+      body: JSON.stringify({ system: systemPrompt, messages: messages.map(m => ({role: m.role, content: m.content})) })
+    });
+    const data = await response.json();
+    if(data && data.content){
+      const text = data.content.filter(b => b.type === 'text').map(b => b.text).join('\n');
+      if(text) return text;
+    }
+    if(data && data.error){
+      const msg = typeof data.error === 'string' ? data.error : (data.error.message || JSON.stringify(data.error));
+      return "(Problème technique : " + msg + ")";
+    }
+    return "(Je n'ai pas réussi à répondre — réessaie.)";
+  } catch(e){
+    console.error(e);
+    return "(Connexion impossible pour le moment — vérifie ta connexion et réessaie.)";
+  }
+}
+
 
 /* =========================================================
    INIT
