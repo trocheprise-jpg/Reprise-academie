@@ -194,13 +194,35 @@
   }
   .module-node.clickable .module-card{ cursor:pointer; }
   .module-node.clickable .module-card:hover{ border-color: var(--gold); }
+  .module-card.expanded{ border-radius: var(--radius) var(--radius) 0 0; border-color: var(--gold); }
   .module-card-title{ font-family: var(--font-display); font-size:16.5px; margin-bottom:4px; }
   .module-card-desc{ font-size: 13px; color: var(--text-muted); }
   .bookmark-comment{
     margin-top:8px; font-size:13px; color: var(--gold-2); font-style:italic;
     background: rgba(226,190,110,0.08); border-left:2px solid var(--gold-2); padding:6px 10px; border-radius:4px;
   }
-  .module-card-meta{ font-size: 11.5px; color: var(--text-muted); white-space:nowrap; text-align:right; flex-shrink:0; }
+  .module-card-meta{ font-size: 11.5px; color: var(--text-muted); white-space:nowrap; text-align:right; flex-shrink:0; display:flex; align-items:center; gap:10px; }
+  .accordion-chevron{ font-size:13px; color: var(--text-muted); display:inline-block; width:12px; }
+  .module-accordion{
+    background: var(--ink); border:1px solid var(--ink-border); border-top:none;
+    border-radius: 0 0 var(--radius) var(--radius); padding:16px 18px; margin-top:-1px;
+  }
+  .accordion-empty{ font-size:13px; color: var(--text-muted); margin-bottom:12px; }
+  .accordion-lesson{ margin-bottom:16px; }
+  .accordion-lesson:last-child{ margin-bottom:0; }
+  .accordion-lesson-title{
+    font-size:12.5px; font-weight:700; letter-spacing:0.3px; color: var(--text-muted);
+    text-transform:uppercase; margin-bottom:6px;
+  }
+  .accordion-step-row{
+    display:flex; align-items:center; gap:10px; padding:8px 10px; border-radius: var(--radius-sm);
+    cursor:pointer; transition: background 0.12s ease;
+  }
+  .accordion-step-row:hover{ background: var(--ink-2); }
+  .accordion-step-num{ font-family: var(--font-mono); font-size:11px; color: var(--text-muted); width:18px; flex-shrink:0; }
+  .accordion-step-label{ font-size:13.5px; color: var(--text-light); flex:1; }
+  .accordion-step-marks{ display:flex; gap:4px; flex-shrink:0; font-size:13px; }
+  .step-mark{ opacity:0.9; }
   .module-node.locked .module-card{ opacity: 0.55; }
   .module-node.locked .module-card-meta{ color: var(--text-muted); }
   .badge-built{ background: var(--forest); color:#eafff2; font-size:10.5px; padding:2px 9px; border-radius:999px; font-weight:700; letter-spacing:0.4px; }
@@ -2576,7 +2598,8 @@ const DEFAULT_PROGRESS = {
   revisionBank: {}, dealAnalyses: [],
   lastPosition: null, // { lessonId, stepIndex } — pour reprendre une leçon là où on l'a laissée
   taggedSteps: {}, // { "lessonId_stepIndex": { taggedAt } } — étapes marquées comme repères
-  stepComments: {} // { "lessonId_stepIndex": { text, updatedAt } } — notes personnelles par étape
+  stepComments: {}, // { "lessonId_stepIndex": { text, updatedAt } } — notes personnelles par étape
+  lessonProgress: {} // { lessonId: furthestStepIndexReached } — pour l'accordéon de révision par module
 };
 let state = {
   view: "loading",
@@ -2588,7 +2611,8 @@ let state = {
   currentUser: null,
   dbStatus: "checking", // "ok" | "error" | "checking"
   currentRevisionQueue: [], currentRevisionIndex: 0,
-  trainingScenario: null, trainingHistory: [], trainingBusy: false, trainingDebriefed: false
+  trainingScenario: null, trainingHistory: [], trainingBusy: false, trainingDebriefed: false,
+  expandedModuleId: null
 };
 
 /* =========================================================
@@ -2744,7 +2768,19 @@ function restartLesson(){
 }
 function saveLastPosition(){
   state.progress.lastPosition = { lessonId: state.currentLessonId, stepIndex: state.currentStep };
+  state.progress.lessonProgress = state.progress.lessonProgress || {};
+  const prevMax = state.progress.lessonProgress[state.currentLessonId];
+  if(typeof prevMax !== 'number' || state.currentStep > prevMax){
+    state.progress.lessonProgress[state.currentLessonId] = state.currentStep;
+  }
   saveProgress();
+}
+function getVisitedMaxStep(lessonId){
+  const lesson = LESSONS[lessonId];
+  if(!lesson) return -1;
+  if(state.progress.completedLessons.includes(lessonId)) return lesson.steps.length - 1;
+  const tracked = (state.progress.lessonProgress || {})[lessonId];
+  return (typeof tracked === 'number') ? tracked : -1;
 }
 
 function openChatWithContext(prefill){
@@ -3089,7 +3125,7 @@ function iconLock(){ return `<svg width="12" height="12" viewBox="0 0 24 24" fil
    ========================================================= */
 function renderRoadmap(){
   let html = `<div class="eyebrow">Le Parcours</div><h1>Ta feuille de route complète.</h1>
-  <p class="subtitle">15 modules, répartis en 5 phases — du sourcing jusqu'à la stratégie de sortie. On construit le contenu ensemble, module après module.</p>
+  <p class="subtitle">15 modules, répartis en 5 phases — du sourcing jusqu'à la stratégie de sortie. Clique sur un module pour dérouler les étapes déjà vues et y revenir en un clic.</p>
   <div class="journey">`;
   PHASES.forEach(ph => {
     html += `<div class="phase-label">Phase ${ph.id} — ${ph.name}</div>`;
@@ -3099,17 +3135,64 @@ function renderRoadmap(){
       const lessonsDone = m.lessonIds.filter(l=>state.progress.completedLessons.includes(l)).length;
       const clickable = m.built;
       const cls = isDone ? 'done' : (m.built ? 'current clickable' : 'locked');
+      const expanded = state.expandedModuleId === m.id;
       html += `<div class="module-node ${cls}">
         <div class="module-dot">${isDone ? iconCheck() : (m.built ? m.id : iconLock())}</div>
-        <div class="module-card" ${clickable ? `onclick="openModule(${m.id})"` : ''}>
+        <div class="module-card${expanded ? ' expanded' : ''}" ${clickable ? `onclick="toggleModuleAccordion(${m.id})"` : ''}>
           <div><div class="module-card-title">${m.title}</div><div class="module-card-desc">${m.desc}</div></div>
-          <div class="module-card-meta">${m.built ? `<span class="badge-built">${lessonsDone}/${m.lessonIds.length} leçons</span>` : `<span class="badge-soon">à construire</span>`}</div>
+          <div class="module-card-meta">${m.built ? `<span class="badge-built">${lessonsDone}/${m.lessonIds.length} leçons</span><span class="accordion-chevron">${expanded ? '▾' : '▸'}</span>` : `<span class="badge-soon">à construire</span>`}</div>
         </div>
+        ${(clickable && expanded) ? renderModuleAccordion(m) : ''}
       </div>`;
     });
   });
   html += `</div>`;
   return html;
+}
+function toggleModuleAccordion(moduleId){
+  state.expandedModuleId = (state.expandedModuleId === moduleId) ? null : moduleId;
+  document.getElementById('app').innerHTML = renderRoadmap();
+  updateSidebarStats();
+}
+function renderModuleAccordion(m){
+  const lessonsWithProgress = m.lessonIds
+    .map(lid => ({ lid, lesson: LESSONS[lid], maxStep: getVisitedMaxStep(lid) }))
+    .filter(x => x.maxStep >= 0);
+
+  if(lessonsWithProgress.length === 0){
+    return `<div class="module-accordion">
+      <p class="accordion-empty">Tu n'as pas encore commencé ce module.</p>
+      <button class="btn-primary" onclick="openModule(${m.id})">Commencer ce module →</button>
+    </div>`;
+  }
+
+  const allDone = state.progress.completedModules.includes(m.id);
+  const continueBtn = allDone ? '' : `<button class="btn-ghost" onclick="openModule(${m.id})" style="margin-bottom:14px;">Continuer ce module →</button>`;
+
+  const lessonBlocks = lessonsWithProgress.map(({lid, lesson, maxStep}) => {
+    const isLessonDone = state.progress.completedLessons.includes(lid);
+    let stepRows = '';
+    for(let i=0; i<=maxStep; i++){
+      const step = lesson.steps[i];
+      const key = lid + '_' + i;
+      const isTagged = !!(state.progress.taggedSteps||{})[key];
+      const hasComment = !!((state.progress.stepComments||{})[key] && state.progress.stepComments[key].text);
+      let marks = '';
+      if(isTagged) marks += `<span class="step-mark" title="Étape taguée">🔖</span>`;
+      if(hasComment) marks += `<span class="step-mark" title="Étape commentée">💬</span>`;
+      stepRows += `<div class="accordion-step-row" onclick="openLessonAtStep('${lid}',${i})">
+        <span class="accordion-step-num">${i+1}</span>
+        <span class="accordion-step-label">${escapeHtml(stepPreviewLabel(step))}</span>
+        <span class="accordion-step-marks">${marks}</span>
+      </div>`;
+    }
+    return `<div class="accordion-lesson">
+      <div class="accordion-lesson-title">${isLessonDone ? '✓ ' : ''}${escapeHtml(lesson.title)}</div>
+      ${stepRows}
+    </div>`;
+  }).join('');
+
+  return `<div class="module-accordion">${continueBtn}${lessonBlocks}</div>`;
 }
 function openModule(moduleId){
   const m = MODULES.find(x=>x.id===moduleId);
