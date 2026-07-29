@@ -406,7 +406,7 @@ const PHASES = [
   { id:2, name:"Valoriser & Sécuriser", moduleIds:[4,5,6] },
   { id:3, name:"Financer & Structurer", moduleIds:[7,8] },
   { id:4, name:"Reprendre & Piloter", moduleIds:[9,10] },
-  { id:5, name:"Développer & Sortir", moduleIds:[11,12,13,14] }
+  { id:5, name:"Développer & Sortir", moduleIds:[11,12,13,14,15] }
 ];
 
 const MODULES = [
@@ -422,8 +422,9 @@ const MODULES = [
   { id:10, title:"Le système Cash-Flow", desc:"Les 5 phases pour révéler le cash déjà présent dans l'entreprise, sans dépendre de la croissance.", built:true, lessonIds:["cf1","cf2","cf3","cf4"] },
   { id:11, title:"Digitaliser, automatiser & IA", desc:"CRM et machine commerciale, automatisation des opérations (facturation, DSO), et cas d'usage IA rentables.", built:true, lessonIds:["di1","di2","di3"] },
   { id:12, title:"Créer tes propres agents IA", desc:"Atelier pratique : anatomie d'un agent utile, puis construction complète de ton premier agent — fiche de mission fournie.", built:true, lessonIds:["ia1","ia2"] },
-  { id:13, title:"Mettre en place un gérant", desc:"Quand et qui, rémunération indexée sur la performance, rythme de pilotage — la clé de ta stratégie de build-up.", built:true, lessonIds:["g1","g2"] },
-  { id:14, title:"Choisir sa sortie : revente ou build-up", desc:"Fabriquer ta plus-value de revente, ou construire ton portefeuille — les trois moteurs, la grille de décision, et ta feuille de route.", built:true, lessonIds:["so1","so2"] }
+  { id:13, title:"Personal branding & machine à contenu", desc:"Pourquoi ta visibilité est un actif qui compte double (sourcing de deals ET prospects pour tes entreprises), comment produire du contenu chaque jour sur plusieurs réseaux, et comment l'automatiser sans perdre ta voix.", built:true, lessonIds:["pb1","pb2","pb3","pb4"] },
+  { id:14, title:"Mettre en place un gérant", desc:"Quand et qui, rémunération indexée sur la performance, rythme de pilotage — la clé de ta stratégie de build-up.", built:true, lessonIds:["g1","g2"] },
+  { id:15, title:"Choisir sa sortie : revente ou build-up", desc:"Fabriquer ta plus-value de revente, ou construire ton portefeuille — les trois moteurs, la grille de décision, et ta feuille de route.", built:true, lessonIds:["so1","so2"] }
 ];
 
 const LESSONS = {
@@ -945,13 +946,13 @@ const LESSONS = {
         body:`<p><strong>Objectif : rendre le modèle reproductible</strong> — pas seulement rentable une fois, mais reproductible sur la prochaine acquisition.</p>
         <p><strong>Documentation des processus</strong> dans 4 domaines : acquisition, vente, production, finance. Si un processus n'est écrit nulle part, il n'existe que dans une tête — la tienne, ou celle d'un employé qui peut partir.</p>
         <p><strong>Finalité de cette phase :</strong> la délégation devient possible (quelqu'un d'autre peut exécuter sans toi), la scalabilité devient réelle (le système tient la charge si l'activité double), et la multiplication des acquisitions devient réaliste (tu peux réappliquer ce même système à une 2e entreprise sans repartir de zéro).</p>
-        <p>C'est cette Phase 5 qui fait le pont direct vers ton objectif de développement : mettre en place un gérant (Module 13) ou construire un portefeuille d'entreprises (Module 14).</p>` },
+        <p>C'est cette Phase 5 qui fait le pont direct vers ton objectif de développement : mettre en place un gérant (Module 14) ou construire un portefeuille d'entreprises (Module 15).</p>` },
       { type:"validation", label:"Question de validation 1/3",
         question:"Sur une cible que tu identifierais aujourd'hui, quelle serait TA première action concrète en Phase 1 (les 60 premiers jours) ? Sois aussi précis que possible." },
       { type:"validation", label:"Question de validation 2/3",
         question:"Si tu devais augmenter les prix de 10% sur une cible avec 200 clients, comment séquencerais-tu cette hausse pour minimiser le risque de perte de clients ?" },
       { type:"validation", label:"Question de validation 3/3",
-        question:"Explique avec tes propres mots pourquoi la Phase 5 (Systémisation) est la condition indispensable à ton objectif de build-up (Module 14) — et pas juste une bonne pratique de gestion." },
+        question:"Explique avec tes propres mots pourquoi la Phase 5 (Systémisation) est la condition indispensable à ton objectif de build-up (Module 15) — et pas juste une bonne pratique de gestion." },
       { type:"summary",
         summary:"Le système cash-flow ne cherche pas à créer de la croissance, mais à révéler le cash déjà présent : stabiliser (0-60j), extraire via le pricing (1-3 mois), croître intelligemment sans perdre le fil du cash réel (3-12 mois), piloter par le cash plutôt que le CA, puis systémiser pour rendre le modèle reproductible.",
         nextHint:"Le Module 11 montre comment la digitalisation et les agents IA accélèrent concrètement la Phase 3 — activation client, funnel, automatisation — sans embaucher davantage." }
@@ -1810,7 +1811,7 @@ const LESSONS = {
           <li><strong>Mois 1 — Diagnostiquer</strong> : l'audit terrain des écarts entre ce que la DD annonçait et ce que tu observes. Chaque écart significatif : documenté, chiffré, et si couvert par la GAP → <strong>notifié dans les formes et les délais</strong> (Module 6).</li>
           <li><strong>Mois 2 — Quick wins</strong> : 2 ou 3 victoires visibles et peu risquées : relancer les devis dormants, corriger un tarif oublié depuis 5 ans, régler l'irritant n°1 remonté par les techniciens. Objectif double : du cash, et la démonstration que le nouveau patron améliore la vie.</li>
           <li><strong>Mois 3 — Choisir LE levier</strong> : sur ta thèse, presque toujours la machine commerciale (CRM, relances systématiques, offre packagée — Module 11). Un seul grand chantier à la fois.</li>
-          <li><strong>En continu — Le rythme</strong> : un point hebdomadaire chiffré avec l'équipe d'encadrement, et tes premiers objectifs trimestriels écrits (le futur langage de pilotage de ton gérant, Module 13).</li>
+          <li><strong>En continu — Le rythme</strong> : un point hebdomadaire chiffré avec l'équipe d'encadrement, et tes premiers objectifs trimestriels écrits (le futur langage de pilotage de ton gérant, Module 14).</li>
         </ul>
         <p>Et la règle d'or transversale : <strong>pas de révolution avant 90 jours.</strong> Pas de réorganisation, pas de changement de nom, pas de refonte des méthodes de travail. D'abord comprendre pourquoi ça marche — ensuite seulement améliorer.</p>` },
       { type:"concept", label:"📌 Fil rouge — tes 100 jours chez Thermelec",
@@ -1840,12 +1841,12 @@ const LESSONS = {
         question:"Construis TON plan 100 jours pour Thermelec sous forme de 10 actions datées maximum — en distinguant ce qui relève de sécuriser / diagnostiquer / quick wins / levier. Quelle est la première chose que tu refuses de faire avant J+90, même si ça te démange ?" },
       { type:"summary",
         summary:"La boucle des 100 jours : sécuriser (équipe, clients, trésorerie 13 semaines) → diagnostiquer les écarts DD/réel (et notifier la GAP dans les délais !) → 2-3 quick wins visibles → choisir UN levier principal → installer le rythme hebdomadaire chiffré. Pas de révolution avant 90 jours : apprendre, sécuriser, documenter — la croissance vient après, et le dossier documenté prépare déjà la revente ou le gérant.",
-        nextHint:"L'entreprise est stabilisée et pilotée. Le Module 10 (système Cash-Flow) t'attend si ce n'est pas fait — puis le Module 13 : installer un gérant pour te libérer et préparer le build-up." }
+        nextHint:"L'entreprise est stabilisée et pilotée. Le Module 10 (système Cash-Flow) t'attend si ce n'est pas fait — puis le Module 14 : installer un gérant pour te libérer et préparer le build-up." }
     ]
   },
 
   g1: {
-    id:"g1", moduleId:13, title:"Le gérant : quand, qui, où le trouver", duration:"15 min",
+    id:"g1", moduleId:14, title:"Le gérant : quand, qui, où le trouver", duration:"15 min",
     steps:[
       { type:"concept", label:"Quand — pas avant que la machine tourne sans héroïsme",
         body:`<p>Ta stratégie de build-up repose sur une bascule : toi qui sors de l'opérationnel, un gérant qui y entre. La tentation est de le faire vite. Erreur classique.</p>
@@ -1889,7 +1890,7 @@ const LESSONS = {
   },
 
   g2: {
-    id:"g2", moduleId:13, title:"Rémunérer et piloter ton gérant", duration:"16 min",
+    id:"g2", moduleId:14, title:"Rémunérer et piloter ton gérant", duration:"16 min",
     steps:[
       { type:"concept", label:"La rémunération : payer la performance qui t'enrichit",
         body:`<p>Le principe : un <strong>fixe au marché</strong> (ni au rabais — tu veux le garder — ni gonflé pour compenser un variable flou), plus un <strong>variable indexé sur ce qui compte pour TA stratégie</strong> :</p>
@@ -1938,7 +1939,7 @@ const LESSONS = {
         question:"Ta holding reçoit maintenant ~40-50 K€/an de flux libre après service de la dette. Décris ta séquence build-up des 18 prochains mois : que fais-tu de ce cash, quand relances-tu le sourcing, et qu'est-ce qui doit être vrai chez Thermelec AVANT que tu signes une LOI sur la cible n°2 ?" },
       { type:"summary",
         summary:"Rémunération du gérant : fixe au marché + variable sur l'EBITDA au-delà d'un seuil (jamais le CA seul), garde-fous qualitatifs, tout par écrit avec exemples chiffrés. Pilotage : quotidien 0-3 mois (transfert), hebdomadaire 3-6 mois, puis trimestriel avec tableau de bord d'une page et règle d'alerte — pas de réunion sans chiffres, pas de chiffres sans décision. Et la boucle du build-up se referme : le cash extrait et ton temps libéré financent la cible n°2.",
-        nextHint:"Le Module 14 comparera tes deux sorties possibles — revente à 1-3 ans avec plus-value, ou build-up assumé — pour choisir en connaissance de cause. En attendant : le Module 10 (cash-flow) et le Module 11 (digitalisation) sont tes chantiers de création de valeur." }
+        nextHint:"Le Module 15 comparera tes deux sorties possibles — revente à 1-3 ans avec plus-value, ou build-up assumé — pour choisir en connaissance de cause. En attendant : le Module 10 (cash-flow) et le Module 11 (digitalisation) sont tes chantiers de création de valeur." }
     ]
   },
 
@@ -1958,7 +1959,7 @@ const LESSONS = {
         <ul>
           <li><strong>Règle 1 : tout devis vit dans le CRM.</strong> Un devis envoyé par email sans trace CRM n'existe pas.</li>
           <li><strong>Règle 2 : chaque devis a une prochaine action datée</strong> — relance à J+3 (appel : « bien reçu ? des questions ? ») puis J+10. La majorité des devis de PME meurent non pas refusés, mais <em>jamais relancés</em>.</li>
-          <li><strong>Règle 3 : c'est TOI (puis le gérant) qui regardes le pipeline chaque semaine</strong> — ce qui n'est pas regardé n'est pas tenu. Le pipeline devis rejoint le tableau de bord hebdomadaire (Module 13).</li>
+          <li><strong>Règle 3 : c'est TOI (puis le gérant) qui regardes le pipeline chaque semaine</strong> — ce qui n'est pas regardé n'est pas tenu. Le pipeline devis rejoint le tableau de bord hebdomadaire (Module 14).</li>
         </ul>
         <p>Côté conduite du changement : migre les données toi-même (ou avec un prestataire), forme l'équipe sur des cas réels, et commence par UN usage (les devis) avant d'ajouter le reste. Un CRM imposé d'un bloc avec 40 champs obligatoires est mort en trois semaines.</p>` },
       { type:"concept", label:"📌 Fil rouge — la machine Thermelec",
@@ -2010,7 +2011,7 @@ const LESSONS = {
           <li><strong>Facturation immédiate + relance des impayés</strong> — facturer le jour de l'intervention (pas en fin de mois), avec relances automatiques à J+30 et J+45 et appel humain à J+60. C'est le prolongement direct du système Cash-Flow (Module 10) : chaque jour de délai client en moins est de la trésorerie rendue.</li>
           <li><strong>Planning et ordres d'intervention</strong> — tournées optimisées, fiches d'intervention sur mobile, photos et signature client sur place. Moins de kilomètres, moins de ressaisie, zéro « bon papier perdu ».</li>
           <li><strong>Comptes-rendus et devis générés depuis le terrain</strong> — le technicien dicte ou coche, le document part propre le jour même (on y reviendra avec l'IA, leçon suivante).</li>
-          <li><strong>Reporting automatique</strong> — ton tableau de bord (Module 13) alimenté tout seul depuis la facturation et le CRM, au lieu d'une demi-journée de ressaisie mensuelle.</li>
+          <li><strong>Reporting automatique</strong> — ton tableau de bord (Module 14) alimenté tout seul depuis la facturation et le CRM, au lieu d'une demi-journée de ressaisie mensuelle.</li>
         </ul>` },
       { type:"concept", label:"La méthode : simplifier AVANT d'automatiser",
         body:`<p>Règle absolue : <strong>automatiser un process cassé, c'est accélérer le chaos.</strong> La séquence pour chaque chantier :</p>
@@ -2063,7 +2064,7 @@ const LESSONS = {
           <li><strong>Comptes-rendus d'intervention</strong> — le technicien dicte 60 secondes dans son téléphone en remontant dans le camion ; l'IA structure : constat, actions, pièces, recommandations. Fini les fiches griffonnées ressaisies le vendredi.</li>
           <li><strong>Qualification des demandes entrantes</strong> — trier les emails et messages : urgence réelle, demande de devis, question contractuelle, réclamation — et préparer un projet de réponse qu'un humain valide.</li>
           <li><strong>Veille</strong> — appels d'offres, consultations de syndics, évolutions réglementaires du secteur, résumés en 10 lignes chaque semaine.</li>
-          <li><strong>Préparation du pilotage</strong> — synthèse du tableau de bord, questions à poser au point hebdo, premier jet des OKR trimestriels (Module 13).</li>
+          <li><strong>Préparation du pilotage</strong> — synthèse du tableau de bord, questions à poser au point hebdo, premier jet des OKR trimestriels (Module 14).</li>
         </ul>` },
       { type:"concept", label:"La grille de sélection — et les deux règles non négociables",
         body:`<p>Pour chaque idée d'usage, trois questions : <em>gain par occurrence × fréquence ÷ risque d'erreur</em>. Un usage quotidien à petit gain et risque nul (compte-rendu) bat un usage rare à gros gain et gros risque (réponse à un litige client).</p>
@@ -2120,7 +2121,7 @@ const LESSONS = {
           <li><strong>L'agent relance devis</strong> — reçoit chaque devis sans réponse à J+3 et J+10, rédige la relance personnalisée (référence au besoin exprimé, proposition d'appel), la met en attente de validation. Chiffre suivi : taux de transformation des devis.</li>
           <li><strong>L'agent compte-rendu</strong> — reçoit la dictée du technicien, produit la fiche structurée (constat / actions / pièces / recommandations / suite à donner) et le paragraphe client en langage clair. Chiffre : minutes de rédaction par intervention.</li>
           <li><strong>L'agent d'accueil</strong> — lit les demandes entrantes (email, formulaire), les classe (urgence, devis, question contrat, réclamation), extrait les informations clés et prépare un projet de réponse. Chiffre : délai de première réponse.</li>
-          <li><strong>L'agent de pilotage</strong> — reçoit les chiffres de la semaine, produit la synthèse du tableau de bord et les 3 questions à poser au point hebdo (Module 13). Chiffre : temps de préparation du point.</li>
+          <li><strong>L'agent de pilotage</strong> — reçoit les chiffres de la semaine, produit la synthèse du tableau de bord et les 3 questions à poser au point hebdo (Module 14). Chiffre : temps de préparation du point.</li>
         </ul>
         <p>Remarque le point commun : chacun a UN livrable, UN déclencheur, UN chiffre de succès. C'est ça, un agent bien découpé.</p>` },
       { type:"predict", label:"À toi de jouer",
@@ -2142,7 +2143,7 @@ const LESSONS = {
         ] },
       { type:"expert", label:"Œil d'expert",
         body:`<p>Écris chaque agent comme la <strong>fiche de poste d'un employé brillant, ultra-rapide... et parfaitement littéral</strong> : il fera exactement ce qui est écrit, y compris ce que tu as mal écrit, et il improvisera sur tout ce que tu n'as pas écrit.</p>
-        <p>Corollaire précieux : le travail de cadrage d'un agent est EXACTEMENT le travail de documentation des process que tu mènes déjà pour ton futur gérant (Module 13) et ta future revente (Module 14). Chaque fiche d'agent est une procédure d'entreprise formalisée — qui tourne toute seule ET qui reste dans la boîte le jour où tu la cèdes. Tu ne fais pas deux travaux : tu fais le même, avec deux dividendes.</p>` },
+        <p>Corollaire précieux : le travail de cadrage d'un agent est EXACTEMENT le travail de documentation des process que tu mènes déjà pour ton futur gérant (Module 14) et ta future revente (Module 15). Chaque fiche d'agent est une procédure d'entreprise formalisée — qui tourne toute seule ET qui reste dans la boîte le jour où tu la cèdes. Tu ne fais pas deux travaux : tu fais le même, avec deux dividendes.</p>` },
       { type:"checkpoint", question:"Les 5 composants (mission, contexte, règles, format, exemples) et le découpage « un agent = un livrable » sont-ils clairs ?",
         helpPrompt:"Je viens de voir l'anatomie d'un agent IA (mission, contexte/données, règles et garde-fous, format de sortie, exemples). Peux-tu me faire pratiquer en me demandant de rédiger la fiche de mission d'un agent simple, et en la critiquant bloc par bloc ?" },
       { type:"summary",
@@ -2202,7 +2203,7 @@ Karim — Thermelec</div>
         ] },
       { type:"expert", label:"Œil d'expert",
         body:`<p>Le vrai livrable de cet atelier n'est pas l'agent — c'est la <strong>compétence de cadrage</strong> que tu viens d'acquérir : choisir un process, l'écrire sans ambiguïté, le tester sur du réel, le mesurer. Cette compétence se réapplique à l'infini : chaque trimestre, un agent de plus, toujours par la même méthode.</p>
-        <p>Et projette-toi 24 mois plus loin : une PME de maintenance avec un CRM tenu, des relances automatisées, des comptes-rendus générés, un DSO à 41 jours et un classeur de fiches d'agents documentées — face aux concurrents qui font des devis sous Excel. C'est cette différence-là qu'un acheteur paie au-dessus du barème sectoriel, et c'est cette machine-là qu'un gérant peut piloter sans toi. La boucle du programme se referme : tout ce que tu construis ici sert les deux sorties du Module 14.</p>` },
+        <p>Et projette-toi 24 mois plus loin : une PME de maintenance avec un CRM tenu, des relances automatisées, des comptes-rendus générés, un DSO à 41 jours et un classeur de fiches d'agents documentées — face aux concurrents qui font des devis sous Excel. C'est cette différence-là qu'un acheteur paie au-dessus du barème sectoriel, et c'est cette machine-là qu'un gérant peut piloter sans toi. La boucle du programme se referme : tout ce que tu construis ici sert les deux sorties du Module 15.</p>` },
       { type:"validation", label:"Question de validation",
         question:"À toi : rédige la fiche de mission complète de l'agent compte-rendu d'intervention de Thermelec (les 5 blocs : rôle, contexte/données, règles avec escalade, format de sortie, un exemple). Soumets-la au professeur pour une critique bloc par bloc." },
       { type:"summary",
@@ -2212,13 +2213,13 @@ Karim — Thermelec</div>
   },
 
   so1: {
-    id:"so1", moduleId:14, title:"Revente à 1-3 ans : fabriquer ta plus-value", duration:"16 min",
+    id:"so1", moduleId:15, title:"Revente à 1-3 ans : fabriquer ta plus-value", duration:"16 min",
     steps:[
       { type:"concept", label:"Les trois moteurs de ta plus-value",
         body:`<p>Ta plus-value à la revente a trois moteurs — et tu les actionnes déjà tous les trois depuis le début du programme :</p>
         <ul>
           <li><strong>L'EBITDA qui monte</strong> — machine commerciale (di1), récurrent nouveau, prix revalorisés, charges optimisées (Module 10). Chaque euro d'EBITDA supplémentaire vaut 2,5 à 3,5 € de prix de vente.</li>
-          <li><strong>Le multiple qui monte</strong> — à EBITDA égal, un acheteur paie plus cher une entreprise : moins dépendante de son dirigeant (gérant en place — Module 13), plus récurrente (contrats signés), mieux documentée (comptes propres, process écrits, fiches d'agents), moins concentrée (top clients dilués), et digitalisée. Tu peux littéralement acheter à 2,7x et revendre la MÊME activité à 3,2-3,5x parce qu'elle n'est plus la même entreprise à piloter.</li>
+          <li><strong>Le multiple qui monte</strong> — à EBITDA égal, un acheteur paie plus cher une entreprise : moins dépendante de son dirigeant (gérant en place — Module 14), plus récurrente (contrats signés), mieux documentée (comptes propres, process écrits, fiches d'agents), moins concentrée (top clients dilués), et digitalisée. Tu peux littéralement acheter à 2,7x et revendre la MÊME activité à 3,2-3,5x parce qu'elle n'est plus la même entreprise à piloter.</li>
           <li><strong>La dette qui descend</strong> — le moteur silencieux : chaque annuité remboursée par les dividendes de la cible transforme de la dette en valeur pour toi, sans que tu fasses rien de plus. C'est l'essence du LBO.</li>
         </ul>` },
       { type:"numeric", label:"📌 Fil rouge — Thermelec, 3 ans plus tard",
@@ -2263,7 +2264,7 @@ Karim — Thermelec</div>
   },
 
   so2: {
-    id:"so2", moduleId:14, title:"Build-up : construire ton portefeuille", duration:"17 min",
+    id:"so2", moduleId:15, title:"Build-up : construire ton portefeuille", duration:"17 min",
     steps:[
       { type:"concept", label:"Ce que ta holding a accumulé sans bruit",
         body:`<p>Pendant que Thermelec tournait, ta holding a construit quatre actifs :</p>
@@ -2294,7 +2295,7 @@ Karim — Thermelec</div>
           "Les taux d'intérêt sont redescendus sous leur niveau du premier deal"
         ],
         correctIndex:1,
-        explanation:"Le cash et les taux comptent, mais la condition bloquante est organisationnelle : les 100 jours de la cible n°2 vont absorber TOUT ton temps disponible — exactement comme la première fois. Si Thermelec exige encore ta présence, l'une des deux boîtes (ou les deux) va souffrir. Le test des deux semaines injoignable (Module 13) est ton feu vert : tant qu'il n'est pas passé, ton pipeline peut chauffer, mais ta LOI attend." },
+        explanation:"Le cash et les taux comptent, mais la condition bloquante est organisationnelle : les 100 jours de la cible n°2 vont absorber TOUT ton temps disponible — exactement comme la première fois. Si Thermelec exige encore ta présence, l'une des deux boîtes (ou les deux) va souffrir. Le test des deux semaines injoignable (Module 14) est ton feu vert : tant qu'il n'est pas passé, ton pipeline peut chauffer, mais ta LOI attend." },
       { type:"concept", label:"Revente ou build-up : la grille de décision",
         body:`<p>Il n'y a pas de bonne réponse universelle — il y a TA réponse, sur quatre critères :</p>
         <ul>
@@ -2310,7 +2311,7 @@ Karim — Thermelec</div>
           "La dispersion sectorielle : trois boîtes dans trois métiers = trois apprentissages, zéro synergie, un dirigeant épuisé. La consolidation ennuyeuse bat la collection excitante.",
           "Sous-estimer le passage de 1 à 2 : ce n'est pas 2 fois le travail de 1, c'est un NOUVEAU métier (allocation de ton temps, arbitrages entre filiales, deux gérants à animer). Prévois-le comme tel.",
           "Les garanties croisées entre filiales acceptées sans limite « pour faciliter le crédit » : le jour où une filiale tousse, tout le groupe s'enrhume. Cloisonne, avec ton avocat.",
-          "Délaisser Thermelec pendant la chasse : le cash-flow de la n°1 EST ton financement. Le rythme de pilotage du Module 13 ne se suspend jamais — surtout pas pendant une acquisition."
+          "Délaisser Thermelec pendant la chasse : le cash-flow de la n°1 EST ton financement. Le rythme de pilotage du Module 14 ne se suspend jamais — surtout pas pendant une acquisition."
         ] },
       { type:"expert", label:"Œil d'expert",
         body:`<p>Les meilleurs build-ups sont <strong>ennuyeux</strong> : même thèse, même type de cible, même playbook d'intégration, exécuté patiemment, une acquisition tous les 18-24 mois. Les holdings qui durent ressemblent à des artisans qui répètent un geste maîtrisé — pas à des chasseurs de trophées.</p>
@@ -2321,7 +2322,221 @@ Karim — Thermelec</div>
         question:"Dernière question du programme. Déroule ta feuille de route complète des 36 prochains mois, du sourcing de la cible n°1 jusqu'à ta décision de sortie : les 12-15 jalons clés, dans l'ordre, avec pour chacun le module du programme qui s'y rapporte. C'est TON plan — le professeur le challengera point par point." },
       { type:"summary",
         summary:"Le build-up s'appuie sur ce que la holding accumule : cash libre (~68 K€/an en année 3), capacité d'emprunt, track record et playbook. Cible n°2 : consolidation ou adjacence — jamais la diversification opportuniste — et seulement quand la n°1 tourne sans toi. Revente ou build-up se décide sur 4 critères (patrimoine, appétence, marché, solidité), avec l'option hybride en embuscade. Ton vrai actif final : le playbook documenté que ce programme t'a fait construire.",
-        nextHint:"Le parcours est complet : 14 modules, du premier courrier au portefeuille. La suite se joue dans le monde réel — la Salle d'entraînement, l'Analyseur et le professeur restent à ta disposition à chaque étape." }
+        nextHint:"Le cœur du parcours est bouclé, du premier courrier au portefeuille. Il te reste un levier à activer si tu veux pousser plus loin ta croissance : le Module 13 transforme ta visibilité — la tienne et celle de tes entreprises — en une machine à prospects automatisée. Sinon, la suite se joue dans le monde réel — la Salle d'entraînement, l'Analyseur et le professeur restent à ta disposition à chaque étape." }
+    ]
+  },
+
+  pb1: {
+    id:"pb1", moduleId:13, title:"Pourquoi ton personal branding est un actif", duration:"15 min",
+    steps:[
+      { type:"concept", label:"Ce que le personal branding n'est PAS",
+        body:`<p>Écarte tout de suite le malentendu : le personal branding n'a rien à voir avec « être influenceur » ou se mettre en scène. C'est un <span class="term">actif de distribution</span> — au même titre que ta trésorerie ou ton portefeuille clients — qui a une propriété rare : <strong>il compound</strong>. Chaque post, chaque vidéo reste en ligne et continue de te trouver de nouvelles personnes des mois après sa publication, alors qu'une action commerciale classique (un appel, un salon) s'arrête le jour où tu t'arrêtes.</p>
+        <p>Dans un monde où n'importe qui peut prétendre n'importe quoi sur un site web, la confiance est devenue la vraie monnaie. Une personne réelle, qui documente ce qu'elle fait avec constance, inspire structurellement plus confiance qu'un logo. C'est pour ça que ton nom, aujourd'hui, peut peser aussi lourd que celui de l'entreprise que tu diriges — parfois plus.</p>` },
+      { type:"concept", label:"Ton double usage (et pourquoi ça compte double pour toi)",
+        body:`<p>Pour la plupart des dirigeants, le personal branding sert un seul objectif. Toi, tu as <strong>deux</strong> usages simultanés, et c'est une raison de plus d'y investir sérieusement :</p>
+        <ul>
+          <li><strong>1. Ta marque de repreneur</strong> — alimente ton sourcing (Module 2). Un repreneur indépendant, sans structure de fonds reconnue, n'a ni équipe commerciale ni marque installée pour faire venir les deals à lui : sa visibilité personnelle EST son infrastructure de développement d'affaires. Les experts-comptables, notaires et cédants qui te voient documenter sérieusement tes acquisitions te font confiance avant même le premier café — exactement l'effet que ta thèse d'une page (Module 2) produisait à l'écrit, en version continue et publique.</li>
+          <li><strong>2. La marque de l'entreprise que tu reprends</strong> — génère des prospects pour son activité. Une fois Thermelec entre tes mains, du contenu qui documente ton expertise technique, tes chantiers, tes clients satisfaits, devient un canal d'apport d'affaires que Bernard n'a jamais utilisé en 27 ans — exactement le levier « zéro machine commerciale » identifié dès le premier rendez-vous cédant (Module 2) et développé dans ta machine commerciale (Module 11).</li>
+        </ul>
+        <p>Les deux usages partagent le même système — c'est ce que ce module t'apprend à construire une fois, pour t'en servir deux fois.</p>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Tu viens de reprendre Thermelec. Où publies-tu en priorité un post qui présente un chantier récent et rassure sur ton sérieux technique ?",
+        options:[
+          "Sur la page entreprise Thermelec, pour construire la marque officielle",
+          "Sur ton compte personnel, en racontant le chantier à la première personne — et tu peux ensuite le relayer depuis la page entreprise",
+          "Peu importe, la portée est identique des deux côtés"
+        ],
+        correctIndex:1,
+        explanation:"Les comptes personnels obtiennent structurellement plusieurs fois plus de portée organique que les pages d'entreprise — les algorithmes favorisent les profils de personnes réelles, pas les canaux institutionnels perçus comme publicitaires. La page Thermelec a sa place (crédibilité officielle, avis clients), mais le moteur de portée, c'est TOI qui racontes, avec ton nom et ta voix." },
+      { type:"concept", label:"Se positionner : une personne, un message",
+        body:`<p>Avant de produire quoi que ce soit, réponds à une question simple : <strong>si quelqu'un ne devait retenir qu'une phrase de toi, laquelle ?</strong> C'est ton positionnement — et il doit être aussi précis que ta thèse d'acquisition (Module 2), pas un vague « entrepreneur passionné ».</p>
+        <p>Deux exemples de positionnements précis pour tes deux usages :</p>
+        <ul>
+          <li><strong>Côté repreneur</strong> : « Je documente le rachat et la modernisation d'une PME de maintenance CVC en Île-de-France — chiffres réels, décisions réelles, erreurs incluses. »</li>
+          <li><strong>Côté Thermelec</strong> : « Le conseil technique que votre chauffagiste ne prend jamais le temps de vous donner, pour les syndics et gestionnaires d'Île-de-France. »</li>
+        </ul>
+        <p>Chaque positionnement se décline ensuite en 3 à 5 thèmes récurrents — tes <span class="term">piliers de contenu</span>, qu'on construit à la prochaine leçon.</p>` },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Publier sans niche : un jour l'acquisition, le lendemain un article sur l'économie mondiale, puis une citation motivante. Résultat : personne ne sait de quoi tu es LA référence, et l'algorithme ne sait pas non plus à qui te montrer.",
+          "Le ton « corporate » : phrases lissées, aucune aspérité, on dirait un communiqué de presse. Ça ne trompe personne et ça n'inspire confiance à personne — les gens suivent des personnes, pas des brochures.",
+          "Tout miser sur les réseaux loués (followers) sans jamais capter un email ou un contact direct — on y reviendra en détail à la dernière leçon de ce module, c'est un point critique.",
+          "Attendre d'avoir « quelque chose d'exceptionnel » à dire avant de commencer. Le rachat de Thermelec, avec ses vrais chiffres et ses vraies décisions, EST déjà un contenu — la leçon suivante te montre pourquoi documenter suffit largement."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Le réflexe qui sépare ceux qui tiennent dans la durée de ceux qui abandonnent au bout de six semaines tient en une distinction : <strong>créer</strong> versus <strong>documenter</strong>.</p>
+        <p>Créer, c'est partir d'une page blanche chaque jour et se demander « de quoi vais-je bien pouvoir parler ». C'est épuisant, et ça s'arrête vite. Documenter, c'est capturer ce qui se passe déjà dans ton activité réelle : le rendez-vous avec un cédant, la première semaine avec Karim, le client qui a failli partir chez un concurrent. Cette philosophie — popularisée notamment par l'entrepreneur américain Gary Vaynerchuk sous la formule « documente, ne crée pas » — change tout : ton métier fournit la matière première en continu, donc tu ne tombes jamais en panne d'idées. Le repreneur qui documente son rachat de A à Z a, sans effort supplémentaire, six mois de contenu déjà vécus.</p>` },
+      { type:"checkpoint", question:"La distinction entre les deux usages (marque de repreneur / marque de l'entreprise) et l'idée de documenter plutôt que créer sont-elles claires ?",
+        helpPrompt:"Je viens de voir pourquoi le personal branding est un actif à double usage pour un repreneur (sourcing de deals + prospects pour l'entreprise rachetée), et la logique « documenter, ne pas créer ». Peux-tu me réexpliquer ça avec un exemple concret adapté à mon projet ?" },
+      { type:"validation", label:"Question de validation",
+        question:"Rédige TES deux phrases de positionnement : une pour ta marque de repreneur, une pour la marque de la future entreprise que tu rachèteras. Sois aussi précis que pour ta thèse d'acquisition — évite tout ce qui pourrait s'appliquer à n'importe qui d'autre." },
+      { type:"summary",
+        summary:"Le personal branding est un actif de distribution qui compound, pas une activité de vanité. Pour toi, il sert deux objectifs à la fois : nourrir ton sourcing de repreneur et générer des prospects pour l'entreprise rachetée. La clé pour tenir dans la durée : documenter ce que tu vis réellement plutôt que créer du contenu à partir de rien.",
+        nextHint:"Maintenant que tu sais QUOI documenter et pour QUI : comment transformer une seule prise de parole en des dizaines de contenus, sur plusieurs réseaux, sans y passer tes journées." }
+    ]
+  },
+
+  pb2: {
+    id:"pb2", moduleId:13, title:"Le système : piliers, atomisation, calendrier", duration:"16 min",
+    steps:[
+      { type:"concept", label:"Tes piliers de contenu",
+        body:`<p>Un <span class="term">pilier de contenu</span> est un thème récurrent auquel tout ton contenu peut se rattacher. Vise 3 à 5 piliers, pas plus — au-delà, tu dilues ton positionnement (leçon précédente).</p>
+        <p>Exemples de piliers pour tes deux usages :</p>
+        <ul>
+          <li><strong>Côté repreneur</strong> : les coulisses du deal (négociation, financement) · la pédagogie de l'acquisition (expliquer un concept comme le DSCR ou la GAP) · les erreurs et pièges observés · les chiffres réels du marché IDF (multiples, EBITDA, délais).</li>
+          <li><strong>Côté Thermelec</strong> : l'expertise technique vulgarisée (comment entretenir une chaudière collective) · la preuve sociale (études de cas clients, avant/après) · les coulisses du métier (une journée de technicien) · les conseils saisonniers (préparer l'hiver, la canicule).</li>
+        </ul>
+        <p>Chaque pilier répond à une question simple : <em>qu'est-ce que je veux que les gens associent à mon nom (ou à celui de l'entreprise) ?</em></p>` },
+      { type:"concept", label:"Le modèle qui change tout : pilier → atomisation → diffusion",
+        body:`<p>Voici la mécanique qui explique comment les créateurs les plus prolifiques publient autant sans jamais s'épuiser — et c'est étonnamment simple :</p>
+        <p><strong>Tu ne crées qu'une seule chose substantielle par semaine</strong> — un enregistrement de 20-30 minutes, un débrief de rendez-vous, une interview d'un client — puis tu la fragmentes (« atomises ») en dizaines de formats courts adaptés à chaque réseau, au lieu d'inventer un contenu différent pour chaque plateforme chaque jour.</p>
+        <p>Des exemples réels donnent une idée de l'ampleur possible : certains créateurs tirent plus de trente contenus d'une seule conférence enregistrée, diffusés sur une vingtaine de plateformes ; une méthode plus artisanale (dite « 1-3-5 ») transforme une seule idée en une quinzaine de posts ; un formateur américain enregistre quatre vidéos un jour par mois, et en tire à lui seul les épisodes YouTube, le podcast audio, l'article de blog, la newsletter et une série de clips sociaux. Le principe est toujours le même : un pilier riche nourrit des semaines de diffusion.</p>` },
+      { type:"numeric", label:"Exercice",
+        question:"Tu enregistres 1 « pilier » par semaine (un débrief vidéo de 20 minutes). Chaque pilier te donne 8 posts texte + 4 visuels + 3 extraits vidéo courts = 15 contenus dérivés. Combien de contenus publiés au total sur 4 semaines (1 mois) ?",
+        placeholder:"Ex : 40", answer:60, tolerance:0,
+        successMsg:"Oui : 15 contenus × 4 semaines = 60 publications sur le mois — pour seulement 4 sessions d'enregistrement de 20 minutes. C'est ça, le levier de l'atomisation : le volume vient de la fragmentation, pas de la production quotidienne.",
+        hint:"Multiplie le nombre de contenus dérivés par pilier (15) par le nombre de piliers dans le mois (4 semaines = 4 piliers)." },
+      { type:"predict", label:"À toi de jouer",
+        question:"Tu as atomisé ton débrief hebdomadaire en 15 contenus. Quelle est la bonne façon de les publier sur LinkedIn, Instagram et X ?",
+        options:[
+          "Copier-coller exactement le même texte sur les trois réseaux, pour gagner du temps",
+          "Adapter chaque pièce au format et aux codes du réseau — un post long et structuré sur LinkedIn, un visuel avec légende courte sur Instagram, un fil de messages courts sur X",
+          "Ne publier que sur le réseau où tu as le plus d'abonnés, et ignorer les autres"
+        ],
+        correctIndex:1,
+        explanation:"C'est la différence entre le <em>repurposing</em> (reformater pour un autre média) et le simple copier-coller multi-plateforme, qui sous-performe partout : chaque réseau a ses codes de lecture, sa longueur idéale, son rapport texte/image. Le contenu de base est identique (ton message, ta voix) ; sa forme s'adapte à chaque vitrine." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Vouloir créer un contenu différent chaque jour à partir de rien : c'est le chemin le plus sûr vers l'épuisement et l'abandon au bout de quelques semaines.",
+          "Publier un texte identique, mot pour mot, sur tous les réseaux : ça sous-performe partout, car aucune plateforme ne s'y reconnaît vraiment.",
+          "Choisir un pilier trop pauvre — un enregistrement plat, sans anecdote ni chiffre ni prise de position — qui ne contient tout simplement pas assez de « pépites » à en extraire.",
+          "Ne pas avoir de calendrier écrit : sans lui, la publication devient irrégulière, et l'irrégularité est justement ce qui casse la confiance qu'un personal brand est censé construire."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Le vrai goulot d'étranglement n'est jamais le nombre de plateformes à alimenter — c'est <strong>la richesse du pilier de départ</strong>.</p>
+        <p>Un repreneur expérimenté prépare son enregistrement hebdomadaire en listant à l'avance 3 à 4 « pépites » qu'il veut absolument y placer : un chiffre précis, une anecdote concrète, une opinion tranchée, une leçon apprise à ses dépens. Un pilier riche en pépites donne dix fois plus de contenus dérivés qu'un pilier vague qui tourne autour du sujet sans jamais rien affirmer. C'est pour ça que documenter (leçon précédente) fonctionne si bien : ton activité réelle — un rendez-vous, une négociation, une semaine avec Karim — est naturellement pleine de pépites, alors qu'un concept inventé de toutes pièces sonne creux.</p>` },
+      { type:"checkpoint", question:"Le modèle pilier → atomisation → diffusion, et l'idée d'adapter (pas copier) chaque format, sont-ils clairs ?",
+        helpPrompt:"Je viens de voir le système piliers/atomisation/diffusion. Peux-tu m'aider à construire mon propre calendrier éditorial pour le mois prochain, pilier par pilier ?" },
+      { type:"validation", label:"Question de validation",
+        question:"Liste 4 piliers de contenu précis pour l'entreprise que tu rachèteras (type Thermelec). Puis choisis UN pilier concret pour la semaine prochaine (un vrai événement de ton activité) et esquisse 5 contenus dérivés que tu pourrais en tirer, sur au moins 2 réseaux différents." },
+      { type:"summary",
+        summary:"3 à 5 piliers de contenu, un seul enregistrement riche par semaine, atomisé en dizaines de formats adaptés (jamais copiés à l'identique) à chaque réseau — c'est le système qui permet de publier chaque jour sans créer chaque jour. Le vrai goulot d'étranglement, c'est la richesse du pilier de départ, pas le nombre de plateformes.",
+        nextHint:"Le système est posé. Reste la question qui te préoccupe le plus : comment automatiser tout ça au maximum, sans perdre ta voix ni te faire pénaliser par les plateformes." }
+    ]
+  },
+
+  pb3: {
+    id:"pb3", moduleId:13, title:"Automatiser sans perdre ta voix", duration:"17 min",
+    steps:[
+      { type:"concept", label:"Les 5 briques de ton stack d'automatisation",
+        body:`<p>Le paysage des outils change vite — vérifie toujours les offres du moment avant de t'engager — mais les <strong>catégories</strong>, elles, restent stables. Ton stack se construit en 5 briques :</p>
+        <ul>
+          <li><strong>1. Capture</strong> — un simple dictaphone ou une appli de note vocale sur ton téléphone : c'est là que naît ton pilier hebdomadaire (leçon précédente), en 10 minutes après un rendez-vous ou en fin de journée.</li>
+          <li><strong>2. Rédaction assistée</strong> — un outil IA transforme ta transcription en brouillons multi-formats (post LinkedIn, légende Instagram, fil X, paragraphe de newsletter).</li>
+          <li><strong>3. Montage et découpage vidéo</strong> — des outils spécialisés repèrent automatiquement les moments forts d'un enregistrement long, ajoutent les sous-titres et redimensionnent pour chaque format (vertical pour les réseaux courts, horizontal pour YouTube).</li>
+          <li><strong>4. Planification et publication</strong> — un calendrier unique programme la diffusion sur tous les réseaux aux bons horaires, sans que tu aies à te reconnecter chaque jour.</li>
+          <li><strong>5. Veille</strong> — des alertes automatiques sur ton secteur (nouvelle réglementation CVC, actualité IDF) nourrissent ton stock d'idées sans recherche active.</li>
+        </ul>
+        <p>Retiens le principe, pas les marques : le marché de ces outils se renouvelle en quelques mois — fais un point rapide sur l'offre du moment avant de choisir.</p>` },
+      { type:"concept", label:"📌 Construire ton agent de contenu (Module 12, appliqué)",
+        body:`<p>Tu sais déjà construire un agent IA (Module 12) — un contenu automatisé n'est jamais qu'une nouvelle application du même savoir-faire. Voici la fiche de mission d'un agent qui transforme ta note vocale du soir en contenus prêts à valider, sur le modèle exact des 5 blocs déjà vus :</p>
+        <div style="background:var(--ink); border:1px solid var(--ink-border); border-radius:8px; padding:16px; font-family:var(--font-mono); font-size:12.5px; line-height:1.65; white-space:pre-wrap;">RÔLE : Tu es l'assistant de contenu de [ton nom / ton entreprise]. Tu transformes une note vocale ou un débrief en brouillons de posts prêts à relire.
+
+CONTEXTE : Piliers de contenu : [liste tes 3-5 piliers]. Ton : direct, concret, chiffré quand possible, jamais publicitaire ni corporate. Positionnement : [ta phrase de positionnement, leçon 1].
+
+DONNÉES REÇUES À CHAQUE FOIS : la transcription brute de ma note vocale ou de mon débrief.
+
+RÈGLES :
+- Toujours ancrer le post dans un fait réel raconté dans la note (un chiffre, une décision, une anecdote) — jamais de généralité qui pourrait venir de n'importe qui.
+- Produire 3 formats à chaque fois : 1 post LinkedIn long (150-250 mots, structuré : accroche, histoire, leçon), 1 version courte pour X (sous 280 caractères), 1 légende Instagram avec suggestion de visuel.
+- JAMAIS inventer un chiffre, un nom de client ou un détail qui n'est pas dans la note vocale.
+- ESCALADE : si la note mentionne un sujet sensible (client mécontent, litige, donnée financière précise), ne pas produire de brouillon — signaler que ce sujet nécessite ma relecture avant toute publication.
+
+FORMAT DE SORTIE : les 3 versions clairement séparées, prêtes à copier-coller après relecture.
+
+EXEMPLE : à partir d'une note disant « aujourd'hui premier rendez-vous avec le cédant, je m'attendais à parler chiffres mais on n'a fait que parler de sa carrière pendant 1h30, en fait c'est exactement ce qu'il fallait faire » → produire un post qui raconte l'anecdote et en tire la leçon (« le premier rendez-vous n'est pas une négociation, c'est une rencontre de confiance »), sans jamais nommer le cédant.</div>` },
+      { type:"numeric", label:"Exercice — le temps gagné",
+        question:"Avant automatisation : 45 minutes par jour pour rédiger manuellement tes posts sur 3 réseaux. Après : 10 minutes de dictée + relecture des brouillons de ton agent. Sur 20 jours ouvrés par mois, combien d'HEURES gagnes-tu par mois ?",
+        placeholder:"Ex : 8", answer:11.7, tolerance:1,
+        successMsg:"Oui : (45 − 10) minutes × 20 jours = 700 minutes ≈ 11,7 heures gagnées par mois — presque deux journées de travail entières, réinjectées dans le pilotage de Thermelec ou dans ton prochain sourcing.",
+        hint:"Calcule la différence de minutes par jour (45−10), multiplie par 20 jours, puis convertis en heures (divise par 60)." },
+      { type:"predict", label:"À toi de jouer",
+        question:"Qu'est-ce qu'il ne faut surtout PAS automatiser à 100%, même avec le meilleur stack du monde ?",
+        options:[
+          "La publication programmée de tes posts aux bonnes heures",
+          "Les réponses aux commentaires et messages reçus après publication",
+          "Le découpage d'une vidéo longue en extraits courts sous-titrés"
+        ],
+        correctIndex:1,
+        explanation:"La première heure d'engagement humain après une publication pèse énormément dans la façon dont les plateformes décident de la diffuser largement ou non — et automatiser cet engagement avec des faux commentaires ou des groupes d'échange artificiels est aujourd'hui activement pénalisé par plusieurs réseaux, dont LinkedIn. Automatise la production et la diffusion ; garde la conversation qui suit bien humaine, c'est elle qui construit la vraie confiance." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Publier du contenu 100% généré par IA sans jamais le relire ni le retoucher : le ton devient générique, et les audiences détectent de plus en plus facilement ce grain de « perfection sans aspérité » qui sonne faux — l'effet inverse de ce que tu cherches.",
+          "Automatiser l'engagement (likes, commentaires) avec des outils ou des groupes d'échange artificiels : sanctionné de plus en plus sévèrement par les plateformes, avec un vrai risque sur la portée de ton compte entier.",
+          "Tout miser sur un seul réseau ou un seul outil : un changement d'algorithme ou une suspension de compte, et tout ton système s'arrête net.",
+          "Publier le même contenu, sans aucune adaptation, sur chaque plateforme (déjà vu leçon précédente) — ça reste vrai même avec un stack automatisé, l'outil ne rattrape pas l'absence d'adaptation."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté résume sa philosophie d'automatisation en une phrase : <strong>l'IA amplifie ta voix, elle ne la remplace pas.</strong></p>
+        <p>Le vrai gain de temps ne vient pas de « laisser l'IA tout faire » — ça se voit, et ça coûte de la confiance — mais du <span class="term">batching</span> : regrouper la production en une session hebdomadaire concentrée (ton pilier du lundi matin, par exemple), pendant laquelle tu es pleinement présent et authentique, puis laisser la machine s'occuper de la diffusion le reste de la semaine. Une règle de repère qui circule chez les créateurs les plus réguliers : environ 80 % de ton contenu peut être planifié et automatisé à l'avance, et les 20 % restants doivent rester spontanés — une réaction à chaud, un commentaire personnel, une story improvisée. Ce mélange donne à la fois la régularité (qui construit la confiance) et l'authenticité (qui construit l'attachement).</p>` },
+      { type:"checkpoint", question:"Les 5 briques du stack, la règle 80/20 planifié/spontané, et ce qu'il ne faut jamais automatiser sont-ils clairs ?",
+        helpPrompt:"Je viens de voir le stack d'automatisation de contenu (capture, rédaction assistée, montage vidéo, planification, veille) et la fiche de mission d'un agent de contenu. Peux-tu m'aider à adapter cette fiche de mission à mon propre positionnement et à mes piliers ?" },
+      { type:"validation", label:"Question de validation",
+        question:"Conçois ton propre mini-stack : pour chacune des 5 briques (capture, rédaction, montage, planification, veille), précise l'outil ou la méthode que tu utiliserais, et identifie clairement où tu gardes un contrôle humain avant publication." },
+      { type:"summary",
+        summary:"Un stack d'automatisation couvre 5 briques : capture, rédaction assistée, montage vidéo, planification et veille — et se construit avec le même savoir-faire d'agent IA que le Module 12. La règle qui protège ta crédibilité : automatise la production et la diffusion (environ 80% du volume), jamais l'engagement humain qui suit une publication, et garde toujours une relecture avant de publier.",
+        nextHint:"Ton contenu tourne maintenant tout seul. Reste la dernière étape, la plus stratégique : transformer cette audience en un actif que tu possèdes vraiment — une base de prospects." }
+    ]
+  },
+
+  pb4: {
+    id:"pb4", moduleId:13, title:"Transformer l'audience en base de prospects", duration:"17 min",
+    steps:[
+      { type:"concept", label:"Une audience n'est pas un actif — tant qu'elle n'est pas convertie",
+        body:`<p>Voici la vérité inconfortable que beaucoup découvrent trop tard : <strong>tes abonnés ne t'appartiennent pas.</strong> Une plateforme peut changer son algorithme du jour au lendemain, suspendre ton compte par erreur, ou tout simplement décliner en popularité — et l'audience que tu as mis deux ans à construire peut s'effondrer sans que tu y puisses grand-chose.</p>
+        <p>La seule audience que tu possèdes vraiment est celle que tu peux contacter <strong>sans dépendre d'un algorithme</strong> : une liste email, une base CRM, un numéro dans un groupe de diffusion. C'est pour ça que l'objectif final de tout ton contenu n'est pas « faire du nombre d'abonnés » — c'est de convertir un maximum de cette audience en contacts que tu possèdes, reliés directement à ton CRM (Module 11).</p>` },
+      { type:"concept", label:"Le tunnel : contenu → aimant → capture → CRM",
+        body:`<p>Le mécanisme est simple, en 4 étapes :</p>
+        <ol>
+          <li><strong>Ton contenu</strong> apporte de la valeur et installe la confiance (les leçons précédentes de ce module).</li>
+          <li><strong>Un aimant à prospects</strong> — une ressource gratuite et précise, en échange d'un email. Pour une entreprise type Thermelec : une checklist « 10 signes que votre chauffage collectif a besoin d'une révision avant l'hiver », un diagnostic technique gratuit, ou une newsletter mensuelle « entretien pour syndics et gestionnaires ». Les outils interactifs (petit questionnaire de diagnostic, calculateur) convertissent nettement mieux qu'un simple PDF statique — parce qu'ils engagent activement la personne au lieu de se contenter d'un téléchargement passif.</li>
+          <li><strong>La capture</strong> — un lien unique dans ta bio, mentionné dans CHAQUE contenu (« le lien pour le diagnostic gratuit est en commentaire/en bio » convertit nettement mieux qu'un vague « suis-moi pour plus de conseils »).</li>
+          <li><strong>Le CRM</strong> — chaque email capté entre automatiquement dans ta base (Module 11), avec une courte séquence de bienvenue : un message de valeur immédiate, un conseil rapide, une présentation de qui tu es, encore de la valeur, puis une invitation en douceur à découvrir ton offre — jamais une vente forcée au premier message.</li>
+        </ol>` },
+      { type:"numeric", label:"Exercice",
+        question:"Ton contenu génère 10 000 vues par mois. 2% des vues se transforment en visite de ta bio/profil, et 8% de ces visiteurs s'inscrivent à ton aimant à prospects. Combien de nouveaux emails captés par mois ?",
+        placeholder:"Ex : 10", answer:16, tolerance:1,
+        successMsg:"Oui : 10 000 × 2% = 200 visites de profil ; 200 × 8% = 16 nouveaux emails par mois. Reconnais-tu la logique ? C'est exactement l'arithmétique d'entonnoir de ton pipeline de sourcing (Module 2) — vues, visites, inscriptions, clients, la même mécanique s'applique partout où il y a une conversion à chaque étage.",
+        hint:"D'abord calcule les visites de profil (10 000 × 2%), puis applique le taux d'inscription (8%) à ce résultat." },
+      { type:"predict", label:"À toi de jouer",
+        question:"Quelqu'un commente ton post en posant une vraie question sur un problème de chauffage collectif. Quelle est la meilleure pratique ?",
+        options:[
+          "Répondre publiquement en quelques jours, quand tu as le temps",
+          "Répondre vite (idéalement dans l'heure) et, si le sujet s'y prête, proposer de poursuivre en message privé — le premier qui répond avec sérieux gagne souvent le prospect",
+          "Ignorer les commentaires individuels et se concentrer uniquement sur la publication de nouveaux contenus"
+        ],
+        correctIndex:1,
+        explanation:"La vitesse de réponse (le « speed to lead ») est un facteur de conversion majeur et sous-estimé : une question technique reçoit souvent plusieurs réponses concurrentes, et la personne qui répond vite et bien capte l'attention avant les autres. Le contenu attire ; c'est la conversation qui suit — humaine, réactive — qui convertit vraiment." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Aucun appel à l'action clair sur ton profil : quelqu'un qui aime ton contenu ne sait pas quoi faire ensuite. Un lien unique et visible, toujours le même, est indispensable.",
+          "Un aimant à prospects trop générique (« recevez nos conseils ») au lieu de résoudre UN problème précis pour UNE personne précise — la spécificité est ce qui fait la différence entre un email capté et un email ignoré.",
+          "Capter un email sans aucune séquence de suivi ensuite : le contact capté mais jamais nourri est un lead gaspillé, autant que s'il n'avait jamais été capté.",
+          "Mesurer les likes et les vues plutôt que les emails captés et les rendez-vous obtenus : les premiers font plaisir, les seconds font vivre l'entreprise.",
+          "Oublier le cadre légal : en France, la prospection par email vers des particuliers exige en principe un consentement explicite (opt-in) — une exception existe pour prospecter tes propres clients sur des produits similaires, sous conditions strictes. Fais valider ton formulaire de collecte et tes séquences par un professionnel avant de lancer quoi que ce soit à grande échelle — ce n'est pas le sujet de ce module, mais l'ignorer peut coûter cher."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>La vraie valeur d'un email capté n'est pas ce contact lui-même — c'est <strong>ce qu'il vaut sur la durée</strong>. Reprends le calcul déjà vu pour un contrat de maintenance Thermelec (Module 11) : environ 2 400 € par an en moyenne. Un prospect capté aujourd'hui et correctement nourri peut représenter plusieurs années de ce contrat — largement de quoi justifier le temps investi dans un bon aimant à prospects.</p>
+        <p>Mais voici la nuance qu'un repreneur aguerri garde en tête, et qu'un débutant ignore complètement : <strong>un personal brand trop centré sur TOI complique la revente de l'entreprise</strong> (Module 15). Si toute la confiance des clients est attachée à ton visage et à ton nom plutôt qu'au nom de l'entreprise, tu as remplacé une dépendance au dirigeant (celle de Bernard, que tu as rachetée avec décote) par une nouvelle — la tienne. Construis donc, en parallèle de ta marque personnelle, une présence au nom de l'ENTREPRISE elle-même (page dédiée, études de cas signées « Thermelec » autant que par toi, un gérant qui apparaît aussi dans le contenu à partir du Module 14) — pour que la valeur reste dans la boîte, pas seulement dans ta personne.</p>` },
+      { type:"checkpoint", question:"Le tunnel contenu → aimant → capture → CRM, et la tension entre marque personnelle et marque d'entreprise, sont-ils clairs ?",
+        helpPrompt:"Je viens de voir comment transformer une audience en base de prospects (aimant, capture, séquence de bienvenue) et la tension entre marque personnelle et transmissibilité de l'entreprise. Peux-tu m'aider à réfléchir à comment j'équilibre les deux pour mon propre projet ?" },
+      { type:"validation", label:"Question de validation 1/2",
+        question:"Conçois le tunnel complet pour une entreprise type Thermelec : quel aimant à prospects précis proposes-tu, où le places-tu (canal de capture), et que contiennent tes 3 premiers messages de suivi une fois l'email capté ?" },
+      { type:"validation", label:"Question de validation 2/2",
+        question:"Comment comptes-tu équilibrer, dans ton propre projet, la construction de TA marque personnelle (utile pour le sourcing et la crédibilité) et celle de la marque de l'ENTREPRISE elle-même (nécessaire pour que sa valeur soit transmissible à la revente) ? Sois concret sur ce que tu ferais différemment selon l'horizon choisi (revente à 2 ans vs build-up long terme, Module 15)." },
+      { type:"summary",
+        summary:"Une audience ne t'appartient pas tant qu'elle reste sur une plateforme louée : le vrai objectif est de la convertir, via un aimant à prospects précis et une capture systématique, en base email reliée à ton CRM. La vitesse de réponse humaine fait la conversion ; mesure les emails captés, pas les likes. Et reste honnête avec toi-même : trop centrer la confiance sur ta personne plutôt que sur l'entreprise recrée, à ton échelle, la dépendance au dirigeant que tu as rachetée à prix cassé chez Bernard.",
+        nextHint:"Ce module est une brique de croissance de plus dans ta boîte à outils — reviens au Module 11 pour brancher ta nouvelle base de prospects dans ton CRM, et lance ton premier pilier de contenu cette semaine plutôt que d'attendre le moment parfait." }
     ]
   },
 
@@ -2874,7 +3089,7 @@ function iconLock(){ return `<svg width="12" height="12" viewBox="0 0 24 24" fil
    ========================================================= */
 function renderRoadmap(){
   let html = `<div class="eyebrow">Le Parcours</div><h1>Ta feuille de route complète.</h1>
-  <p class="subtitle">14 modules, répartis en 5 phases — du sourcing jusqu'à la stratégie de sortie. On construit le contenu ensemble, module après module.</p>
+  <p class="subtitle">15 modules, répartis en 5 phases — du sourcing jusqu'à la stratégie de sortie. On construit le contenu ensemble, module après module.</p>
   <div class="journey">`;
   PHASES.forEach(ph => {
     html += `<div class="phase-label">Phase ${ph.id} — ${ph.name}</div>`;
