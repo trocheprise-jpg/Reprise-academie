@@ -432,21 +432,21 @@ const PHASES = [
 ];
 
 const MODULES = [
-  { id:1, title:"Les fondamentaux du rachat", desc:"Le vocabulaire clé, le processus global, et pourquoi viser une « belle endormie ».", built:true, lessonIds:["l1","l2","l3","l4"] },
+  { id:1, title:"Les fondamentaux du rachat", desc:"Le vocabulaire clé, le processus global, et pourquoi viser une « belle endormie ».", built:true, lessonIds:["l1","l2","l3","l4","l5"] },
   { id:2, title:"Définir sa thèse, sourcer & premier contact", desc:"Ta thèse écrite façon search fund, les canaux visibles et cachés en IDF, ton pipeline chiffré, et le premier rendez-vous cédant.", built:true, lessonIds:["s1","s2","s3","s4"] },
   { id:3, title:"Lire les comptes & la vraie rentabilité", desc:"Compte de résultat, bilan, retraitements, signaux d'alerte — savoir lire ce qu'on va acheter.", built:true, lessonIds:["c1","c2","c3","c4"] },
-  { id:4, title:"Valoriser l'entreprise", desc:"Multiples, ANR, DCF — construire et défendre ton prix, avec les vrais barèmes 2026.", built:true, lessonIds:["v1","v2","v3","v4"] },
-  { id:5, title:"La Due Diligence : ne pas se faire avoir", desc:"Financière, juridique, sociale, commerciale — débusquer les vices cachés, et savoir renoncer.", built:true, lessonIds:["dd1","dd2","dd3","dd4"] },
+  { id:4, title:"Valoriser l'entreprise", desc:"Multiples, ANR, DCF — construire et défendre ton prix, avec les vrais barèmes 2026.", built:true, lessonIds:["v1","v2","v3","v5","v4"] },
+  { id:5, title:"La Due Diligence : ne pas se faire avoir", desc:"Financière, juridique, sociale, commerciale — débusquer les vices cachés, et savoir renoncer.", built:true, lessonIds:["dd1","dd2","dd3","dd5","dd4"] },
   { id:6, title:"Structurer l'offre & négocier", desc:"Négocier le montage avec le vendeur (scripts, objections), structurer ta lettre d'intention, et te protéger des vices cachés avec la GAP.", built:true, lessonIds:["n1","n2","n3"] },
-  { id:7, title:"Financer sans mobiliser sa trésorerie", desc:"Crédit-vendeur, dette bancaire, Bpifrance, prêt d'honneur — comment rester sous 30K€ d'apport.", built:true, lessonIds:["f1","f2","f3","f4"] },
-  { id:8, title:"La holding d'acquisition", desc:"Pourquoi structurer via une holding, mécanique du LBO, DSCR, et ton montage complet à 30 K€ d'apport.", built:true, lessonIds:["h1","h2"] },
-  { id:9, title:"Le closing & les 100 premiers jours", desc:"Signature, transition, sécuriser équipes et clients — puis la boucle des 100 jours : sécuriser, diagnostiquer, quick wins, levier.", built:true, lessonIds:["cl1","cl2"] },
+  { id:7, title:"Financer avec 30 K€ d'apport maximum", desc:"Crédit-vendeur, dette bancaire, Bpifrance, prêt d'honneur — comment rester sous 30K€ d'apport.", built:true, lessonIds:["f1","f2","f3","f4"] },
+  { id:8, title:"La holding d'acquisition", desc:"Pourquoi structurer via une holding, mécanique du LBO, DSCR, et ton montage complet à 30 K€ d'apport.", built:true, lessonIds:["h1","h2","h3"] },
+  { id:9, title:"Le closing & les 100 premiers jours", desc:"Signature, transition, sécuriser équipes et clients — puis la boucle des 100 jours : sécuriser, diagnostiquer, quick wins, levier.", built:true, lessonIds:["cl1","cl2","cl3"] },
   { id:10, title:"Le système Cash-Flow", desc:"Les 5 phases pour révéler le cash déjà présent dans l'entreprise, sans dépendre de la croissance.", built:true, lessonIds:["cf1","cf2","cf3","cf4"] },
   { id:11, title:"Digitaliser, automatiser & IA", desc:"CRM et machine commerciale, automatisation des opérations (facturation, DSO), et cas d'usage IA rentables.", built:true, lessonIds:["di1","di2","di3"] },
   { id:12, title:"Créer tes propres agents IA", desc:"Atelier pratique : anatomie d'un agent utile, puis construction complète de ton premier agent — fiche de mission fournie.", built:true, lessonIds:["ia1","ia2"] },
   { id:13, title:"Personal branding & machine à contenu", desc:"Pourquoi ta visibilité est un actif qui compte double (sourcing de deals ET prospects pour tes entreprises), comment produire du contenu chaque jour sur plusieurs réseaux, et comment l'automatiser sans perdre ta voix.", built:true, lessonIds:["pb1","pb2","pb3","pb4"] },
   { id:14, title:"Mettre en place un gérant", desc:"Quand et qui, rémunération indexée sur la performance, rythme de pilotage — la clé de ta stratégie de build-up.", built:true, lessonIds:["g1","g2"] },
-  { id:15, title:"Choisir sa sortie : revente ou build-up", desc:"Fabriquer ta plus-value de revente, ou construire ton portefeuille — les trois moteurs, la grille de décision, et ta feuille de route.", built:true, lessonIds:["so1","so2"] }
+  { id:15, title:"Choisir sa sortie : revente ou build-up", desc:"Fabriquer ta plus-value de revente, ou construire ton portefeuille — les trois moteurs, la grille de décision, et ta feuille de route.", built:true, lessonIds:["so1","so3","so2"] }
 ];
 
 const LESSONS = {
@@ -631,7 +631,7 @@ const LESSONS = {
         question:"Avec tes propres mots : pourquoi la stratégie « racheter au franc symbolique comme Tapie » est-elle incompatible avec ta thèse de la belle endormie rentable — et qu'est-ce que tu gardes malgré tout de cette approche ?" },
       { type:"summary",
         summary:"Un prix bas a toujours une raison. Ton métier de repreneur commence par la diagnostiquer : retraite sans successeur, dépendance au dirigeant, activité peu séduisante ou vente discrète sont des décotes saines que tu sais travailler ; tout le reste exige une enquête. Décote inexpliquée = danger, pas opportunité.",
-        nextHint:"Le Module 2 transforme ta cible idéale en machine à trouver : thèse écrite, canaux de sourcing en Île-de-France, pipeline chiffré et premier rendez-vous cédant." }
+        nextHint:"Avant de chercher : es-tu prêt, toi ? Ta préparation personnelle — calendrier, revenus pendant la transition, famille, caution et équipe de conseils." }
     ]
   },
 
@@ -1057,7 +1057,7 @@ const LESSONS = {
         hint:"Indice : trésorerie totale moins besoin en fonds de roulement normatif." },
       { type:"concept", label:"Le Prêt d'Honneur Reprise : ton meilleur ami pour un plafond à 30K€",
         body:`<p>C'est probablement l'outil le plus directement utile pour ton objectif précis. Le <strong>Prêt d'Honneur Reprise</strong> (Bpifrance, via des réseaux comme Réseau Entreprendre ou Initiative France selon les territoires) est un prêt <strong>personnel, à taux zéro, sans garantie ni caution demandée</strong>, pouvant aller <strong>jusqu'à 80 000 €</strong> (source : Bpifrance Création).</p>
-        <p>Concrètement : ton plafond de 30 000 € d'apport personnel peut être intégralement couvert par ce type de prêt d'honneur, sans mobiliser un centime de ta trésorerie personnelle réelle — et sans intérêt. Beaucoup de repreneurs débutants ignorent ce dispositif et pensent devoir sortir du cash de leur poche alors qu'il existe un circuit dédié pour ça.</p>
+        <p>Concrètement : ton plafond de 30 000 € d'apport personnel peut être intégralement financé par ce type de prêt d'honneur, à taux zéro et sans garantie. Attention à ne pas t'y tromper : c'est un prêt PERSONNEL, que tu rembourseras toi-même (sur ta rémunération ou tes dividendes) — il finance ton apport, il ne le supprime pas. La banque le considère comme du quasi-apport ; ton budget personnel, lui, doit intégrer ses mensualités. Beaucoup de repreneurs débutants ignorent ce dispositif et pensent devoir sortir du cash de leur poche alors qu'il existe un circuit dédié pour ça.</p>
         <p>Point important : les montants, plafonds et réseaux exacts varient selon les régions et évoluent — vérifie l'offre actuelle sur bpifrance-creation.fr ou auprès de Réseau Entreprendre / Initiative France au moment de monter ton dossier.</p>` },
       { type:"pitfall", label:"⚠ Piège classique",
         items:["Empiler crédit-vendeur + dette bancaire + dette investisseur + trésorerie excédentaire sans jamais faire l'exercice global de cash-flow disponible pour TOUT rembourser en même temps. Chaque brique semble raisonnable isolément ; c'est la Leçon 4 qui t'apprend à les assembler et vérifier que ça tient."] },
@@ -1078,7 +1078,7 @@ const LESSONS = {
         <ul>
           <li>Crédit-vendeur (25 % du prix) : <strong>187 500 €</strong>, remboursé sur 4 ans</li>
           <li>Dette bancaire senior (65 % du prix) : <strong>487 500 €</strong>, appuyée par la Garantie Transmission Bpifrance pour réduire la caution personnelle exigée</li>
-          <li>Prêt d'Honneur Reprise (0 %) : <strong>30 000 €</strong> — exactement ton plafond, sans sortir un centime de ta poche</li>
+          <li>Prêt d'Honneur Reprise (0 %) : <strong>30 000 €</strong> — exactement ton plafond ; prêt personnel à taux zéro que tu rembourseras, qui finance ton apport sans le supprimer</li>
           <li>Reste à financer : <strong>45 000 €</strong> — à combler par un ajustement du crédit-vendeur (le porter à 31 % au lieu de 25), une petite dette investisseur, ou une renégociation du prix</li>
         </ul>
         <p>Ce n'est pas une formule magique universelle — c'est UNE façon d'assembler les briques. Le bon montage dépend toujours du profil du dirigeant, de sa banque, et de ce que révèle ta due diligence.</p>` },
@@ -1729,7 +1729,7 @@ const LESSONS = {
         body:`<p>Erreur classique : financer le prix, et découvrir les à-côtés. Ton tour de table doit couvrir :</p>
         <ul>
           <li><strong>Le prix des titres</strong> : 850 K€ (Thermelec, négocié depuis les 990 K€ demandés — 2,74x l'EBITDA normalisé de 310 K€).</li>
-          <li><strong>Les frais d'acquisition</strong> : conseils (avocat, DD comptable), frais de dossier et de garantie bancaires, constitution de la holding — compte <strong>40 à 80 K€</strong> sur un deal de cette taille. Ici : ~45 K€.</li>
+          <li><strong>Les frais d'acquisition</strong> : conseils (avocat, DD comptable), frais de dossier et de garantie bancaires, constitution de la holding, droits d'enregistrement (0,1 % du prix pour une SAS — 850 € ici ; environ 3 % pour une SARL, soit ~25 K€ : voir Module 4) — compte <strong>40 à 80 K€</strong> sur un deal de cette taille. Ici : ~45 K€. À part, prévois un budget d'intégration pour les 6 premiers mois (outils, formations, conseils) : le coussin de trésorerie laissé dans Thermelec sert aussi à ça.</li>
           <li><strong>Un matelas de sécurité</strong> dans la holding pour les premiers mois : ~15 K€.</li>
         </ul>
         <p><strong>Besoin total : ~910 K€.</strong> C'est CE chiffre que ton plan de financement doit boucler — pas 850.</p>` },
@@ -1758,6 +1758,8 @@ const LESSONS = {
         <p>Règle d'or : <strong>le montage suit le deal, jamais l'inverse.</strong> Tordre un DSCR pour « faire rentrer » un prix trop haut, c'est acheter son propre défaut de paiement.</p>` },
       { type:"pitfall", label:"⚠ Pièges classiques",
         items:[
+          "Oublier que ta banque exigera en général la subordination du crédit-vendeur : si la trésorerie manque, Bernard attend. Annonce-le au cédant dès la négociation, jamais après le comité de crédit.",
+          "Confondre les deux multiples : Thermelec est à 2,74x en prix des titres mais ~2,2x en valeur d'entreprise (trésorerie excédentaire déduite, Module 4). C'est le second qui prouve que tu as acheté sous ton plafond de 3x.",
           "Boucler « juste » : un tour de table à l'euro près, sans matelas, explose au premier imprévu — et il y a TOUJOURS un imprévu la première année.",
           "Mobiliser 100 % de la trésorerie excédentaire de la cible. Une entreprise sans coussin de trésorerie est une entreprise qui t'appelle en panique au premier gros client qui paie à 90 jours.",
           "Oublier les frais (conseils, garanties, holding) dans le plan — 45-80 K€ qui, non anticipés, sortent... de ta poche, celle qu'on voulait justement préserver.",
@@ -1772,7 +1774,7 @@ const LESSONS = {
         question:"Bernard t'annonce finalement qu'il veut 80 % du prix comptant au closing (au lieu des 73 % prévus). Recompose le tour de table Thermelec : quelles briques bouges-tu, dans quel ordre, et quel impact sur ton DSCR ? Où est TA limite non négociable ?" },
       { type:"summary",
         summary:"Ton tour de table finance les besoins TOTAUX (prix + frais + matelas ≈ 910 K€) : apport 30 K€ + prêt d'honneur 30 + crédit-vendeur 230 + distribution de trésorerie 140 + dette bancaire 480. Le tout validé par un DSCR ≥ 1,25-1,3 y compris en scénario dégradé. Le montage s'adapte au profil du cédant — mais le montage suit le deal, jamais l'inverse.",
-        nextHint:"Le financement est bouclé, la GAP négociée : direction le closing — la dernière ligne droite, et le moment où tout devient réel." }
+        nextHint:"Ton montage est bouclé. Reste une question que presque personne ne se pose assez tôt : comment l'argent remonte jusqu'à toi, et combien il coûte à chaque étage." }
     ]
   },
 
@@ -1863,7 +1865,7 @@ const LESSONS = {
         question:"Construis TON plan 100 jours pour Thermelec sous forme de 10 actions datées maximum — en distinguant ce qui relève de sécuriser / diagnostiquer / quick wins / levier. Quelle est la première chose que tu refuses de faire avant J+90, même si ça te démange ?" },
       { type:"summary",
         summary:"La boucle des 100 jours : sécuriser (équipe, clients, trésorerie 13 semaines) → diagnostiquer les écarts DD/réel (et notifier la GAP dans les délais !) → 2-3 quick wins visibles → choisir UN levier principal → installer le rythme hebdomadaire chiffré. Pas de révolution avant 90 jours : apprendre, sécuriser, documenter — la croissance vient après, et le dossier documenté prépare déjà la revente ou le gérant.",
-        nextHint:"L'entreprise est stabilisée et pilotée. Le Module 10 (système Cash-Flow) t'attend si ce n'est pas fait — puis le Module 14 : installer un gérant pour te libérer et préparer le build-up." }
+        nextHint:"Les 100 jours t'ont fait sécuriser et apprendre. La leçon suivante étend cette boucle en un plan complet sur 180 jours, jusqu'au régime de croisière." }
     ]
   },
 
@@ -1946,6 +1948,7 @@ const LESSONS = {
         explanation:"La première mauvaise nouvelle cachée est TOUJOURS un double signal : sur la personne, oui — mais d'abord sur ton système. Un gérant cache ce qu'il craint de montrer ou ce qu'on ne lui demande jamais. La réponse durable : réaffirmer la culture (« une mauvaise nouvelle qui remonte vite est une bonne nouvelle »), remettre le top clients dans CHAQUE tableau de bord, re-vivifier la règle d'alerte. Le sanctionner sans corriger le système garantit que le prochain problème sera encore mieux caché." },
       { type:"pitfall", label:"⚠ Pièges classiques",
         items:[
+          "Oublier que l'EBITDA normalisé de 310 K€ contient déjà la rémunération de marché d'UN dirigeant — la tienne. Quand Karim devient gérant, son package remplace (en tout ou partie) ce coût ; toi, tu passes à des management fees réels facturés par ta holding (Module 8, leçon « Te payer »). Cumuler les deux rémunérations pleines fait baisser l'EBITDA sous le niveau qui a calibré ta dette.",
           "Le variable sur le CA seul — croissance à marge nulle garantie. Toujours EBITDA/cash + garde-fou qualitatif.",
           "Le variable non plafonné ou sur une base mal définie (EBITDA « avant ou après ta propre rémunération de holding ? avant éléments exceptionnels ? ») — chaque ambiguïté est un conflit programmé. Formule écrite, exemples chiffrés en annexe.",
           "Des réunions sans chiffres (« alors, ça va ? ») ou des chiffres sans décisions. Les deux tuent le pilotage, chacune à sa façon.",
@@ -2281,7 +2284,7 @@ Karim — Thermelec</div>
         question:"Construis le plan « prêt à vendre » de Thermelec sur les 18 mois précédant une cession visée : liste 8 à 10 actions concrètes classées par moteur (EBITDA ↑ / multiple ↑ / dette ↓ / préparation du process), avec pour chacune l'effet attendu sur le prix ou la négociation." },
       { type:"summary",
         summary:"Ta plus-value a trois moteurs simultanés : EBITDA en hausse, multiple en hausse (dépendance réduite, récurrence, documentation — tu peux acheter à 2,7x et revendre à 3,2x), dette en baisse. Chez Thermelec : ~890 K€ bruts en 3 ans pour 30 K€ d'apport. Vendre se prépare dès l'achat (data room permanente, chiffres propres, process multi-acheteurs, fiscalité anticipée 12-18 mois avant) — et ton expérience d'acheteur est ta meilleure arme de vendeur.",
-        nextHint:"L'autre voie : ne pas vendre — extraire, réinvestir, et construire un portefeuille. Le build-up, et la grille pour choisir entre les deux." }
+        nextHint:"Avant de fixer une date de sortie : la fiscalité de ta cession — et une règle de durée qui peut valoir près de 100 000 € sur Thermelec." }
     ]
   },
 
@@ -2559,6 +2562,464 @@ EXEMPLE : à partir d'une note disant « aujourd'hui premier rendez-vous avec le
       { type:"summary",
         summary:"Une audience ne t'appartient pas tant qu'elle reste sur une plateforme louée : le vrai objectif est de la convertir, via un aimant à prospects précis et une capture systématique, en base email reliée à ton CRM. La vitesse de réponse humaine fait la conversion ; mesure les emails captés, pas les likes. Et reste honnête avec toi-même : trop centrer la confiance sur ta personne plutôt que sur l'entreprise recrée, à ton échelle, la dépendance au dirigeant que tu as rachetée à prix cassé chez Bernard.",
         nextHint:"Ce module est une brique de croissance de plus dans ta boîte à outils — reviens au Module 11 pour brancher ta nouvelle base de prospects dans ton CRM, et lance ton premier pilier de contenu cette semaine plutôt que d'attendre le moment parfait." }
+    ]
+  },
+
+  l5: {
+    id:"l5", moduleId:1, title:"Es-tu prêt ? Ta préparation personnelle", duration:"16 min",
+    steps:[
+      { type:"concept", label:"Le premier facteur de risque du deal, c'est toi",
+        body:`<p>Une banque qui te prête 480 K€, un cédant qui te fait crédit de 230 K€, un avocat qui te conseille : tous investissent d'abord dans <strong>une personne</strong>, ensuite dans une entreprise. Et c'est logique — la même boîte, reprise par deux repreneurs différents, donne deux résultats différents.</p>
+        <p>Tu n'as pas besoin d'être technicien CVC (Karim l'est). Tu as besoin de trois compétences, et d'être lucide sur celles qui te manquent :</p>
+        <ul>
+          <li><strong>Vendre</strong> — convaincre un cédant, une banque, des clients, des salariés. C'est ton point fort de départ si tu viens du commercial.</li>
+          <li><strong>Gérer</strong> — lire des comptes, piloter une trésorerie, arbitrer des coûts (Modules 3 et 10).</li>
+          <li><strong>Diriger</strong> — recadrer, déléguer, tenir une équipe dans l'incertitude (Modules 9 et 14).</li>
+        </ul>
+        <p>La compétence la plus faible des trois, tu la compenses AVANT le closing : formation, mentor, conseil. Un banquier pardonne une lacune identifiée et traitée ; il ne pardonne pas une lacune ignorée.</p>` },
+      { type:"concept", label:"Ton calendrier réaliste : 18 à 30 mois",
+        body:`<p>Voici l'ordre de grandeur honnête, du jour où tu décides jusqu'au jour où l'entreprise tourne avec toi aux commandes :</p>
+        <ul>
+          <li><strong>Préparation — 1 à 3 mois</strong> : thèse écrite (Module 2), équipe de conseils constituée, financement pré-sondé, situation personnelle clarifiée (cette leçon).</li>
+          <li><strong>Recherche — 9 à 18 mois</strong> : faisable en parallèle d'un emploi à raison de 6-10 h par semaine (Module 2).</li>
+          <li><strong>Deal — 3 à 6 mois</strong> entre la LOI et le closing : là, il te faut de vraies disponibilités (DD, banques, avocats, rendez-vous cédant en journée).</li>
+          <li><strong>Intégration — 6 mois</strong> à temps plein (Module 9, plan 180 jours).</li>
+        </ul>
+        <p>Conséquence pratique : la question « quand est-ce que je quitte mon emploi actuel ? » se pose au moment de la LOI, pas au début de la recherche. La quitter trop tôt, c'est brûler ton épargne pendant 12 mois de sourcing ; trop tard, c'est rater des rendez-vous de DD et fragiliser le deal.</p>` },
+      { type:"concept", label:"Tes revenus pendant la transition",
+        body:`<p>C'est l'angle mort de beaucoup de repreneurs : ton apport est plafonné à 30 K€, mais tu dois aussi <strong>vivre</strong> pendant la bascule. Trois points à clarifier avec des sources officielles au moment venu (les règles évoluent — vérifie auprès de France Travail et de ton expert-comptable) :</p>
+        <ul>
+          <li><strong>Démission vs rupture conventionnelle</strong> — une démission classique ne donne en principe pas droit aux allocations chômage ; il existe un dispositif de démission pour projet de création ou reprise d'entreprise, mais il est soumis à des conditions strictes (ancienneté, validation préalable du projet). Une rupture conventionnelle ouvre en principe les droits. Renseigne-toi <em>avant</em> de parler à ton employeur.</li>
+          <li><strong>Maintien des allocations ou capital (ARCE)</strong> — un repreneur indemnisé peut en principe choisir entre cumuler une partie de ses allocations avec une faible rémunération au démarrage, ou percevoir une partie de ses droits restants sous forme de capital versé en deux fois. Ce capital peut devenir… ton apport. À simuler précisément avant de choisir.</li>
+          <li><strong>Ta rémunération de dirigeant</strong> — elle est déjà comprise dans l'EBITDA normalisé de ta cible (le retraitement du salaire du dirigeant au prix du marché, Module 3). Tu ne te « payes » pas en plus : tu remplaces Bernard. On détaille la mécanique complète au Module 8.</li>
+        </ul>` },
+      { type:"concept", label:"Ta famille, ton patrimoine, ta caution",
+        body:`<p>La banque demandera très probablement une <strong>caution personnelle partielle</strong> sur la dette d'acquisition (Module 7). Avant même de chercher, trois conversations à avoir :</p>
+        <ul>
+          <li><strong>Avec ton conjoint, si tu en as un</strong> — sous le régime de la communauté, une caution donnée sans son consentement exprès n'engage en principe que tes biens propres et tes revenus (article 1415 du Code civil). C'est précisément pour ça que la banque demandera souvent son accord. Mieux vaut que la question arrive à la maison avant d'arriver chez le banquier. Ton notaire peut éclairer l'intérêt éventuel d'un aménagement de régime matrimonial — c'est une décision patrimoniale, pas un détail.</li>
+          <li><strong>Avec toi-même, sur ton épargne</strong> — l'apport ne doit jamais être ta dernière épargne. Garde un matelas de précaution personnel d'au moins 6 à 12 mois de dépenses, séparé de l'apport.</li>
+          <li><strong>Avec ton assureur</strong> — assurance emprunteur (décès-invalidité) sur la dette, et prévoyance personnelle : si tu tombes, la dette ne tombe pas avec toi.</li>
+        </ul>` },
+      { type:"numeric", label:"Exercice — ton exposition personnelle réelle",
+        question:"Tu plafonnes ton apport à 30 000 €. Tes dépenses personnelles sont de 2 800 €/mois et tu veux un matelas de précaution de 12 mois, séparé de l'apport. Quel est le montant total d'épargne (en euros) que tu dois avoir mobilisé avant de signer ?",
+        placeholder:"Ex : 50000", answer:63600, tolerance:500,
+        successMsg:"Oui : 30 000 € d'apport + 12 × 2 800 € = 33 600 € de précaution, soit 63 600 €. Ton « ticket » réel n'est pas 30 K€, c'est plus du double — c'est ce chiffre-là qui doit être prêt (épargne, ARCE, prêt d'honneur pour l'apport) avant la LOI.",
+        hint:"Additionne l'apport (30 000) et le matelas : 12 mois × 2 800 €." },
+      { type:"predict", label:"À toi de jouer",
+        question:"Quel est le risque personnel le plus sous-estimé par les repreneurs débutants ?",
+        options:[
+          "Ne pas trouver d'entreprise à racheter",
+          "Mettre toute son épargne dans l'apport et découvrir, au 4e mois, qu'on n'a plus de quoi vivre ni de quoi absorber un imprévu",
+          "Payer un peu trop cher l'entreprise"
+        ],
+        correctIndex:1,
+        explanation:"Un repreneur sans matelas personnel prend de mauvaises décisions : il se verse une rémunération que l'entreprise ne peut pas encore payer, il accepte un deal moyen pour « enfin signer », il panique au premier trou de trésorerie. La sécurité personnelle n'est pas un confort — c'est une condition de lucidité." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Démissionner au début de la recherche « pour être à fond ». Tu brûles ton épargne pendant les 12 mois où tu n'en as pas besoin, et tu négocies ensuite sous pression.",
+          "Découvrir l'exigence de caution personnelle au comité de crédit, et la question du conjoint le soir même.",
+          "Choisir entre maintien des allocations et capital (ARCE) sans simulation chiffrée — l'écart peut représenter plusieurs milliers d'euros.",
+          "Chercher sa cible avant d'avoir constitué son équipe de conseils : le jour où le bon dossier arrive, tu perds trois semaines à trouver un avocat pendant qu'un autre acheteur avance.",
+          "Sous-estimer l'intensité émotionnelle : 18 mois d'incertitude, des deals qui meurent, des nuits sur des comptes. En parler tôt avec tes proches fait partie de la préparation."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Les repreneurs qui réussissent constituent leur <strong>équipe avant leur cible</strong> : un expert-comptable qui a déjà accompagné des transmissions, un avocat d'affaires habitué aux cessions de PME, un banquier entreprises rencontré « à blanc » avec ta thèse, et un mentor — idéalement un ancien repreneur, via des réseaux d'accompagnement comme le CRA ou Réseau Entreprendre, qui offrent aussi un parrainage.</p>
+        <p>Cette équipe te fait gagner des semaines quand un dossier chaud arrive, elle rassure le cédant (« il est déjà entouré »), et elle t'évite l'erreur classique du repreneur solitaire : tomber amoureux d'un dossier sans personne pour lui dire non. Pense-la comme ton conseil d'administration personnel.</p>` },
+      { type:"validation", label:"Question de validation",
+        question:"Rédige ton plan de préparation personnelle : ta compétence la plus faible (vendre / gérer / diriger) et comment tu la compenses, ton calendrier (quand tu quittes ton emploi actuel et pourquoi à ce moment-là), ton montant d'épargne total mobilisable (apport + précaution), et les trois conversations que tu dois avoir avant ta première LOI." },
+      { type:"summary",
+        summary:"Le repreneur est le premier facteur de risque du deal : identifie ta compétence faible et compense-la avant le closing. Compte 18 à 30 mois de la décision à l'intégration, ne quitte ton emploi qu'au moment de la LOI, et prépare un ticket réel de l'apport + 6-12 mois de dépenses. Caution personnelle, conjoint, assurance, équipe de conseils : tout se règle avant la cible, pas pendant.",
+        nextHint:"Le Module 2 transforme ta cible idéale en machine à trouver : thèse écrite, canaux de sourcing en Île-de-France, pipeline chiffré et premier rendez-vous cédant." }
+    ]
+  },
+
+  v5: {
+    id:"v5", moduleId:4, title:"De la valeur d'entreprise au prix des titres", duration:"17 min",
+    steps:[
+      { type:"concept", label:"Deux prix différents — et le piège entre les deux",
+        body:`<p>Quand un cédant dit « ma boîte vaut 3 fois l'EBITDA », de quel prix parle-t-il ? Il y a deux réponses possibles, et confondre les deux peut te coûter des centaines de milliers d'euros :</p>
+        <ul>
+          <li><strong>La valeur d'entreprise (VE)</strong> — ce que vaut l'outil économique lui-même, indépendamment de la façon dont il est financé. C'est elle que mesure un multiple d'EBITDA « propre ».</li>
+          <li><strong>Le prix des titres</strong> (valeur des fonds propres) — ce que tu paies réellement au cédant pour ses actions. C'est lui qui figure dans le protocole.</li>
+        </ul>
+        <p>Le pont entre les deux :</p>
+        <p style="text-align:center;"><strong>Prix des titres = VE − dettes financières − dettes assimilées + trésorerie excédentaire ± écart de BFR</strong></p>
+        <p>Règle d'or : <strong>ton objectif « moins de 3x » doit s'entendre en VE sur EBITDA normalisé</strong> — et tu dois toujours faire préciser au cédant de quel chiffre il parle.</p>` },
+      { type:"concept", label:"Les dettes cachées (« dette-like ») qu'on oublie",
+        body:`<p>Les dettes bancaires, tout le monde les voit. Ce sont les <span class="term">dettes assimilées</span> qui coûtent cher aux repreneurs débutants, parce que chacune réduit le prix des titres euro pour euro :</p>
+        <ul>
+          <li><strong>Le compte courant d'associé du cédant</strong> — de l'argent que Bernard a prêté à sa société au fil des ans. Il faudra le lui rembourser, en plus du prix, ou le racheter. Grand classique des mauvaises surprises.</li>
+          <li><strong>Les indemnités de départ à la retraite non provisionnées</strong> — une PME n'est pas obligée de les provisionner. Avec des techniciens proches de la retraite, c'est une vraie dette future.</li>
+          <li><strong>Les dettes fiscales et sociales échues ou étalées</strong>, les dividendes votés mais non versés.</li>
+          <li><strong>Le crédit-bail et la location longue durée</strong> — la flotte de camionnettes en LLD est un engagement, même hors bilan.</li>
+          <li><strong>Les acomptes clients</strong> sur des chantiers pas encore réalisés — tu vas devoir faire le travail sans encaisser.</li>
+          <li><strong>Les investissements reportés</strong> (capex caché, Module 5) et les provisions pour litiges.</li>
+        </ul>` },
+      { type:"concept", label:"Le BFR normatif et les deux mécanismes de prix",
+        body:`<p>Le prix suppose que l'entreprise est livrée avec un <strong>BFR « normal »</strong> — celui dont elle a besoin pour tourner. Un cédant peut, sans rien dire, « gonfler » sa trésorerie juste avant la vente : relancer tous les clients, retarder tous les fournisseurs. La trésorerie paraît excédentaire… et tu découvres au mois 2 qu'il faut la réinjecter dans le BFR. D'où la notion de <span class="term">BFR normatif</span> (la moyenne sur 12 mois, pas la photo du 31 décembre).</p>
+        <p>Deux mécanismes pour caler le prix définitif :</p>
+        <ul>
+          <li><strong>Les comptes de clôture (ajustement de prix)</strong> — on fixe un prix provisoire, puis on l'ajuste sur la base de la trésorerie nette et du BFR réels constatés au jour du closing. Plus juste, plus long, source de discussions.</li>
+          <li><strong>La « locked box »</strong> — le prix est figé sur des comptes de référence récents, et le cédant garantit qu'aucune valeur n'est sortie depuis (pas de dividende, pas de rémunération exceptionnelle, pas de remboursement de compte courant). Plus simple, mais tout repose sur la qualité de cette garantie.</li>
+        </ul>
+        <p>En PME, les deux existent : l'essentiel est que ton avocat verrouille l'un OU l'autre — jamais « ni l'un ni l'autre ».</p>` },
+      { type:"concept", label:"📌 Fil rouge — le vrai multiple de Thermelec",
+        body:`<p>Reprenons Thermelec avec les bonnes lunettes. Trésorerie totale au bilan : 220 K€. BFR normatif constaté sur 12 mois : l'entreprise a besoin de garder ~40 K€ pour tourner. <strong>Trésorerie excédentaire : 180 K€.</strong> Aucune dette bancaire. Compte courant de Bernard : soldé (vérifié en DD).</p>
+        <ul>
+          <li>Prix des titres négocié : <strong>850 K€</strong>, soit 2,74x l'EBITDA normalisé de 310 K€ — c'est le chiffre qu'on a utilisé jusqu'ici.</li>
+          <li>Mais en valeur d'entreprise : 850 − 180 de trésorerie excédentaire = <strong>670 K€, soit ≈ 2,2x l'EBITDA.</strong></li>
+        </ul>
+        <p>Et la baisse de 870 K€ (LOI) à 850 K€ ? Elle vient précisément de ce pont : la DD a révélé des indemnités de départ à la retraite non provisionnées pour trois techniciens seniors, estimées à ~22 K€. Grâce à la base de calcul écrite dans la LOI (Module 6), ce n'était pas un marchandage : c'était une dette assimilée, déduite mécaniquement.</p>
+        <p>Retiens la double lecture : ton deal est à <strong>2,74x en prix des titres</strong> et à <strong>~2,2x en VE</strong>. C'est ce second chiffre qui prouve que tu as vraiment acheté sous ton plafond de 3x.</p>` },
+      { type:"numeric", label:"Exercice — le coût caché de la forme juridique",
+        question:"Les droits d'enregistrement, payés par l'acheteur, sont de 0,1 % du prix pour des actions de SAS, mais de 3 % après un abattement de 23 000 € pour des parts de SARL. Si Thermelec était une SARL, combien (en euros) paierais-tu de droits pour un prix de 850 000 € pour 100 % des parts ?",
+        placeholder:"Ex : 10000", answer:24810, tolerance:100,
+        successMsg:"Oui : (850 000 − 23 000) × 3 % = 24 810 €, contre 850 € seulement pour une SAS. Presque 24 K€ d'écart — à intégrer dans tes frais d'acquisition (Module 8) et, si la cible est une SARL, à discuter : il arrive que le cédant transforme sa société en SAS avant la cession, une opération à cadrer avec les avocats des deux côtés.",
+        hint:"Retire l'abattement de 23 000 € au prix, puis applique 3 %." },
+      { type:"predict", label:"À toi de jouer",
+        question:"Un cédant annonce : « Je vends à 3x l'EBITDA, soit 900 K€, et je vous laisse les 200 K€ de trésorerie en plus. » Quelle est ta première question ?",
+        options:[
+          "« C'est parfait, 3x c'est dans ma cible. »",
+          "« La trésorerie est-elle incluse dans les 900 K€ ou facturée en plus ? Et sur ces 200 K€, combien sont vraiment excédentaires par rapport au BFR normatif ? »",
+          "« Pouvez-vous descendre à 2,5x ? »"
+        ],
+        correctIndex:1,
+        explanation:"« Je vous laisse la trésorerie » peut vouloir dire deux choses opposées : soit elle est dans les 900 K€ (VE réelle = 700 K€, soit ~2,3x — excellent), soit il veut 900 + 200 = 1,1 M€ (VE = 900 K€, soit 3x). Et si 80 K€ de ces 200 K€ sont en réalité du BFR normatif, ils ne sont pas excédentaires du tout. Clarifier avant de négocier le multiple : c'est la première ligne de défense contre le mauvais prix." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Négocier un multiple sans avoir défini sur quoi il s'applique (EBITDA affiché ou normalisé ? VE ou prix des titres ?). Deux personnes peuvent « se mettre d'accord sur 3x » avec 300 K€ d'écart.",
+          "Oublier le compte courant d'associé du cédant — il réclame son remboursement le jour du closing, en plus du prix.",
+          "Prendre la trésorerie du 31 décembre pour de la trésorerie excédentaire, sans regarder la saisonnalité ni le BFR normatif sur 12 mois.",
+          "Signer sans mécanisme de prix : ni ajustement sur comptes de clôture, ni locked box avec garantie de non-sortie de valeur. Entre la LOI et le closing, la valeur peut s'évaporer légalement.",
+          "Ignorer les droits d'enregistrement d'une SARL : ~3 % du prix à sortir en cash, qui n'étaient pas dans ton plan de financement."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur aguerri construit toujours son offre en <strong>deux temps, par écrit</strong> : d'abord la VE (multiple × EBITDA normalisé), ensuite le pont ligne par ligne jusqu'au prix des titres. Il envoie ce pont au cédant avec la LOI.</p>
+        <p>Pourquoi c'est si puissant : chaque ajustement devient une ligne de tableau, pas une concession. Quand la DD découvre 22 K€ d'indemnités de retraite, tu ne « renégocies » pas — tu mets à jour une ligne dont le principe a déjà été accepté. Le cédant peut contester le chiffre, pas la méthode. C'est exactement ce qui transforme une négociation émotionnelle en négociation arithmétique — et c'est dans les négociations arithmétiques que les repreneurs préparés gagnent.</p>` },
+      { type:"checkpoint", question:"Le pont VE → prix des titres, les dettes assimilées et la double lecture du multiple de Thermelec sont-ils clairs ?",
+        helpPrompt:"Je viens de voir la différence entre valeur d'entreprise et prix des titres, les dettes assimilées (compte courant, indemnités de retraite, leasing, acomptes clients) et le BFR normatif. Peux-tu me faire construire le pont complet sur un exemple chiffré, ligne par ligne, et me corriger ?" },
+      { type:"validation", label:"Question de validation",
+        question:"Pour une cible avec 250 K€ d'EBITDA normalisé, 150 K€ de trésorerie (dont 60 K€ nécessaires au BFR normatif), 40 K€ de compte courant du cédant, 25 K€ de crédit-bail restant et une offre à 2,6x en VE : calcule le prix des titres, explique chaque ligne du pont, et dis quel mécanisme de prix (comptes de clôture ou locked box) tu proposerais et pourquoi." },
+      { type:"summary",
+        summary:"Prix des titres = VE − dettes financières − dettes assimilées (compte courant du cédant, indemnités de retraite, leasing, acomptes clients, capex reporté) + trésorerie excédentaire (au-delà du BFR normatif) ± écart de BFR. Ton plafond de 3x s'entend en VE : Thermelec est à 2,74x en prix des titres mais ~2,2x en VE. Verrouille un mécanisme de prix (ajustement ou locked box) et chiffre les droits d'enregistrement selon la forme juridique.",
+        nextHint:"Dernière leçon du module : les pièges qui gonflent un prix sans le justifier, et la validation de tout ce que tu as appris sur la valorisation." }
+    ]
+  },
+
+  dd5: {
+    id:"dd5", moduleId:5, title:"La DD sociale & sectorielle : le cas CVC", duration:"17 min",
+    steps:[
+      { type:"concept", label:"Pourquoi une DD « métier » en plus de la DD générale",
+        body:`<p>Les leçons précédentes de ce module couvrent ce qui vaut pour toutes les PME. Mais chaque secteur a ses propres mines — celles que seul quelqu'un qui connaît le métier pense à chercher. Sur une belle endormie, elles sont fréquentes pour une raison simple : un dirigeant qui n'a rien changé depuis 20 ans n'a pas toujours suivi les évolutions réglementaires ni sociales.</p>
+        <p>Deux familles à auditer systématiquement : le <strong>social</strong> (ce qui peut te revenir sous forme de rappels de salaire, contentieux ou obligations oubliées) et le <strong>réglementaire sectoriel</strong> (ce sans quoi l'entreprise n'a tout simplement pas le droit de faire son métier).</p>
+        <p>Rappel utile : dans une cession de titres, <strong>l'employeur reste la même société</strong> — les contrats de travail continuent à l'identique, avec tout leur historique. Tu hérites de tout le passé social, en bien comme en mal. C'est exactement pour ça que la GAP (Module 6) doit couvrir le social.</p>` },
+      { type:"concept", label:"La DD sociale : les 6 vérifications",
+        body:`<ul>
+          <li><strong>Le CSE</strong> — à partir de 11 salariés pendant 12 mois consécutifs, l'organisation d'élections du comité social et économique est obligatoire. Thermelec a 11 salariés : il faut soit un CSE élu, soit un procès-verbal de carence. Ni l'un ni l'autre = risque juridique réel.</li>
+          <li><strong>La convention collective</strong> — dans le bâtiment, les conventions ouvriers et ETAM prévoient des indemnités de panier, de trajet, de transport, de petits ou grands déplacements, des classifications précises. Une indemnité mal appliquée depuis des années = rappels de salaire, sur la période de prescription applicable (en principe trois ans pour les salaires).</li>
+          <li><strong>Les heures et les astreintes</strong> — heures supplémentaires non payées, astreintes de dépannage mal rémunérées : en maintenance CVC, c'est LE sujet à creuser.</li>
+          <li><strong>Les contentieux</strong> — prud'hommes en cours ou menacés, et les départs récents « conflictuels » (demande la liste des départs sur 3 ans et leurs motifs).</li>
+          <li><strong>Les engagements hors bilan</strong> — indemnités de départ à la retraite (Module 4, leçon VE), promesses orales de primes, avantages non écrits.</li>
+          <li><strong>La paie et l'URSSAF</strong> — derniers contrôles, régularisations, conformité des bulletins sur un échantillon.</li>
+        </ul>` },
+      { type:"concept", label:"La DD réglementaire CVC : le droit d'exercer",
+        body:`<p>Pour une entreprise de maintenance CVC comme Thermelec, certaines autorisations conditionnent littéralement l'activité. À vérifier pièces en main (et à faire confirmer par ton avocat et un professionnel du secteur, les exigences évoluent) :</p>
+        <ul>
+          <li><strong>L'attestation de capacité pour la manipulation des fluides frigorigènes</strong> (entreprise) et les attestations d'aptitude des techniciens — sans elles, pas d'intervention légale sur climatisation et pompes à chaleur. Vérifie aussi la traçabilité réglementaire des fluides et des déchets.</li>
+          <li><strong>Les qualifications (RGE, Qualibat, QualiPAC…)</strong> — sans elles, les clients perdent l'accès à certaines aides : c'est un argument commercial qui disparaît. Vérifie leur date de validité et à quel NOM de personne elles sont rattachées (souvent au dirigeant ou à un référent technique qui peut partir).</li>
+          <li><strong>Les habilitations électriques</strong> des techniciens, et leur recyclage.</li>
+          <li><strong>Les assurances</strong> — responsabilité civile professionnelle et, pour les travaux d'installation, décennale : attestations à jour, sinistralité, activités réellement couvertes.</li>
+        </ul>` },
+      { type:"concept", label:"Les contrats qui font la valeur",
+        body:`<ul>
+          <li><strong>Les contrats de maintenance</strong> — les 70 % de récurrent de Thermelec : durée, tacite reconduction, préavis de résiliation, révision de prix (indexée ou non ?), clause de changement de contrôle. Un contrat résiliable à tout moment n'a pas la même valeur qu'un contrat annuel reconduit.</li>
+          <li><strong>Le client bailleur</strong> — un bailleur social passe souvent par des <strong>marchés publics</strong> : durée ferme, date de remise en concurrence. Si le marché se termine dans 8 mois, 1/10e de ton top 3 est en jeu.</li>
+          <li><strong>Le bail commercial</strong> — durée restante, loyer, destination, clauses particulières. En cession de titres, le bail reste à la société ; vérifie tout de même qu'aucune clause ne réagit au changement de contrôle.</li>
+          <li><strong>Les véhicules</strong> — contrats de location longue durée, état de la flotte, échéances de renouvellement (capex caché, Module 5).</li>
+          <li><strong>Les fournisseurs critiques</strong> — conditions, remises, dépendance, et le litige qui couve (chez Thermelec : 18 K€ avec un fournisseur de compresseurs, découvert à J+20 — une DD sectorielle plus fine l'aurait peut-être trouvé avant).</li>
+        </ul>` },
+      { type:"numeric", label:"Exercice — le rappel de salaire caché",
+        question:"En DD, tu découvres qu'une indemnité conventionnelle de 1,50 € par jour travaillé n'a jamais été versée aux 8 techniciens. Chacun travaille 215 jours par an, et le rappel peut porter sur 3 ans. Quel est le risque (en euros, hors charges sociales) ?",
+        placeholder:"Ex : 5000", answer:7740, tolerance:50,
+        successMsg:"Oui : 1,50 × 215 × 8 × 3 = 7 740 €, auxquels s'ajouteront les charges sociales. Petit montant ? Oui — mais il signale un process de paie non conforme ailleurs aussi, et il doit être soit déduit du prix, soit couvert explicitement par la GAP. Et il faudra corriger l'application pour l'avenir : c'est un coût récurrent à réintégrer dans ton EBITDA normalisé.",
+        hint:"Multiplie le montant journalier par les jours, les techniciens et les années." },
+      { type:"predict", label:"À toi de jouer",
+        question:"La qualification RGE de Thermelec est rattachée à Bernard comme référent technique. Que fais-tu ?",
+        options:[
+          "Rien : la qualification appartient à l'entreprise, elle reste après la vente",
+          "Vérifier les règles de l'organisme de qualification et faire désigner et former un nouveau référent (Karim ?) AVANT le closing — c'est une condition à écrire dans le protocole ou dans l'accompagnement du cédant",
+          "Attendre le renouvellement pour voir"
+        ],
+        correctIndex:1,
+        explanation:"Beaucoup de qualifications reposent sur une personne référente. Si elle part sans remplaçant validé, la qualification peut être suspendue au prochain contrôle — et avec elle, l'argument « vos clients gardent leurs aides ». C'est typiquement le genre de dépendance au dirigeant qui ne se voit dans aucun bilan." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Faire une DD sociale « sur déclaration » (« tout est en règle ») au lieu d'un échantillon de bulletins de paie comparé à la convention collective.",
+          "Ne pas vérifier le CSE à partir de 11 salariés — ni élu, ni PV de carence.",
+          "Oublier que dans une cession de titres, tout le passé social suit : la GAP doit couvrir explicitement le social et le fiscal sur toute la durée de prescription.",
+          "Prendre les qualifications pour acquises sans vérifier leur date de validité et la personne à laquelle elles sont rattachées.",
+          "Lire le chiffre d'affaires récurrent sans lire les contrats : durée, préavis, révision de prix, marchés publics à échéance."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Pour une DD sectorielle, le meilleur investissement n'est souvent ni l'avocat ni l'auditeur : c'est <strong>une journée d'un professionnel expérimenté du métier</strong> — un ancien dirigeant ou un cadre technique d'une entreprise CVC, rémunéré pour visiter l'atelier, lire un échantillon de contrats et d'interventions, regarder la flotte et le stock.</p>
+        <p>En une journée, il voit ce qu'aucun juriste ne voit : un compresseur de stock obsolète, un technicien qui fait tout seul les interventions sur fluides, un tarif de contrat très en dessous du marché (bonne nouvelle : levier de prix, Module 10), une astreinte que personne ne veut plus faire. C'est quelques centaines d'euros qui peuvent peser des dizaines de milliers dans ta négociation.</p>` },
+      { type:"checkpoint", question:"Les vérifications sociales (CSE, convention collective, astreintes) et réglementaires CVC (fluides, qualifications, assurances) sont-elles claires ?",
+        helpPrompt:"Je viens de voir la DD sociale et sectorielle d'une entreprise CVC. Peux-tu m'aider à construire la liste complète des documents à demander au cédant pour ce type d'entreprise, classée par priorité ?" },
+      { type:"validation", label:"Question de validation",
+        question:"Choisis un secteur « boring business » différent du CVC qui correspond à ta thèse (nettoyage, contrôle technique, maintenance d'ascenseurs, sécurité incendie…). Liste pour ce secteur les autorisations ou qualifications qui conditionnent l'activité, les 3 risques sociaux les plus probables, et les contrats clés à lire en priorité." },
+      { type:"summary",
+        summary:"En cession de titres, tout le passé social et réglementaire suit la société. DD sociale : CSE dès 11 salariés, convention collective appliquée (paniers, trajets, déplacements), heures et astreintes, contentieux, engagements hors bilan. DD sectorielle CVC : fluides frigorigènes, qualifications et leur référent, habilitations, assurances. Et lis les contrats derrière le récurrent — durée, préavis, révision de prix, marchés publics.",
+        nextHint:"Dernière leçon du module : orchestrer ta DD, distinguer les deal breakers des points de négociation — et savoir renoncer." }
+    ]
+  },
+
+  h3: {
+    id:"h3", moduleId:8, title:"Te payer : remonter le cash jusqu'à toi", duration:"18 min",
+    steps:[
+      { type:"concept", label:"Trois étages, trois fiscalités",
+        body:`<p>Ton argent circule sur trois étages, et chaque passage d'un étage à l'autre a son propre coût fiscal. Comprendre ce circuit, c'est la différence entre un repreneur qui s'enrichit et un repreneur qui finance surtout l'État :</p>
+        <ul>
+          <li><strong>Étage 1 — Thermelec</strong> : génère l'EBITDA, paie l'impôt sur les sociétés (IS) sur son bénéfice, et verse ta rémunération de dirigeant (déjà incluse dans l'EBITDA normalisé).</li>
+          <li><strong>Étage 2 — ta holding</strong> : reçoit les dividendes de Thermelec quasiment sans impôt (régime mère-fille), rembourse la dette d'acquisition, accumule le surplus.</li>
+          <li><strong>Étage 3 — toi</strong> : tu reçois ce que la holding te verse — et c'est là que la fiscalité personnelle frappe.</li>
+        </ul>
+        <p>Le principe à retenir pour toute ta stratégie : <strong>l'argent qui reste dans la holding est l'argent le moins taxé pour réinvestir ; l'argent qui sort vers toi paie ta fiscalité personnelle.</strong> Pour une stratégie de build-up, c'est décisif.</p>` },
+      { type:"concept", label:"Étage 1 → 2 : les régimes qui rendent le LBO possible",
+        body:`<p>Les règles précises et leurs conditions sont à valider avec ton expert-comptable, mais les mécanismes à connaître sont stables :</p>
+        <ul>
+          <li><strong>Le régime mère-fille</strong> — la holding détient au moins 5 % de la filiale depuis au moins 2 ans (ou s'engage à les conserver) : les dividendes reçus sont exonérés d'IS, à l'exception d'une quote-part de frais et charges de 5 % réintégrée — réduite à 1 % en intégration fiscale. Sur 185 K€ de dividendes : ~9 K€ de base taxable, soit environ 2 K€ d'impôt.</li>
+          <li><strong>L'intégration fiscale</strong> — possible si la holding détient au moins 95 % de la filiale, sur option. Les résultats sont additionnés : les intérêts de la dette d'acquisition logés dans la holding viennent réduire le bénéfice imposable de Thermelec. Sur une dette de 480 K€ à ~5 %, c'est ~24 K€ d'intérêts la première année, donc ~6 K€ d'IS économisés par an au taux normal.</li>
+          <li><strong>Le taux réduit d'IS des PME</strong> — une première tranche de bénéfice est imposée à taux réduit, sous conditions de chiffre d'affaires et de détention du capital par des personnes physiques. À faire vérifier sur ta structure précise.</li>
+        </ul>
+        <p>Un point de vigilance à connaître pour plus tard : si un jour ta holding rachète des titres à une personne ou une société que tu contrôles (réorganisation, build-up entre tes propres sociétés), un mécanisme anti-abus dit « amendement Charasse » peut limiter la déduction des intérêts. Non pertinent pour ton premier rachat à un tiers comme Bernard — pertinent le jour où tu restructures ton groupe.</p>` },
+      { type:"concept", label:"Étage 2 → 3 : les trois façons de te payer",
+        body:`<ul>
+          <li><strong>1. Ta rémunération de président de Thermelec</strong> — en SAS, le président est assimilé salarié : cotisations élevées, mais droits à la retraite et à la protection sociale (pas d'assurance chômage en principe). C'est ce salaire qui est déjà dans l'EBITDA normalisé à 310 K€ : tu remplaces Bernard.</li>
+          <li><strong>2. Les management fees</strong> — ta holding facture à Thermelec des prestations réelles (direction stratégique, finance, développement commercial). C'est ce qui prend le relais le jour où Karim devient gérant (Module 14) : sa rémunération remplace la tienne dans Thermelec, et toi, tu es payé par la holding. Trois conditions non négociables : prestations réelles et documentées, prix de marché, convention écrite approuvée selon les règles des conventions réglementées. Sinon, c'est un acte anormal de gestion — et un redressement.</li>
+          <li><strong>3. Les dividendes de la holding vers toi</strong> — soumis par défaut au prélèvement forfaitaire unique : <strong>31,4 % depuis le 1er janvier 2026</strong> (12,8 % d'impôt sur le revenu + 18,6 % de prélèvements sociaux, après la hausse de CSG). Option possible pour le barème progressif avec abattement de 40 % — intéressante seulement si ta tranche d'imposition est basse, à simuler chaque année.</li>
+        </ul>
+        <p>Arbitrage salaire vs dividende : le salaire coûte plus en cotisations mais construit tes droits sociaux ; le dividende coûte moins en apparence mais ne te protège de rien. La hausse du PFU en 2026 a rendu cet arbitrage plus serré — c'est une décision annuelle à prendre avec ton expert-comptable, pas une règle fixe.</p>` },
+      { type:"concept", label:"Ce que la banque te laisse faire (et ne pas faire)",
+        body:`<p>Avant que tu touches un euro de dividende personnel, ta banque aura écrit ses règles dans le contrat de prêt. À lire ligne par ligne avant de signer :</p>
+        <ul>
+          <li><strong>Les covenants</strong> — des ratios à respecter chaque année (par exemple un DSCR minimum, ou un ratio dette nette sur EBITDA maximum). Non respectés, ils peuvent rendre la dette exigible.</li>
+          <li><strong>Les restrictions de distribution</strong> — souvent, la holding ne peut rien verser à son actionnaire tant que certains ratios ne sont pas atteints, ou au-delà d'un plafond.</li>
+          <li><strong>La subordination du crédit-vendeur</strong> — la banque exigera généralement que le crédit-vendeur passe après elle : si la trésorerie manque, Bernard attend. C'est à anticiper dans la négociation avec lui (Module 7).</li>
+          <li><strong>Le plafonnement des management fees</strong> — certaines banques encadrent ce qui peut remonter à la holding par ce canal.</li>
+        </ul>
+        <p>Chez Thermelec : dividende prudent 185 K€ − service de la dette 142 K€ = ~43 K€ de marge en année 2. Ce n'est pas « ton argent » : c'est d'abord le coussin qui protège tes covenants, ensuite le carburant de ta cible n°2.</p>` },
+      { type:"numeric", label:"Exercice — ce qui arrive vraiment dans ta poche",
+        question:"Ta holding te verse 40 000 € de dividendes en 2026, imposés au prélèvement forfaitaire unique de 31,4 %. Combien (en euros) perçois-tu net ?",
+        placeholder:"Ex : 30000", answer:27440, tolerance:50,
+        successMsg:"Oui : 40 000 × (1 − 0,314) = 27 440 € nets. Les 12 560 € d'écart, c'est le prix de la sortie de la holding vers toi. S'ils étaient restés dans la holding pour financer l'apport de ta cible n°2, ils auraient travaillé en entier. C'est toute l'arithmétique du build-up.",
+        hint:"Net = brut × (1 − 31,4 %)." },
+      { type:"predict", label:"À toi de jouer",
+        question:"Karim devient gérant de Thermelec à M+10 et prend le relais opérationnel. Comment continues-tu à être rémunéré proprement ?",
+        options:[
+          "Tu restes salarié de Thermelec au même niveau, en plus de Karim",
+          "Ta holding facture à Thermelec des management fees correspondant à des prestations réelles (stratégie, finance, développement), au prix du marché, via une convention écrite — dans les limites fixées par la banque",
+          "Tu te verses un gros dividende personnel chaque trimestre"
+        ],
+        correctIndex:1,
+        explanation:"Garder ton salaire plein en plus de celui de Karim dégrade l'EBITDA sous le niveau qui a servi à calibrer la dette (danger pour tes covenants). Les dividendes personnels massifs sont bloqués par les restrictions bancaires et taxés à 31,4 %. Les management fees documentés sont le canal normal — à condition que les prestations soient réelles et le prix justifiable devant l'administration." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Te verser en plus de ton salaire de dirigeant une rémunération que l'EBITDA normalisé n'a pas prévue : tu dégrades le ratio qui calibre ta dette.",
+          "Facturer des management fees « forfaitaires » sans prestations tracées : acte anormal de gestion, redressement, et souvent un covenant bancaire violé au passage.",
+          "Oublier la subordination du crédit-vendeur, puis promettre à Bernard des échéances que la banque t'interdira de payer si l'année est tendue.",
+          "Sortir le cash de la holding au fil de l'eau pour ton train de vie : chaque euro sorti paie 31,4 % et n'est plus disponible pour la cible suivante.",
+          "Figer une stratégie salaire/dividendes une fois pour toutes. Les taux changent (le PFU vient de passer de 30 % à 31,4 %) : c'est une revue annuelle avec ton expert-comptable."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Les repreneurs en série raisonnent en <strong>« euros réinvestissables »</strong>, pas en euros gagnés. Un euro de bénéfice de Thermelec devient, dans la holding, ~0,99 € réinvestissable grâce au régime mère-fille. Le même euro sorti vers toi devient 0,69 € dans ta poche — et zéro euro réinvestissable dans le groupe.</p>
+        <p>D'où leur règle de conduite : se payer <strong>juste ce qu'il faut pour vivre confortablement et sereinement</strong> (salaire ou management fees), et laisser tout le reste travailler dans la holding tant qu'une acquisition est dans le viseur. La richesse du build-up ne vient pas de ce que tu retires chaque année ; elle vient de ce que tu ne retires pas.</p>` },
+      { type:"checkpoint", question:"Les trois étages, les trois façons de te payer et les contraintes bancaires sont-ils clairs ?",
+        helpPrompt:"Je viens de voir comment remonter le cash jusqu'à moi : régime mère-fille, intégration fiscale, rémunération de président, management fees, dividendes au PFU 31,4 %, covenants et subordination. Peux-tu m'aider à simuler, pour le cas Thermelec, deux scénarios de rémunération sur 3 ans et leurs effets sur la holding ?" },
+      { type:"validation", label:"Question de validation",
+        question:"Décris ta politique de rémunération personnelle sur les 3 premières années après le rachat de Thermelec : à quel étage tu es payé chaque année (Thermelec, holding, dividendes), comment ça change quand Karim devient gérant, ce que la banque t'autorise, et ce que tu laisses volontairement dans la holding — et pourquoi." },
+      { type:"summary",
+        summary:"Trois étages, trois fiscalités : Thermelec paie l'IS et ta rémunération de dirigeant (déjà dans l'EBITDA normalisé) ; la holding reçoit les dividendes quasi sans impôt (mère-fille, intégration fiscale à 95 %) ; toi, tu paies 31,4 % de PFU en 2026 sur les dividendes perso. Quand un gérant prend le relais, tu passes aux management fees réels et documentés. Et lis tes covenants : la banque décide de ce qui peut sortir.",
+        nextHint:"Le financement est bouclé et ta rémunération est pensée : direction le closing — la dernière ligne droite, et le moment où tout devient réel." }
+    ]
+  },
+
+  cl3: {
+    id:"cl3", moduleId:9, title:"Le plan 180 jours : de la reprise au régime de croisière", duration:"20 min",
+    steps:[
+      { type:"concept", label:"Pourquoi 180 jours, et pas seulement 100",
+        body:`<p>Les 100 jours (leçon précédente) servent à sécuriser et à apprendre. Mais une reprise n'est réussie que lorsque l'entreprise tourne à nouveau en <strong>régime de croisière</strong> — avec tes rituels, tes indicateurs, et une équipe qui a intégré le changement. Les professionnels de l'intégration post-acquisition raisonnent donc sur 6 mois, en 4 phases :</p>
+        <ul>
+          <li><strong>M0 — J1 à J30 : Observation et stabilisation</strong></li>
+          <li><strong>M1-M2 — J31 à J60 : Alignement et premiers gains</strong></li>
+          <li><strong>M3-M4 — J61 à J120 : Optimisation</strong></li>
+          <li><strong>M5-M6 — J121 à J180 : Accélération et autonomie</strong></li>
+        </ul>
+        <p>Chaque phase équilibre deux dimensions : <strong>l'humain</strong> (la culture, la confiance, les talents) et <strong>les chiffres</strong> (le cash, les marges, les indicateurs). Un plan qui ne parle que de l'un des deux échoue sur l'autre.</p>
+        <p>Prévois aussi un <strong>budget d'intégration distinct du prix</strong> (CRM, formations, conseils, recrutement éventuel) : il est très souvent sous-estimé. Chez Thermelec, c'est le rôle des 40 K€ de trésorerie laissés en coussin et d'une partie du flux de l'année 1.</p>` },
+      { type:"concept", label:"M0 (J1-J30) : observer et stabiliser",
+        body:`<p><strong>Communication et climat social</strong></p>
+        <ul>
+          <li><strong>Annoncer</strong> la reprise à l'équipe à J0, aux côtés de Bernard (Module 9).</li>
+          <li><strong>Mener</strong> un entretien individuel avec chacun des 11 salariés dans les deux premières semaines.</li>
+          <li><strong>Sécuriser</strong> les 3 personnes dont le départ ferait le plus mal (Karim et deux techniciens seniors) : ce qu'ils veulent, ce qui les inquiète, ce que tu peux leur promettre — et rien de plus.</li>
+          <li><strong>Informer</strong> les clients : visite des 10 plus gros comptes avec Bernard, puis un courrier à tous les clients (continuité, interlocuteurs inchangés, ta présentation). Idem pour les fournisseurs critiques, l'assureur et le banquier historique.</li>
+        </ul>
+        <p><strong>Audit opérationnel terrain</strong></p>
+        <ul>
+          <li><strong>Suivre</strong> des interventions sur le terrain, passer une journée à l'accueil téléphonique, observer le circuit devis → intervention → facture — sans rien changer.</li>
+          <li><strong>Documenter</strong> chaque écart entre la DD et la réalité ; notifier sans délai ceux couverts par la GAP (Module 6).</li>
+        </ul>
+        <p><strong>Sécurisation financière</strong></p>
+        <ul>
+          <li><strong>Reprendre</strong> les accès et délégations bancaires, les moyens de paiement, les accès aux logiciels, aux impôts et à l'URSSAF.</li>
+          <li><strong>Installer</strong> la trésorerie à 13 semaines (Module 10) et vérifier le BFR réel contre le BFR normatif du prix (Module 4).</li>
+          <li><strong>Sécuriser</strong> les contrats fournisseurs critiques (conditions, délais) et les assurances.</li>
+        </ul>` },
+      { type:"concept", label:"M1-M2 (J31-J60) : aligner et prouver",
+        body:`<p><strong>Gouvernance et indicateurs</strong></p>
+        <ul>
+          <li><strong>Mettre en place</strong> les rituels : point hebdomadaire chiffré de 45 minutes avec Karim et le technicien senior ; revue mensuelle avec l'expert-comptable ; point trimestriel avec la banque si le contrat de prêt le prévoit.</li>
+          <li><strong>Définir</strong> 6 à 8 indicateurs, pas plus : trésorerie à 13 semaines, CA facturé du mois, marge, devis émis et taux de transformation, délai de paiement clients (DSO), contrats de maintenance actifs, taux de réintervention, absences.</li>
+        </ul>
+        <p><strong>Systèmes d'information</strong></p>
+        <ul>
+          <li><strong>Cartographier</strong> tous les outils : qui utilise quoi, pour quoi, où sont les données (devis Excel, planning papier, logiciel de paie, comptabilité chez l'expert-comptable).</li>
+          <li><strong>Choisir</strong> le futur CRM et l'outil de facturation terrain (Module 11) — choisir, pas encore déployer.</li>
+        </ul>
+        <p><strong>Quick wins</strong></p>
+        <ul>
+          <li><strong>Réaliser</strong> 2 ou 3 victoires visibles : relance des devis dormants, revalorisation des contrats à leur date de reconduction, résolution de l'irritant n°1 des techniciens. Elles financent la suite et prouvent que le repreneur améliore la vie.</li>
+        </ul>` },
+      { type:"concept", label:"M3-M4 (J61-J120) : optimiser",
+        body:`<p><strong>Offre commerciale</strong></p>
+        <ul>
+          <li><strong>Ajuster</strong> la politique tarifaire : grille des contrats, prix des dépannages hors contrat, astreintes (Module 10 — le pricing est ton levier le plus puissant).</li>
+          <li><strong>Packager</strong> l'offre récurrente et lancer la proposition systématique de contrat après chaque dépannage (Module 11).</li>
+        </ul>
+        <p><strong>Processus et coûts</strong></p>
+        <ul>
+          <li><strong>Rationaliser</strong> les postes de coûts identifiés à l'audit : assurances, télécoms, véhicules, achats de pièces, abonnements. Chacun renégocié ou remis en concurrence.</li>
+          <li><strong>Déployer</strong> le premier chantier d'automatisation : facturation le jour de l'intervention et relances d'impayés (Module 11).</li>
+        </ul>
+        <p><strong>Plan de formation</strong></p>
+        <ul>
+          <li><strong>Former</strong> l'équipe aux nouveaux outils sur des cas réels, en commençant par les plus réticents.</li>
+          <li><strong>Mettre à jour</strong> les habilitations et attestations à échéance (Module 5).</li>
+          <li><strong>Financer</strong> ce qui peut l'être via l'opérateur de compétences (OPCO) de la branche — pour le bâtiment, Constructys. Renseigne-toi sur les modalités : c'est de l'argent souvent laissé sur la table.</li>
+        </ul>` },
+      { type:"concept", label:"M5-M6 (J121-J180) : accélérer et rendre autonome",
+        body:`<p><strong>Déploiement stratégique</strong></p>
+        <ul>
+          <li><strong>Lancer</strong> LE grand chantier de croissance choisi (chez Thermelec : la machine commerciale complète — CRM, relances, récurrent systématique, premiers contenus, Module 13).</li>
+          <li><strong>Démarrer</strong> la délégation progressive à Karim : un périmètre avec sa marge, puis le point hebdo qu'il anime (Module 14).</li>
+        </ul>
+        <p><strong>Bilan à 6 mois</strong></p>
+        <ul>
+          <li><strong>Comparer</strong> par écrit les objectifs initiaux du plan de reprise aux résultats réels : EBITDA annualisé, trésorerie, rétention des clients et des salariés, DSO, taux de transformation, avancement des chantiers.</li>
+          <li><strong>Restituer</strong> ce bilan à ton banquier (même s'il ne le demande pas : la confiance se construit avant d'en avoir besoin), et à l'équipe dans une version adaptée.</li>
+        </ul>
+        <p><strong>Autonomie opérationnelle</strong></p>
+        <ul>
+          <li><strong>Standardiser</strong> le rythme de croisière : rituels fixes, tableau de bord d'une page, procédures écrites des process clés.</li>
+          <li><strong>Passer le test</strong> de la semaine d'absence (avant celui des deux semaines injoignable du Module 14).</li>
+        </ul>` },
+      { type:"numeric", label:"Exercice — les économies de la rationalisation",
+        question:"À M3, tu remets en concurrence les assurances, les télécoms, les contrats véhicules et les achats de pièces courantes de Thermelec, qui représentent 140 000 €/an. Tu obtiens une baisse moyenne de 9 %. Combien d'EBITDA annuel (en euros) gagnes-tu ?",
+        placeholder:"Ex : 10000", answer:12600, tolerance:100,
+        successMsg:"Oui : 140 000 × 9 % = 12 600 € d'EBITDA en plus chaque année — soit, à 3x, près de 38 000 € de valeur d'entreprise créée par des appels d'offres, sans toucher un seul salarié ni un seul client. C'est pour ça que la rationalisation vient en M3-M4 : assez tard pour savoir ce qui compte, assez tôt pour peser sur l'année 1.",
+        hint:"Multiplie la base de coûts par le pourcentage de baisse." },
+      { type:"predict", label:"À toi de jouer",
+        question:"J+45 : l'équipe est encore méfiante, mais tu as identifié trois économies rapides, dont la suppression de la prime d'astreinte « parce qu'elle est trop généreuse ». Que fais-tu ?",
+        options:[
+          "Tu appliques les trois : les chiffres sont les chiffres",
+          "Tu réalises les économies qui ne touchent pas l'équipe (achats, abonnements) et tu mets la prime d'astreinte de côté : on ne touche pas à la rémunération avant d'avoir construit la confiance — et sûrement pas en M1-M2",
+          "Tu annonces toutes les économies en réunion pour être transparent"
+        ],
+        correctIndex:1,
+        explanation:"Toucher à la rémunération à J+45, c'est confirmer la pire crainte d'une équipe qui vient de changer de patron. Le gain de quelques milliers d'euros ne pèse rien face au départ d'un technicien senior (recrutement, formation, clients mécontents). Les économies qui touchent l'humain arrivent tard, expliquées, et souvent échangées contre autre chose — si elles arrivent." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Tout lancer en M0 : le repreneur qui arrive avec 12 chantiers la première semaine perd la confiance de l'équipe et la visibilité sur l'essentiel.",
+          "Faire l'audit terrain depuis le bureau, sur des rapports, au lieu d'aller dans les camionnettes et au standard.",
+          "Oublier les clients et les fournisseurs dans le plan de communication : ils entendent la nouvelle par la rumeur, et le concurrent qui démarchait déjà en profite.",
+          "Définir 25 indicateurs. Au-delà de 8, personne ne les regarde, et les vrais signaux se noient.",
+          "Sauter le bilan à 6 mois : sans comparaison écrite entre le plan et le réel, tu ne sais pas si tu as progressé — et ta banque non plus.",
+          "Sous-estimer le budget d'intégration : outils, formations, conseils et temps coûtent plus que prévu, presque toujours."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Un repreneur expérimenté tient son plan 180 jours comme un <strong>document vivant d'une page</strong>, affiché, revu chaque vendredi : les actions de la phase en cours, qui les porte, la date, le statut. Rien de sophistiqué — mais c'est ce document qui l'empêche de se faire happer par l'opérationnel, le piège n°1 des 6 premiers mois.</p>
+        <p>Et il garde en tête que le véritable indicateur du succès à J+180 n'est pas l'EBITDA (trop tôt pour qu'il ait beaucoup bougé) : c'est la combinaison de trois signaux — <strong>zéro départ subi d'un salarié clé, zéro perte d'un client du top 10, et une trésorerie à 13 semaines que tu sais lire les yeux fermés</strong>. Si ces trois-là sont au vert, l'EBITDA suivra en année 2.</p>` },
+      { type:"validation", label:"Question de validation",
+        question:"Construis ton plan 180 jours pour Thermelec en une page : pour chacune des 4 phases (M0, M1-M2, M3-M4, M5-M6), 3 actions commençant par un verbe d'action, avec pour chacune la dimension qu'elle sert (humaine ou financière). Termine par les 5 indicateurs de ton bilan à 6 mois et la cible chiffrée de chacun." },
+      { type:"summary",
+        summary:"Le plan 180 jours en 4 phases : M0 observer et stabiliser (entretiens, communication clients et fournisseurs, audit terrain, accès bancaires, trésorerie 13 semaines) ; M1-M2 aligner (rituels, 6-8 indicateurs, cartographie des outils, quick wins) ; M3-M4 optimiser (prix, coûts, automatisation, formation financée par l'OPCO) ; M5-M6 accélérer (grand chantier, délégation à Karim, bilan écrit à 6 mois, régime de croisière). Humain et chiffres, toujours ensemble.",
+        nextHint:"La reprise est stabilisée et pilotée. Le Module 10 (système Cash-Flow) détaille les leviers financiers que ce plan mobilise — puis le Module 14 t'apprendra à installer un gérant pour te libérer." }
+    ]
+  },
+
+  so3: {
+    id:"so3", moduleId:15, title:"La fiscalité de ta sortie", duration:"17 min",
+    steps:[
+      { type:"concept", label:"Pourquoi la holding change tout à la sortie",
+        body:`<p>Tu as acheté Thermelec via une holding pour financer le rachat (Module 8). À la sortie, cette même holding te fait gagner une deuxième fois — à condition de respecter une règle de durée.</p>
+        <p>Quand ta holding vend les titres de Thermelec, sa plus-value relève du <strong>régime des plus-values à long terme sur titres de participation</strong> (souvent appelé « niche Copé ») : si les titres sont détenus depuis <strong>au moins 2 ans</strong>, la plus-value est exonérée d'IS, à l'exception d'une quote-part de frais et charges de 12 % imposée au taux normal. Résultat : une imposition effective d'environ <strong>3 %</strong> de la plus-value.</p>
+        <p>Comparé à toi, personnellement, vendant des titres détenus en direct : la plus-value serait soumise au PFU, soit <strong>31,4 %</strong> en 2026. Même vente, même prix — environ dix fois moins d'impôt au niveau de la holding. C'est ce qui permet au build-up de se financer : le produit de la vente reste presque intact pour la cible suivante.</p>` },
+      { type:"concept", label:"La règle des 2 ans — et ton objectif de revente à 1-3 ans",
+        body:`<p>Ton objectif n°1 est de revendre entre 1 et 3 ans. Voici l'information que tu aurais aimé avoir le jour de ta LOI :</p>
+        <ul>
+          <li><strong>Vente avant 2 ans de détention</strong> : pas de régime de long terme. La plus-value est imposée comme un bénéfice ordinaire, à l'IS au taux normal (25 %).</li>
+          <li><strong>Vente après 2 ans</strong> : quote-part de 12 %, soit ~3 % effectif.</li>
+        </ul>
+        <p>Concrètement : <strong>ton horizon de revente réaliste commence à 24 mois</strong> après le closing, pas à 12. Et c'est cohérent avec le reste du programme : il faut de toute façon 18 à 24 mois pour que l'EBITDA et le multiple aient vraiment bougé (Module 15, leçon précédente). Revendre à 14 mois, c'est vendre avant d'avoir créé la valeur ET payer le plein impôt dessus.</p>
+        <p>La date qui compte est celle de l'acquisition des titres par la holding — note-la, et vérifie la situation exacte avec ton fiscaliste avant de signer quoi que ce soit.</p>` },
+      { type:"numeric", label:"📌 Fil rouge — le calcul à 26 mois",
+        question:"Ta holding a acquis Thermelec 850 K€ et la revend 1 280 K€ après 26 mois (on ignore les frais pour simplifier) : plus-value de 430 K€. Avec le régime de long terme (quote-part de 12 % imposée à 25 %), combien d'impôt (en euros) la holding paie-t-elle ?",
+        placeholder:"Ex : 20000", answer:12900, tolerance:200,
+        successMsg:"Oui : 430 000 × 12 % × 25 % = 12 900 €. La même vente à 18 mois aurait coûté 430 000 × 25 % = 107 500 €. Attendre 8 mois de plus vaut près de 95 000 € — probablement le mois de patience le mieux payé de toute ta vie de repreneur.",
+        hint:"Impôt = plus-value × 12 % × 25 %." },
+      { type:"concept", label:"Après la vente : trois usages, trois fiscalités",
+        body:`<p>La holding a vendu, remboursé sa dette résiduelle (~390 K€ chez Thermelec, Module 15 leçon 1) et payé ~13 K€ d'impôt : il lui reste environ 875 K€. Que faire de cet argent ?</p>
+        <ul>
+          <li><strong>Le réinvestir dans le groupe</strong> — apport pour la cible n°2, n°3… Aucune fiscalité personnelle : c'est le moteur du build-up (leçon suivante).</li>
+          <li><strong>Le distribuer</strong> — dividendes vers toi, au PFU de 31,4 % : ~875 K€ deviendraient ~600 K€ nets. Possible, mais c'est la sortie la plus coûteuse.</li>
+          <li><strong>Le conserver et le placer</strong> dans la holding — en attendant la bonne opportunité, en gardant en tête que la stratégie de placement d'une holding a ses propres règles fiscales, à caler avec ton conseil.</li>
+        </ul>
+        <p>Deux autres cas à connaître, même s'ils ne sont pas ton scénario principal :</p>
+        <ul>
+          <li><strong>Vendre ta holding elle-même</strong> (avec tout ce qu'elle contient) : tu réalises alors personnellement une plus-value, imposée au PFU.</li>
+          <li><strong>L'apport-cession</strong> — pour quelqu'un qui détient des titres EN DIRECT et les apporte à sa holding avant de les vendre, la plus-value personnelle est placée en report d'imposition. Depuis la loi de finances 2026, si la holding revend dans les 3 ans de l'apport, elle doit réinvestir au moins 70 % du prix (contre 60 % avant) dans une activité éligible sous 36 mois, et conserver ces investissements 5 ans. Utile si un jour un co-investisseur ou un associé détient des titres en direct — et une raison de plus d'avoir tout acheté via ta holding dès le départ.</li>
+        </ul>` },
+      { type:"concept", label:"Le complément de prix et la GAP — côté vendeur cette fois",
+        body:`<p>Quand tu vends, tu passes de l'autre côté de la table (Module 15, leçon 1). Deux outils que tu connais comme acheteur te reviennent en miroir :</p>
+        <ul>
+          <li><strong>Le complément de prix (earn-out)</strong> — une partie du prix payée plus tard, si des objectifs sont atteints. Pour l'acheteur, c'est une sécurité ; pour toi, c'est un prix incertain et un calendrier qui s'allonge. Accepte-le seulement sur des indicateurs que tu contrôles encore et que l'acheteur ne peut pas manipuler (le chiffre d'affaires plutôt qu'un EBITDA qu'il peut charger de ses propres coûts), avec des définitions comptables écrites. Son traitement fiscal dépend de la façon dont il est structuré : à valider avec ton fiscaliste.</li>
+          <li><strong>La GAP</strong> — c'est toi qui la donnes désormais. Tout ce que tu as exigé de Bernard (plafond, durée, séquestre) te sera demandé. Ta meilleure défense : une data room impeccable et des déclarations exactes. Un plafond et une durée raisonnables se négocient d'autant mieux que ton dossier est propre.</li>
+        </ul>` },
+      { type:"predict", label:"À toi de jouer",
+        question:"Un acheteur te fait une excellente offre sur Thermelec 15 mois après ton rachat. Quelle est la bonne réaction ?",
+        options:[
+          "Signer vite avant qu'il change d'avis : une bonne offre ne se refuse pas",
+          "Chiffrer précisément l'écart fiscal d'une vente avant 2 ans (IS plein sur la plus-value) et négocier un calendrier : closing après la date anniversaire des 2 ans, ou un prix qui compense l'impôt supplémentaire — avec ton fiscaliste dans la boucle dès le premier échange",
+          "Refuser par principe : on ne vend jamais avant 3 ans"
+        ],
+        correctIndex:1,
+        explanation:"Refuser par principe ou signer par peur sont deux erreurs symétriques. Une offre excellente peut rester excellente après impôt — mais il faut le calculer, pas le supposer. Souvent, décaler le closing de quelques mois (avec une LOI et une exclusivité bien calées) préserve à la fois l'offre et le régime fiscal favorable." },
+      { type:"pitfall", label:"⚠ Pièges classiques",
+        items:[
+          "Vendre avant 24 mois de détention par la holding sans avoir chiffré la perte du régime de long terme.",
+          "Distribuer tout le produit de cession vers toi par réflexe, alors que ton projet est un build-up : 31,4 % de moins à réinvestir.",
+          "Découvrir la fiscalité après avoir signé la LOI de l'acheteur. La structuration fiscale se prépare 12 à 18 mois avant la vente.",
+          "Accepter un complément de prix sur un indicateur que l'acheteur contrôle entièrement après le closing.",
+          "Considérer que les règles fiscales sont figées : l'apport-cession vient d'être durci en 2026, le PFU de passer à 31,4 %. Revois ta stratégie de sortie chaque année avec ton fiscaliste."
+        ] },
+      { type:"expert", label:"Œil d'expert",
+        body:`<p>Pour un repreneur qui a structuré via une holding dès le premier jour, la vraie question fiscale n'est jamais « combien je paie en vendant ? » — c'est <strong>« à quel étage je veux que l'argent se trouve, et pour en faire quoi ? »</strong></p>
+        <p>Si c'est pour racheter : il reste dans la holding, presque intact, et la boucle du build-up tourne. Si c'est pour un projet personnel : il sort, et il paie. Les repreneurs les plus aguerris font rarement l'un ou l'autre en bloc — ils sortent ce qu'il faut pour sécuriser leur vie personnelle, et laissent le reste travailler. La fiscalité française récompense, au fond, ceux qui réinvestissent dans l'économie productive : ton projet de build-up est exactement ce qu'elle cherche à encourager.</p>` },
+      { type:"validation", label:"Question de validation",
+        question:"Construis ton scénario de sortie chiffré pour Thermelec : à quelle date au plus tôt tu vendrais (et pourquoi), le prix visé et la plus-value, l'impôt payé par la holding, la dette remboursée, ce qui reste — et ce que tu en fais (réinvestir, distribuer, garder), avec le calcul du net perçu si tu distribues une partie." },
+      { type:"summary",
+        summary:"Via ta holding, la plus-value de cession de Thermelec est quasi exonérée (quote-part de 12 % à l'IS, ~3 % effectif) si les titres sont détenus depuis au moins 2 ans — sinon IS plein à 25 %. Ton horizon de revente réaliste commence donc à 24 mois. Réinvesti dans la holding, le produit reste presque intact ; distribué vers toi, il paie le PFU de 31,4 %. L'apport-cession, durci en 2026 (70 %, 36 mois, 5 ans), concerne les titres détenus en direct.",
+        nextHint:"L'autre voie : ne pas vendre — extraire, réinvestir, et construire un portefeuille. Le build-up, et la grille pour choisir entre les deux." }
     ]
   },
 
@@ -3826,7 +4287,7 @@ PROJET DE L'UTILISATEUR (contexte permanent à utiliser) :
 - Diagnostic de l'utilisateur : niveau comptable = ${d.comptes||'inconnu'} ; avancement du projet = ${d.avancement||'inconnu'} ; principale crainte = ${d.peur||'inconnue'}.
 
 FIL ROUGE DU PROGRAMME (cas d'école que l'utilisateur suit dans les leçons — utilise-le naturellement dans tes exemples s'il s'y réfère) :
-Thermelec SAS, Corbeil-Essonnes (91), maintenance CVC pour copropriétés et PME, créée en 1998 par Bernard Lemoine (61 ans, vend pour raisons familiales et de santé, pas de successeur). 11 salariés dont Karim, chargé d'affaires homme-clé (futur gérant pressenti). CA 1,82 M€ ; EBITDA affiché 355 K€, normalisé 310 K€ (17 %). ~70 % du CA en contrats de maintenance récurrents ; top 3 clients = 31 %. Zéro digital (pas de CRM, devis Excel). Trésorerie excédentaire 180 K€. Prix demandé 990 K€, négocié 850 K€ (2,74x) avec crédit-vendeur 230 K€ (4 ans, différé 12 mois). Montage : besoins ~910 K€ = apport 30 K€ + prêt d'honneur 30 K€ + crédit-vendeur 230 K€ + distribution de trésorerie 140 K€ + dette bancaire 480 K€ (7 ans, annuité ~80 K€). Dividende remontable prudent ~185 K€/an, service de dette total ~142 K€, DSCR ≈ 1,3. GAP : plafond 250 K€ dégressif, 3 ans, séquestre 80 K€.
+Thermelec SAS, Corbeil-Essonnes (91), maintenance CVC pour copropriétés et PME, créée en 1998 par Bernard Lemoine (61 ans, vend pour raisons familiales et de santé, pas de successeur). 11 salariés dont Karim, chargé d'affaires homme-clé (futur gérant pressenti). CA 1,82 M€ ; EBITDA affiché 355 K€, normalisé 310 K€ (17 %). ~70 % du CA en contrats de maintenance récurrents ; top 3 clients = 31 %. Zéro digital (pas de CRM, devis Excel). Trésorerie excédentaire 180 K€. Prix demandé 990 K€, négocié 850 K€ pour les titres (2,74x l'EBITDA en prix des titres ; en valeur d'entreprise, trésorerie excédentaire de 180 K€ déduite, ≈ 670 K€ soit ≈ 2,2x ; baisse LOI 870 → 850 due à ~22 K€ d'indemnités de retraite non provisionnées) avec crédit-vendeur 230 K€ (4 ans, différé 12 mois). Montage : besoins ~910 K€ = apport 30 K€ + prêt d'honneur 30 K€ + crédit-vendeur 230 K€ + distribution de trésorerie 140 K€ + dette bancaire 480 K€ (7 ans, annuité ~80 K€). Dividende remontable prudent ~185 K€/an, service de dette total ~142 K€, DSCR ≈ 1,3. GAP : plafond 250 K€ dégressif, 3 ans, séquestre 80 K€. Repères fiscaux 2026 à rappeler quand pertinent (toujours en renvoyant vers l'expert-comptable) : PFU 31,4 % sur les dividendes perso ; régime mère-fille et intégration fiscale (≥ 95 %) pour la holding ; plus-value de cession des titres par la holding quasi exonérée (quote-part 12 %) après 2 ans de détention — d'où un horizon de revente réaliste à partir de 24 mois ; apport-cession durci en 2026 (70 % réinvestis sous 36 mois, conservation 5 ans).
 
 TON STYLE PEDAGOGIQUE (à respecter scrupuleusement) :
 1. Distingue exposition et exploration : si la question porte sur "comment ça marche en général" (normes établies : mécanique d'un LBO, définition d'un terme, fiscalité standard), donne directement la réponse avec confiance — ne transforme jamais une question factuelle en devinette. Réserve les questions en retour aux cas où tu explores SA situation spécifique (ex: "sur CETTE cible, avec CES chiffres, que ferais-tu ?").
